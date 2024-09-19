@@ -19,10 +19,10 @@ Este projeto será desenvolvido pelos componentes do grupo 1:
 |Matrícula|Nome|Usuário Git|
 |---|---|---|
 |202403089|PEDRO AUGUSTO RODRIGUES|[pedroaugusto99](https://github.com/pedroaugusto99)|
-|202300194|STEPHANO SOARES VIGLIO|[StephanoViglio](https://github.com/StephanoViglio)|
-|202201707|OMAR AL JAWABRI|[OmarJawabri](https://github.com/OmarJawabri)|
-|202204842|HUGO PEREIRA BORGES|[HugoPBorges](https://github.com/HugoPBorges)|
-|202004771|VINICIUS PEREIRA ESPÍNDOLA|[V1N1C1U5ESPINDOLA](https://github.com/V1N1C1U5ESPINDOLA)|
+|202403094|STEPHANO SOARES VIGLIO|[StephanoViglio](https://github.com/StephanoViglio)|
+|202403088|OMAR AL JAWABRI|[OmarJawabri](https://github.com/OmarJawabri)|
+|202403075|HUGO PEREIRA BORGES|[HugoPBorges](https://github.com/HugoPBorges)|
+|202403097|VINICIUS PEREIRA ESPÍNDOLA|[V1N1C1U5ESPINDOLA](https://github.com/V1N1C1U5ESPINDOLA)|
 
 ### Backlog do Produto
 
