@@ -1,5 +1,5 @@
-### ds_20242_g1
-Repositório definido para a manutenção do controle de versão dos artefatos do projeto de do Grupo 1, da Disciplina de Domínios de Software, no semestre 2024-2.
+### ms_20242_g6
+Repositório definido para a manutenção do controle de versão dos artefatos do projeto de do Grupo 6, da Disciplina de Modelagem de Software, no semestre 2024-2.
 
 ### Nome do Projeto:
 Informar o nome do projeto
@@ -18,11 +18,11 @@ Este projeto será desenvolvido pelos componentes do grupo 1:
 
 |Matrícula|Nome|Usuário Git|
 |---|---|---|
-|202201689|FELIPE MOREIRA SILVA|[<usuario_github>](https://github.com/<usuario_github>)|
-|202300194|JOSEPPE PEDRO CUNHA FELLINI|[jongas124](https://github.com/jongas124)|
-|202201707|MATHEUS FRANCO CASCÃO COSTA|[<usuario_github>](https://github.com/<usuario_github>)|
-|202204842|MAURO SÉRGIO DO NASCIMENTO JUNIOR|[<usuario_github>](https://github.com/<usuario_github>)|
-|202004771|MIKHAEL MACHADO FERNANDES MAIA|[<usuario_github>](https://github.com/<usuario_github>)|
+|202403089|PEDRO AUGUSTO RODRIGUES|[pedroaugusto99](https://github.com/pedroaugusto99)|
+|202300194|STEPHANO SOARES VIGLIO|[StephanoViglio](https://github.com/StephanoViglio)|
+|202201707|OMAR AL JAWABRI|[OmarJawabri](https://github.com/OmarJawabri)|
+|202204842|HUGO PEREIRA BORGES|[HugoPBorges](https://github.com/HugoPBorges)|
+|202004771|VINICIUS PEREIRA ESPÍNDOLA|[V1N1C1U5ESPINDOLA](https://github.com/V1N1C1U5ESPINDOLA)|
 
 ### Backlog do Produto
 
@@ -117,5 +117,3 @@ O nosso planejamento inicial é hospedar nossa aplicação no Heroku ou no Fireb
 |8|Apresentação do Projeto|07/12/2024|20/12/2024|Grupo|Programada|
 
 * Implementação se aplicará, se os itens da iteração em andamento, forem eleitos para validação do projeto do trabalho.
-
-Usuário github: gilmarUFG
