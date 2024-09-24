@@ -1,11 +1,11 @@
 ### ms_20242_g6
-Repositório definido para a manutenção do controle de versão dos artefatos do projeto de do Grupo 6, da Disciplina de Modelagem de Software, no semestre 2024-2.
+Repositório definido para a manutenção do controle de versão dos artefatos do projeto de do Grupo 6, da disciplina de Modelagem de Software, ministrada pelo professor Gilmar Arantes, no semestre 2024-2.
 
 ### Nome do Projeto:
-Informar o nome do projeto
+Rurallink
 
 ### Descrição:
-Descrever o projeto
+O Rurallink trata-se de uma aplicação voltada para gerenciamento de recursos rurais focado em pecuária;
 
 ### Problema
 Descrever o projeto
@@ -80,11 +80,11 @@ O nosso planejamento inicial é hospedar nossa aplicação no Heroku ou no Fireb
 |---|---|---|---|---|---|
 |1|Definição do grupo de trabalho|30/08/2024|30/08/2024|Grupo|Concluída|
 |1|Definição do Tema do Trabalho|30/08/2024|13/09/2024|Grupo|Concluída|
-|2|Definição do Backlog do produto|13/09/2024|27/09/2024|Grupo|Programada|
+|2|Definição do Backlog do produto|03/09/2024|10/09/2024|Grupo|Programada|
 |2|Descrição dos itens do backlog do produto|14/09/2024|27/09/2024|Grupo|Programada|
 |2|Distribuição dos itens do backlog entre as iterações|14/09/2024|27/09/2024|Grupo|Programada|
-|2|Definição do modelo arquitetural|14/09/2024|27/09/2024|Grupo|Programada|
-|3|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
+|2|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|17/09/2024|24/10/2024||Programada|
+|3|Definição do modelo arquitetural|14/09/2024|27/09/2024|Grupo|Programada|
 |3|Diagrama de classes dos Item(ns) do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
 |3|Diagrama de interação/sequencia dos itens do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
 |3|Projeto de Interfaces gráficas dos itens do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
