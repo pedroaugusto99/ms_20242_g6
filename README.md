@@ -26,7 +26,7 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 
 ### Backlog do Produto
 
-1. RF001 - <Descrição do Requisito>.
+1. RF001 - <Realização cadastro de usuário, indicando nome, função, tipo e nome da fazenda.>.
 2. RF002 - <Descrição do Requisito>.
 3. RF003 - <Descrição do Requisito>.
 4. RF004 - <Descrição do Requisito>.
