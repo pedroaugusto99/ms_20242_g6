@@ -138,7 +138,7 @@ PARA utilizar uma nova senha na aplicação
 
 #### Cenário 2: Falha na confirmação da nova senha
 
-**Dado** que o usuário está na página de login
+**Dado** que o usuário está na página de login <br>
 **E** ele já possui conta cadastrada
 **E** ele deseja alterar sua senha
 **Quando** ele clicar no botão “esqueceu a senha?”
