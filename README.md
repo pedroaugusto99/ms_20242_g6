@@ -26,12 +26,16 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 
 ### Backlog do Produto
 
-1. RF001 - <Realização cadastro de usuário, indicando nome, função, tipo e nome da fazenda.>.
-2. RF002 - <Descrição do Requisito>.
-3. RF003 - <Descrição do Requisito>.
-4. RF004 - <Descrição do Requisito>.
-5. RF005 - <Descrição do Requisito>.
-6. RF006 - <Descrição do Requisito>.
+1. RF001 - Realização de cadastro de usuário, indicando nome, função, tipo e nome da fazenda.
+2. RF002 - Cadastro de rebanho, com preenchimento de vários campos com informações individuais do animal.
+3. RF003 - Integração com banco de dados.
+4. RF004 - Pesquisa de animais cadastrados por meio de pesquisa nominal ou por meio de filtros de buscas personalizadas.
+5. RF005 - Edição de dados não essencias em formulário de animal cadastrado com novas informações, como novo peso e seu histórico, tipo e data de vacina, tipo de remédio tomado, tipo e quantidade de ração, histórico médico;.
+6. RF006 - Geração de gráficos com informações e estatísticas personalizadas sobre o rebanho, em um Dashboard interativo;.
+7. RF007 - Geração de pdfs personalizados dos formulários dos animais cadastrados e dos gráficos do Dashboard;.
+8. RF008 - Geração de QR Code após o cadastro de novo animal com possibilidade de impressão e subsequente leitura de QR Code em tag presente fisicamente no gado, por exemplo nos brincos de plástico ou etiquetagem.
+9. RF009 - Visualização de sistema de alerta meteorológico no Dashboard, via uso de API a ser definida.
+10. RF010 - Usabilidade de fácil aprendizagem e manejo da aplicação, sendo "user-friendly", possuindo página com tutorial para uso.
 
 ### Requisitos Não Funcionais
 
@@ -66,8 +70,8 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 
 |Iteração|Descrição|Data Início|Data Fim|Responsável|Situação|
 |---|---|---|---|---|---|
-|1|Concepção|30/08/2024|13/09/2024|Grupo 6|Concluída|
-|2|Preparação|14/09/2024|27/09/2024|Grupo 6|Programada|
+|1|Concepção|30/08/2024|03/09/2024|Grupo 6|Concluída|
+|2|Preparação|03/09/2024|10/09/2024|Grupo 6|Programada|
 |3|Item(ns) do backlog <x,y,z>|28/09/2024|11/10/2024|Grupo 6|Programada|
 |4|Item(ns) do backlog <x,y,z>|12/10/2024|25/10/2024|Grupo 6|Programada|
 |5|Item(ns) do backlog <x,y,z>|26/10/2024|08/11/2024|Grupo 6|Programada|
@@ -78,11 +82,11 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 ### Iterações x Atividades
 |Iteração|Tarefa|Data Início|Data Fim|Responsável|Situação|
 |---|---|---|---|---|---|
-|1|Definição do grupo de trabalho|30/08/2024|30/08/2024|Grupo 6|Concluída|
-|1|Definição do Tema do Trabalho|30/08/2024|13/09/2024|Grupo 6|Concluída|
-|2|Definição do Backlog do produto|03/09/2024|10/09/2024|Grupo 6|Programada|
-|2|Descrição dos itens do backlog do produto|14/09/2024|27/09/2024|Grupo 6|Programada|
-|2|Distribuição dos itens do backlog entre as iterações|14/09/2024|27/09/2024|Grupo 6|Programada|
+|1|Definição do grupo de trabalho|27/08/2024|03/09/2024|Grupo 6|Concluída|
+|1|Definição do Tema do Trabalho|03/08/2024|09/09/2024|Grupo 6|Concluída|
+|2|Definição do Backlog do produto|09/09/2024|10/09/2024|Grupo 6|Concluída|
+|2|Descrição dos itens do backlog do produto|10/09/2024|17/09/2024|Grupo 6|Concluída|
+|2|Distribuição dos itens do backlog entre as iterações|17/09/2024|24/09/2024|Grupo 6|Programada|
 |2|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|17/09/2024|24/10/2024|Grupo 6|Programada|
 |3|Definição do modelo arquitetural|14/09/2024|27/09/2024|Grupo 6|Programada|
 |3|Diagrama de classes dos Item(ns) do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
