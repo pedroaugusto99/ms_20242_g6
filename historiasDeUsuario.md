@@ -1,7 +1,7 @@
 ## **História de Usuário HU-1.1**
 ### **Autor e Data de Criação**
 Stephano, 23/09/2024
-
+ 
 ### **Fluxo:**
 Cadastro de usuário e login [1]
 
@@ -13,29 +13,29 @@ Realizar cadastro de usuário na aplicação
 
 ### **Descrição**
 
-COMO usuário
-QUERO realizar meu cadastro na aplicação
-PARA possuir uma conta pessoal na aplicação
+COMO usuário<br>
+QUERO realizar meu cadastro na aplicação<br>
+PARA possuir uma conta pessoal na aplicação<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Cadastro realizado com sucesso
 
-**Dado** que o usuário está na página inicial da aplicação
-**Quando** o usuário clica em Cadastre-se/Faça seu cadastro
-**E** acessa a página de realização de cadastro
-**E** preenche todos os dados obrigatórios indicados
-**E** confirma seu cadastro
-**Então** o usuário é cadastrado na aplicação
-**E** é redirecionado para a página de login
+**Dado** que o usuário está na página inicial da aplicação<br>
+**Quando** o usuário clica em Cadastre-se/Faça seu cadastro<br>
+**E** acessa a página de realização de cadastro<br>
+**E** preenche todos os dados obrigatórios indicados<br>
+**E** confirma seu cadastro<br>
+**Então** o usuário é cadastrado na aplicação<br>
+**E** é redirecionado para a página de login<br>
 
 #### Cenário 2: Falha na realização do cadastro
 
-**Dado** que o usuário está na página inicial da aplicação
-**Quando** clica em Cadastre-se/Faça seu cadastro
-**E** acessa a página de realização de cadastro
-**MAS** não preenche todos os dados obrigatórios indicados
-**Então** uma mensagem de erro deve ser exibida, informado que há dados faltando,
-**E** o usuário deve preencher o dado que falta para concluir cadastro
+**Dado** que o usuário está na página inicial da aplicação<br>
+**Quando** clica em Cadastre-se/Faça seu cadastro<br>
+**E** acessa a página de realização de cadastro<br>
+**MAS** não preenche todos os dados obrigatórios indicados<br>
+**Então** uma mensagem de erro deve ser exibida, informado que há dados faltando,<br>
+**E** o usuário deve preencher o dado que falta para concluir cadastro<br>
 
 
 ### **Prioridade:**
@@ -45,7 +45,7 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);
+Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -67,28 +67,28 @@ Realizar login na aplicação
 
 ### **Descrição**
 
-COMO usuário
-QUERO realizar login utilizando meu nome de login (ou email) e senha
-PARA entrar na aplicação com minha conta pessoal
+COMO usuário<br>
+QUERO realizar login utilizando meu nome de login (ou email) e senha<br>
+PARA entrar na aplicação com minha conta pessoal<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Realizar login com sucesso
 
-**Dado** que o usuário está na página inicial de login
-**E** ele já possua uma conta cadastrada
-**Quando** o usuário entra com seu nome de login (ou email) e senha
-**E** digita corretamente tanto o nome de login (ou email), quanto a senha
-**Então** o usuário acessa a aplicação
-**E** abre a página do dashboard
+**Dado** que o usuário está na página inicial de login<br>
+**E** ele já possua uma conta cadastrada<br>
+**Quando** o usuário entra com seu nome de login (ou email) e senha<br>
+**E** digita corretamente tanto o nome de login (ou email), quanto a senha<br>
+**Então** o usuário acessa a aplicação<br>
+**E** abre a página do dashboard<br>
 
 #### Cenário 2: Não realiza login usando usuário e/ou senha incorretos
 
-**Dado** que o usuário está na página inicial de login
-**E** ele já possua uma conta cadastrada
-**Quando**  o usuário entra com seu nome de login (ou email) e senha
-**MAS** digita incorretamente o nome de login (ou email) ou a senha
-**Então** uma mensagem é exibida informando que o nome de login (ou email) ou a senha estão incorretos
-**E** o sistema permite que o usuário digite novamente seu login
+**Dado** que o usuário está na página inicial de login<br>
+**E** ele já possua uma conta cadastrada<br>
+**Quando**  o usuário entra com seu nome de login (ou email) e senha<br>
+**MAS** digita incorretamente o nome de login (ou email) ou a senha<br>
+**Então** uma mensagem é exibida informando que o nome de login (ou email) ou a senha estão incorretos<br>
+**E** o sistema permite que o usuário digite novamente seu login<br>
 
 
 ### **Prioridade:**
@@ -98,7 +98,7 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);
+Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -119,33 +119,33 @@ Alterar a senha do usuário
 
 ### **Descrição**
 
-COMO usuário
-QUERO alterar minha senha inserida anteriormente
-PARA utilizar uma nova senha na aplicação
+COMO usuário<br>
+QUERO alterar minha senha inserida anteriormente<br>
+PARA utilizar uma nova senha na aplicação<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Alterar a senha com sucesso
 
-**Dado** que o usuário está na página de login
-**E** ele já possui conta cadastrada
-**E** ele deseja alterar sua senha
-**Quando** ele clicar no botão “esqueceu a senha?”
-**E** digitar uma nova senha
-**E** confirmar a nova senha
-**Então** a senha do usuário será modificada 
-**E** um pop-up de confirmação aparecerá na tela
-**E** o usuário será redirecionado para página de login
+**Dado** que o usuário está na página de login<br>
+**E** ele já possui conta cadastrada<br>
+**E** ele deseja alterar sua senha<br>
+**Quando** ele clicar no botão “esqueceu a senha?”<br>
+**E** digitar uma nova senha<br>
+**E** confirmar a nova senha<br>
+**Então** a senha do usuário será modificada<br>
+**E** um pop-up de confirmação aparecerá na tela<br>
+**E** o usuário será redirecionado para página de login<br>
 
 #### Cenário 2: Falha na confirmação da nova senha
 
 **Dado** que o usuário está na página de login <br>
-**E** ele já possui conta cadastrada
-**E** ele deseja alterar sua senha
-**Quando** ele clicar no botão “esqueceu a senha?”
-**E** digitar uma nova senha
-**E** no campo de confirmação da nova senha digitar uma senha diferente do campo nova senha
-**Então** uma mensagem será exibida dizendo que os campos não podem ser diferentes
-**E** o sistema permite que o usuário tente alterar sua senha novamente
+**E** ele já possui conta cadastrada<br>
+**E** ele deseja alterar sua senha<br>
+**Quando** ele clicar no botão “esqueceu a senha?”<br>
+**E** digitar uma nova senha<br>
+**E** no campo de confirmação da nova senha digitar uma senha diferente do campo nova senha<br>
+**Então** uma mensagem será exibida dizendo que os campos não podem ser diferentes<br>
+**E** o sistema permite que o usuário tente alterar sua senha novamente<br>
 
 ### **Prioridade:**
 Baixa
@@ -154,9 +154,9 @@ Baixa
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);
-Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados (HU-00X);
-Dependência 3: Desenvolvimento de interface de alterar a senha (HU-00X);
+Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados (HU-00X);<br>
+Dependência 3: Desenvolvimento de interface de alterar a senha (HU-00X);<br>
 
 ### **Notas / Comentários adicionais:**
 Nota 1: a mensagem informando que as senhas não podem ser diferentes deve ser um pop-up na parte superior da tela com cores chamativas;
@@ -180,18 +180,18 @@ Acessar página de realização de Novo Cadastro
 
 ### **Descrição**
 
-COMO usuário
-QUERO acessar página de realização de Novo Cadastro
-PARA realizar novo cadastro de animal
+COMO usuário<br>
+QUERO acessar página de realização de Novo Cadastro<br>
+PARA realizar novo cadastro de animal<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Acesso à página de cadastro feito com sucesso
 
-**Dado** que o usuários está na página do dashboard
-**E** ele deseja cadastrar um novo animal
-**Quando** ele clica no ícone de novo cadastro
-**Então** o usuário é redirecionado para página de novo cadastro
-**E** o usuário pode cadastrar novos animal s
+**Dado** que o usuários está na página do dashboard<br>
+**E** ele deseja cadastrar um novo animal<br>
+**Quando** ele clica no ícone de novo cadastro<br>
+**Então** o usuário é redirecionado para página de novo cadastro<br>
+**E** o usuário pode cadastrar novos animais<br>
 
 ### **Prioridade:**
 Alta
@@ -220,18 +220,18 @@ Acessar página de formulários de animais cadastrados
 
 ### **Descrição**
 
-COMO usuário
-QUERO acessar página de formulários de animais cadastrados
-PARA visualizar a página com a lista completa de formulários de animais cadastrados
+COMO usuário<br>
+QUERO acessar página de formulários de animais cadastrados<br>
+PARA visualizar a página com a lista completa de formulários de animais cadastrados<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Pesquisa por animal feita com sucesso
 
-**Dado** que o usuário está no dashboard
-**E** deseja acessar a página de formulários de animais cadastrados
-**Quando** ele clica na função de acessar animais cadastrados
-**Então** ele é redirecionado para página de acessar animais cadastrados
-**E** pode visualizar a lista completa de formulário de animais cadastrados
+**Dado** que o usuário está no dashboard<br>
+**E** deseja acessar a página de formulários de animais cadastrados<br>
+**Quando** ele clica na função de acessar animais cadastrados<br>
+**Então** ele é redirecionado para página de acessar animais cadastrados<br>
+**E** pode visualizar a lista completa de formulário de animais cadastrados<br>
 
 ### **Prioridade:**
 Alta
@@ -260,24 +260,24 @@ Acessar página de Dashboard interativo
 
 ### **Descrição**
 
-COMO usuário
-QUERO que o sistema utilize informações do banco de dados
-PARA criar gráficos personalizados no Dashboard
+COMO usuário<br>
+QUERO que o sistema utilize informações do banco de dados<br>
+PARA criar gráficos personalizados no Dashboard<br>
 
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Dashboard retorna gráficos filtrados
 
-**Dado** que busco as informações do filtro no banco de dados
-**Quando** as encontro
-**E** seleciono as informações de interesse
-**Então** e envio esses dados para a tela do usuário na forma de gráficos
+**Dado** que busco as informações do filtro no banco de dados<br>
+**Quando** as encontro<br>
+**E** seleciono as informações de interesse<br>
+**Então** e envio esses dados para a tela do usuário na forma de gráficos<br>
 
 #### Cenário 2: Dashboard não retorna gráficos filtrados
 
-**Dado** que busco as informações do filtro no banco de dados
-**E** não encontro elas
-**Então** uma mensagem é enviada para o usuário(Nenhum resultado para esse filtro)
+**Dado** que busco as informações do filtro no banco de dados<br>
+**E** as não encontro<br>
+**Então** uma mensagem é enviada para o usuário(Nenhum resultado para esse filtro)<br>
 
 
 ### **Prioridade:**
@@ -308,26 +308,26 @@ Acessar página de Dashboard interativo
 
 ### **Descrição**
 
-COMO usuário
-QUERO visualizar dashboard interativo
-PARA visualizar dados personalizados sobre o rebanho cadastrado na aplicação
+COMO usuário<br>
+QUERO visualizar dashboard interativo<br>
+PARA visualizar dados personalizados sobre o rebanho cadastrado na aplicação<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Dashboard retorna gráficos filtrados
 
-**Dado** que estou na página do dashboard
-**Quando** clico em filtros
-**E** seleciono o filtro que me interessa (peso, idade, sexo)
-**E** aperto em confirmar
-**Então** é retornado um gráfico sobre a situação do meu rebanho de acordo com o filtro
+**Dado** que estou na página do dashboard<br>
+**Quando** clico em filtros<br>
+**E** seleciono o filtro que me interessa (peso, idade, sexo)<br>
+**E** aperto em confirmar<br>
+**Então** é retornado um gráfico sobre a situação do meu rebanho de acordo com o filtro<br>
 
 
 #### Cenário 2: Dashboard direciona para os indivíduos pertencentes a determinada classe
 
-**Dado** que estou analisando o peso dos animais 
-**Quando** clico na amostra do gráfico que mostra os animais magros
-**Então** sou direcionado para uma página onde o perfil destes animais estão listados
-**E** posso acessar qualquer perfil
+**Dado** que estou analisando o peso dos animais<br>
+**Quando** clico na amostra do gráfico que mostra os animais magros<br>
+**Então** sou direcionado para uma página onde o perfil destes animais estão listados<br>
+**E** posso acessar qualquer perfil<br>
 
 
 ### **Prioridade:**
@@ -358,17 +358,17 @@ Visualizar dados meteorológicos no Dashboard interativo
 
 ### **Descrição**
 
-COMO usuário
-QUERO visualizar dados meteorológicos interativos
-PARA não ser surpreendido pelo clima
+COMO usuário<br>
+QUERO visualizar dados meteorológicos interativos<br>
+PARA saber informações sobre o clima<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: API meteorológica retorna informações sobre o tempo
 
-**Dado** que estou na página do dashboard
-**Quando** clico na aba de “meteorologia”
-**E** seleciono a data a ser analisada
-**Então** são retornadas informações sobre o clima desse dia
+**Dado** que estou na página do dashboard<br>
+**Quando** clico na aba de “meteorologia”<br>
+**E** seleciono a data a ser analisada<br>
+**Então** são retornadas informações sobre o clima desse dia<br>
 
 
 ### **Prioridade:**
@@ -405,23 +405,23 @@ Cadastrar um novo animal na perspectiva do usuário
 
 ### **Descrição**
 
-COMO usuário
-QUERO cadastrar um novo animal 
-PARA ter acessos aos seus dados e fazer o controle quando necessário
+COMO usuário<br>
+QUERO cadastrar um novo animal<br>
+PARA ter acessos aos seus dados e fazer o controle quando necessário<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Cadastro de animal feito com sucesso
 
-**Dado** que o usuários está na página de novo cadastro
-**E** ele deseja cadastrar um novo animal 
-**Quando** insere todos os dados do animal 
-**E** clica no botão de confirmar cadastro
-**E** confirma o cadastro no pop-up
-**Então** o animais é cadastrado no sistema
-**E** o usuário pode acessar seus dados quando necessário
+**Dado** que o usuários está na página de novo cadastro<br>
+**E** ele deseja cadastrar um novo animal<br>
+**Quando** insere todos os dados do animal<br>
+**E** clica no botão de confirmar cadastro<br>
+**E** confirma o cadastro no pop-up<br>
+**Então** o animais é cadastrado no sistema<br>
+**E** o usuário pode acessar seus dados quando necessário<br>
 
 #### Cenário 2: Falha no cadastro de animal 
-
+<pre>
 **Dado** que o usuário está na página de novo cadastro
 **E** ele deseja cadastrar um novo animal 
 **Quando** não insere todos os campos obrigatórios do cadastro
@@ -430,6 +430,7 @@ PARA ter acessos aos seus dados e fazer o controle quando necessário
 **Então** o cadastro não é efetuado com sucesso
 **E** o sistema exibe uma mensagem dizendo que todos os campos obrigatórios devem ser preenchidos
 **E** o sistema permite que o usuário tente cadastrar o animal novamente
+</pre>
 
 #### Cenário 3: Não confirmação do cadastro de animal 
 
