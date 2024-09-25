@@ -21,7 +21,7 @@ PARA possuir uma conta pessoal na aplicação<br>
 #### Cenário 1: Cadastro realizado com sucesso
 
 **Dado** que o usuário está na página inicial da aplicação<br>
-**Quando** o usuário clica em Cadastre-se/Faça seu cadastro<br>
+**Quando** o usuário clica em "Faça seu cadastro"<br>
 **E** acessa a página de realização de cadastro<br>
 **E** preenche todos os dados obrigatórios indicados<br>
 **E** confirma seu cadastro<br>

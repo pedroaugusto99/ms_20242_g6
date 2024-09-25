@@ -27,15 +27,13 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 ### Backlog do Produto
 
 1. RF001 - Realização de cadastro de usuário, indicando nome, função, tipo e nome da fazenda.
-2. RF002 - Cadastro de rebanho, com preenchimento de vários campos com informações individuais do animal.
-3. RF003 - Integração com banco de dados.
-4. RF004 - Pesquisa de animais cadastrados por meio de pesquisa nominal ou por meio de filtros de buscas personalizadas.
-5. RF005 - Edição de dados não essencias em formulário de animal cadastrado com novas informações, como novo peso e seu histórico, tipo e data de vacina, tipo de remédio tomado, tipo e quantidade de ração, histórico médico;.
-6. RF006 - Geração de gráficos com informações e estatísticas personalizadas sobre o rebanho, em um Dashboard interativo;.
-7. RF007 - Geração de pdfs personalizados dos formulários dos animais cadastrados e dos gráficos do Dashboard;.
-8. RF008 - Geração de QR Code após o cadastro de novo animal com possibilidade de impressão e subsequente leitura de QR Code em tag presente fisicamente no gado, por exemplo nos brincos de plástico ou etiquetagem.
-9. RF009 - Visualização de sistema de alerta meteorológico no Dashboard, via uso de API a ser definida.
-10. RF010 - Usabilidade de fácil aprendizagem e manejo da aplicação, sendo "user-friendly", possuindo página com tutorial para uso.
+2. RF002 - Cadastro de rebanho, com preenchimento de vários campos com informações individuais do animal. 
+3. RF003 - Pesquisa de animais cadastrados por meio de pesquisa nominal ou por meio de filtros de buscas personalizadas.
+4. RF004 - Atualização de dados não essencias em formulário de animal cadastrado com novas informações, como novo peso e seu histórico, tipo e data de vacina, tipo de remédio tomado, tipo e quantidade de ração, histórico médico;.
+5. RF005 - Geração de gráficos com informações e estatísticas personalizadas sobre o rebanho, em um Dashboard interativo;.
+6. RF006 - Geração de pdfs personalizados dos formulários dos animais cadastrados e dos gráficos do Dashboard;.
+7. RF007 - Geração de QR Code após o cadastro de novo animal com possibilidade de impressão e subsequente leitura de QR Code em tag presente fisicamente no gado, por exemplo nos brincos de plástico ou etiquetagem.
+8. RF008 - Usabilidade de fácil aprendizagem e manejo da aplicação, sendo "user-friendly", possuindo página com tutorial para uso.
 
 ### Requisitos Não Funcionais
 
