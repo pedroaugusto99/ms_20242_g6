@@ -421,27 +421,26 @@ PARA ter acessos aos seus dados e fazer o controle quando necessário<br>
 **E** o usuário pode acessar seus dados quando necessário<br>
 
 #### Cenário 2: Falha no cadastro de animal 
-<pre>
-**Dado** que o usuário está na página de novo cadastro
-**E** ele deseja cadastrar um novo animal 
-**Quando** não insere todos os campos obrigatórios do cadastro
-**E** clica no botão de confirmar cadastro
-**E** confirma o cadastro no pop-up
-**Então** o cadastro não é efetuado com sucesso
-**E** o sistema exibe uma mensagem dizendo que todos os campos obrigatórios devem ser preenchidos
-**E** o sistema permite que o usuário tente cadastrar o animal novamente
-</pre>
+
+**Dado** que o usuário está na página de novo cadastro<br>
+**E** ele deseja cadastrar um novo animal<br>
+**Quando** não insere todos os campos obrigatórios do cadastro<br>
+**E** clica no botão de confirmar cadastro<br>
+**E** confirma o cadastro no pop-up<br>
+**Então** o cadastro não é efetuado com sucesso<br>
+**E** o sistema exibe uma mensagem dizendo que todos os campos obrigatórios devem ser preenchidos<br>
+**E** o sistema permite que o usuário tente cadastrar o animal novamente<br>
 
 #### Cenário 3: Não confirmação do cadastro de animal 
 
-**Dado** que o usuário está na página de novo cadastro
-**E** ele deseja cadastrar um novo animal 
-**Quando** insere todos os campos obrigatórios do cadastro
-**E** clica no botão de confirmar cadastro
-**MAS** não confirma o cadastro no pop-up
-**Então** o usuário volta para a página de cadastro
-**E** os campos inseridos anteriormente permanecem preenchidos
-**E** o usuário pode editá-los ou voltar ao dashboard
+**Dado** que o usuário está na página de novo cadastro<br>
+**E** ele deseja cadastrar um novo animal<br>
+**Quando** insere todos os campos obrigatórios do cadastro<br>
+**E** clica no botão de confirmar cadastro<br>
+**MAS** não confirma o cadastro no pop-up<br>
+**Então** o usuário volta para a página de cadastro<br>
+**E** os campos inseridos anteriormente permanecem preenchidos<br>
+**E** o usuário pode editá-los ou voltar ao dashboard<br>
 
 ### **Prioridade:**
 Alta
@@ -450,7 +449,7 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -472,31 +471,31 @@ Cadastrar um novo animal na perspectiva do sistema
 
 ### **Descrição**
 
-COMO usuário
-QUERO que o sistema me permita cadastrar novos animais com informações detalhadas
-PARA que eu possa gerenciar seu rebanho de forma eficiente.
+COMO usuário<br>
+QUERO que o sistema me permita cadastrar novos animais com informações detalhadas<br>
+PARA que eu possa gerenciar seu rebanho de forma eficiente.<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Cadastro de animal feito com sucesso
 
-**Dado** que o usuário está na página de novo cadastro
-**E** ele deseja cadastrar um novo animal 
-**Quando** insere todos os dados do animal
-**E** clica no botão de confirmar cadastro
-**E** confirma o cadastro no pop-up
-**Então** o sistema armazena esses dados no banco de dados
-**E** gera uma página para esse novo formulário
+**Dado** que o usuário está na página de novo cadastro<br>
+**E** ele deseja cadastrar um novo animal <br>
+**Quando** insere todos os dados do animal <br>
+**E** clica no botão de confirmar cadastro<br>
+**E** confirma o cadastro no pop-up<br>
+**Então** o sistema armazena esses dados no banco de dados<br>
+**E** gera uma página para esse novo formulário<br>
 
 #### Cenário 2: Falha no cadastro de animal 
 
-**Dado** que o usuário está na página de novo cadastro
-**E** ele deseja cadastrar um novo animal 
-**Quando** não insere todos os campos obrigatórios do cadastro
-**E** clica no botão de confirmar cadastro
-**E** confirma o cadastro no pop-up
-**Então** o cadastro não é efetuado com sucesso
-**E** o sistema exibe uma mensagem dizendo que todos os campos obrigatórios devem ser preenchidos
-**E** o sistema permite que o usuário tente cadastrar o animal novamente
+**Dado** que o usuário está na página de novo cadastro<br>
+**E** ele deseja cadastrar um novo animal<br>
+**Quando** não insere todos os campos obrigatórios do cadastro<br>
+**E** clica no botão de confirmar cadastro<br>
+**E** confirma o cadastro no pop-up<br>
+**Então** o cadastro não é efetuado com sucesso<br>
+**E** o sistema exibe uma mensagem dizendo que todos os campos obrigatórios devem ser preenchidos<br>
+**E** o sistema permite que o usuário tente cadastrar o animal novamente<br>
 
 ### **Prioridade:**
 Alta
@@ -505,7 +504,7 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -527,33 +526,33 @@ Geração de QR Code
 
 ### **Descrição**
 
-COMO usuário
-QUERO que o sistema gere um QR Code referente ao cadastro de um novo animal
-PARA que o usuário possa utilizá-lo para impressão
-E futuro acesso do formulário desse animal via leitura de QR Code
+COMO usuário<br>
+QUERO que o sistema gere um QR Code referente ao cadastro de um novo animal<br>
+PARA que o usuário possa utilizá-lo para impressão<br>
+E futuro acesso do formulário desse animal via leitura de QR Code<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Geração de QR Code feita com sucesso
 
-**Dado** que o usuário está na página de novo cadastro
-**E** ele deseja cadastrar um novo animal 
-**Quando** insere todos os dados do animal
-**E** clica no botão de confirmar cadastro
-**E** confirma o cadastro no pop-up
-**E** visualiza a página do formulário do novo cadastro realizado
-**Então** o sistema gera um QR Code referente a esse cadastro
+**Dado** que o usuário está na página de novo cadastro<br>
+**E** ele deseja cadastrar um novo animal <br>
+**Quando** insere todos os dados do animal<br>
+**E** clica no botão de confirmar cadastro<br>
+**E** confirma o cadastro no pop-up<br>
+**E** visualiza a página do formulário do novo cadastro realizado<br>
+**Então** o sistema gera um QR Code referente a esse cadastro<br>
 
 #### Cenário 2: Falha inicial na geração do QR Code
 
-**Dado** que o usuário está na página de novo cadastro
-**E** ele deseja cadastrar um novo animal 
-**Quando** insere todos os dados do animal
-**E** clica no botão de confirmar cadastro
-**E** confirma o cadastro no pop-up
-**E** visualiza a página do formulário do novo cadastro realizado
-**MAS** não visualiza o QR Code gerado pelo sistema referente a esse cadastro
-**Então** o sistema exibe uma mensagem dizendo que não foi possível gerar o QR Code
-**E** permite que o usuário peça para que o sistema tente novamente gerar o QR Code
+**Dado** que o usuário está na página de novo cadastro<br>
+**E** ele deseja cadastrar um novo animal <br>
+**Quando** insere todos os dados do animal<br>
+**E** clica no botão de confirmar cadastro<br>
+**E** confirma o cadastro no pop-up<br>
+**E** visualiza a página do formulário do novo cadastro realizado<br>
+**MAS** não visualiza o QR Code gerado pelo sistema referente a esse cadastro<br>
+**Então** o sistema exibe uma mensagem dizendo que não foi possível gerar o QR Code<br>
+**E** permite que o usuário peça para que o sistema tente novamente gerar o QR Code<br>
 
 ### **Prioridade:**
 Média
@@ -562,7 +561,7 @@ Média
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -583,29 +582,29 @@ Leitura de QR Code na perspectiva do sistema
 
 ### **Descrição**
 
-COMO usuário
-QUERO que o sistema integre uma biblioteca de leitura QR Code
-PARA que o usuário possa escanear o código no brinco e realizar uma chamada à API para recuperar informações do animal correspondente.
+COMO usuário<br>
+QUERO que o sistema integre uma biblioteca de leitura QR Code<br>
+PARA que o usuário possa escanear o código no brinco e realizar uma chamada à API para recuperar informações do animal correspondente.<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Leitura de QR Code feita com sucesso
 
-**Dado** que o usuário está na página de leitura de QR Code
-**E** quer fazer a leitura do QR Code do brinco de um animal
-**Quando** o usuário usa sua câmera do celular para fazer a leitura
-**E** a leitura funciona corretamente
-**Então** o sistema escaneia esse QR Code
-**E** localiza no banco de dados o animal respectivo
-**E** redireciona o usuário ao formulário desse animal
+**Dado** que o usuário está na página de leitura de QR Code<br>
+**E** quer fazer a leitura do QR Code do brinco de um animal<br>
+**Quando** o usuário usa sua câmera do celular para fazer a leitura<br>
+**E** a leitura funciona corretamente<br>
+**Então** o sistema escaneia esse QR Code<br>
+**E** localiza no banco de dados o animal respectivo<br>
+**E** redireciona o usuário ao formulário desse animal<br>
 
 #### Cenário 2: Falha inicial na leitura do QR Code
 
-**Dado** que o usuário está na página de leitura de QR Code
-**E** quer fazer a leitura do QR Code do brinco de um animal
-**Quando** o usuário usa sua câmera do celular para fazer a leitura
-**MAS** a leitura não funciona corretamente
-**Então** o sistema exibe uma mensagem dizendo que não foi possível ler  o QR Code
-**E** permite que o usuário execute a leitura pela câmera novamente
+**Dado** que o usuário está na página de leitura de QR Code<br>
+**E** quer fazer a leitura do QR Code do brinco de um animal<br>
+**Quando** o usuário usa sua câmera do celular para fazer a leitura<br>
+**MAS** a leitura não funciona corretamente<br>
+**Então** o sistema exibe uma mensagem dizendo que não foi possível ler  o QR Code<br>
+**E** permite que o usuário execute a leitura pela câmera novamente<br>
 
 ### **Prioridade:**
 Média
@@ -614,7 +613,7 @@ Média
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -635,30 +634,30 @@ Leitura de QR Code na perspectiva do usuário
 
 ### **Descrição**
 
-COMO usuário
-QUERO escanear o QR Code do brinco do animal por meio da câmera do telefone celular
-PARA que eu seja redirecionado ao formulário específico desse animal.
+COMO usuário<br>
+QUERO escanear o QR Code do brinco do animal por meio da câmera do telefone celular<br>
+PARA que eu seja redirecionado ao formulário específico desse animal.<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Leitura de QR Code feita com sucesso
 
-**Dado** que o usuário está na página de leitura de QR Code
-**E** quer fazer a leitura do QR Code do brinco de um animal
-**Quando** o usuário usa sua câmera do celular para fazer a leitura
-**E** a leitura funciona corretamente
-**Então** o sistema deve escanear o QR Code
-**E** extrair as informações contidas nele
-**E** localiza no banco de dados o animal respectivo a aquele código
-**E** verifica o registro do animal que foi encontrado, fornecendo as informações correspondentes na tela seu celular
+**Dado** que o usuário está na página de leitura de QR Code<br>
+**E** quer fazer a leitura do QR Code do brinco de um animal<br>
+**Quando** o usuário usa sua câmera do celular para fazer a leitura<br>
+**E** a leitura funciona corretamente<br>
+**Então** o sistema deve escanear o QR Code<br>
+**E** extrair as informações contidas nele<br>
+**E** localiza no banco de dados o animal respectivo a aquele código<br>
+**E** verifica o registro do animal que foi encontrado, fornecendo as informações correspondentes na tela seu celular<br>
 
 #### Cenário 2: Falha inicial na leitura do QR Code
 
-**Dado** que o usuário está na página de leitura de QR Code
-**E** quer fazer a leitura do QR Code do brinco de um animal
-**Quando** o usuário usa sua câmera do celular para fazer a leitura
-**MAS** a leitura não funciona corretamente
-**Então** o sistema exibe uma mensagem dizendo que não foi possível ler  o QR Code
-**E** permite que o usuário execute a leitura pela câmera novamente
+**Dado** que o usuário está na página de leitura de QR Code<br>
+**E** quer fazer a leitura do QR Code do brinco de um animal<br>
+**Quando** o usuário usa sua câmera do celular para fazer a leitura<br>
+**MAS** a leitura não funciona corretamente<br>
+**Então** o sistema exibe uma mensagem dizendo que não foi possível ler  o QR Code<br>
+**E** permite que o usuário execute a leitura pela câmera novamente<br>
 
 ### **Prioridade:**
 Média
@@ -667,7 +666,7 @@ Média
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -688,23 +687,23 @@ Leitura de QR Codes válido do ponto de vista do sistema
 
 ### **Descrição**
 
-COMO usuário
-QUERO que o sistema tenha a função validar e processar QR Codes escaneados
-PARA garantir que os dados recebidos sejam precisos e consistentes.
+COMO usuário<br>
+QUERO que o sistema tenha a função validar e processar QR Codes escaneados<br>
+PARA garantir que os dados recebidos sejam precisos e consistentes.<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Validação bem-sucedida do QR Code
 
-**Dado** que o usuário escaneou um QR Code
-**Quando** o sistema realiza a leitura
-**Então** o sistema deve validar a integridade do código
-**E** confirmar se o formato e os dados do QR Code são compatíveis com o padrão de código esperado.
+**Dado** que o usuário escaneou um QR Code<br>
+**Quando** o sistema realiza a leitura<br>
+**Então** o sistema deve validar a integridade do código<br>
+**E** confirmar se o formato e os dados do QR Code são compatíveis com o padrão de código esperado.<br>
 
 #### Cenário 2:
-**Dado** que o QR Code escaneado é inválido
-**Quando** o sistema detecta a invalidade
-**Então** deve exibir uma mensagem de erro ao usuário
-**E** permite que o usuário execute a leitura pela câmera novamente
+**Dado** que o QR Code escaneado é inválido<br>
+**Quando** o sistema detecta a invalidade<br>
+**Então** deve exibir uma mensagem de erro ao usuário<br>
+**E** permite que o usuário execute a leitura pela câmera novamente<br>
 
 ### **Prioridade:**
 Alta
@@ -713,7 +712,7 @@ Alta
 9 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -735,30 +734,30 @@ Pesquisar por animais cadastrados por meio de pesquisa nominal
 
 ### **Descrição**
 
-COMO usuário
-QUERO pesquisar por um animal anteriormente cadastrado por meio de pesquisa nominal
-PARA ter acesso aos seus dados
+COMO usuário<br>
+QUERO pesquisar por um animal anteriormente cadastrado por meio de pesquisa nominal<br>
+PARA ter acesso aos seus dados<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Pesquisa por animais feita com sucesso
 
-**Dado** que o usuário está na página de animais cadastrados
-**E** deseja pesquisar por animais cadastrados
-**E** clica na função pesquisar nominalmente por animal
-**Quando** ele digita o nome de um animal existente
-**E** clica no botão de pesquisar
-**Então** o sistema retorna todos os animais cadastrados com o nome pesquisado
-**E** o sistema permite que o usuário possa ver a lista dos animais.
+**Dado** que o usuário está na página de animais cadastrados<br>
+**E** deseja pesquisar por animais cadastrados<br>
+**E** clica na função pesquisar nominalmente por animal<br>
+**Quando** ele digita o nome de um animal existente<br>
+**E** clica no botão de pesquisar<br>
+**Então** o sistema retorna todos os animais cadastrados com o nome pesquisado<br>
+**E** o sistema permite que o usuário possa ver a lista dos animais.<br>
 
 #### Cenário 2: Pesquisa por animais não retorna nenhum animal
 
-**Dado** que o usuário está na página de animais cadastrados
-**E** deseja pesquisar por animais cadastrados
-**E** clica na função pesquisar nominalmente por animal
-**Quando** ele digita o nome de um animal não cadastrado
-**E** clica no botão de pesquisar
-**Então** o sistema não retorna nenhum animal 
-**E** o sistema emite uma mensagem dizendo que não há animais cadastrados com o nome pesquisado
+**Dado** que o usuário está na página de animais cadastrados<br>
+**E** deseja pesquisar por animais cadastrados<br>
+**E** clica na função pesquisar nominalmente por animal<br>
+**Quando** ele digita o nome de um animal não cadastrado<br>
+**E** clica no botão de pesquisar<br>
+**Então** o sistema não retorna nenhum animal<br>
+**E** o sistema emite uma mensagem dizendo que não há animais cadastrados com o nome pesquisado<br>
 
 ### **Prioridade:**
 Alta
@@ -767,7 +766,7 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de animais cadastrados(HU-00X);
+Dependência 1: Desenvolvimento da interface de animais cadastrados(HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -790,29 +789,29 @@ Pesquisar por animais cadastrado por meio do uso de filtros
 
 ### **Descrição**
 
-COMO usuário
-QUERO pesquisar por um animais anteriormente cadastrado
-PARA ter acesso aos seus dados
+COMO usuário<br>
+QUERO pesquisar por um animais anteriormente cadastrado<br>
+PARA ter acesso aos seus dados<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Filtragem de animais feita com sucesso
 
-**Dado** que o usuário está na página de animais cadastrados
-**E** deseja pesquisar por animais cadastrados por meio do uso de filtros
-**E** clica nos filtros de pesquisa de animais
-**Quando** o usuário seleciona os filtros desejados
-**E** clica no botão de “Filtrar”
-**Então** o sistema retorna uma lista com todos os animais cadastrados que se encaixam nos filtros
+**Dado** que o usuário está na página de animais cadastrados<br>
+**E** deseja pesquisar por animais cadastrados por meio do uso de filtros<br>
+**E** clica nos filtros de pesquisa de animais<br>
+**Quando** o usuário seleciona os filtros desejados<br>
+**E** clica no botão de “Filtrar”<br>
+**Então** o sistema retorna uma lista com todos os animais cadastrados que se encaixam nos filtros.<br>
 
 #### Cenário 2: Filtragem não retorna nenhum animal
 
-**Dado** que o usuário está na página de animais cadastrados
-**E** deseja pesquisar por animais cadastrados por meio do uso de filtros
-**E** clica nos filtros de pesquisa de animal
-**Quando** o usuário seleciona os filtros desejados
-**E** clica no botão de “Filtrar”
-**Então** o sistema não retorna nenhum animal 
-**E** o sistema emite uma mensagem dizendo que não há animais cadastrados que fazem parte dos filtros utilizados
+**Dado** que o usuário está na página de animais cadastrados<br>
+**E** deseja pesquisar por animais cadastrados por meio do uso de filtros<br>
+**E** clica nos filtros de pesquisa de animal<br>
+**Quando** o usuário seleciona os filtros desejados<br>
+**E** clica no botão de “Filtrar”<br>
+**Então** o sistema não retorna nenhum animal<br> 
+**E** o sistema emite uma mensagem dizendo que não há animais cadastrados que fazem parte dos filtros utilizados<br>
 
 ### **Prioridade:**
 Média
@@ -821,7 +820,7 @@ Média
 8 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface da página de animais cadastrados(HU-00X);
+Dependência 1: Desenvolvimento da interface da página de animais cadastrados(HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -843,32 +842,32 @@ Edição de formulário de animal cadastrado
 
 ### **Descrição**
 
-COMO usuário
-QUERO editar um formulário de um animal anteriormente cadastrado
-PARA atualizar seus dados no formulário
+COMO usuário <br>
+QUERO editar um formulário de um animal anteriormente cadastrado<br>
+PARA atualizar seus dados no formulário<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Edição de formulário feita com sucesso
 
-**Dado** que o usuário está em um formulário de um animal anteriormente cadastrado
-**E** deseja editar dados no presente formulário
-**E** clica no dado específico
-**Quando** o usuário edita esse dado
-**E** clica no botão de “Confirmar”
-**Então**  o sistema emite uma mensagem informando da atualização de edição feita com sucesso
-**E** o sistema atualiza o formulário do animal cadastrado com as novas informações inseridas nessa edição
+**Dado** que o usuário está em um formulário de um animal anteriormente cadastrado<br>
+**E** deseja editar dados no presente formulário<br>
+**E** clica no dado específico<br>
+**Quando** o usuário edita esse dado<br>
+**E** clica no botão de “Confirmar”<br>
+**Então**  o sistema emite uma mensagem informando da atualização de edição feita com sucesso<br>
+**E** o sistema atualiza o formulário do animal cadastrado com as novas informações inseridas nessa edição.<br>
 
 #### Cenário 2: Edição de formulário incompleta
 
-**Dado** que o usuário está em um formulário de um animal anteriormente cadastrado
-**E** deseja editar dados no presente formulário
-**E** clica no dado específico
-**Quando** o usuário edita esse dado
-**E** clica no botão de “Confirmar”
-**MAS** ele inseriu um dado não essencial fora do padrão
-**Então**  o sistema emite uma mensagem informando de falha na edição
-**E** pedindo que o usuário verifique novamente os novos dados inseridos
-**E** o sistema não atualiza o formulário do animal cadastrado com as novas informações inseridas nessa edição
+**Dado** que o usuário está em um formulário de um animal anteriormente cadastrado<br>
+**E** deseja editar dados no presente formulário<br>
+**E** clica no dado específico<br>
+**Quando** o usuário edita esse dado<br>
+**E** clica no botão de “Confirmar”<br>
+**MAS** ele inseriu um dado não essencial fora do padrão<br>
+**Então**  o sistema emite uma mensagem informando de falha na edição<br>
+**E** pedindo que o usuário verifique novamente os novos dados inseridos<br>
+**E** o sistema não atualiza o formulário do animal cadastrado com as novas informações inseridas nessa edição.<br>
 
 ### **Prioridade:**
 Média
@@ -877,7 +876,7 @@ Média
 8 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface do formulário de animal cadastrado (HU-00X);
+Dependência 1: Desenvolvimento da interface do formulário de animal cadastrado (HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados, que permite edição no formulário (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -899,34 +898,34 @@ Exclusão de animal cadastrado
 
 ### **Descrição**
 
-COMO usuário
-QUERO excluir um animal cadastrado anteriormente
-PARA manter atualizada a base de dados do meu rebanho
+COMO usuário <br>
+QUERO excluir um animal cadastrado anteriormente<br>
+PARA manter atualizada a base de dados do meu rebanho<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Exclusão de cadastro animal 
 
-**Dado** que o usuário está na página de animais cadastrados 
-**E** deseja excluir um animal do banco de dados
-**Quando** o usuário pesquisa pelo animal em questão
-**E** clica em seu formulário de cadastro
-**E** clica no botão “excluir cadastro”
-**E** um pop-up surge perguntando se o usuário realmente deseja prosseguir
-**E** o usuário clica em “confirmar”
-**Então** o animal cadastrado é excluído do sistema
-**E** seu histórico fica salvo para análises métricas posteriores
+**Dado** que o usuário está na página de animais cadastrados <br>
+**E** deseja excluir um animal do banco de dados<br>
+**Quando** o usuário pesquisa pelo animal em questão<br>
+**E** clica em seu formulário de cadastro<br>
+**E** clica no botão “excluir cadastro”<br>
+**E** um pop-up surge perguntando se o usuário realmente deseja prosseguir<br>
+**E** o usuário clica em “confirmar”<br>
+**Então** o animal cadastrado é excluído do sistema<br>
+**E** seu histórico fica salvo para análises métricas posteriores<br>
 
 #### Cenário 2: Desistência da exclusão de cadastro animal 
 
-**Dado** que o usuário está na página de animais cadastrados 
-**E** deseja excluir um animal do banco de dados
-**Quando** o usuário pesquisa pelo animal em questão
-**E** clica em seu cadastro
-**E** clica no botão “excluir cadastro”
-**E** um pop-up surge perguntando se o usuário realmente deseja prosseguir
-**MAS** o usuário clica em “cancelar”
-**Então** o animal cadastrado permanece no sistema
-**E** o usuário retorna para o cadastro do animal em questão
+**Dado** que o usuário está na página de animais cadastrados<br>
+**E** deseja excluir um animal do banco de dados<br>
+**Quando** o usuário pesquisa pelo animal em questão<br>
+**E** clica em seu cadastro<br>
+**E** clica no botão “excluir cadastro”<br>
+**E** um pop-up surge perguntando se o usuário realmente deseja prosseguir<br>
+**MAS** o usuário clica em “cancelar”<br>
+**Então** o animal cadastrado permanece no sistema<br>
+**E** o usuário retorna para o cadastro do animal em questão<br>
 
 ### **Prioridade:**
  Média
@@ -935,7 +934,7 @@ PARA manter atualizada a base de dados do meu rebanho
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface da página de animais cadastrados(HU-00X);
+Dependência 1: Desenvolvimento da interface da página de animais cadastrados(HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
@@ -957,53 +956,53 @@ Emissão de PDF com informações do animal em questão
 
 ### **Descrição**
 
-COMO usuário
-QUERO obter o arquivo em PDF com os dados do animal em questão
-PARA utilizar o arquivo para diferentes finalidades
+COMO usuário <br>
+QUERO obter o arquivo em PDF com os dados do animal em questão<br>
+PARA utilizar o arquivo para diferentes finalidades<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Obtenção do arquivo PDF com os dados cadastrados do animal em questão
 
-**Dado** que o usuário está na página de animais cadastrados 
-**E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão
-**Quando** o usuário pesquisa pelo animal em questão
-**E** clica em seu cadastro
-**E** clica no botão “obter PDF”
-**Então** uma página é gerada com o arquivo PDF aberto
-**E** o arquivo é baixado no dispositivo do usuário
+**Dado** que o usuário está na página de animais cadastrados <br>
+**E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão <br>
+**Quando** o usuário pesquisa pelo animal em questão<br>
+**E** clica em seu cadastro<br>
+**E** clica no botão “obter PDF”<br>
+**Então** uma página é gerada com o arquivo PDF aberto<br>
+**E** o arquivo é baixado no dispositivo do usuário<br>
 
 #### Cenário 2: Erro ao abrir o arquivo PDF com os dados cadastrados do animal em questão
 
-**Dado** que o usuário está na página de animais cadastrados 
-**E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão
-**Quando** o usuário pesquisa pelo animal em questão
-**E** clica em seu cadastro
-**E** clica no botão “obter PDF”
-**MAS** um erro acontece pela ausência de conexão com a internet”
-**Então** o usuário retorna para a página do animal em questão cadastrado
+**Dado** que o usuário está na página de animais cadastrados<br>
+**E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão<br>
+**Quando** o usuário pesquisa pelo animal em questão<br>
+**E** clica em seu cadastro<br>
+**E** clica no botão “obter PDF”<br>
+**MAS** um erro acontece pela ausência de conexão com a internet”<br>
+**Então** o usuário retorna para a página do animal em questão cadastrado<br>
 **E** o arquivo PDF não é criado
 
 #### Cenário 3: Erro ao baixar o arquivo PDF com os dados cadastrados do animal em questão
 
-**Dado** que o usuário está na página de animais cadastrados 
-**E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão
-**Quando** o usuário pesquisa pelo animal em questão
-**E** clica em seu cadastro
-**E** clica no botão “baixar PDF”
-**MAS** um erro acontece por exeder o espaço de armazenamento do dispositivo do usuário
-**Então** o usuário retorna para a página do animal cadastrado em questão
-**E** o arquivo PDF é criado 
-**E** a página é aberta
-**MAS** o arquivo não é baixado no dispositivo do usuário
+**Dado** que o usuário está na página de animais cadastrados<br>
+**E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão<br>
+**Quando** o usuário pesquisa pelo animal em questão<br>
+**E** clica em seu cadastro<br>
+**E** clica no botão “baixar PDF”<br>
+**MAS** um erro acontece por exeder o espaço de armazenamento do dispositivo do usuário<br>
+**Então** o usuário retorna para a página do animal cadastrado em questão<br>
+**E** o arquivo PDF é criado <br>
+**E** a página é aberta<br>
+**MAS** o arquivo não é baixado no dispositivo do usuário<br>
 
 ### **Prioridade:**
  Baixa
 
 ### **Estimativa de Esforço:**
-8 story points (faço a mínima ideia de o que seja isso aqui)
+8 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface da página de bovinos cadastrados(HU-00X);
+Dependência 1: Desenvolvimento da interface da página de bovinos cadastrados(HU-00X);<br>
 Dependência 2: Integração com o sistema de armazenamento de dados de bovinos no banco de dados (HU-00X);
 
 ### **Notas / Comentários adicionais:**
