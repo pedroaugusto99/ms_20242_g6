@@ -13,10 +13,10 @@ Realizar cadastro de usuário na aplicação
 
 ### **Descrição**
 
-COMO usuário<br>
-QUERO realizar meu cadastro na aplicação<br>
-PARA possuir uma conta pessoal na aplicação<br>
-
+COMO proprietário da fazenda<br>
+QUERO realizar o cadastro da minha fazenda na aplicação<br>
+PARA possuir uma conta na aplicação<br>
+s
 ### **Critérios de Aceitação:**
 #### Cenário 1: Cadastro realizado com sucesso
 
