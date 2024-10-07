@@ -1,7 +1,7 @@
 package com.rural_link.controller;
 
 import com.rural_link.domain.animal.Animal;
-import com.rural_link.dto.AnimalDTO;
+import com.rural_link.dto.animal.AnimalDTO;
 import com.rural_link.service.animal.AnimalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

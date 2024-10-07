@@ -1,8 +1,8 @@
 package com.rural_link.domain.user;
 
 public enum UserRole {
-    ADMIN("admin"),
-    USER("user");
+    PROPRIETARIO("proprietario"),
+    TRABALHADOR_RURAL("trabalhador_rural");
 
     private String role;
 

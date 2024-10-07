@@ -31,7 +31,8 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/autenticacao/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/autenticacao/registrar").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/animal/salvar").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/animal/salvar").hasRole("PROPRIETARIO")
+                        .requestMatchers(HttpMethod.POST, "/fazenda/criar").hasRole("PROPRIETARIO")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
