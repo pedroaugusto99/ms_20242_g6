@@ -45,8 +45,8 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento de interface de login e de cadastro ();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados ();
 
 ### **Notas / Comentários adicionais:**
 Nada a declarar a priori;
@@ -89,9 +89,9 @@ Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página inicial de login<br>
 **E** ele já possua uma conta cadastrada<br>
-**Quando**  o usuário entra com seu nome de login (ou email) e senha<br>
-**MAS** digita incorretamente o nome de login (ou email) ou a senha<br>
-**Então** uma mensagem é exibida informando que o nome de login (ou email) ou a senha estão incorretos<br>
+**Quando**  o usuário entra com seu nome de email e senha<br>
+**MAS** digita incorretamente o nome de email ou a senha<br>
+**Então** uma mensagem é exibida informando que o nome de login email ou a senha estão incorretos<br>
 **E** o sistema permite que o usuário digite novamente seu login<br>
 
 
@@ -102,8 +102,8 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento de interface de login e de cadastro;<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados;
 
 ### **Notas / Comentários adicionais:**
 Nota 1: a mensagem informando que o login está incorreto deve ser um pop-up no topo ou no centro da tela, com cor chamativa;
@@ -123,12 +123,14 @@ Alterar a senha do usuário
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário de fazenda ou trabalhador rural<br>
 QUERO alterar minha senha inserida anteriormente<br>
 PARA utilizar uma nova senha na aplicação<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Alterar a senha com sucesso
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de login<br>
 **E** ele já possui conta cadastrada<br>
@@ -141,6 +143,8 @@ PARA utilizar uma nova senha na aplicação<br>
 **E** o usuário será redirecionado para página de login<br>
 
 #### Cenário 2: Falha na confirmação da nova senha
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de login <br>
 **E** ele já possui conta cadastrada<br>
@@ -158,9 +162,9 @@ Baixa
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento de interface de login e de cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados (HU-00X);<br>
-Dependência 3: Desenvolvimento de interface de alterar a senha (HU-00X);<br>
+Dependência 1: Desenvolvimento de interface de login e de cadastro<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados<br>
+Dependência 3: Desenvolvimento de interface de alterar a senha<br>
 
 ### **Notas / Comentários adicionais:**
 Nota 1: a mensagem informando que as senhas não podem ser diferentes deve ser um pop-up na parte superior da tela com cores chamativas;
@@ -191,6 +195,8 @@ PARA realizar novo cadastro de animal<br>
 ### **Critérios de Aceitação:**
 #### Cenário 1: Acesso à página de cadastro feito com sucesso
 
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
 **Dado** que o usuário está na página do dashboard<br>
 **E** ele deseja cadastrar um novo animal<br>
 **Quando** ele clica no ícone de novo cadastro<br>
@@ -204,7 +210,7 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de dashboard e novo cadastro (HU-00X);
+Dependência 1: Desenvolvimento da interface da página inicial e de Novo Cadastro ();
 
 ### **Notas / Comentários adicionais:**
 Não há notas a priori
@@ -224,18 +230,20 @@ Acessar página de fichas de animais cadastrados
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário da fazenda ou trabalhador rural<br><br>
 QUERO acessar página de fichas de animais cadastrados<br>
 PARA visualizar a página com a lista completa de fichas de animais cadastrados<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Pesquisa por animal feita com sucesso
 
-**Dado** que o usuário está no dashboard<br>
-**E** deseja acessar a página de formulários de animais cadastrados<br>
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
+**Dado** que o usuário está na página principal<br>
+**E** deseja acessar a página de fichas de animais cadastrados<br>
 **Quando** ele clica na função de acessar animais cadastrados<br>
 **Então** ele é redirecionado para página de acessar animais cadastrados<br>
-**E** pode visualizar a lista completa de formulário de animais cadastrados<br>
+**E** pode visualizar a lista completa de ficha de animais cadastrados<br>
 
 ### **Prioridade:**
 Alta
@@ -244,7 +252,7 @@ Alta
 8 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de dashboard e rebanho cadastrado (HU-00X);
+Dependência 1: Desenvolvimento da interface da página principal e de página de fichas rebanho cadastrado;
 
 ### **Notas / Comentários adicionais:**
 Não há notas a priori.
@@ -264,34 +272,28 @@ Acessar página de Dashboard interativo
 
 ### **Descrição**
 
-COMO usuário<br>
-QUERO que o sistema utilize informações do banco de dados<br>
-PARA criar gráficos personalizados no Dashboard<br>
-
+COMO proprietário da fazenda<br>
+QUERO acessar página do dashboard interativo<br>
+PARA poder visualizar gráficos com dados personalizados sobre o rebanho na página do dashboard interativo<br>
 
 ### **Critérios de Aceitação:**
-#### Cenário 1: Dashboard retorna gráficos filtrados
+#### Cenário 1: Página inicial abre dashboard
 
-**Dado** que busco as informações do filtro no banco de dados<br>
-**Quando** as encontro<br>
-**E** seleciono as informações de interesse<br>
-**Então** e envio esses dados para a tela do usuário na forma de gráficos<br>
+Usuário = proprietário da fazenda<br>
 
-#### Cenário 2: Dashboard não retorna gráficos filtrados
-
-**Dado** que busco as informações do filtro no banco de dados<br>
-**E** as não encontro<br>
-**Então** uma mensagem é enviada para o usuário(Nenhum resultado para esse filtro)<br>
-
+**Dado** que o usuário está na página inicial<br>
+**Quando** clica em "Dashboard"<br>
+**Então** é aberta a página do dashboard com gráficos sobre a situação do rebanho<br>
 
 ### **Prioridade:**
-Alta
+Baixa
 
 ### **Estimativa de Esforço:**
 8 story points
 
 ### **Dependências:**
-Dependência 1; é necessário que o sistema de cadastro e banco de dados estejam funcionando de forma plena 
+Dependência 1: Desenvolvimento da interface da página do dashboard interativo (Item 9);
+Dependência 2: Desenvolvimento da funcionalidade para geração dos gráficos (Item 9 e RF08);
 
 ### **Notas / Comentários adicionais:**
 Sem Comentários adicionais
@@ -305,34 +307,26 @@ Hugo, 24/09/2024
 Interação do usuário com as páginas dentro da aplicação [2]
 
 ### **ID:**
-HU-2.3
+HU-2.4
 
 ### **Título:**
-Acessar página de Dashboard interativo
+Visualizar gráficos personalizados no Dashboard interativo
 
 ### **Descrição**
 
-COMO usuário<br>
-QUERO visualizar dashboard interativo<br>
-PARA visualizar dados personalizados sobre o rebanho cadastrado na aplicação<br>
+COMO proprietário de fazenda<br>
+QUERO que o sistema utilize informações do banco de dados<br>
+PARA criar gráficos personalizados no Dashboard<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Dashboard retorna gráficos filtrados
 
-**Dado** que estou na página do dashboard<br>
-**Quando** clico em filtros<br>
-**E** seleciono o filtro que me interessa (peso, idade, sexo)<br>
-**E** aperto em confirmar<br>
-**Então** é retornado um gráfico sobre a situação do meu rebanho de acordo com o filtro<br>
+Usuário = proprietário da fazenda<br>
 
-
-#### Cenário 2: Dashboard direciona para os indivíduos pertencentes a determinada classe
-
-**Dado** que estou analisando o peso dos animais<br>
-**Quando** clico na amostra do gráfico que mostra os animais magros<br>
-**Então** sou direcionado para uma página onde o perfil destes animais estão listados<br>
-**E** posso acessar qualquer perfil<br>
-
+**Dado** que o usuário (a definir)<br>
+**Quando** ele (a definir)<br>
+**E** (a definir)<br>
+**Então** (a definir)<br>
 
 ### **Prioridade:**
 Alta
@@ -341,80 +335,39 @@ Alta
 8 story points
 
 ### **Dependências:**
-Dependência 1; é necessário que o sistema de cadastro e banco de dados estejam funcionando de forma plena 
+Dependência 1: Desenvolvimento da interface da página do dashboard interativo (Item 9);
+Dependência 2: Desenvolvimento da funcionalidade para geração dos gráficos (Item 9 e RF08);
 
 ### **Notas / Comentários adicionais:**
 Sem Comentários adicionais
-
-
-## **História de Usuário HU-2.5**
-### **Autor e Data de Criação**
-Hugo, 24/09/2024
-
-### **Fluxo:**
-Interação do usuário com as páginas dentro da aplicação [2]
-
-### **ID:**
-HU-2.3
-
-### **Título:**
-Visualizar dados meteorológicos no Dashboard interativo
-
-### **Descrição**
-
-COMO usuário<br>
-QUERO visualizar dados meteorológicos interativos<br>
-PARA saber informações sobre o clima<br>
-
-### **Critérios de Aceitação:**
-#### Cenário 1: API meteorológica retorna informações sobre o tempo
-
-**Dado** que estou na página do dashboard<br>
-**Quando** clico na aba de “meteorologia”<br>
-**E** seleciono a data a ser analisada<br>
-**Então** são retornadas informações sobre o clima desse dia<br>
-
-
-### **Prioridade:**
-Baixa
-
-### **Estimativa de Esforço:**
-8 story points
-
-### **Dependências:**
-Dependência 1; é necessário que a API seja integrada ao sistema 
-
-
-### **Notas / Comentários adicionais:**
-Sem Comentários adicionais
-
-
 
 —------------------------------------------------------------------------------------------------------------------------------------
 
-#FLUXO 3: Cadastro, pesquisa e edição de formulário de animais
+#FLUXO 3: Cadastro, pesquisa e edição de ficha de animais
 
 ## **História de Usuário HU-3.1**
 ### **Autor e Data de Criação**
-Omar, 23/09/2024;;
+Hugo, 23/09/2024;;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
 HU-3.1
 
 ### **Título:**
-Cadastrar um novo animal na perspectiva do usuário
+Cadastrar um novo animal
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO cadastrar um novo animal<br>
-PARA ter acessos aos seus dados e fazer o controle quando necessário<br>
+PARA ter a ficha do animal na aplicação<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Cadastro de animal feito com sucesso
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuários está na página de novo cadastro<br>
 **E** ele deseja cadastrar um novo animal<br>
@@ -426,6 +379,8 @@ PARA ter acessos aos seus dados e fazer o controle quando necessário<br>
 
 #### Cenário 2: Falha no cadastro de animal 
 
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
 **Dado** que o usuário está na página de novo cadastro<br>
 **E** ele deseja cadastrar um novo animal<br>
 **Quando** não insere todos os campos obrigatórios do cadastro<br>
@@ -435,7 +390,9 @@ PARA ter acessos aos seus dados e fazer o controle quando necessário<br>
 **E** o sistema exibe uma mensagem dizendo que todos os campos obrigatórios devem ser preenchidos<br>
 **E** o sistema permite que o usuário tente cadastrar o animal novamente<br>
 
-#### Cenário 3: Não confirmação do cadastro de animal 
+#### Cenário 3: Não confirmação do cadastro de animaal
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de novo cadastro<br>
 **E** ele deseja cadastrar um novo animal<br>
@@ -453,8 +410,8 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro;<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados;
 
 ### **Notas / Comentários adicionais:**
 Nota 1: O pop-up de confirmação do cadastro deve ser exibido na tela após o usuário clicar no botão de confirmar cadastro e deve ter cores fortes;
@@ -465,85 +422,32 @@ Nota 1: O pop-up de confirmação do cadastro deve ser exibido na tela após o u
 Pedro, 24/09/2024;;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
 HU-3.2
-
-### **Título:**
-Cadastrar um novo animal na perspectiva do sistema
-
-### **Descrição**
-
-COMO usuário<br>
-QUERO que o sistema me permita cadastrar novos animais com informações detalhadas<br>
-PARA que eu possa gerenciar seu rebanho de forma eficiente.<br>
-
-### **Critérios de Aceitação:**
-#### Cenário 1: Cadastro de animal feito com sucesso
-
-**Dado** que o usuário está na página de novo cadastro<br>
-**E** ele deseja cadastrar um novo animal <br>
-**Quando** insere todos os dados do animal <br>
-**E** clica no botão de confirmar cadastro<br>
-**E** confirma o cadastro no pop-up<br>
-**Então** o sistema armazena esses dados no banco de dados<br>
-**E** gera uma página para esse novo formulário<br>
-
-#### Cenário 2: Falha no cadastro de animal 
-
-**Dado** que o usuário está na página de novo cadastro<br>
-**E** ele deseja cadastrar um novo animal<br>
-**Quando** não insere todos os campos obrigatórios do cadastro<br>
-**E** clica no botão de confirmar cadastro<br>
-**E** confirma o cadastro no pop-up<br>
-**Então** o cadastro não é efetuado com sucesso<br>
-**E** o sistema exibe uma mensagem dizendo que todos os campos obrigatórios devem ser preenchidos<br>
-**E** o sistema permite que o usuário tente cadastrar o animal novamente<br>
-
-### **Prioridade:**
-Alta
-
-### **Estimativa de Esforço:**
-8 story points 
-
-### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
-
-### **Notas / Comentários adicionais:**
-Nota 1: O pop-up de confirmação do cadastro deve ser exibido na tela após o usuário clicar no botão de confirmar cadastro e deve ter cores fortes
-
-
-## **História de Usuário HU-3.3**
-### **Autor e Data de Criação**
-Pedro, 24/09/2024;;
-
-### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
-
-### **ID:**
-HU-3.3
 
 ### **Título:**
 Geração de QR Code
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO que o sistema gere um QR Code referente ao cadastro de um novo animal<br>
 PARA que o usuário possa utilizá-lo para impressão<br>
-E futuro acesso do formulário desse animal via leitura de QR Code<br>
+E ter futuro acesso da ficha desse animal via leitura de QR Code<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Geração de QR Code feita com sucesso
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de novo cadastro<br>
 **E** ele deseja cadastrar um novo animal <br>
 **Quando** insere todos os dados do animal<br>
 **E** clica no botão de confirmar cadastro<br>
 **E** confirma o cadastro no pop-up<br>
-**E** visualiza a página do formulário do novo cadastro realizado<br>
+**E** visualiza a página da ficha do novo cadastro realizado<br>
 **Então** o sistema gera um QR Code referente a esse cadastro<br>
 
 #### Cenário 2: Falha inicial na geração do QR Code
@@ -553,7 +457,7 @@ E futuro acesso do formulário desse animal via leitura de QR Code<br>
 **Quando** insere todos os dados do animal<br>
 **E** clica no botão de confirmar cadastro<br>
 **E** confirma o cadastro no pop-up<br>
-**E** visualiza a página do formulário do novo cadastro realizado<br>
+**E** visualiza a página da ficha do novo cadastro realizado<br>
 **MAS** não visualiza o QR Code gerado pelo sistema referente a esse cadastro<br>
 **Então** o sistema exibe uma mensagem dizendo que não foi possível gerar o QR Code<br>
 **E** permite que o usuário peça para que o sistema tente novamente gerar o QR Code<br>
@@ -565,33 +469,36 @@ Média
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro;<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados;
+Dependência 3: Implementação da funcionalidade de geração de QR Code (RF06);
 
 ### **Notas / Comentários adicionais:**
-Nota 1: O pop-up de aviso de falha na geração do QR Code com o botão de tentar novamente gerá-lo deve ser exibido na tela após o usuário visualizar a página do formulário;
+Nota 1: O pop-up de aviso de falha na geração do QR Code com o botão de tentar novamente gerá-lo deve ser exibido na tela após o usuário visualizar a página da ficha;
 
-## **História de Usuário HU-3.4**
+## **História de Usuário HU-3.3**
 ### **Autor e Data de Criação**
 Pedro, 24/09/2024;;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
-HU-3.4
+HU-3.3
 
 ### **Título:**
 Leitura de QR Code na perspectiva do sistema
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO que o sistema integre uma biblioteca de leitura QR Code<br>
-PARA que o usuário possa escanear o código no brinco e realizar uma chamada à API para recuperar informações do animal correspondente.<br>
+PARA o código no brinco possa ser escanaeado, realizando uma chamada à API para recuperar informações do animal correspondente.<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Leitura de QR Code feita com sucesso
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de leitura de QR Code<br>
 **E** quer fazer a leitura do QR Code do brinco de um animal<br>
@@ -599,9 +506,11 @@ PARA que o usuário possa escanear o código no brinco e realizar uma chamada à
 **E** a leitura funciona corretamente<br>
 **Então** o sistema escaneia esse QR Code<br>
 **E** localiza no banco de dados o animal respectivo<br>
-**E** redireciona o usuário ao formulário desse animal<br>
+**E** redireciona o usuário aa ficha desse animal<br>
 
 #### Cenário 2: Falha inicial na leitura do QR Code
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de leitura de QR Code<br>
 **E** quer fazer a leitura do QR Code do brinco de um animal<br>
@@ -617,33 +526,36 @@ Média
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro ();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados ();<br>
+Dependência 3: Implementação da funcionalidade de geração de QR Code (RF06);
 
 ### **Notas / Comentários adicionais:**
-Nota 1: O pop-up de aviso de falha de leitura do QR Code com o botão de tentar novamente gerá-lo deve ser exibido na tela após o usuário visualizar a página do formulário;
+Nota 1: O pop-up de aviso de falha de leitura do QR Code com o botão de tentar novamente gerá-lo deve ser exibido na tela após o usuário visualizar a página da ficha;
 
-## **História de Usuário HU-3.5**
+## **História de Usuário HU-3.4**
 ### **Autor e Data de Criação**
 Pedro, 24/09/2024;;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
-HU-3.5
+HU-3.4
 
 ### **Título:**
 Leitura de QR Code na perspectiva do usuário
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO escanear o QR Code do brinco do animal por meio da câmera do telefone celular<br>
-PARA que eu seja redirecionado ao formulário específico desse animal.<br>
+PARA que eu seja redirecionado à ficha desse animal.<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Leitura de QR Code feita com sucesso
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de leitura de QR Code<br>
 **E** quer fazer a leitura do QR Code do brinco de um animal<br>
@@ -670,80 +582,37 @@ Média
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface de novo cadastro ();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados ();<br>
+Dependência 3: Implementação da funcionalidade de geração de QR Code (RF06);
 
 ### **Notas / Comentários adicionais:**
-Nota 1: O pop-up de aviso de falha de leitura do QR Code com o botão de tentar novamente gerá-lo deve ser exibido na tela após o usuário visualizar a página do formulário;
-
-## **História de Usuário HU-3.X**
-### **Autor e Data de Criação**
-Pedro, 24/09/2024;
-
-### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
-
-### **ID:**
-HU-3.X
-
-### **Título:**
-Leitura de QR Codes válido do ponto de vista do sistema
-
-### **Descrição**
-
-COMO usuário<br>
-QUERO que o sistema tenha a função validar e processar QR Codes escaneados<br>
-PARA garantir que os dados recebidos sejam precisos e consistentes.<br>
-
-### **Critérios de Aceitação:**
-#### Cenário 1: Validação bem-sucedida do QR Code
-
-**Dado** que o usuário escaneou um QR Code<br>
-**Quando** o sistema realiza a leitura<br>
-**Então** o sistema deve validar a integridade do código<br>
-**E** confirmar se o formato e os dados do QR Code são compatíveis com o padrão de código esperado.<br>
-
-#### Cenário 2:
-**Dado** que o QR Code escaneado é inválido<br>
-**Quando** o sistema detecta a invalidade<br>
-**Então** deve exibir uma mensagem de erro ao usuário<br>
-**E** permite que o usuário execute a leitura pela câmera novamente<br>
-
-### **Prioridade:**
-Alta
-
-### **Estimativa de Esforço:**
-9 story points
-
-### **Dependências:**
-Dependência 1: Desenvolvimento da interface de novo cadastro (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
-
-### **Notas / Comentários adicionais:**
-Nota 1: O pop-up de aviso de código QR inválido deve ter um aspecto vermelho e deve sumir e voltar a página de formulário e uma nova realização de leitura deve ser permitida;
+Nota 1: O pop-up de aviso de falha de leitura do QR Code com o botão de tentar novamente gerá-lo deve ser exibido na tela após o usuário visualizar a página da ficha;
 
 
-## **História de Usuário HU-3.6**
+## **História de Usuário HU-3.5**
 ### **Autor e Data de Criação**
 Omar, 23/09/2024;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
-HU-3.6
+HU-3.5
 
 ### **Título:**
 Pesquisar por animais cadastrados por meio de pesquisa nominal
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO pesquisar por um animal anteriormente cadastrado por meio de pesquisa nominal<br>
 PARA ter acesso aos seus dados<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Pesquisa por animais feita com sucesso
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de animais cadastrados<br>
 **E** deseja pesquisar por animais cadastrados<br>
@@ -754,6 +623,8 @@ PARA ter acesso aos seus dados<br>
 **E** o sistema permite que o usuário possa ver a lista dos animais.<br>
 
 #### Cenário 2: Pesquisa por animais não retorna nenhum animal
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de animais cadastrados<br>
 **E** deseja pesquisar por animais cadastrados<br>
@@ -770,37 +641,39 @@ Alta
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface de animais cadastrados(HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface de página de ficha de animais cadastrados();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados ();
 
 ### **Notas / Comentários adicionais:**
 Nota 1: A mensagem emitida quando não há animais cadastrados com o nome pesquisado deve ser um pop-up com cores chamativas que aparecerá no meio da tela;
 
 
 
-## **História de Usuário HU-3.7**
+## **História de Usuário HU-3.6**
 ### **Autor e Data de Criação**
 Stephano, 24/09/2024;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
-HU-3.7
+HU-3.6
 
 ### **Título:**
 Pesquisar por animais cadastrado por meio do uso de filtros
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO pesquisar por um animais anteriormente cadastrado<br>
 PARA ter acesso aos seus dados<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Filtragem de animais feita com sucesso
 
-**Dado** que o usuário está na página de animais cadastrados<br>
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
+**Dado** que o usuário está na página de fichas de animais cadastrados<br>
 **E** deseja pesquisar por animais cadastrados por meio do uso de filtros<br>
 **E** clica nos filtros de pesquisa de animais<br>
 **Quando** o usuário seleciona os filtros desejados<br>
@@ -808,6 +681,8 @@ PARA ter acesso aos seus dados<br>
 **Então** o sistema retorna uma lista com todos os animais cadastrados que se encaixam nos filtros.<br>
 
 #### Cenário 2: Filtragem não retorna nenhum animal
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de animais cadastrados<br>
 **E** deseja pesquisar por animais cadastrados por meio do uso de filtros<br>
@@ -824,54 +699,58 @@ Média
 8 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface da página de animais cadastrados(HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface da página de animais cadastrados();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados ();
 
 ### **Notas / Comentários adicionais:**
 Nota 1: A mensagem emitida quando não há animais cadastrados com os filtros selecionados deve ser um pop-up com cores chamativas que aparecerá no meio da tela;
 
 
-## **História de Usuário HU-3.8**
+## **História de Usuário HU-3.7**
 ### **Autor e Data de Criação**
-Stephano, 24/09/2024;
+Vinícius, 24/09/2024;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
-HU-3.8
+HU-3.7
 
 ### **Título:**
-Edição de formulário de animal cadastrado
+Edição de ficha de animal cadastrado
 
 ### **Descrição**
 
-COMO usuário <br>
-QUERO editar um formulário de um animal anteriormente cadastrado<br>
-PARA atualizar seus dados no formulário<br>
+COMO proprietário da fazenda ou trabalhador rural<br>
+QUERO editar uma ficha de um animal anteriormente cadastrado<br>
+PARA atualizar seus dados na ficha<br>
 
 ### **Critérios de Aceitação:**
-#### Cenário 1: Edição de formulário feita com sucesso
+#### Cenário 1: Edição de ficha feita com sucesso
 
-**Dado** que o usuário está em um formulário de um animal anteriormente cadastrado<br>
-**E** deseja editar dados no presente formulário<br>
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
+**Dado** que o usuário está em uma ficha de um animal anteriormente cadastrado<br>
+**E** deseja editar dados no presente ficha<br>
 **E** clica no dado específico<br>
 **Quando** o usuário edita esse dado<br>
 **E** clica no botão de “Confirmar”<br>
 **Então**  o sistema emite uma mensagem informando da atualização de edição feita com sucesso<br>
-**E** o sistema atualiza o formulário do animal cadastrado com as novas informações inseridas nessa edição.<br>
+**E** o sistema atualiza a ficha do animal cadastrado com as novas informações inseridas nessa edição.<br>
 
-#### Cenário 2: Edição de formulário incompleta
+#### Cenário 2: Edição de ficha incompleta
 
-**Dado** que o usuário está em um formulário de um animal anteriormente cadastrado<br>
-**E** deseja editar dados no presente formulário<br>
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
+**Dado** que o usuário está em uma ficha de um animal anteriormente cadastrado<br>
+**E** deseja editar dados no presente ficha<br>
 **E** clica no dado específico<br>
 **Quando** o usuário edita esse dado<br>
 **E** clica no botão de “Confirmar”<br>
 **MAS** ele inseriu um dado não essencial fora do padrão<br>
 **Então**  o sistema emite uma mensagem informando de falha na edição<br>
 **E** pedindo que o usuário verifique novamente os novos dados inseridos<br>
-**E** o sistema não atualiza o formulário do animal cadastrado com as novas informações inseridas nessa edição.<br>
+**E** o sistema não atualiza a ficha do animal cadastrado com as novas informações inseridas nessa edição.<br>
 
 ### **Prioridade:**
 Média
@@ -880,39 +759,41 @@ Média
 8 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface do formulário de animal cadastrado (HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados, que permite edição no formulário (HU-00X);
+Dependência 1: Desenvolvimento da interface da ficha de animal cadastrado ();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados, que permite edição na ficha ();
 
 ### **Notas / Comentários adicionais:**
-Nota 1: A mensagem emitida quando há falha na edição do formulário deve ser um pop-up com cores chamativas que aparecerá no meio da tela;
+Nota 1: A mensagem emitida quando há falha na edição da ficha deve ser um pop-up com cores chamativas que aparecerá no meio da tela;
 
 
-## **História de Usuário HU-3.9**
+## **História de Usuário HU-3.8**
 ### **Autor e Data de Criação**
 Vinícius, 24/09/2024;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de animais [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
-HU-3.9
+HU-3.8
 
 ### **Título:**
 Exclusão de animal cadastrado
 
 ### **Descrição**
 
-COMO usuário <br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO excluir um animal cadastrado anteriormente<br>
 PARA manter atualizada a base de dados do meu rebanho<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Exclusão de cadastro animal 
 
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
 **Dado** que o usuário está na página de animais cadastrados <br>
 **E** deseja excluir um animal do banco de dados<br>
 **Quando** o usuário pesquisa pelo animal em questão<br>
-**E** clica em seu formulário de cadastro<br>
+**E** clica em seu ficha de cadastro<br>
 **E** clica no botão “excluir cadastro”<br>
 **E** um pop-up surge perguntando se o usuário realmente deseja prosseguir<br>
 **E** o usuário clica em “confirmar”<br>
@@ -920,6 +801,8 @@ PARA manter atualizada a base de dados do meu rebanho<br>
 **E** seu histórico fica salvo para análises métricas posteriores<br>
 
 #### Cenário 2: Desistência da exclusão de cadastro animal 
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de animais cadastrados<br>
 **E** deseja excluir um animal do banco de dados<br>
@@ -938,34 +821,36 @@ PARA manter atualizada a base de dados do meu rebanho<br>
 8 story points 
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface da página de animais cadastrados(HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface da página de animais cadastrados();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados ();
 
 ### **Notas / Comentários adicionais:**
 A mensagem emitida quando o usuário deseja excluir o cadastro de um animais deve frisar que, uma vez excluído, o cadastro do animal não pode ser recuperado. Além disso, deve ser um pop-up com cores chamativas que aparecerá no meio da tela;
 
 
-## **História de Usuário HU-3.10**
+## **História de Usuário HU-3.9**
 ### **Autor e Data de Criação**
 Vinícius, 24/09/2024;
 
 ### **Fluxo:**
-Cadastro, pesquisa e edição de formulário de bovinos [3]
+Cadastro, pesquisa e edição de ficha de animais [3]
 
 ### **ID:**
-HU-3.10
+HU-3.9
 
 ### **Título:**
 Emissão de PDF com informações do animal em questão
 
 ### **Descrição**
 
-COMO usuário <br>
+COMO proprietário da fazenda ou trabalhador rural<br>
 QUERO obter o arquivo em PDF com os dados do animal em questão<br>
 PARA utilizar o arquivo para diferentes finalidades<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Obtenção do arquivo PDF com os dados cadastrados do animal em questão
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de animais cadastrados <br>
 **E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão <br>
@@ -977,6 +862,8 @@ PARA utilizar o arquivo para diferentes finalidades<br>
 
 #### Cenário 2: Erro ao abrir o arquivo PDF com os dados cadastrados do animal em questão
 
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
 **Dado** que o usuário está na página de animais cadastrados<br>
 **E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão<br>
 **Quando** o usuário pesquisa pelo animal em questão<br>
@@ -987,6 +874,8 @@ PARA utilizar o arquivo para diferentes finalidades<br>
 **E** o arquivo PDF não é criado
 
 #### Cenário 3: Erro ao baixar o arquivo PDF com os dados cadastrados do animal em questão
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de animais cadastrados<br>
 **E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão<br>
@@ -1006,8 +895,59 @@ PARA utilizar o arquivo para diferentes finalidades<br>
 8 story points
 
 ### **Dependências:**
-Dependência 1: Desenvolvimento da interface da página de bovinos cadastrados(HU-00X);<br>
-Dependência 2: Integração com o sistema de armazenamento de dados de bovinos no banco de dados (HU-00X);
+Dependência 1: Desenvolvimento da interface da página de animais cadastrados();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados ();
 
 ### **Notas / Comentários adicionais:**
 Ao criar o arquivo PDF, uma página distinta na web deve ser aberta e, paralelamente, o arquivo deve ser baixado no dispositivo do usuário
+
+—------------------------------------------------------------------------------------------------------------------------------------
+
+#FLUXO 4: Usabilidade da aplicação
+
+
+## **História de Usuário HU-4.1**
+### **Autor e Data de Criação**
+Stephano, 07/10/2024;
+
+### **Fluxo:**
+Usabilidade da aplicação [4]
+
+### **ID:**
+HU-4.1
+
+### **Título:**
+Ícones informativos sobre características da aplicação
+
+### **Descrição**
+
+COMO proprietário da fazenda ou trabalhador rural<br>
+QUERO visualizar um ícone informativo que me informe sobre características básicas da aplicação<br>
+PARA saber quais são as principais funcionalidades<br>
+
+### **Critérios de Aceitação:**
+#### Cenário 1: Visualizar pop-up com informações específicas
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
+**Dado** que o usuário está em alguma página da aplicação<br>
+**E** deseja obter informações sobre o que completar em um campo de formulário<br>
+**OU** sobre o que faz certo botão<br>
+**Quando** o usuário clica no ícone informativo<br>
+**Então** ele visualiza um pop-up com informações respectivass<br>
+
+
+### **Prioridade:**
+ Baixa
+
+### **Estimativa de Esforço:**
+8 story points
+
+### **Dependências:**
+Dependência 1: Desenvolvimento da interface da página de animais cadastrados();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de animais no banco de dados ();<br>
+Dependência 3: Implementação de ícones informativos em páginas em que há a necessidade (Item 6 e RF05);
+
+### **Notas / Comentários adicionais:**
+O ícone deve ser a letra "i" em um círculo de cor não chamativa e o pop-up deve ser uma caixa pequena em tom claro.
+
