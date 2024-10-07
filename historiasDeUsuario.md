@@ -13,29 +13,29 @@ Realizar cadastro de usuário na aplicação
 
 ### **Descrição**
 
-COMO proprietário da fazenda<br>
+COMO proprietário de fazenda<br>
 QUERO realizar o cadastro da minha fazenda na aplicação<br>
 PARA possuir uma conta na aplicação<br>
-s
+
 ### **Critérios de Aceitação:**
 #### Cenário 1: Cadastro realizado com sucesso
 
-**Dado** que o usuário está na página inicial da aplicação<br>
-**Quando** o usuário clica em "Faça seu cadastro"<br>
+**Dado** que o proprietário de fazenda está na página inicial da aplicação<br>
+**Quando** ele clica em "Faça seu cadastro"<br>
 **E** acessa a página de realização de cadastro<br>
 **E** preenche todos os dados obrigatórios indicados<br>
 **E** confirma seu cadastro<br>
-**Então** o usuário é cadastrado na aplicação<br>
+**Então** o proprietário de fazenda é cadastrado na aplicação<br>
 **E** é redirecionado para a página de login<br>
 
 #### Cenário 2: Falha na realização do cadastro
 
-**Dado** que o usuário está na página inicial da aplicação<br>
-**Quando** clica em Cadastre-se/Faça seu cadastro<br>
+**Dado** que o proprietário de fazenda está na página inicial da aplicação<br>
+**Quando** clica em "Faça seu cadastro"<br>
 **E** acessa a página de realização de cadastro<br>
 **MAS** não preenche todos os dados obrigatórios indicados<br>
 **Então** uma mensagem de erro deve ser exibida, informado que há dados faltando,<br>
-**E** o usuário deve preencher o dado que falta para concluir cadastro<br>
+**E** o proprietário de fazenda deve preencher o dado que falta para concluir cadastro<br>
 
 
 ### **Prioridade:**
@@ -67,21 +67,25 @@ Realizar login na aplicação
 
 ### **Descrição**
 
-COMO usuário<br>
-QUERO realizar login utilizando meu nome de login (ou email) e senha<br>
-PARA entrar na aplicação com minha conta pessoal<br>
+COMO proprietário de fazenda ou trabalhador rural<br>
+QUERO realizar login utilizando meu email e senha<br>
+PARA entrar na aplicação com minha conta<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Realizar login com sucesso
 
+Usuário = proprietário da fazenda ou trabalhador rural<br>
+
 **Dado** que o usuário está na página inicial de login<br>
 **E** ele já possua uma conta cadastrada<br>
-**Quando** o usuário entra com seu nome de login (ou email) e senha<br>
-**E** digita corretamente tanto o nome de login (ou email), quanto a senha<br>
+**Quando** o usuário entra com seu email e senha<br>
+**E** digita corretamente tanto o email, quanto a senha<br>
 **Então** o usuário acessa a aplicação<br>
 **E** abre a página do dashboard<br>
 
 #### Cenário 2: Não realiza login usando usuário e/ou senha incorretos
+
+Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página inicial de login<br>
 **E** ele já possua uma conta cadastrada<br>
@@ -180,14 +184,14 @@ Acessar página de realização de Novo Cadastro
 
 ### **Descrição**
 
-COMO usuário<br>
+COMO proprietário de fazenda ou trabalhador rural<br>
 QUERO acessar página de realização de Novo Cadastro<br>
 PARA realizar novo cadastro de animal<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Acesso à página de cadastro feito com sucesso
 
-**Dado** que o usuários está na página do dashboard<br>
+**Dado** que o usuário está na página do dashboard<br>
 **E** ele deseja cadastrar um novo animal<br>
 **Quando** ele clica no ícone de novo cadastro<br>
 **Então** o usuário é redirecionado para página de novo cadastro<br>
@@ -216,13 +220,13 @@ Interação do usuário com as páginas dentro da aplicação [2]
 HU-2.2
 
 ### **Título:**
-Acessar página de formulários de animais cadastrados
+Acessar página de fichas de animais cadastrados
 
 ### **Descrição**
 
 COMO usuário<br>
-QUERO acessar página de formulários de animais cadastrados<br>
-PARA visualizar a página com a lista completa de formulários de animais cadastrados<br>
+QUERO acessar página de fichas de animais cadastrados<br>
+PARA visualizar a página com a lista completa de fichas de animais cadastrados<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Pesquisa por animal feita com sucesso

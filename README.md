@@ -26,24 +26,36 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 
 ### Backlog do Produto
 
-1. RF001 - Realização de cadastro de usuário, indicando nome, função, tipo e nome da fazenda.
-2. RF002 - Cadastro de rebanho, com preenchimento de vários campos com informações individuais do animal. 
-3. RF003 - Pesquisa de animais cadastrados por meio de pesquisa nominal ou por meio de filtros de buscas personalizadas.
-4. RF004 - Atualização de dados não essencias em formulário de animal cadastrado com novas informações, como novo peso e seu histórico, tipo e data de vacina, tipo de remédio tomado, tipo e quantidade de ração, histórico médico;.
-5. RF005 - Geração de gráficos com informações e estatísticas personalizadas sobre o rebanho, em um Dashboard interativo;.
-6. RF006 - Geração de pdfs personalizados dos formulários dos animais cadastrados e dos gráficos do Dashboard;.
-7. RF007 - Geração de QR Code após o cadastro de novo animal com possibilidade de impressão e subsequente leitura de QR Code em tag presente fisicamente no gado, por exemplo nos brincos de plástico ou etiquetagem.
-8. RF008 - Usabilidade de fácil aprendizagem e manejo da aplicação, sendo "user-friendly", possuindo página com tutorial para uso.
+1. Cadastro de usuário (RF01).
+2. Cadastro de rebanho (RF02).
+3. Integração entre back-end e front-end da aplicação. 
+4. Pesquisa de fichas de animais por meio de nome e de filtros (RF03).
+5. Atualização de dados em fichas de animais (RF04).
+6. Página de tutorial e ícones informativos (RF05).
+7. Geração, impressão e leitura de QR Code (RF06).
+8. Geração de arquivos no formato "pdf" das fichas dos animais (RF07).
+9. Geração de gráficos no dashboard interativo (RF08).
+
+### Requisitos Funcionais
+
+1. RF01 - O sistema deve permitir a realização de cadastro de usuário, informando que tipo de usuário será (proprietário de fazenda ou trabalhador rural), com formulário específico para cada tipo.
+2. RF02 - O sistema deve permitir o cadastro de rebanho, com preenchimento de formulário com dados essenciais e não essenciais do animal, e deve criar ficha personalizada para cadastro realizado.
+3. RF03 - O sistema deve possibilitar pesquisa e retorno de fichas de animais cadastrados por meio de pesquisa nominal ou por meio de filtros de buscas.
+4. RF04 - O sistema deve possibilitar que dados não essencias em uma ficha de um animal cadastrado sejam atualizados com novas informações, como novo peso (e mostrar seu histórico), tipo e data de vacina, tipo de remédio tomado, tipo e quantidade de ração, histórico médico.
+5. RF05 - O sistema deve conter ícones informativos sobre características da aplicação e uma página com tutorial para uso.
+6. RF06 - O sistema deve gerar um QR Code após o cadastro de novo animal, com possibilidade de impressão do código, e subsequente leitura de QR Code em tag presente fisicamente no gado, por exemplo nos brincos de plástico ou etiquetagem.
+7. RF07 - O sistema deve gerar arquivos no formato "pdf" das fichas dos animais cadastrados.
+8. RF08 - O sistema deve gerar gráficos com informações e estatísticas personalizadas sobre o rebanho, em um Dashboard interativo.
 
 ### Requisitos Não Funcionais
 
-1. RNF001 - Usabilidade: <Descrição do Requisito não Funcional>.
-2. RNF002 - Segurança: <Descrição do Requisito não Funcional>..
-3. RNF003 - Desempenho: <Descrição do Requisito não Funcional>..
-4. RNF004 - Confiabilidade: <Descrição do Requisito não Funcional>.
-5. RNF005 - Manutenibilidade: <Descrição do Requisito não Funcional>.
-6. RNF006 - Portabilidade: <Descrição do Requisito não Funcional>.
-7. RNF007 - Conectividade: <Descrição do Requisito não Funcional>.
+1. RNF01 - Usabilidade: O usuário deve encontrar, facilmente, o que deseja realizar no sistema (facilidade de uso).
+2. RNF02 - Segurança: <Descrição do Requisito não Funcional>..
+3. RNF03 - Desempenho: <Descrição do Requisito não Funcional>..
+4. RNF04 - Confiabilidade: <Descrição do Requisito não Funcional>.
+5. RNF05 - Manutenibilidade: <Descrição do Requisito não Funcional>.
+6. RNF06 - Portabilidade: <Descrição do Requisito não Funcional>.
+7. RNF07 - Conectividade: <Descrição do Requisito não Funcional>.
 
 ### Regras de Negócio
 1. RN01 - <Descrição da Regra de Negócio>.
@@ -68,54 +80,36 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 
 |Iteração|Descrição|Data Início|Data Fim|Responsável|Situação|
 |---|---|---|---|---|---|
-|1|Concepção|30/08/2024|03/09/2024|Grupo 6|Concluída|
-|2|Preparação|03/09/2024|10/09/2024|Grupo 6|Programada|
-|3|Item(ns) do backlog <x,y,z>|28/09/2024|11/10/2024|Grupo 6|Programada|
-|4|Item(ns) do backlog <x,y,z>|12/10/2024|25/10/2024|Grupo 6|Programada|
-|5|Item(ns) do backlog <x,y,z>|26/10/2024|08/11/2024|Grupo 6|Programada|
-|6|Item(ns) do backlog <x,y,z>|09/11/2024|22/11/2024|Grupo 6|Programada|
-|7|Item(ns) do backlog <x,y,z>|23/11/2024|06/12/2024|Grupo6 |Programada|
-|8|Apresentação do Projeto|07/12/2024|20/12/2024|Grupo 6|Programada|
+|1|Concepção|10/09/2024|17/09/2024|Grupo 6|Concluída|
+|2|Preparação|18/09/2024|01/10/2024|Grupo 6|Concluída|
+|3|Itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Em andamento|
+|4|Itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
+|5|Itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
+|6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|
 
 ### Iterações x Atividades
 |Iteração|Tarefa|Data Início|Data Fim|Responsável|Situação|
 |---|---|---|---|---|---|
-|1|Definição do grupo de trabalho|27/08/2024|03/09/2024|Grupo 6|Concluída|
-|1|Definição do Tema do Trabalho|03/08/2024|09/09/2024|Grupo 6|Concluída|
-|2|Definição do Backlog do produto|09/09/2024|10/09/2024|Grupo 6|Concluída|
-|2|Descrição dos itens do backlog do produto|10/09/2024|17/09/2024|Grupo 6|Concluída|
-|2|Distribuição dos itens do backlog entre as iterações|17/09/2024|24/09/2024|Grupo 6|Programada|
-|2|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|17/09/2024|24/10/2024|Grupo 6|Programada|
-|3|Definição do modelo arquitetural|14/09/2024|27/09/2024|Grupo 6|Programada|
-|3|Diagrama de classes dos Item(ns) do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
-|3|Diagrama de interação/sequencia dos itens do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
-|3|Projeto de Interfaces gráficas dos itens do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
-|3|Projeto de persistência dos itens do backlog <x,y,z>|28/09/2024|11/10/2024||Programada|
-|3|Implementação dos itens do backlog <x,y,z>*|28/09/2024|11/10/2024||Programada|
-|4|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|12/10/2024|25/10/2024||Programada|
-|4|Diagrama de classes dos Item(ns) do backlog <x,y,z>|12/10/2024|25/10/2024||Programada|
-|4|Diagrama de interação/sequencia dos itens do backlog <x,y,z>|12/10/2024|25/10/2024||Programada|
-|4|Projeto de Interfaces gráficas dos itens do backlog <x,y,z>|12/10/2024|25/10/2024||Programada|
-|4|Projeto de persistência dos itens do backlog <x,y,z>|12/10/2024|25/10/2024||Programada|
-|4|Implementação dos itens do backlog <x,y,z>*|12/10/2024|25/10/2024||Programada|
-|5|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|26/10/2024|08/11/2024||Programada|
-|5|Diagrama de classes dos Item(ns) do backlog <x,y,z>|26/10/2024|08/11/2024||Programada|
-|5|Diagrama de interação/sequencia dos itens do backlog <x,y,z>|26/10/2024|08/11/2024||Programada|
-|5|Projeto de Interfaces gráficas dos itens do backlog <x,y,z>|26/10/2024|08/11/2024||Programada|
-|5|Projeto de persistência dos itens do backlog <x,y,z>|26/10/2024|08/11/2024||Programada|
-|5|Implementação dos itens do backlog <x,y,z>*|26/10/2024|08/11/2024||Programada|
-|6|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|09/11/2024|22/11/2024||Programada|
-|6|Diagrama de classes dos Item(ns) do backlog <x,y,z>|09/11/2024|22/11/2024||Programada|
-|6|Diagrama de interação/sequencia dos itens do backlog <x,y,z>|09/11/2024|22/11/2024||Programada|
-|6|Projeto de Interfaces gráficas dos itens do backlog <x,y,z>|09/11/2024|22/11/2024||Programada|
-|6|Projeto de persistência dos itens do backlog <x,y,z>|09/11/2024|22/11/2024||Programada|
-|6|Implementação dos itens do backlog <x,y,z>*|09/11/2024|22/11/2024||Programada|
-|7|Especificação de estórias de usuários dos Item(ns) do backlog <x,y,z>|23/11/2024|06/12/2024||Programada|
-|7|Diagrama de classes dos Item(ns) do backlog <x,y,z>|23/11/2024|06/12/2024||Programada|
-|7|Diagrama de interação/sequencia dos itens do backlog <x,y,z>|23/11/2024|06/12/2024||Programada|
-|7|Projeto de Interfaces gráficas dos itens do backlog <x,y,z>|23/11/2024|06/12/2024||Programada|
-|7|Projeto de persistência dos itens do backlog <x,y,z>|23/11/2024|06/12/2024||Programada|
-|7|Implementação dos itens do backlog <x,y,z>*|23/11/2024|06/12/2024||Programada|
-|8|Apresentação do Projeto|07/12/2024|20/12/2024|Grupo|Programada|
-
-* Implementação se aplicará, se os itens da iteração em andamento, forem eleitos para validação do projeto do trabalho.
+|0|Definição do grupo de trabalho|30/08/2024|03/09/2024|Grupo 6|Concluída|
+|0|Definição do Tema do Trabalho|30/08/2024|03/09/2024|Grupo 6|Concluída|
+|1|Definição do Backlog do produto|03/09/2024|10/09/2024|Grupo 6|Concluída|
+|1|Descrição dos itens do backlog do produto|10/09/2024|17/09/2024|Grupo 6|Concluída|
+|2|Especificação de Histórias de Usuário|18/09/2024|01/10/2024|Grupo 6|Concluída|
+|2|Distribuição dos itens do backlog entre as iterações|18/09/2024|01/10/2024|Grupo 6|Concluída|
+|3|Definição do modelo arquitetural|02/10/2024|15/10/2024|Grupo 6|Programada|
+|3|Diagrama de classes dos Item(ns) do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Programada|
+|3|Diagrama de interação/sequencia dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Programada|
+|3|Projeto de Interfaces gráficas dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Em andamento|
+|3|Projeto de persistência dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Programada|
+|3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Em andamento|
+|4|Diagrama de classes dos Item(ns) do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
+|4|Diagrama de interação/sequencia dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
+|4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
+|4|Projeto de persistência dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
+|4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
+|5|Diagrama de classes dos Item(ns) do backlog <7,8,9>||30/10/2024|12/11/2024|Grupo 6|Programada|
+|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>||30/10/2024|12/11/2024|Grupo 6|Programada|
+|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>||30/10/2024|12/11/2024|Grupo 6|Programada|
+|5|Projeto de persistência dos itens do backlog <7,8,9>||30/10/2024|12/11/2024|Grupo 6|Programada|
+|5|Implementação dos itens do backlog <7,8,9>||30/10/2024|12/11/2024|Grupo 6|Programada|
+|6|Apresentação do Projeto|07/12/2024|20/12/2024|Grupo 6|Programada|
