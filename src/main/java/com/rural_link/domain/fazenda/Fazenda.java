@@ -23,16 +23,14 @@ public class Fazenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    @OneToOne
-    @JoinColumn(name = "proprietario_id")
+    @OneToOne(mappedBy = "fazenda")
     private Proprietario proprietario;
     @OneToMany(mappedBy = "fazenda")
     private List<TrabalhadorRural> trabalhadorRural;
     @OneToMany(mappedBy = "fazenda")
     private List<Animal> animal;
 
-    public Fazenda(String nome, Proprietario proprietario){
+    public Fazenda(String nome){
         this.nome = nome;
-        this.proprietario = proprietario;
     }
 }
