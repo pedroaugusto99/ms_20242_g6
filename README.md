@@ -66,9 +66,9 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 
 ### Modelo Arquitetural
 O modelo arquitetural mais próximo do produto final é o Cliente-Servidor. Nesse modelo, o cliente é responsável por iniciar a comunicação com o servidor, que aguarda as requisições de entrada para fornecer os serviços. Uma das abordagens mais comuns desse modelo é a arquitetura em três camadas:
-- Camada de Apresentação (Cliente):  Interface com o usuário
-- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente
-- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados 
+- Camada de Apresentação (Cliente):  Interface com o usuário será feita em React
+- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente através de Java
+- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados pelo PostgreSQL
 
 ### Modelo de Interfaces Gráficas
 <Apresentar uma descrição sucinta do modelo de interfaces gráficas do Produto.>
