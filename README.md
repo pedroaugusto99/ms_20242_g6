@@ -51,7 +51,10 @@ Este projeto será desenvolvido pelos componentes do grupo 1:
 5. RN05 - <Descrição da Regra de Negócio>.
 
 ### Modelo Arquitetural
-<Apresentar uma descrição sucinta do modelo arquitetural do Produto.>
+O modelo arquitetural mais próximo do produto final é o Cliente-Servidor. Nesse modelo, o cliente é responsável por iniciar a comunicação com o servidor, que aguarda as requisições de entrada para fornecer os serviços. Uma das abordagens mais comuns desse modelo é a arquitetura em três camadas:
+- Camada de Apresentação (Cliente):  Interface com o usuário
+- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente
+- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados 
 
 ### Modelo de Interfaces Gráficas
 <Apresentar uma descrição sucinta do modelo de interfaces gráficas do Produto.>
