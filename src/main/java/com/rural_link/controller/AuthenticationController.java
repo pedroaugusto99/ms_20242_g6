@@ -17,14 +17,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/autenticacao")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:3000")
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
@@ -42,6 +40,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(new ResponseDTO(data.email(), token));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/registrar")
     public ResponseEntity<Void> register(@RequestBody RegistrarDTO data){
         if(this.userRepository.findByEmail(data.email()).isPresent()){
