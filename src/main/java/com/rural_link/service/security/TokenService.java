@@ -23,6 +23,7 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("login-auth-rurallink-api")
                     .withSubject(user.getEmail())
+                    .withClaim("role", user.getRole().name())
                     .withExpiresAt(this.gerarTempoDeExpirar())
                     .sign(algorithm);
             return token;
