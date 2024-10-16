@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Fonte-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Estilos-->
+    <link rel="stylesheet" href="src/styles/styles.css">
+
+    <!--JQUERY-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!--Efeito de Scroll-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <title>Seja Bem Vindo(a)!</title>
+</head>
+<body>
+
+    <header>
+        <nav id="navbar">
+            <i class="fa-solid fa-cow" style="letter-spacing: 2px;" id="nav-logo"> Rurallink</i>
+            <ul id="nav-lista">
+                <li class="nav-item active">
+                    <a href="#home">Ínicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#servicos-scroll">Serviços</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#planos-scroll">Planos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#testimonials-scroll">Feedbacks</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#sobre-scroll">Sobre nós</a>
+                </li>
+            </ul>
+
+            <button class="btn-padrao">
+                Entre Aqui
+            </button>
+            <button id="mobile-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+
+        <div id="mobile-menu">
+            <ul id="mobile-nav-lista">
+                <li class="nav-item">
+                    <a href="#home">Ínicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#servicos-scroll">Serviços</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#planos-scroll">Planos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#testimonials-scroll">Feedbacks</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#sobre-scroll">Sobre nós</a>
+                </li>
+            </ul>
+
+            <button class="btn-padrao">
+                Entre Aqui
+            </button>
+        </div>
+    </header>
+
+    <main id="content">
+
+        <section id="home">
+            <div class="forma"></div>
+            <div id="cta">
+                <h1 class="titulo">
+                    Nós cuidamos sempre da sua <span>fazenda</span>
+                </h1>
+
+                <p class="descricao">
+                    Controle total para o seu rebanho: Gestão
+                    eficiente, resultados sustentáveis.
+                </p>
+
+                <div id="cta-botoes">
+                    <a href="#planos-scroll" class="btn-padrao">
+                        Ver Planos
+                    </a>
+
+                    <a href="tel:=+555555555" id="telefone-botao">
+                        <button class="btn-padrao">
+                            <i class="fa-solid fa-phone"></i>
+                        </button>
+                        (62) 4002-8922
+                    </a>
+                </div>
+
+                <div class="midias-sociais-botoes">
+                    <a href="">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div id="banner">
+                <img src="src/images/home/image-banner.png" alt="imagem fazendeiro">
+            </div>
+        </section>
+
+        <section id="nossos-servicos">
+            <h2 class="section-titulo" id="servicos-scroll">Serviços</h2>
+            <h3 class="section-subtitulo">Nossos Serviços</h3>
+
+            <div id="servicos">
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Monitoramento
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-preco">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Gestão do Pasto
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-preco">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Cadastro rápido
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-preco">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Dashboard intuitivo
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-preco">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Geolocalização
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-saiba-mais">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-user-tag"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Categorização
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-preco">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-syringe"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Controle de vacina
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-preco">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="servico">
+
+                <div class="icones-servicos">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <h3 class="servico-titulo">
+                    Relatórios
+                </h3>
+
+                <span class="servico-descricao">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, temporibus obcaecati! ?
+                </span>
+
+                <div class="servico-preco">
+                    <button class="btn-padrao">Saiba mais</button>
+                </div>
+            </div>
+
+        </div>
+
+        </section>
+
+        <section id="menu">
+            <h2 class="section-titulo" id="planos-scroll">Planos</h2>
+            <h3 class="section-subtitulo">Nossos Planos Especiais</h3>
+
+            <div id="planos">
+                <div class="plano">
+                    <div class="plano-tag">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+
+                    <div class="numero-gado">
+                        <i class="fa-solid fa-cow"></i>
+                        <p><span>Abaixo de 100</span><br>cabeças de gado</p>
+                    </div>
+
+                    <h3 class="plano-titulo">
+                        Pecuária de Pequena Escala
+                    </h3>
+
+                    <span class="plano-descricao">
+                        Gestão simples e econômica para simples rebanhos
+                    </span>
+
+                    <div class="plano-rate">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="plano-preco">
+                        <h4>R$ 50,00/mês</h4>
+                        <button class="btn-padrao">Comprar</button>
+                    </div>
+                </div>
+
+                <div class="plano">
+                    <div class="plano-tag">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+
+                    <div class="numero-gado">
+                        <i class="fa-solid fa-cow"></i>
+                        <p><span>Abaixo de 500</span><br>cabeças de gado</p>
+                    </div>
+
+                    <h3 class="plano-titulo">
+                        Pecuária de Média Escala
+                    </h3>
+
+                    <span class="plano-descricao">
+                        Ferramenta avançada para controle e relatórios detalhados
+                    </span>
+
+                    <div class="plano-rate">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(100+)</span>
+                    </div>
+
+                    <div class="plano-preco">
+                        <h4>R$ 200,00/mês</h4>
+                        <button class="btn-padrao">Comprar</button>
+                    </div>
+                </div>
+
+                <div class="plano">
+                    <div class="plano-tag">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+
+                    <div class="numero-gado">
+                        <i class="fa-solid fa-cow"></i>
+                        <p><span>Abaixo de 10.000</span><br>cabeças de gado</p>
+                    </div>
+
+                    <h3 class="plano-titulo">
+                        Pecuária de Grande Escala
+                    </h3>
+
+                    <span class="plano-descricao">
+                        Solução robusta para grandes operações com suporte dedicado
+                    </span>
+
+                    <div class="plano-rate">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(50+)</span>
+                    </div>
+
+                    <div class="plano-preco">
+                        <h4>R$ 1200,00/mês</h4>
+                        <button class="btn-padrao">Comprar</button>
+                    </div>
+                </div>
+
+                <div class="plano">
+                    <div class="plano-tag">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+
+                    <div class="numero-gado">
+                        <i class="fa-solid fa-cow"></i>
+                        <p><span>Acima de 10.000</span><br>cabeças de gado</p>
+                    </div>
+
+                    <h3 class="plano-titulo">
+                        Pecuária <br> Comercial
+                    </h3>
+
+                    <span class="plano-descricao">
+                        Plataforma completa e personalizável para grandes empresas
+                    </span>
+
+                    <div class="plano-rate">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(10+)</span>
+                    </div>
+
+                    <div class="plano-preco">
+                        <h4>R$ 5000,00/mês</h4>
+                        <button class="btn-padrao">Comprar</button>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <img src="https://images.vexels.com/content/128325/preview/old-farmer-cartoon-8fcb2a.png" alt="Fazendeiro" id="testimonial-fazendeiro">
+
+            <div id="testimonials-content">
+                <h2 class="section-titulo" id="testimonials-scroll">
+                    Depoimentos
+                </h2>
+                <h3 class="section-subtitulo">
+                    O que os clientes falam sobre nós
+                </h3>
+
+                <div id="feedbacks">
+                    <div class="feedback">
+                        <img src="https://github.com/Larissakich/landing-page-food-theme/blob/main/src/images/avatar.png?raw=true" alt="Avatar" class="feedback-avatar">
+
+                        <div class="feedback-content">
+                            <p>
+                                Persona 01
+                                <span>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                            </p>
+                            <p>
+                                "Ótimo para nossa operação média. Relatórios detalhados e integração eficiente. Suporte excelente!"
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feedback">
+                        <img src="https://github.com/Larissakich/landing-page-food-theme/blob/main/src/images/avatar.png?raw=true" alt="Avatar" class="feedback-avatar">
+
+                        <div class="feedback-content">
+                            <p>
+                                Persona 02
+                                <span>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                            </p>
+                            <p>
+                                "Perfeito para grandes operações. Plataforma robusta e suporte personalizado. Muito satisfeito!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-padrao">
+                    Ver mais avaliações
+                </button>
+            </div>
+        </section>
+
+        <section id="sobre">
+
+            <h2 class="section-titulo" id="sobre-scroll">Sobre</h2>
+            <h3 class="section-subtitulo">Um pouco sobre nós</h3>
+
+            <div id="sobre-nos">
+
+                <div id="quem-somos">
+                    <h2>Quem somos?</h2>
+
+                    <p>
+
+                        Nós somos um grupo de cinco estudantes da Universidade Federal de Goiás com uma missão: tornar a gestão de pecuária mais fácil e eficiente. Combinamos nossas habilidades em tecnologia e nosso amor pelo que fazemos para criar um software que realmente faça a diferença para quem trabalha com criação de animais.
+
+                        Cada um de nós traz algo único para a equipe — desde programação e design até conhecimento específico da área de pecuária. Trabalhamos juntos para desenvolver uma solução que não só ajuda a gerenciar o rebanho, mas também torna o dia a dia mais tranquilo e produtivo.
+
+                        Estamos empolgados em compartilhar nossa criação com o mundo e ajudar produtores a melhorar suas operações com uma ferramenta moderna e fácil de usar. Nossa missão é trazer inovação e simplicidade para o campo, com a qualidade e o comprometimento que você só encontra em um projeto feito por quem realmente entende do assunto.
+
+                    </p>
+                </div>
+                
+
+                <div id="video">
+
+                    <iframe width="770" height="455" src="https://www.youtube.com/embed/t_XGv5CbHVc?si=uM77asvSSgQliNde&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                
+                </div>
+
+
+
+                <div id="objetivo">
+                    <h2>Nosso Objetivo</h2>
+
+                    <p>
+                        
+                        Nosso software de gestão de pecuária foi feito para ajudar quem está cuidando do rebanho a fazer tudo de forma mais fácil e eficiente. Ele ajuda a acompanhar o que acontece com os animais, como a alimentação e a saúde, e ainda cuida das finanças, mostrando onde você está gastando e ganhando dinheiro. Com ele, você pode automatizar tarefas chatinhas e ver relatórios que ajudam a entender o que está rolando na fazenda. A ideia é simplificar a gestão e ajudar a melhorar os resultados sem complicação, tudo com uma interface que qualquer um pode usar sem dificuldade.
+                        
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div id="footer-content">
+            <div id="footer-contatos">
+                <i class="fa-solid fa-cow" style="letter-spacing: 2px; font-size: 1.5rem;" id="nav-logo"> Rurallink</i>
+                <p>Nós cuidamos sempre da sua fazenda.</p>
+
+                <div id="footer-midias-sociais">
+                    <a href="#" class="footer-link" id="instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-link" id="facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="footer-link" id="whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <ul class="footer-lista">
+                <li>
+                    <h3>Blog</h3>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">Tech</a>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">Agro</a>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">Solução</a>
+                </li>
+            </ul>
+
+            <ul class="footer-lista">
+                <li>
+                    <h3>Serviços</h3>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">App</a>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">Desktop</a>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">Cloud</a>
+                </li>
+            </ul>
+
+            <div id="footer-subscribe">
+                <h3>Inscreva-se</h3>
+
+                <p>
+                    Entre com seu email para encontrar mais soluções
+                </p>
+
+                <div id="input-footer">
+                    <input type="email" id="email">
+                    <button>
+                        <i class="fa-regular fa-envelope"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-copyright">
+            &copy; 
+            2024 todos os direitos reservados.
+        </div>
+    </footer>
+    <script src="src/scripts/script.js"></script>
+</body>
+</html>
