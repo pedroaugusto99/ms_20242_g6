@@ -1,12 +1,37 @@
 import React, { useState } from 'react';
 import styles from './css/Login.module.css';
+import {useNavigate} from 'react-router-dom';
 import logo from './images/logo.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AuthService from '../autenticacao/AuthService';
 
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const togglePasswordVisibility = () => {
         setShowPassword(prevState => !prevState);
+    };
+
+    const submitHandler = async (event) => {
+        event.preventDefault();
+        try{
+            const response = await AuthService.login({email, password});
+            if (response.data !== 'Credenciais inválidas!'){
+                navigate('/dashboard');
+            } else{
+                setMessage('Credenciais inválidas!');
+            }
+            if (response.data !== null){
+                window.localStorage.setItem('auth_token', response.data['token']);
+            } else{
+            }
+        } catch(error){
+            setMessage('Credenciais inválidas!');
+        }
     };
 
     return (
@@ -21,10 +46,16 @@ function Login() {
                 <div className={styles.segundaColuna}>
                     <img src={logo} alt="Logo" className={styles.logo} />
                     <h2 className={`${styles.titulo} ${styles.tituloSecundario}`}>Entre na sua Conta</h2>
-                    <form className={styles.form}>
+                    <form className={styles.form} onSubmit={submitHandler}>
                         <p className={styles.otherLabel}>Email:</p>
                         <label className={styles.labelInput}>
-                            <input type="email" placeholder="Email" required />
+                            <input type="email" 
+                            placeholder="Email"
+                            required 
+                            name= "email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            />
                         </label>
                         <p className={styles.otherLabel}>Senha:
                             <a href="#" className={styles.forgetpassword}>Esqueceu a senha?</a>
@@ -34,7 +65,10 @@ function Login() {
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="Senha"
                                 required
-                                id="isenha"
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <button
                                 id="togglePassword"
@@ -57,6 +91,6 @@ function Login() {
             </div>
         </div>
     );
-}
+};
 
 export default Login;
