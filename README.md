@@ -65,7 +65,10 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 5. RN05 - <Descrição da Regra de Negócio>.
 
 ### Modelo Arquitetural
-<Apresentar uma descrição sucinta do modelo arquitetural do Produto.>
+O modelo arquitetural mais próximo do produto final é o Cliente-Servidor. Nesse modelo, o cliente é responsável por iniciar a comunicação com o servidor, que aguarda as requisições de entrada para fornecer os serviços. Uma das abordagens mais comuns desse modelo é a arquitetura em três camadas:
+- Camada de Apresentação (Cliente):  Interface com o usuário será feita em React
+- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente através de Java
+- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados pelo PostgreSQL
 
 ### Modelo de Interfaces Gráficas
 <Apresentar uma descrição sucinta do modelo de interfaces gráficas do Produto.>
@@ -96,12 +99,11 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |1|Descrição dos itens do backlog do produto|10/09/2024|17/09/2024|Grupo 6|Concluída|
 |2|Especificação de Histórias de Usuário|18/09/2024|01/10/2024|Grupo 6|Concluída|
 |2|Distribuição dos itens do backlog entre as iterações|18/09/2024|01/10/2024|Grupo 6|Concluída|
-|3|Definição do modelo arquitetural|02/10/2024|15/10/2024|Grupo 6|Programada|
-|3|Diagrama de classes dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Programada|
-|3|Diagrama de interação/sequencia dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Programada|
-|3|Projeto de Interfaces gráficas dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Em andamento|
-|3|Projeto de persistência dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Programada|
-|3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Em andamento|
+|3|Definição do modelo arquitetural|02/10/2024|15/10/2024|Grupo 6|Concluída|
+|3|Diagrama de classes dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Concluída|
+|3|Diagrama de interação/sequencia dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Desnecessário|
+|3|Projeto de Interfaces gráficas dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Parcialmente concluída|
+|3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Parcialemnte concluída|
 |4|Diagrama de classes dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
 |4|Diagrama de interação/sequencia dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
 |4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|

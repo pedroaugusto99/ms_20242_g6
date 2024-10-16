@@ -1,0 +1,74 @@
+@startuml
+class Fazendeiro {
+    -Nome: String
+    -Sobrenome: String
+    -Data_nascimento: int
+    -CPF: String
+    -Telefone: String
+    -Email: String
+    -NumeroFuncionarios: int
+    
+    +Visualizar_Graficos(): void
+    +Cadastrar_Animal(): void
+    +Gerar_Relatorios(): void
+    +Adicionar_Funcionario(): void
+    +Remover_Funcionario(): void
+    +Editar_Dados_Perfil(): void
+    +Editar_Dados_Animal(): void
+    
+}
+    
+
+
+class Fazenda {
+    -Nome: String
+    -Cidade: String
+    -Estado: String
+    -Latitude: float
+    -Longitude: float
+
+    +getLocalizacao(): String
+
+}
+
+class TrabalhadorRural {
+    -Nome: String
+    -Sobrenome: String
+    -Data_nascimento: Date
+    -Email: String
+    -ID_TrabalhadorRural: String
+
+    +Cadastrar_Animal(): void
+    +Editar_Dados_Perfil(): void
+    +Editar_Dados_Animal(): void
+
+}
+
+abstract class Animal {
+    +Nome : String
+    +Data_Nascimento
+    
+}
+
+class Gado extends Animal {
+    +ID_gado: String
+    +Raca_gado: String
+    +Historico_vacinas_gado
+    +Peso_gado: float
+    +DataUltimoParto: Date
+    +NumerodeCrias
+
+}
+
+
+
+
+
+
+Fazenda  o--  Animal : Contém
+Fazendeiro  --> Fazenda : Possui
+Fazenda  --> TrabalhadorRural : Emprega
+TrabalhadorRural  --> Fazendeiro : Trabalha para
+
+
+@enduml
