@@ -1,6 +1,6 @@
 package com.rural_link.repositories;
 
-import com.rural_link.domain.proprietario.Proprietario;
+import com.rural_link.domain.usuarios.Proprietario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
