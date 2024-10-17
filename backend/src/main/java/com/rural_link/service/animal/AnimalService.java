@@ -43,7 +43,6 @@ public class AnimalService {
         if (animalRepository.findByCodigo(animalDTO.codigo()).isPresent()){
             return ResponseEntity.badRequest().build();
         }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         animalRepository.save(Animal.builder()
                 .codigo(animalDTO.codigo())
                 .nome(animalDTO.nome())

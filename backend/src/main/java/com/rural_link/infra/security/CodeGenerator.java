@@ -7,14 +7,17 @@ import java.time.LocalTime;
 
 public record CodeGenerator() {
     public static String gerarCodigoDaFazenda() {
-        String pattern = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String pattern = "8CTJOQKXH4@F1NZ&GDLIW6!3V2%#R7A90E5BP?YSMU ";
         SecureRandom random = new SecureRandom();
         StringBuffer stringBuffer = new StringBuffer(11);
         for (int i = 0; i < 6; i++) {
-            stringBuffer.append(pattern.charAt(random.nextInt(36)));
+            stringBuffer.append(pattern.charAt(random.nextInt(42)));
         }
         int horaDoDia = LocalDateTime.now().getHour();
         int diaDoMes = LocalDateTime.now().getDayOfMonth();
+        if (horaDoDia < 10){
+            stringBuffer.append(0);
+        }
         stringBuffer.append(horaDoDia);
         stringBuffer.append(diaDoMes);
         return stringBuffer.toString();

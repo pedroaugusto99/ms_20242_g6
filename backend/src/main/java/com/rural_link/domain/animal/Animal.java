@@ -1,18 +1,15 @@
 package com.rural_link.domain.animal;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.rural_link.domain.fazenda.Fazenda;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.Digits;
-import lombok.*;
-import org.hibernate.mapping.Join;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity(name = "animal")
 @Table(name = "animal")
