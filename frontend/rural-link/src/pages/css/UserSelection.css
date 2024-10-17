@@ -1,0 +1,89 @@
+h2 {
+    font-size: 38px;
+    color: #017A1B;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.user-selection {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.button-container:first-child {
+    margin-right: -4vw;
+}
+
+.user-selection .desc_user {
+    font-size: 16px;
+    color: var(--preto);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 50%;
+}
+
+.btn-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #fff;
+    border: 2px solid #2BB749;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 300px;
+    height: 300px;
+    flex-direction: column;
+}
+
+.btn-user:hover {
+    background-color: #20b44048;
+}
+
+.btn-user:active {
+    background-color: #20b440a6;
+}
+
+.prop_rural {
+    width: 30%;
+}
+
+.trab_rural {
+    width: 40%;
+}
+
+.title_user {
+    margin-top: 1.2vw;
+    font-size: 36px;
+    text-align: center;
+    color: #017A1B;
+    font-weight: bold;
+}
+
+.spanLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.linkLogin {
+    text-decoration: none;
+    color: var(--cor-terciaria);
+    padding-left: 5px;
+}
