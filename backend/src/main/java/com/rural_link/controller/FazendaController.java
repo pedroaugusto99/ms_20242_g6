@@ -4,6 +4,7 @@ import com.rural_link.domain.fazenda.Fazenda;
 import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.domain.usuarios.Pessoa;
 import com.rural_link.dto.fazenda.CriarFazendaDTO;
+import com.rural_link.dto.fazenda.CriarFazendaResponseDTO;
 import com.rural_link.repositories.FazendaRepository;
 import com.rural_link.repositories.PessoaRepository;
 import com.rural_link.repositories.ProprietarioRepository;
@@ -23,7 +24,7 @@ public class FazendaController {
     private final ProprietarioRepository proprietarioRepository;
 
     @PostMapping("/criar")
-    public ResponseEntity<Void> criarFazenda(@RequestBody CriarFazendaDTO criarFazendaDTO){
+    public ResponseEntity<CriarFazendaResponseDTO> criarFazenda(@RequestBody CriarFazendaDTO criarFazendaDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
         Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Proprietário não foi cadastrado"));

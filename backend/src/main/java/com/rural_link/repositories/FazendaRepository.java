@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface FazendaRepository extends JpaRepository<Fazenda, Long> {
     Optional<Fazenda> findByEndereco(String endereco);
+    Optional<Fazenda> findByCodigoDeAutenticacao(String codigoDeAutenticacao);
 }

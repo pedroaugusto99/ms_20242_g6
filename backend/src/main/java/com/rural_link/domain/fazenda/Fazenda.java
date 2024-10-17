@@ -26,6 +26,7 @@ public class Fazenda {
     private String cidade;
     private String cep;
     private String estado;
+    private String codigoDeAutenticacao;
     @OneToOne(mappedBy = "fazenda")
     private Proprietario proprietario;
     @OneToMany(mappedBy = "fazenda")
@@ -33,11 +34,12 @@ public class Fazenda {
     @OneToMany(mappedBy = "fazenda")
     private List<Animal> animal;
 
-    public Fazenda(String endereco, String complemento, String cidade ,String cep, String estado){
+    public Fazenda(String endereco, String complemento, String cidade ,String cep, String estado, String codigoDeAutenticacao){
         this.endereco = endereco;
         this.complemento = complemento;
         this.cidade = cidade;
         this.cep = cep;
         this.estado = estado;
+        this.codigoDeAutenticacao = codigoDeAutenticacao;
     }
 }

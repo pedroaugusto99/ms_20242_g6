@@ -16,13 +16,12 @@ public class TrabalhadorRural extends Pessoa {
     @ManyToOne
     @JoinColumn(name = "fazendaTrabalhadorRural_id")
     private Fazenda fazenda;
-    private String codigoDaFazenda;
-    public TrabalhadorRural(String nomeCompleto, String email, String password, String telefone, UserRole role, String codigo){
+    public TrabalhadorRural(String nomeCompleto, String email, String password, String telefone, UserRole role, Fazenda fazenda){
         this.setNomeCompleto(nomeCompleto);
         this.setEmail(email);
         this.setPassword(password);
         this.setTelefone(telefone);
         this.setRole(role);
-        this.codigoDaFazenda = codigo;
+        this.fazenda = fazenda;
     }
 }
