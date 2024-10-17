@@ -1,4 +1,4 @@
-package com.rural_link.domain.user;
+package com.rural_link.domain.usuarios;
 
 public enum UserRole {
     PROPRIETARIO("proprietario"),
