@@ -1,74 +1,66 @@
 @startuml
-class Fazendeiro {
+class Pessoa {
     -Nome: String
     -Sobrenome: String
-    -Data_nascimento: int
-    -CPF: String
-    -Telefone: String
+    -DataNascimento: Date
     -Email: String
-    -NumeroFuncionarios: int
     
-    +Visualizar_Graficos(): void
-    +Cadastrar_Animal(): void
-    +Gerar_Relatorios(): void
-    +Adicionar_Funcionario(): void
-    +Remover_Funcionario(): void
-    +Editar_Dados_Perfil(): void
-    +Editar_Dados_Animal(): void
-    
+    +EditarDadosPerfil(): void
+    +EditarDadosAnimal(): void
+    +AdicionarAnimal(animal: Animal): void
+    +RemoverAnimal(animal: Animal): void
 }
-    
 
+class Fazendeiro {
+    -Telefone: String
+    -NumeroFuncionarios: int
+
+    +VisualizarGraficos(): void
+    +GerarRelatorios(): void
+    +AdicionarFuncionario(funcionario: TrabalhadorRural): void
+    +RemoverFuncionario(funcionario: TrabalhadorRural): void
+}
+
+class TrabalhadorRural {
+    +AtualizarLeite(): void
+}
 
 class Fazenda {
     -Nome: String
+    -Tamanho: int
+}
+
+class Rebanho {
+    +NumeroDeIndividuos: int
+    +NumeroDeCrias: int
+}
+
+class Vacina {
+    -NomeVacina: String
+    -DataVacina: Date
+}
+
+class Localizacao {
     -Cidade: String
     -Estado: String
     -Latitude: float
     -Longitude: float
-
-    +getLocalizacao(): String
-
 }
 
-class TrabalhadorRural {
-    -Nome: String
-    -Sobrenome: String
-    -Data_nascimento: Date
-    -Email: String
-    -ID_TrabalhadorRural: String
-
-    +Cadastrar_Animal(): void
-    +Editar_Dados_Perfil(): void
-    +Editar_Dados_Animal(): void
-
-}
-
-abstract class Animal {
-    +Nome : String
-    +Data_Nascimento
-    
-}
-
-class Gado extends Animal {
-    +ID_gado: String
-    +Raca_gado: String
-    +Historico_vacinas_gado
-    +Peso_gado: float
-    +DataUltimoParto: Date
-    +NumerodeCrias
-
+class Animal {
+    +ID: String
+    +Nome: String
+    +Raca: String
+    +Idade: int
 }
 
 
-
-
-
-
-Fazenda  o--  Animal : Contém
-Fazendeiro  --> Fazenda : Possui
-Fazenda  --> TrabalhadorRural : Emprega
-TrabalhadorRural  --> Fazendeiro : Trabalha para
-
+Fazenda "1" <-- "*" Pessoa
+Fazenda "1" <-- "*" Rebanho
+Animal "*" <-- "*" Vacina
+Fazenda "1" <-- "1" Localizacao
+Rebanho "*" <-- "*" Animal
+Pessoa "1" <|-- "1..*" Fazendeiro
+Pessoa "1" <|-- "0.. *" TrabalhadorRural
 
 @enduml

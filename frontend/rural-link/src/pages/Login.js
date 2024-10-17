@@ -34,6 +34,11 @@ function Login() {
         }
     };
 
+    const handleRegister = (event) => {
+        event.preventDefault();
+        navigate('/user-selection'); 
+    };
+
     return (
         <div className={styles.container}>
             <div className={`${styles.conteudo} ${styles.primeiroConteudo}`}>
@@ -81,11 +86,15 @@ function Login() {
                         </label>
                         <div className={styles.remember}>
                             <input type="checkbox" className={styles.rememberInput} />
-                            <p>Lembrar-me</p>
+                            <p className={styles.rememberParagraph}>Lembrar-me</p>
                         </div>
 
                         <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Login</button>
-                        <span className={styles.registerSpan}>Não possui uma conta?<a href="#" className={styles.registerLink}>Registre-se</a></span>        
+
+                        <span className={styles.registerSpan}>
+                            Não possui uma conta?
+                            <a href="#" className={styles.registerLink} onClick={handleRegister}>Registre-se</a>
+                        </span>          
                     </form>
                 </div>
             </div>
