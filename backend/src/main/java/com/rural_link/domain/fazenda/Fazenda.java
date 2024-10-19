@@ -4,12 +4,14 @@ import com.rural_link.domain.animal.Animal;
 import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.domain.usuarios.TrabalhadorRural;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Table(name = "fazendas")
@@ -22,6 +24,9 @@ public class Fazenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "Nome da fazenda precisa ser preenchido")
+    @Column(nullable = false)
+    private String nomeDaFazenda;
     @NotNull(message = "Endereço da fazenda precisa ser preenchido")
     @Column(nullable = false)
     private String endereco;
@@ -29,8 +34,14 @@ public class Fazenda {
     @NotNull(message = "Cidade da fazenda precisa ser preenchida")
     @Column(nullable = false)
     private String cidade;
-    @NotNull(message = "Cep da fazenda precisa ser preenchido")
+    @NotNull(message = "Tamanho da fazenda precisa ser preenchido")
     @Column(nullable = false)
+    @Digits(integer = 8, fraction = 3)
+    private BigDecimal tamanho;
+    @NotNull(message = "Tipo da fazenda precisa ser preenchido")
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoDaFazenda tipoDaFazenda;
     private String cep;
     @NotNull(message = "Estado da fazenda precisa ser preenchido")
     @Column(nullable = false)

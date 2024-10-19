@@ -53,31 +53,4 @@ public class Animal {
     @JoinColumn(name = "fazenda_id", nullable = false)
     @NotNull(message = "Fazenda a que o animal pertence precisa ser preenchida")
     private Fazenda fazenda;
-
-    public Animal(String nome, String codigo, LocalDate dataDeNascimento, String raca, String codigoDaMae,
-                   String codigoDoPai, Sexo sexo, BigDecimal peso, Origem origem, Fazenda fazenda){
-        this.nome = nome;
-        this.codigo = codigo;
-        this.dataDeNascimento = dataDeNascimento;
-        this.raca = raca;
-        this.codigoDaMae = codigoDaMae;
-        this.codigoDoPai = codigoDoPai;
-        this.sexo = sexo;
-        this.peso = peso;
-        this.origem = origem;
-        this.fazenda = fazenda;
-    }
-
-    public Animal(String nome, String codigo, LocalDate dataDeNascimento, String raca, String codigoDaMae,
-                  String codigoDoPai, Sexo sexo, BigDecimal peso, Origem origem){
-        this.nome = nome;
-        this.codigo = codigo;
-        this.dataDeNascimento = dataDeNascimento;
-        this.raca = raca;
-        this.codigoDaMae = codigoDaMae;
-        this.codigoDoPai = codigoDoPai;
-        this.sexo = sexo;
-        this.peso = peso;
-        this.origem = origem;
-    }
 }
