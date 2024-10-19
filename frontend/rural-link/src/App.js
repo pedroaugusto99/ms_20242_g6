@@ -19,6 +19,7 @@ export function App(){
                 </Routes>
             </div>
         </Router>
+        //teste
     );
 };
 
