@@ -4,6 +4,7 @@ import com.rural_link.domain.animal.Animal;
 import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.domain.usuarios.TrabalhadorRural;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,11 +22,20 @@ public class Fazenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "Endereço da fazenda precisa ser preenchido")
+    @Column(nullable = false)
     private String endereco;
     private String complemento;
+    @NotNull(message = "Cidade da fazenda precisa ser preenchida")
+    @Column(nullable = false)
     private String cidade;
+    @NotNull(message = "Cep da fazenda precisa ser preenchido")
+    @Column(nullable = false)
     private String cep;
+    @NotNull(message = "Estado da fazenda precisa ser preenchido")
+    @Column(nullable = false)
     private String estado;
+    @Column(nullable = false)
     private String codigoDeAutenticacao;
     @OneToOne(mappedBy = "fazenda")
     private Proprietario proprietario;
