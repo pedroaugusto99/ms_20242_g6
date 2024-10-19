@@ -5,6 +5,7 @@ import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.dto.fazenda.CriarFazendaDTO;
 import com.rural_link.dto.fazenda.CriarFazendaResponseDTO;
 import com.rural_link.infra.security.CodeGenerator;
+import com.rural_link.mapper.FazendaMapper;
 import com.rural_link.repositories.FazendaRepository;
 import com.rural_link.service.proprietario.ProprietarioService;
 import lombok.RequiredArgsConstructor;
@@ -18,21 +19,24 @@ public class FazendaService {
     private final FazendaRepository fazendaRepository;
     private final ProprietarioService proprietarioService;
 
+
     public ResponseEntity<CriarFazendaResponseDTO> criarFazenda(CriarFazendaDTO fazendaDTO, Proprietario proprietario){
         if (fazendaRepository.findByEndereco(fazendaDTO.endereco()).isPresent() || proprietario.getFazenda() != null){
             return ResponseEntity.badRequest().build();
         }
         String codeGenerator = CodeGenerator.gerarCodigoDaFazenda();
-        Fazenda fazenda = new Fazenda(
-                fazendaDTO.endereco(),
-                fazendaDTO.complemento(),
-                fazendaDTO.cidade(),
-                fazendaDTO.cep(),
-                fazendaDTO.estado(),
-                codeGenerator
-        );
+        Fazenda fazenda = FazendaMapper.INSTANCE.toFazenda(fazendaDTO);
+        fazenda.setCodigoDeAutenticacao(codeGenerator);
         fazendaRepository.save(fazenda);
         proprietarioService.salvarFazendaDoProprietario(proprietario, fazenda);
         return new ResponseEntity<>(new CriarFazendaResponseDTO(codeGenerator) ,HttpStatus.OK);
+    }
+
+    public ResponseEntity<CriarFazendaResponseDTO> gerarNovoCodigo(Proprietario proprietario){
+        Fazenda fazenda = proprietario.getFazenda();
+        String codeGenerator = CodeGenerator.gerarCodigoDaFazenda();
+        fazenda.setCodigoDeAutenticacao(codeGenerator);
+        fazendaRepository.save(fazenda);
+        return new ResponseEntity<>(new CriarFazendaResponseDTO(codeGenerator), HttpStatus.OK);
     }
 }
