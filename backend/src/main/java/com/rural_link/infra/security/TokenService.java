@@ -1,10 +1,10 @@
-package com.rural_link.service.security;
+package com.rural_link.infra.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.rural_link.domain.user.User;
+import com.rural_link.domain.usuarios.Pessoa;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +16,14 @@ import java.time.ZoneOffset;
 public class TokenService {
     @Value("${api.rural-link.security.token.secret}")
     private String secret;
-    public String gerarToken(User user){
+    public String gerarToken(Pessoa pessoa){
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
             String token = JWT.create()
                     .withIssuer("login-auth-rurallink-api")
-                    .withSubject(user.getEmail())
-                    .withClaim("role", user.getRole().name())
+                    .withSubject(pessoa.getEmail())
+                    .withClaim("role", pessoa.getRole().name())
                     .withExpiresAt(this.gerarTempoDeExpirar())
                     .sign(algorithm);
             return token;

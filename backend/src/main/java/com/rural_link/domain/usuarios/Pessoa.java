@@ -1,10 +1,9 @@
-package com.rural_link.domain.user;
+package com.rural_link.domain.usuarios;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,26 +11,32 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Entity(name = "users")
-@Table(name = "users")
-@EqualsAndHashCode(of = "id")
+@Builder
+@Data
+@Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class User implements UserDetails {
+public class Pessoa implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "Nome precisa ser preenchido")
+    @Column(nullable = false)
+    private String nomeCompleto;
+    @NotNull(message = "E-mail precisa ser preenchido")
+    @Column(nullable = false)
     private String email;
+    @NotNull(message = "Senha precisa ser preenchida")
+    @Column(nullable = false)
     private String password;
+    @NotNull(message = "Telefone precisa ser preenchido")
+    @Column(nullable = false)
+    private String telefone;
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole role;
-
-    public User(String email, String password, UserRole role){
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
