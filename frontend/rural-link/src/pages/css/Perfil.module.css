@@ -1,0 +1,66 @@
+.conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    width: 1080px;
+    height: 640px;
+    margin-top: 5%;
+    border-radius: 30px;
+
+    box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#perfilInfos {
+    margin-left: 25%;
+}
+
+#namePerfil {
+    font-size: 22px;
+}
+
+#descPerfil {
+    font-size: 16px;
+}
+
+.imgPerfil {
+    height: 20vw;
+    border-radius: 50%;
+    margin-top: 2vw;
+}
+
+h1 {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #425A67;
+    margin-top: 2vw;
+}
+
+.textField {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    text-align: left;
+    color: #8B8FA8;
+    gap: 0.5vw;
+    padding: 0.5vw;
+    padding-bottom: 0vw;
+    margin-bottom: 0.8vw;
+}
+
+.data {
+    border: 1px solid #8B8FA8;
+    width: 20vw;
+    height: 2.4vw;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
