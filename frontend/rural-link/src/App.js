@@ -20,7 +20,7 @@ export function App(){
                     <Route path="/dashboard" element={<DashboardComponent />} />
                     </Route>
                     <Route path="/user-selection" element={<UserSelection />} />
-                    <Route path="/perfil" element={<Perfil />
+                    <Route path="/perfil" element={<Perfil />} />
                 </Routes>
             </div>
         </Router>
