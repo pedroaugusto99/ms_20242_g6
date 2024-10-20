@@ -1,6 +1,5 @@
 package com.rural_link.infra.security;
 
-
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
