@@ -55,8 +55,8 @@
 }
 
 .tituloSecundario {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 50px;
     font-size: 40px;
     font-weight: bold;
     color: #017A1B;
@@ -167,7 +167,7 @@ select {
     font-size: 20px;
     height: 55px;
     width: 30%; 
-    margin: 1.5rem auto 1rem auto;
+    margin: 3rem auto 1rem auto;
     display: block; 
     align-self: center; 
 }
