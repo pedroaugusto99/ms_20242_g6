@@ -1,16 +1,20 @@
 /* Google Fonts - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
+/* Estilos Gerais */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   min-height: 100%;
   background: #e3f2fd;
 }
+
+/* Estilos do Navegação (nav) */
 nav {
   position: fixed;
   top: 0;
@@ -21,20 +25,16 @@ nav {
   align-items: center;
   background: #2BB749;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  justify-content: space-between; 
+  justify-content: space-between;
 }
-nav .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 24px;
-}
+
 .menu-icon {
+  display: flex;
   color: var(--branco);
   font-size: 24px;
-  margin-right: 14px;
   cursor: pointer;
-
+  margin-left: 15px;
+  margin-top: 0 auto;
   transition: all 0.4s ease;
 }
 
@@ -50,8 +50,15 @@ nav .logo {
 }
 
 .menu-icon:hover, .menu-icon2:hover {
-  transform: translateY(-0.5vw);
   transform: translateY(0.2vw);
+}
+
+/* Estilos da Logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 24px;
 }
 
 .imgLogo {
@@ -60,18 +67,27 @@ nav .logo {
   margin: 0 -10px;
 }
 
-.logo .logo-name {
+.logo-name {
   color: var(--branco);
   font-size: 22px;
   font-weight: 600;
 }
 
-.titleText, .sairText {
+/* Estilos do Título */
+.titleText {
   color: var(--branco);
   font-size: 20px;
   font-weight: 600;
   margin: 0 auto;
-  margin-left: -20%;
+  margin-left: -10vw;
+}
+
+.sairText {
+  color: var(--branco);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-left: -5vw;
 }
 
 .sairText a {
@@ -80,14 +96,59 @@ nav .logo {
   margin-left: -20%;
 }
 
-.lists {
-  padding-left: 0;
+/* Estilos do Sidebar */
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
 }
 
+nav.open .sidebar {
+  left: 0;
+}
+
+.sidebar .sidebar-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.sidebar-content .list {
+  list-style: none;
+}
+
+/* Estilos do Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+
+/* Estilos do Componente Profile */
 .perfilInfos {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 20px 0;
 }
 
 .perfilInfos img {
@@ -107,32 +168,16 @@ nav .logo {
   margin-top: -7px;
 }
 
-nav .sidebar {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  height: 100%;
-  width: 260px;
-  padding: 20px 0;
-  background-color: #fff;
-  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+/* Estilos dos Itens de Navegação (NavItem) */
+.lists {
+  padding-left: 0;
+}
 
-  transition: all 0.4s ease;
-}
-nav.open .sidebar {
-  left: 0;
-}
-.sidebar .sidebar-content {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 30px 16px;
-}
-.sidebar-content .list {
+.list {
   list-style: none;
 }
-.list .nav-link {
+
+.nav-link {
   display: flex;
   align-items: center;
   margin: 20px 0;
@@ -140,53 +185,30 @@ nav.open .sidebar {
   background-color: #d9d9d973;
   border-radius: 100px;
   text-decoration: none;
-
   transition: all 0.4s ease;
 }
-.lists .nav-link:hover {
+
+.nav-link:hover {
   background-color: #d9d9d9c1;
   transform: translateY(-0.5vw);
-  transform: translateY(0.2vw);
 }
-.nav-link .icon {
+
+.icon {
   margin-right: 14px;
   font-size: 20px;
   color: #707070;
-  width: 17px;
-  display: flex;
-  justify-content: center;
 }
-.nav-link .link {
+
+.link {
   color: #425A67;
   font-weight: 700;
   font-size: 16px;
 }
 
+/* Estilos do Rodapé do Sidebar */
+
+
 .bottom-content .nav-link:hover {
   background-color: #d9d9d9c1;
-  transform: translateY(-2.0vw);
-  transform: translateY(0.8vw);
-}
-
-.lists .nav-link:hover .icon,
-.lists .nav-link:hover .link {
-  color: #707070b7;
-}
-.overlay {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  height: 1000vh;
-  width: 200%;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.3);
-}
-nav.open ~ .overlay {
-  opacity: 1;
-  left: 260px;
-  pointer-events: auto;
-
-  transition: all 0.4s ease;
+  transform: translateY(-0.5vw);
 }
