@@ -4,6 +4,7 @@ import DashboardComponent from './pages/Dashboard';
 import Registrar from './pages/Registro'
 import ProtectedRouteProprietario from './routes/ProtectedRouteProprietario';
 import UserSelection from '../src/pages/UserSelection';
+import Sidebar from '../src/pages/components/Sidebar';   
 
 export function App(){
     return (
@@ -16,6 +17,7 @@ export function App(){
                         <Route path="/dashboard" element={<DashboardComponent />} />
                     </Route>
                     <Route path="/user-selection" element={<UserSelection />} />
+                    <Route path="/sidebar" element={<Sidebar />} />
                 </Routes>
             </div>
         </Router>
