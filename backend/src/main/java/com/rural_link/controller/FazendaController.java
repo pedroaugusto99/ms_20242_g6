@@ -1,15 +1,11 @@
 package com.rural_link.controller;
 
-import com.rural_link.domain.fazenda.Fazenda;
-import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.domain.usuarios.Pessoa;
+import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.dto.fazenda.CriarFazendaDTO;
 import com.rural_link.dto.fazenda.CriarFazendaResponseDTO;
-import com.rural_link.repositories.FazendaRepository;
-import com.rural_link.repositories.PessoaRepository;
 import com.rural_link.repositories.ProprietarioRepository;
 import com.rural_link.service.fazenda.FazendaService;
-import com.rural_link.service.proprietario.ProprietarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -29,5 +25,13 @@ public class FazendaController {
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
         Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Proprietário não foi cadastrado"));
         return fazendaService.criarFazenda(criarFazendaDTO, proprietario);
+    }
+
+    @GetMapping("/gerar-codigo")
+    public ResponseEntity<CriarFazendaResponseDTO> gerarNovoCodigo(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Pessoa pessoa = (Pessoa) authentication.getPrincipal();
+        Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Proprietário não foi autenticado"));
+        return fazendaService.gerarNovoCodigo(proprietario);
     }
 }

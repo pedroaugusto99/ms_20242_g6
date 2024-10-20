@@ -1,9 +1,8 @@
 package com.rural_link.service.trabalhador;
 
 import com.rural_link.domain.fazenda.Fazenda;
-import com.rural_link.domain.usuarios.UserRole;
 import com.rural_link.domain.usuarios.TrabalhadorRural;
-import com.rural_link.dto.authentication.RegistrarProprietarioDTO;
+import com.rural_link.domain.usuarios.UserRole;
 import com.rural_link.dto.authentication.RegistrarTrabalhadorDTO;
 import com.rural_link.infra.security.CodeGenerator;
 import com.rural_link.repositories.FazendaRepository;
