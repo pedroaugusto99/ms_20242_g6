@@ -1,4 +1,11 @@
 package com.rural_link.dto.authentication;
 
-public record RegistrarTrabalhadorDTO(String nomeCompleto, String email, String password, String telefone, String codigo) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record RegistrarTrabalhadorDTO(@NotBlank String nomeCompleto,
+                                      @NotBlank @Email String email,
+                                      @NotBlank String password,
+                                      @NotBlank String telefone,
+                                      @NotBlank String codigo) {
 }
