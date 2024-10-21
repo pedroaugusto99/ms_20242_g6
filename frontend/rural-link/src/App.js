@@ -5,8 +5,7 @@ import RegistrarFazenda from './pages/RegistroFazenda'
 import RegistrarProprietario from './pages/RegistroProprietario'
 import RegistrarTrabalhador from './pages/RegistroTrabalhador'
 import ProtectedRouteProprietario from './routes/ProtectedRouteProprietario';
-import UserSelection from '../src/pages/UserSelection';
-import Sidebar from '../src/pages/components/Sidebar';   
+import UserSelection from '../src/pages/UserSelection'; 
 
 export function App(){
     return (
@@ -20,7 +19,7 @@ export function App(){
                     <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
                     <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
                     <Route element={<ProtectedRouteProprietario/>}>
-                        <Route path="/dashboard" element={<DashboardComponent />} />
+                    <Route path="/dashboard" element={<DashboardComponent />} />
                     </Route>
                     <Route path="/user-selection" element={<UserSelection />} />
                 </Routes>
