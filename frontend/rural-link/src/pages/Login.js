@@ -20,9 +20,11 @@ function Login() {
         event.preventDefault();
         try{
             const response = await AuthService.login({email, password});
-            if (response.data !== 'Credenciais inválidas!'){
+            if (response.data !== 'Credenciais inválidas!' && response.data['redirectToCriarFazenda'] === true){
+                navigate('/registrarfazenda');
+            } else if (response.data !== 'Credencias inválidas'){
                 navigate('/dashboard');
-            } else{
+            } else {
                 setMessage('Credenciais inválidas!');
             }
             if (response.data !== null){
