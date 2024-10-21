@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/fazenda")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:3000")
 public class FazendaController {
     private final FazendaService fazendaService;
     private final ProprietarioRepository proprietarioRepository;
