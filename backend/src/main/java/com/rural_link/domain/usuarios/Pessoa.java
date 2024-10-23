@@ -28,7 +28,7 @@ public class Pessoa implements UserDetails {
     @Column(nullable = false)
     private String nomeCompleto;
     @NotNull(message = "E-mail precisa ser preenchido")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @NotNull(message = "Senha precisa ser preenchida")
     @Column(nullable = false)

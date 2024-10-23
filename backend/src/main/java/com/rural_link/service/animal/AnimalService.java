@@ -16,7 +16,6 @@ import com.rural_link.specifications.AnimalQueryFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,15 +38,14 @@ public class AnimalService {
         return null;
     }
 
-    public ResponseEntity<Void> salvar(AnimalDTO animalDTO, Pessoa pessoa){
+    public void salvar(AnimalDTO animalDTO, Pessoa pessoa){
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
         if (animalRepository.findByCodigoAndFazenda(animalDTO.codigo(), fazenda).isPresent()){
-            return ResponseEntity.badRequest().build();
+            throw new RuntimeException("Animal já está cadastado");
         }
         Animal animal = AnimalMapper.INSTANCE.toAnimal(animalDTO);
         animal.setFazenda(fazenda);
         animalRepository.save(animal);
-        return ResponseEntity.ok().build();
     }
 
     public Page<AnimalDTO> listarTodosAnimaisPaginados(Pageable pageable, Pessoa pessoa){
@@ -68,7 +66,7 @@ public class AnimalService {
 
     public AnimalDTO atualizarDadosDoAnimal(AnimalPutDTO animalPutDTO, Pessoa pessoa){
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
-        Animal animalSalvo = animalRepository.findByIdAndFazenda(animalPutDTO.id(), fazenda).orElseThrow(() -> new RuntimeException("Animal não está cadastrado"));
+        Animal animalSalvo = animalRepository.findByIdAndFazenda(animalPutDTO.id(), fazenda).orElseThrow(() -> new RuntimeException("Animal não foi encontrado"));
         Animal animal = AnimalMapper.INSTANCE.toAnimal(animalPutDTO);
         animal.setFazenda(fazenda);
         animal.setId(animalSalvo.getId());

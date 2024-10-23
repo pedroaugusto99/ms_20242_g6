@@ -9,6 +9,7 @@ import com.rural_link.service.authentication.AuthenticationService;
 import com.rural_link.service.proprietario.ProprietarioService;
 import com.rural_link.infra.security.TokenService;
 import com.rural_link.service.trabalhador.TrabalhadorRuralService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +29,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginDTO data){
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginDTO data){
         UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         Authentication auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -38,12 +39,14 @@ public class AuthenticationController {
     }
 
     @PostMapping("/registrar/proprietario")
-    public ResponseEntity<Void> registrarProprietario(@RequestBody RegistrarProprietarioDTO data){
-        return proprietarioService.registrarProprietario(data);
+    public ResponseEntity<Void> registrarProprietario(@RequestBody @Valid RegistrarProprietarioDTO data){
+        proprietarioService.registrarProprietario(data);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/registrar/trabalhador")
-    public ResponseEntity<Void> registrarTrabalhador(@RequestBody RegistrarTrabalhadorDTO data){
-        return trabalhadorRuralService.registrarTrabalhador(data);
+    public ResponseEntity<Void> registrarTrabalhador(@RequestBody @Valid RegistrarTrabalhadorDTO data){
+        trabalhadorRuralService.registrarTrabalhador(data);
+        return ResponseEntity.ok().build();
     }
 }
