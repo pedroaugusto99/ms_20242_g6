@@ -8,6 +8,7 @@ import ProtectedRouteProprietario from './routes/ProtectedRouteProprietario';
 import UserSelection from '../src/pages/UserSelection';
 import Perfil from '../src/pages/Perfil';
 import Dashboard from '../src/pages/Dashboard';
+import Faq from '../src/pages/Faq';
 
 export function App(){
     return (
@@ -26,6 +27,7 @@ export function App(){
                     <Route path="/user-selection" element={<UserSelection />} />
                     <Route path="/perfil" element={<Perfil />} />
                     <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/faq" element={<Faq/>} />
                 </Routes>
             </div>
         </Router>
