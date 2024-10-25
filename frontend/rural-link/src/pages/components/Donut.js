@@ -3,7 +3,7 @@ import { Chart, ArcElement, Tooltip } from 'chart.js';
 
 Chart.register(ArcElement, Tooltip);
 
-const DonutChart = ({ referenceValue, currentValue, color }) => {
+const Donut = ({ referenceValue, currentValue, color }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const DonutChart = ({ referenceValue, currentValue, color }) => {
       datasets: [
         {
           data: [currentValue, referenceValue - currentValue],
-          backgroundColor: [color, 'transparent'], // Usa a cor passada
+          backgroundColor: [color, 'transparent'],
           hoverBackgroundColor: [`${color}CC`, 'rgba(224, 224, 224, 0.3)'],
           borderWidth: [0, 0],
           borderColor: ['#FFF', '#FFF'],
@@ -23,7 +23,7 @@ const DonutChart = ({ referenceValue, currentValue, color }) => {
       ],
     };
 
-    const donutChart = new Chart(ctx, {
+    const donut = new Chart(ctx, {
       type: 'doughnut',
       data: chartData,
       options: {
@@ -47,23 +47,23 @@ const DonutChart = ({ referenceValue, currentValue, color }) => {
     });
 
     const drawCenterText = () => {
-      ctx.clearRect(0, 0, donutChart.width, donutChart.height);
-      donutChart.draw();
-      const fontSize = (donutChart.height / 100).toFixed(2);
+      ctx.clearRect(0, 0, donut.width, donut.height);
+      donut.draw();
+      const fontSize = (donut.height / 100).toFixed(2);
       ctx.fillStyle = '#000';
       ctx.font = `${fontSize * 2}px sans-serif`;
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
-      ctx.fillText(currentValue, donutChart.width / 2, donutChart.height / 2);
+      ctx.fillText(currentValue, donut.width / 2, donut.height / 2);
     };
 
-    donutChart.update();
+    donut.update();
     drawCenterText();
 
     return () => {
-      donutChart.destroy();
+      donut.destroy();
     };
-  }, [referenceValue, currentValue, color]); // Adicione 'color' à lista de dependências
+  }, [referenceValue, currentValue, color]);
 
   return (
     <div>
@@ -72,4 +72,4 @@ const DonutChart = ({ referenceValue, currentValue, color }) => {
   );
 };
 
-export default DonutChart;
+export default Donut;
