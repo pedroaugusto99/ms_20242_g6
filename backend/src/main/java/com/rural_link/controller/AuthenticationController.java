@@ -5,6 +5,7 @@ import com.rural_link.dto.authentication.LoginDTO;
 import com.rural_link.dto.authentication.RegistrarProprietarioDTO;
 import com.rural_link.dto.authentication.RegistrarTrabalhadorDTO;
 import com.rural_link.dto.authentication.LoginResponseDTO;
+import com.rural_link.service.authentication.AuthenticationService;
 import com.rural_link.service.proprietario.ProprietarioService;
 import com.rural_link.infra.security.TokenService;
 import com.rural_link.service.trabalhador.TrabalhadorRuralService;
@@ -24,6 +25,7 @@ public class AuthenticationController {
     private final TrabalhadorRuralService trabalhadorRuralService;
     private final TokenService tokenService;
     private final ProprietarioService proprietarioService;
+    private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginDTO data){
@@ -32,7 +34,7 @@ public class AuthenticationController {
 
         String token = tokenService.gerarToken((Pessoa) auth.getPrincipal());
 
-        return ResponseEntity.ok(new LoginResponseDTO(data.email(), token));
+        return ResponseEntity.ok(authenticationService.gerarDadosDoLogin(data, token));
     }
 
     @PostMapping("/registrar/proprietario")

@@ -15,7 +15,9 @@ export function App(){
             <div className="App">
                 <Routes>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/registrarfazenda" element={<RegistrarFazenda />} />
+                    <Route element={<ProtectedRouteProprietario/>}>
+                        <Route path="/registrarfazenda" element={<RegistrarFazenda />} />
+                    </Route>
                     <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
                     <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
                     <Route element={<ProtectedRouteProprietario/>}>
