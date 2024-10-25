@@ -1,6 +1,5 @@
 package com.rural_link.controller;
 
-import com.rural_link.domain.animal.Animal;
 import com.rural_link.domain.usuarios.Pessoa;
 import com.rural_link.dto.animal.AnimalDTO;
 import com.rural_link.dto.animal.AnimalPutDTO;
@@ -21,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/animal")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:3000")
 public class AnimalController {
 
     private final AnimalService animalService;
