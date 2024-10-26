@@ -41,7 +41,7 @@ const NavItem = ({ icon, label }) => (
 );
 
   return (
-    <>
+    <div className="tudoSidebar">
       <nav className={isOpen ? "open" : ""} role="navigation">
         <Logo />
         <div className="title">
@@ -79,7 +79,7 @@ const NavItem = ({ icon, label }) => (
       </nav>
 
       <section className={`overlay ${isOpen ? "open" : ""}`} onClick={closeSidebar}></section>
-    </>
+    </div>
   );
 };
 
