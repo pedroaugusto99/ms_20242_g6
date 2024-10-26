@@ -3,6 +3,7 @@ package com.rural_link.controller;
 import com.rural_link.domain.usuarios.Pessoa;
 import com.rural_link.dto.animal.AnimalDTO;
 import com.rural_link.dto.animal.AnimalPutDTO;
+import com.rural_link.dto.animal.QrCodeDTO;
 import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.repositories.PessoaRepository;
 import com.rural_link.service.animal.AnimalService;
@@ -36,6 +37,11 @@ public class AnimalController {
         Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         animalService.salvar(animalDTO, pessoaAutenticada);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/qr-code/{id}")
+    public ResponseEntity<QrCodeDTO> buscarQrCode(@PathVariable Long id){
+        return ResponseEntity.ok().body(animalService.buscarQrCode(id));
     }
 
     @GetMapping("/listar-todos")

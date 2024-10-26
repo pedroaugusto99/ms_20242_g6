@@ -8,6 +8,7 @@ import com.rural_link.domain.usuarios.TrabalhadorRural;
 import com.rural_link.domain.usuarios.UserRole;
 import com.rural_link.dto.animal.AnimalDTO;
 import com.rural_link.dto.animal.AnimalPutDTO;
+import com.rural_link.dto.animal.QrCodeDTO;
 import com.rural_link.mapper.AnimalMapper;
 import com.rural_link.repositories.AnimalRepository;
 import com.rural_link.repositories.ProprietarioRepository;
@@ -45,7 +46,9 @@ public class AnimalService {
         }
         Animal animal = AnimalMapper.INSTANCE.toAnimal(animalDTO);
         animal.setFazenda(fazenda);
-        animalRepository.save(animal);
+        Animal animalSalvo = animalRepository.save(animal);
+        animalSalvo.setUrlQrCode("http://localhost:3030/animal?id="+animalSalvo.getId());
+        animalRepository.save(animalSalvo);
     }
 
     public Page<AnimalDTO> listarTodosAnimaisPaginados(Pageable pageable, Pessoa pessoa){
@@ -72,5 +75,10 @@ public class AnimalService {
         animal.setId(animalSalvo.getId());
         Animal animalAtualizado = animalRepository.save(animal);
         return AnimalMapper.INSTANCE.toAnimalDTO(animalAtualizado);
+    }
+
+    public QrCodeDTO buscarQrCode(Long id){
+        Animal animal = animalRepository.findById(id).orElseThrow(() -> new RuntimeException("Id do animal não foi encontrado"));
+        return new QrCodeDTO(animal.getUrlQrCode());
     }
 }

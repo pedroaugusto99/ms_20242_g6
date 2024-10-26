@@ -53,4 +53,5 @@ public class Animal {
     @JoinColumn(name = "fazenda_id", nullable = false)
     @NotNull(message = "Fazenda a que o animal pertence precisa ser preenchida")
     private Fazenda fazenda;
+    private String urlQrCode;
 }
