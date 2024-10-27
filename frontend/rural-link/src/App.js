@@ -9,8 +9,10 @@ import UserSelection from '../src/pages/UserSelection';
 import Perfil from '../src/pages/Perfil';
 import Dashboard from '../src/pages/Dashboard';
 import Faq from '../src/pages/Faq';
+import Fichamento from '../src/pages/Fichamento';
 
 export function App(){
+    
     return (
         <Router>
             <div className="App">
@@ -22,12 +24,13 @@ export function App(){
                     <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
                     <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
                     <Route element={<ProtectedRouteProprietario/>}>
-                    <Route path="/dashboardcomponent" element={<DashboardComponent />} />
+                        <Route path="/dashboardcomponent" element={<DashboardComponent />} />
                     </Route>
                     <Route path="/user-selection" element={<UserSelection />} />
                     <Route path="/perfil" element={<Perfil />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/faq" element={<Faq/>} />
+                    <Route path="/fichamento" element={<Fichamento/>} />
                 </Routes>
             </div>
         </Router>

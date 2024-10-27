@@ -2,15 +2,14 @@ package com.rural_link.service.fazenda;
 
 import com.rural_link.domain.fazenda.Fazenda;
 import com.rural_link.domain.usuarios.Proprietario;
-import com.rural_link.dto.fazenda.CriarFazendaDTO;
+import com.rural_link.dto.fazenda.CriarFazendaRequestDTO;
 import com.rural_link.dto.fazenda.CriarFazendaResponseDTO;
+import com.rural_link.exceptions.FazendaAlreadyRegisteredException;
 import com.rural_link.infra.security.CodeGenerator;
 import com.rural_link.mapper.FazendaMapper;
 import com.rural_link.repositories.FazendaRepository;
 import com.rural_link.service.proprietario.ProprietarioService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,23 +19,23 @@ public class FazendaService {
     private final ProprietarioService proprietarioService;
 
 
-    public ResponseEntity<CriarFazendaResponseDTO> criarFazenda(CriarFazendaDTO fazendaDTO, Proprietario proprietario){
+    public CriarFazendaResponseDTO criarFazenda(CriarFazendaRequestDTO fazendaDTO, Proprietario proprietario){
         if (fazendaRepository.findByEndereco(fazendaDTO.endereco()).isPresent() || proprietario.getFazenda() != null){
-            return ResponseEntity.badRequest().build();
+            throw new FazendaAlreadyRegisteredException();
         }
         String codeGenerator = CodeGenerator.gerarCodigoDaFazenda();
         Fazenda fazenda = FazendaMapper.INSTANCE.toFazenda(fazendaDTO);
         fazenda.setCodigoDeAutenticacao(codeGenerator);
         fazendaRepository.save(fazenda);
         proprietarioService.salvarFazendaDoProprietario(proprietario, fazenda);
-        return new ResponseEntity<>(new CriarFazendaResponseDTO(codeGenerator) ,HttpStatus.OK);
+        return new CriarFazendaResponseDTO(codeGenerator);
     }
 
-    public ResponseEntity<CriarFazendaResponseDTO> gerarNovoCodigo(Proprietario proprietario){
+    public CriarFazendaResponseDTO gerarNovoCodigo(Proprietario proprietario){
         Fazenda fazenda = proprietario.getFazenda();
         String codeGenerator = CodeGenerator.gerarCodigoDaFazenda();
         fazenda.setCodigoDeAutenticacao(codeGenerator);
         fazendaRepository.save(fazenda);
-        return new ResponseEntity<>(new CriarFazendaResponseDTO(codeGenerator), HttpStatus.OK);
+        return new CriarFazendaResponseDTO(codeGenerator);
     }
 }

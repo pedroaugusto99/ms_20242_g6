@@ -25,7 +25,7 @@ public record CodeGenerator() {
     public static boolean validarTempoDoCodigo(String codigo){
         int horaDeCriacao = Integer.parseInt(codigo.substring(6, 8));
         int diaDeCriacao = Integer.parseInt(codigo.substring(8, 10));
-        if (LocalTime.now().getHour() >= horaDeCriacao && LocalDateTime.now().getDayOfMonth() > diaDeCriacao){
+        if ((LocalTime.now().getHour() >= horaDeCriacao && LocalDateTime.now().getDayOfMonth() > diaDeCriacao) || (LocalDateTime.now().getDayOfMonth() - diaDeCriacao > 1)){
             return false;
         }
         return true;
