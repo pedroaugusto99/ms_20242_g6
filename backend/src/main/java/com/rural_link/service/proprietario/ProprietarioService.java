@@ -3,7 +3,7 @@ package com.rural_link.service.proprietario;
 import com.rural_link.domain.fazenda.Fazenda;
 import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.domain.usuarios.UserRole;
-import com.rural_link.dto.authentication.RegistrarProprietarioDTO;
+import com.rural_link.dto.authentication.RegistrarProprietarioRequestDTO;
 import com.rural_link.exceptions.UserAlreadyRegisteredException;
 import com.rural_link.repositories.PessoaRepository;
 import com.rural_link.repositories.ProprietarioRepository;
@@ -23,7 +23,7 @@ public class ProprietarioService {
         proprietarioRepository.save(proprietario);
     }
 
-    public void registrarProprietario(RegistrarProprietarioDTO data){
+    public void registrarProprietario(RegistrarProprietarioRequestDTO data){
         if (pessoaRepository.findByEmail(data.email()).isPresent()){
             throw new UserAlreadyRegisteredException();
         }

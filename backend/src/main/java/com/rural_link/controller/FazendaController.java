@@ -2,7 +2,7 @@ package com.rural_link.controller;
 
 import com.rural_link.domain.usuarios.Pessoa;
 import com.rural_link.domain.usuarios.Proprietario;
-import com.rural_link.dto.fazenda.CriarFazendaDTO;
+import com.rural_link.dto.fazenda.CriarFazendaRequestDTO;
 import com.rural_link.dto.fazenda.CriarFazendaResponseDTO;
 import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.repositories.ProprietarioRepository;
@@ -24,11 +24,11 @@ public class FazendaController {
     private final ProprietarioRepository proprietarioRepository;
 
     @PostMapping("/criar")
-    public ResponseEntity<CriarFazendaResponseDTO> criarFazenda(@RequestBody @Valid CriarFazendaDTO criarFazendaDTO){
+    public ResponseEntity<CriarFazendaResponseDTO> criarFazenda(@RequestBody @Valid CriarFazendaRequestDTO criarFazendaRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
         Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return new ResponseEntity<>(fazendaService.criarFazenda(criarFazendaDTO, proprietario), HttpStatus.OK);
+        return new ResponseEntity<>(fazendaService.criarFazenda(criarFazendaRequestDTO, proprietario), HttpStatus.OK);
     }
 
     @GetMapping("/gerar-codigo")

@@ -3,7 +3,7 @@ package com.rural_link.service.trabalhador;
 import com.rural_link.domain.fazenda.Fazenda;
 import com.rural_link.domain.usuarios.TrabalhadorRural;
 import com.rural_link.domain.usuarios.UserRole;
-import com.rural_link.dto.authentication.RegistrarTrabalhadorDTO;
+import com.rural_link.dto.authentication.RegistrarTrabalhadorRequestDTO;
 import com.rural_link.exceptions.CodigoExpiredException;
 import com.rural_link.exceptions.CodigoNotFoundException;
 import com.rural_link.exceptions.UserAlreadyRegisteredException;
@@ -24,7 +24,7 @@ public class TrabalhadorRuralService {
     private final PessoaRepository pessoaRepository;
     private final FazendaRepository fazendaRepository;
 
-    public void registrarTrabalhador(RegistrarTrabalhadorDTO data){
+    public void registrarTrabalhador(RegistrarTrabalhadorRequestDTO data){
         if (pessoaRepository.findByEmail(data.email()).isPresent()){
             throw new UserAlreadyRegisteredException();
         }

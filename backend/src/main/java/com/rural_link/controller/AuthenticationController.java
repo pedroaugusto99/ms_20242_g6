@@ -1,9 +1,9 @@
 package com.rural_link.controller;
 
 import com.rural_link.domain.usuarios.Pessoa;
-import com.rural_link.dto.authentication.LoginDTO;
-import com.rural_link.dto.authentication.RegistrarProprietarioDTO;
-import com.rural_link.dto.authentication.RegistrarTrabalhadorDTO;
+import com.rural_link.dto.authentication.LoginRequestDTO;
+import com.rural_link.dto.authentication.RegistrarProprietarioRequestDTO;
+import com.rural_link.dto.authentication.RegistrarTrabalhadorRequestDTO;
 import com.rural_link.dto.authentication.LoginResponseDTO;
 import com.rural_link.service.authentication.AuthenticationService;
 import com.rural_link.service.proprietario.ProprietarioService;
@@ -29,7 +29,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginDTO data){
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO data){
         UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         Authentication auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -39,13 +39,13 @@ public class AuthenticationController {
     }
 
     @PostMapping("/registrar/proprietario")
-    public ResponseEntity<Void> registrarProprietario(@RequestBody @Valid RegistrarProprietarioDTO data){
+    public ResponseEntity<Void> registrarProprietario(@RequestBody @Valid RegistrarProprietarioRequestDTO data){
         proprietarioService.registrarProprietario(data);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/registrar/trabalhador")
-    public ResponseEntity<Void> registrarTrabalhador(@RequestBody @Valid RegistrarTrabalhadorDTO data){
+    public ResponseEntity<Void> registrarTrabalhador(@RequestBody @Valid RegistrarTrabalhadorRequestDTO data){
         trabalhadorRuralService.registrarTrabalhador(data);
         return ResponseEntity.ok().build();
     }
