@@ -20,5 +20,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Long>, JpaSpecif
     List<Animal> findAll(Specification<Animal> specification);
     List<Animal> findByCodigoDoPai(String codigoDoPai);
     List<Animal> findByCodigoDaMae(String codigoDaMae);
+    boolean existsByIdAndFazenda(Long id, Fazenda fazenda);
 }
 

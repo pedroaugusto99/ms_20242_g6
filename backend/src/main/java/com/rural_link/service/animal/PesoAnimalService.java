@@ -2,12 +2,20 @@ package com.rural_link.service.animal;
 
 import com.rural_link.domain.animal.Animal;
 import com.rural_link.domain.animal.PesoAnimal;
+import com.rural_link.domain.fazenda.Fazenda;
+import com.rural_link.domain.usuarios.Pessoa;
+import com.rural_link.domain.usuarios.Proprietario;
+import com.rural_link.domain.usuarios.TrabalhadorRural;
+import com.rural_link.domain.usuarios.UserRole;
 import com.rural_link.dto.animal.PesoAnimalRequestDTO;
 import com.rural_link.dto.animal.PesoAnimalResponseDTO;
 import com.rural_link.mapper.PesoAnimalMapper;
 import com.rural_link.repositories.AnimalRepository;
 import com.rural_link.repositories.PesoAnimalRepository;
+import com.rural_link.repositories.ProprietarioRepository;
+import com.rural_link.repositories.TrabalhadorRuralRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,13 +23,28 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class PesoAnimalService {
 
     private final PesoAnimalRepository pesoAnimalRepository;
     private final AnimalRepository animalRepository;
+    private final ProprietarioRepository proprietarioRepository;
+    private final TrabalhadorRuralRepository trabalhadorRuralRepository;
 
-    public PesoAnimalResponseDTO salvarPesoDoAnimal(PesoAnimalRequestDTO pesoAnimalRequestDTO){
-        Animal animal = animalRepository.findById(pesoAnimalRequestDTO.animalId()).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
+    public Fazenda encontrarFazendaDoAnimal(Pessoa pessoa){
+        if (pessoa.getRole() == UserRole.PROPRIETARIO){
+            Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Proprietário não foi encontrado"));
+            return proprietario.getFazenda();
+        } else if (pessoa.getRole() == UserRole.TRABALHADOR_RURAL){
+            TrabalhadorRural trabalhadorRural = trabalhadorRuralRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Trabalhador não foi encontrado"));
+            return trabalhadorRural.getFazenda();
+        }
+        return null;
+    }
+
+    public PesoAnimalResponseDTO salvarPesoDoAnimal(PesoAnimalRequestDTO pesoAnimalRequestDTO, Pessoa pessoa){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Animal animal = animalRepository.findByIdAndFazenda(pesoAnimalRequestDTO.animalId(), fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
         BigDecimal saldoPesos;
         PesoAnimal pesoAnimal = PesoAnimalMapper.INSTANCE.toPesoAnimal(pesoAnimalRequestDTO);
         pesoAnimal.setAnimal(animal);
@@ -40,13 +63,19 @@ public class PesoAnimalService {
         );
     }
 
-    public void removerPesoDoAnimal(Long id){
+    public void removerPesoDoAnimal(Long id, Pessoa pessoa){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
         PesoAnimal pesoAnimal = pesoAnimalRepository.findById(id).orElseThrow(() -> new RuntimeException("Peso do animal não está cadastrado"));
-        pesoAnimalRepository.delete(pesoAnimal);
+        if (animalRepository.existsByIdAndFazenda(pesoAnimal.getAnimal().getId(), fazenda)){
+            pesoAnimalRepository.delete(pesoAnimal);
+        } else{
+            throw new RuntimeException("Peso do Animal não foi cadastrado");
+        }
     }
 
-    public List<PesoAnimalResponseDTO> listarTodosPesos(Long animalId){
-        Animal animal = animalRepository.findById(animalId).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
+    public List<PesoAnimalResponseDTO> listarTodosPesos(Long animalId, Pessoa pessoa){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Animal animal = animalRepository.findByIdAndFazenda(animalId, fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
         List<PesoAnimal> pesosAnimal = pesoAnimalRepository.findByAnimal(animal);
         List<PesoAnimalResponseDTO> pesoAnimalResponseDTO = PesoAnimalMapper.INSTANCE.toListOfPesoAnimalResponseDTO(pesosAnimal);
         for (int i = pesoAnimalResponseDTO.size()-1; i >= 0; i--) {

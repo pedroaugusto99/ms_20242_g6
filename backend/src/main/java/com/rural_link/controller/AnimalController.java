@@ -38,7 +38,10 @@ public class AnimalController {
 
     @GetMapping("/qr-code/{id}")
     public ResponseEntity<QrCodeResponseDTO> buscarQrCode(@PathVariable Long id){
-        return ResponseEntity.ok().body(animalService.buscarQrCode(id));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Pessoa pessoa = (Pessoa) authentication.getPrincipal();
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        return ResponseEntity.ok().body(animalService.buscarQrCode(pessoaAutenticada, id));
     }
 
     @GetMapping("/listar-todos")
@@ -59,12 +62,18 @@ public class AnimalController {
 
     @GetMapping("/listar-crias/{id}")
     public ResponseEntity<List<CriaResponseDTO>> buscarCriasDoAnimal(@PathVariable Long id){
-        return ResponseEntity.ok().body(animalService.buscarCriasDoAnimal(id));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Pessoa pessoa = (Pessoa) authentication.getPrincipal();
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        return ResponseEntity.ok().body(animalService.buscarCriasDoAnimal(pessoaAutenticada, id));
     }
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<AnimalResponseDTO> buscarAnimalPorId(@PathVariable Long id){
-        return ResponseEntity.ok().body(animalService.buscarAnimalPorId(id));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Pessoa pessoa = (Pessoa) authentication.getPrincipal();
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        return ResponseEntity.ok().body(animalService.buscarAnimalPorId(pessoaAutenticada, id));
     }
 
     @GetMapping("/filtrar")
@@ -85,7 +94,10 @@ public class AnimalController {
 
     @DeleteMapping("/remover/{id}")
     public ResponseEntity<Void> removerAnimal(@PathVariable Long id){
-        animalService.removerAnimal(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Pessoa pessoa = (Pessoa) authentication.getPrincipal();
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        animalService.removerAnimal(pessoaAutenticada, id);
         return ResponseEntity.noContent().build();
     }
 }
