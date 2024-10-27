@@ -2,8 +2,6 @@ package com.rural_link.controller;
 
 import com.rural_link.domain.usuarios.Pessoa;
 import com.rural_link.dto.animal.VacinacaoAnimalDTO;
-import com.rural_link.exceptions.UserNotAuthenticatedException;
-import com.rural_link.repositories.PessoaRepository;
 import com.rural_link.service.animal.VacinacaoAnimalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +17,12 @@ import java.util.List;
 public class VacinacaoAnimalController {
 
     private final VacinacaoAnimalService vacinacaoAnimalService;
-    private final PessoaRepository pessoaRepository;
 
     @PostMapping("/salvar")
     public ResponseEntity<Void> salvarVacinacaoDoAnimal(@RequestBody VacinacaoAnimalDTO vacinacaoAnimalDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        vacinacaoAnimalService.salvarVacinacaoDoAnimal(vacinacaoAnimalDTO, pessoaAutenticada);
+        vacinacaoAnimalService.salvarVacinacaoDoAnimal(vacinacaoAnimalDTO, pessoa);
         return ResponseEntity.ok().build();
     }
 
@@ -34,8 +30,7 @@ public class VacinacaoAnimalController {
     public ResponseEntity<Void> removerVacinacaoDoAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        vacinacaoAnimalService.removerVacinacaoDoAnimal(id, pessoaAutenticada);
+        vacinacaoAnimalService.removerVacinacaoDoAnimal(id, pessoa);
         return ResponseEntity.noContent().build();
     }
 
@@ -43,8 +38,7 @@ public class VacinacaoAnimalController {
     public ResponseEntity<List<VacinacaoAnimalDTO>> listarVacinacoesDoAnimal(@PathVariable Long animalId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return ResponseEntity.ok().body(vacinacaoAnimalService.listarVacinacoesDoAnimal(animalId, pessoaAutenticada));
+        return ResponseEntity.ok().body(vacinacaoAnimalService.listarVacinacoesDoAnimal(animalId, pessoa));
     }
 
 }

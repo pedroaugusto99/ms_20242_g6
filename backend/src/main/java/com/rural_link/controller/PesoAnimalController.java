@@ -20,23 +20,19 @@ import java.util.List;
 public class PesoAnimalController {
 
     private final PesoAnimalService pesoAnimalService;
-    private final PessoaRepository pessoaRepository;
-
 
     @PostMapping("/salvar")
     public ResponseEntity<PesoAnimalResponseDTO> salvarPesoDoAnimal(@RequestBody PesoAnimalRequestDTO pesoAnimalRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return ResponseEntity.ok().body(pesoAnimalService.salvarPesoDoAnimal(pesoAnimalRequestDTO, pessoaAutenticada));
+        return ResponseEntity.ok().body(pesoAnimalService.salvarPesoDoAnimal(pesoAnimalRequestDTO, pessoa));
     }
 
     @DeleteMapping("/remover/{id}")
     public ResponseEntity<Void> removerPesoDoAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        pesoAnimalService.removerPesoDoAnimal(id, pessoaAutenticada);
+        pesoAnimalService.removerPesoDoAnimal(id, pessoa);
         return ResponseEntity.noContent().build();
     }
 
@@ -44,7 +40,6 @@ public class PesoAnimalController {
     public ResponseEntity<List<PesoAnimalResponseDTO>> listarTodosPesos(@PathVariable Long animalId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return ResponseEntity.ok().body(pesoAnimalService.listarTodosPesos(animalId, pessoaAutenticada));
+        return ResponseEntity.ok().body(pesoAnimalService.listarTodosPesos(animalId, pessoa));
     }
 }

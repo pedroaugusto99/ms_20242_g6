@@ -21,21 +21,18 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("http://localhost:3000")
 public class FazendaController {
     private final FazendaService fazendaService;
-    private final ProprietarioRepository proprietarioRepository;
 
     @PostMapping("/criar")
     public ResponseEntity<CriarFazendaResponseDTO> criarFazenda(@RequestBody @Valid CriarFazendaRequestDTO criarFazendaRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return new ResponseEntity<>(fazendaService.criarFazenda(criarFazendaRequestDTO, proprietario), HttpStatus.OK);
+        return new ResponseEntity<>(fazendaService.criarFazenda(criarFazendaRequestDTO, pessoa), HttpStatus.OK);
     }
 
     @GetMapping("/gerar-codigo")
     public ResponseEntity<CriarFazendaResponseDTO> gerarNovoCodigo(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return new ResponseEntity<>(fazendaService.gerarNovoCodigo(proprietario), HttpStatus.OK);
+        return new ResponseEntity<>(fazendaService.gerarNovoCodigo(pessoa), HttpStatus.OK);
     }
 }

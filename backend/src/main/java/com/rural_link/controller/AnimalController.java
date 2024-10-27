@@ -2,8 +2,6 @@ package com.rural_link.controller;
 
 import com.rural_link.domain.usuarios.Pessoa;
 import com.rural_link.dto.animal.*;
-import com.rural_link.exceptions.UserNotAuthenticatedException;
-import com.rural_link.repositories.PessoaRepository;
 import com.rural_link.service.animal.AnimalService;
 import com.rural_link.specifications.AnimalQueryFilter;
 import jakarta.validation.Valid;
@@ -24,15 +22,12 @@ import java.util.List;
 public class AnimalController {
 
     private final AnimalService animalService;
-    private final PessoaRepository pessoaRepository;
-
 
     @PostMapping("/cadastrar")
     public ResponseEntity<Void> salvarAnimal(@RequestBody @Valid AnimalRequestDTO animalRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        animalService.salvar(animalRequestDTO, pessoaAutenticada);
+        animalService.salvar(animalRequestDTO, pessoa);
         return ResponseEntity.ok().build();
     }
 
@@ -40,64 +35,56 @@ public class AnimalController {
     public ResponseEntity<QrCodeResponseDTO> buscarQrCode(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return ResponseEntity.ok().body(animalService.buscarQrCode(pessoaAutenticada, id));
+        return ResponseEntity.ok().body(animalService.buscarQrCode(pessoa, id));
     }
 
     @GetMapping("/listar-todos")
     public ResponseEntity<List<AnimalListResponseDTO>> listarTodosAnimais(Pageable pageable){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return new ResponseEntity<>(animalService.listarTodosAnimais(pessoaAutenticada), HttpStatus.OK);
+        return new ResponseEntity<>(animalService.listarTodosAnimais(pessoa), HttpStatus.OK);
     }
 
     @GetMapping("/listar")
     public ResponseEntity<List<AnimalListResponseDTO>> buscarAnimalPorNome(@RequestParam String nome){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return new ResponseEntity<>(animalService.buscarAnimalPorNome(nome, pessoaAutenticada), HttpStatus.OK);
+        return new ResponseEntity<>(animalService.buscarAnimalPorNome(nome, pessoa), HttpStatus.OK);
     }
 
     @GetMapping("/listar-crias/{id}")
     public ResponseEntity<List<CriaResponseDTO>> buscarCriasDoAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return ResponseEntity.ok().body(animalService.buscarCriasDoAnimal(pessoaAutenticada, id));
+        return ResponseEntity.ok().body(animalService.buscarCriasDoAnimal(pessoa, id));
     }
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<AnimalResponseDTO> buscarAnimalPorId(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return ResponseEntity.ok().body(animalService.buscarAnimalPorId(pessoaAutenticada, id));
+        return ResponseEntity.ok().body(animalService.buscarAnimalPorId(pessoa, id));
     }
 
     @GetMapping("/filtrar")
     public ResponseEntity<List<AnimalListResponseDTO>> filtrarPorCampos(AnimalQueryFilter animalQueryFilter){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return new ResponseEntity<>(animalService.filtrarPorCampos(animalQueryFilter, pessoaAutenticada), HttpStatus.OK);
+        return new ResponseEntity<>(animalService.filtrarPorCampos(animalQueryFilter, pessoa), HttpStatus.OK);
     }
 
     @PutMapping("/atualizar")
     public ResponseEntity<AnimalResponseDTO> atualizarDadosDoAnimal(@RequestBody @Valid AnimalPutRequestDTO animal){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        return new ResponseEntity<>(animalService.atualizarDadosDoAnimal(animal, pessoaAutenticada), HttpStatus.OK);
+        return new ResponseEntity<>(animalService.atualizarDadosDoAnimal(animal, pessoa), HttpStatus.OK);
     }
 
     @DeleteMapping("/remover/{id}")
     public ResponseEntity<Void> removerAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
-        animalService.removerAnimal(pessoaAutenticada, id);
+        animalService.removerAnimal(pessoa, id);
         return ResponseEntity.noContent().build();
     }
 }
