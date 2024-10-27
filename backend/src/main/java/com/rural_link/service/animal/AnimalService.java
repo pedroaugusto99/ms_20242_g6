@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -114,18 +115,21 @@ public class AnimalService {
         return AnimalMapper.INSTANCE.toAnimalResponseDTO(animalAtualizado);
     }
 
-    public QrCodeResponseDTO buscarQrCode(Long id){
-        Animal animal = animalRepository.findById(id).orElseThrow(() -> new RuntimeException("Id do animal não foi encontrado"));
+    public QrCodeResponseDTO buscarQrCode(Pessoa pessoaAutenticada, Long id){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
+        Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Id do animal não foi encontrado"));
         return new QrCodeResponseDTO(animal.getUrlQrCode());
     }
 
-    public void removerAnimal(Long id){
-        Animal animal = animalRepository.findById(id).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
+    public void removerAnimal(Pessoa pessoaAutenticada, Long id){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
+        Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
         animalRepository.delete(animal);
     }
 
-    public List<CriaResponseDTO> buscarCriasDoAnimal(Long id){
-        Animal animal = animalRepository.findById(id).orElseThrow(() -> new RuntimeException("Id do Animal não existe"));
+    public List<CriaResponseDTO> buscarCriasDoAnimal(Pessoa pessoaAutenticada, Long id){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
+        Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Id do Animal não existe"));
         List<Animal> animais = buscarAnimalPorCodigoFamiliar(animal);
         List<CriaResponseDTO> crias = AnimalMapper.INSTANCE.toListOfCriaResponseDTO(animais);
         for (int i = 0; i < crias.size(); i++) {
@@ -145,8 +149,9 @@ public class AnimalService {
         return crias;
     }
 
-    public AnimalResponseDTO buscarAnimalPorId(Long id){
-        Animal animal = animalRepository.findById(id).orElseThrow(() -> new RuntimeException("Id do Animal não existe"));
+    public AnimalResponseDTO buscarAnimalPorId(Pessoa pessoaAutenticada, Long id){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
+        Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Id do Animal não existe"));
         AnimalResponseDTO animalResponseDTO = AnimalMapper.INSTANCE.toAnimalResponseDTO(animal);
         animalResponseDTO.setDataDeAquisicao(formatter.format(animal.getDataDeAquisicao()));
         animalResponseDTO.setDataDeNascimento(formatter.format(animal.getDataDeNascimento()));

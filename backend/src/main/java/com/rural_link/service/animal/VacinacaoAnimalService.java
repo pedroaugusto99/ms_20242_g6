@@ -2,9 +2,16 @@ package com.rural_link.service.animal;
 
 import com.rural_link.domain.animal.Animal;
 import com.rural_link.domain.animal.VacinacaoAnimal;
+import com.rural_link.domain.fazenda.Fazenda;
+import com.rural_link.domain.usuarios.Pessoa;
+import com.rural_link.domain.usuarios.Proprietario;
+import com.rural_link.domain.usuarios.TrabalhadorRural;
+import com.rural_link.domain.usuarios.UserRole;
 import com.rural_link.dto.animal.VacinacaoAnimalDTO;
 import com.rural_link.mapper.VacinacaoAnimalMapper;
 import com.rural_link.repositories.AnimalRepository;
+import com.rural_link.repositories.ProprietarioRepository;
+import com.rural_link.repositories.TrabalhadorRuralRepository;
 import com.rural_link.repositories.VacinacaoAnimalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,21 +24,41 @@ public class VacinacaoAnimalService {
 
     private final VacinacaoAnimalRepository vacinacaoAnimalRepository;
     private final AnimalRepository animalRepository;
+    private final ProprietarioRepository proprietarioRepository;
+    private final TrabalhadorRuralRepository trabalhadorRuralRepository;
 
-    public void salvarVacinacaoDoAnimal(VacinacaoAnimalDTO vacinacaoAnimalDTO){
-        Animal animal = animalRepository.findById(vacinacaoAnimalDTO.animalId()).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
+    public Fazenda encontrarFazendaDoAnimal(Pessoa pessoa){
+        if (pessoa.getRole() == UserRole.PROPRIETARIO){
+            Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Proprietário não foi encontrado"));
+            return proprietario.getFazenda();
+        } else if (pessoa.getRole() == UserRole.TRABALHADOR_RURAL){
+            TrabalhadorRural trabalhadorRural = trabalhadorRuralRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Trabalhador não foi encontrado"));
+            return trabalhadorRural.getFazenda();
+        }
+        return null;
+    }
+
+    public void salvarVacinacaoDoAnimal(VacinacaoAnimalDTO vacinacaoAnimalDTO, Pessoa pessoa){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Animal animal = animalRepository.findByIdAndFazenda(vacinacaoAnimalDTO.animalId(), fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
         VacinacaoAnimal vacinacaoAnimal = VacinacaoAnimalMapper.INSTANCE.toVacinacaoAnimal(vacinacaoAnimalDTO);
         vacinacaoAnimal.setAnimal(animal);
         vacinacaoAnimalRepository.save(vacinacaoAnimal);
     }
 
-    public void removerVacinacaoDoAnimal(Long id){
+    public void removerVacinacaoDoAnimal(Long id, Pessoa pessoa){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
         VacinacaoAnimal vacinacaoAnimal = vacinacaoAnimalRepository.findById(id).orElseThrow(() -> new RuntimeException("Vacinação selecionada não foi cadastrada"));
-        vacinacaoAnimalRepository.delete(vacinacaoAnimal);
+        if (animalRepository.existsByIdAndFazenda(vacinacaoAnimal.getAnimal().getId(), fazenda)){
+            vacinacaoAnimalRepository.delete(vacinacaoAnimal);
+        } else{
+            throw new RuntimeException("Vacinação selecionada não foi cadastrada");
+        }
     }
 
-    public List<VacinacaoAnimalDTO> listarVacinacoesDoAnimal(Long animalId){
-        Animal animal = animalRepository.findById(animalId).orElseThrow(() -> new RuntimeException("Id do Animal não foi encontrado"));
+    public List<VacinacaoAnimalDTO> listarVacinacoesDoAnimal(Long animalId, Pessoa pessoa){
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Animal animal = animalRepository.findByIdAndFazenda(animalId, fazenda).orElseThrow(() -> new RuntimeException("Id do Animal não foi encontrado"));
         List<VacinacaoAnimal> vacinacoesDoAnimal = vacinacaoAnimalRepository.findByAnimal(animal);
         return VacinacaoAnimalMapper.INSTANCE.toListOfVacinacaoAnimalDTO(vacinacoesDoAnimal);
     }
