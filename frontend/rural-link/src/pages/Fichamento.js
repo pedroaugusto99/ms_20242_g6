@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './css/Fichamento.module.css';
 import Sidebar from './components/Sidebar';
+import AuthService from '../autenticacao/AuthService';
 
-function Fichamento({ animals }) {
+function Fichamento() {
+
+    const[animals, setAnimals] = React.useState(null);
+
+    React.useEffect (() =>{
+        AuthService.listarAnimais().then((response) => {
+            setAnimals(response.data)
+        })
+    }, []);
+
     const handleAccess = (id) => {
         console.log(`Acessando detalhes do animal com ID: ${id}`);
     };
@@ -41,7 +51,7 @@ function Fichamento({ animals }) {
                         {Array.isArray(animals) && animals.length > 0 ? (
                             animals.map((animal) => (
                                 <tr key={animal.id}>
-                                    <td>{animal.id}</td>
+                                    <td>{animal.codigo}</td>
                                     <td>{animal.nome}</td>
                                     <td>{animal.sexo}</td>
                                     <td>{animal.especie}</td>
@@ -49,7 +59,7 @@ function Fichamento({ animals }) {
                                     <td>{animal.idade}</td>
                                     <td>{animal.lote}</td>
                                     <td>
-                                        <button onClick={() => handleAccess(animal.id)}>Acessar</button>
+                                        <button onClick={() => handleAccess(animal.animalId)}>Acessar</button>
                                     </td>
                                 </tr>
                             ))
