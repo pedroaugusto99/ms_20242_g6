@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name = "animal")
 @Table(name = "animal")
@@ -28,30 +29,35 @@ public class Animal {
     @NotNull(message = "Código do animal precisa ser preenchido")
     @Column(nullable = false)
     private String codigo;
-    @Temporal(TemporalType.DATE)
-    @NotNull(message = "Data de nascimento do animal precisa ser preenchida")
+    @NotNull(message = "Espécie do animal precisa ser preenchida")
     @Column(nullable = false)
-    private LocalDate dataDeNascimento;
+    @Enumerated(EnumType.STRING)
+    private Especie especie;
     @NotNull(message = "Raça do animal precisa ser preenchida")
     @Column(nullable = false)
-    private String raca;
-    private String codigoDaMae;
-    private String codigoDoPai;
+    @Enumerated(EnumType.STRING)
+    private Raca raca;
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Sexo do animal precisa ser identificado")
     @Column(nullable = false)
     private Sexo sexo;
-    @Digits(integer = 5, fraction = 2)
-    @NotNull(message = "Peso do animal precisa ser identificado")
-    @Column(nullable = false)
-    private BigDecimal peso;
+    @Temporal(TemporalType.DATE)
+    private LocalDate dataDeNascimento;
+    private Integer idade;
+    @Temporal(TemporalType.DATE)
+    private LocalDate dataDeAquisicao;
+    private String codigoDaMae;
+    private String codigoDoPai;
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "Origem do animal precisa ser identificada")
-    @Column(nullable = false)
-    private Origem origem;
+    private Status status;
+    private String lote;
     @ManyToOne
     @JoinColumn(name = "fazenda_id", nullable = false)
     @NotNull(message = "Fazenda a que o animal pertence precisa ser preenchida")
     private Fazenda fazenda;
     private String urlQrCode;
+    @OneToMany
+    private List<VacinacaoAnimal> vacinacaoAnimal;
+    @OneToMany
+    private List<PesoAnimal> pesoAnimal;
 }
