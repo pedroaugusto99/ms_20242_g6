@@ -7,11 +7,16 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  z-index: 1000;
 }
 
 body {
   min-height: 100%;
   background: #e3f2fd;
+}
+
+.tudoSidebar {
+  z-index: 1000;
 }
 
 /* Estilos do Navegação (nav) */
@@ -26,6 +31,7 @@ nav {
   background: #2BB749;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   justify-content: space-between;
+  z-index: 1000;
 }
 
 .menu-icon {
@@ -206,7 +212,6 @@ nav.open ~ .overlay {
 }
 
 /* Estilos do Rodapé do Sidebar */
-
 
 .bottom-content .nav-link:hover {
   background-color: #d9d9d9c1;

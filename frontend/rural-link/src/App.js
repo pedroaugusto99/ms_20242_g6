@@ -1,22 +1,36 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
-import DashboardComponent from './pages/Dashboard';
-import Registrar from './pages/Registro'
+import DashboardComponent from './pages/DashboardComponent';
+import RegistrarFazenda from './pages/RegistroFazenda'
+import RegistrarProprietario from './pages/RegistroProprietario'
+import RegistrarTrabalhador from './pages/RegistroTrabalhador'
 import ProtectedRouteProprietario from './routes/ProtectedRouteProprietario';
 import UserSelection from '../src/pages/UserSelection';
-import Sidebar from '../src/pages/components/Sidebar';   
+import Perfil from '../src/pages/Perfil';
+import Dashboard from '../src/pages/Dashboard';
+import Faq from '../src/pages/Faq';
+import Fichamento from '../src/pages/Fichamento';
 
 export function App(){
+    
     return (
         <Router>
             <div className="App">
                 <Routes>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/registrar" element={<Registrar />} />
                     <Route element={<ProtectedRouteProprietario/>}>
-                        <Route path="/dashboard" element={<DashboardComponent />} />
+                        <Route path="/registrarfazenda" element={<RegistrarFazenda />} />
+                    </Route>
+                    <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
+                    <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
+                    <Route element={<ProtectedRouteProprietario/>}>
+                        <Route path="/dashboardcomponent" element={<DashboardComponent />} />
                     </Route>
                     <Route path="/user-selection" element={<UserSelection />} />
+                    <Route path="/perfil" element={<Perfil />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/faq" element={<Faq/>} />
+                    <Route path="/fichamento" element={<Fichamento/>} />
                 </Routes>
             </div>
         </Router>

@@ -1,9 +1,11 @@
 package com.rural_link.domain.usuarios;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,7 +28,7 @@ public class Pessoa implements UserDetails {
     @Column(nullable = false)
     private String nomeCompleto;
     @NotNull(message = "E-mail precisa ser preenchido")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @NotNull(message = "Senha precisa ser preenchida")
     @Column(nullable = false)

@@ -32,7 +32,6 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/autenticacao/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/autenticacao/registrar/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/animal/salvar").hasRole("PROPRIETARIO")
                         .requestMatchers(HttpMethod.POST, "/fazenda/criar").hasRole("PROPRIETARIO")
                         .requestMatchers(HttpMethod.GET, "/fazenda/gerar-codigo").hasRole("PROPRIETARIO")
                         .anyRequest().authenticated()
