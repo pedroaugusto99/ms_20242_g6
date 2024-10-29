@@ -9,11 +9,9 @@ import com.rural_link.domain.usuarios.TrabalhadorRural;
 import com.rural_link.domain.usuarios.UserRole;
 import com.rural_link.dto.animal.PesoAnimalRequestDTO;
 import com.rural_link.dto.animal.PesoAnimalResponseDTO;
+import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.mapper.PesoAnimalMapper;
-import com.rural_link.repositories.AnimalRepository;
-import com.rural_link.repositories.PesoAnimalRepository;
-import com.rural_link.repositories.ProprietarioRepository;
-import com.rural_link.repositories.TrabalhadorRuralRepository;
+import com.rural_link.repositories.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -27,9 +25,10 @@ import java.util.List;
 public class PesoAnimalService {
 
     private final PesoAnimalRepository pesoAnimalRepository;
+    private final PessoaRepository pessoaRepository;
     private final AnimalRepository animalRepository;
-    private final ProprietarioRepository proprietarioRepository;
     private final TrabalhadorRuralRepository trabalhadorRuralRepository;
+    private final ProprietarioRepository proprietarioRepository;
 
     public Fazenda encontrarFazendaDoAnimal(Pessoa pessoa){
         if (pessoa.getRole() == UserRole.PROPRIETARIO){
@@ -43,7 +42,8 @@ public class PesoAnimalService {
     }
 
     public PesoAnimalResponseDTO salvarPesoDoAnimal(PesoAnimalRequestDTO pesoAnimalRequestDTO, Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(pesoAnimalRequestDTO.animalId(), fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
         BigDecimal saldoPesos;
         PesoAnimal pesoAnimal = PesoAnimalMapper.INSTANCE.toPesoAnimal(pesoAnimalRequestDTO);
@@ -64,7 +64,8 @@ public class PesoAnimalService {
     }
 
     public void removerPesoDoAnimal(Long id, Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         PesoAnimal pesoAnimal = pesoAnimalRepository.findById(id).orElseThrow(() -> new RuntimeException("Peso do animal não está cadastrado"));
         if (animalRepository.existsByIdAndFazenda(pesoAnimal.getAnimal().getId(), fazenda)){
             pesoAnimalRepository.delete(pesoAnimal);
@@ -74,7 +75,8 @@ public class PesoAnimalService {
     }
 
     public List<PesoAnimalResponseDTO> listarTodosPesos(Long animalId, Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(animalId, fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
         List<PesoAnimal> pesosAnimal = pesoAnimalRepository.findByAnimal(animal);
         List<PesoAnimalResponseDTO> pesoAnimalResponseDTO = PesoAnimalMapper.INSTANCE.toListOfPesoAnimalResponseDTO(pesosAnimal);

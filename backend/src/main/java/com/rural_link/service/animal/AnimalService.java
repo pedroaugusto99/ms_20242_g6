@@ -8,17 +8,11 @@ import com.rural_link.domain.usuarios.Proprietario;
 import com.rural_link.domain.usuarios.TrabalhadorRural;
 import com.rural_link.domain.usuarios.UserRole;
 import com.rural_link.dto.animal.*;
+import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.mapper.AnimalMapper;
-import com.rural_link.repositories.AnimalRepository;
-import com.rural_link.repositories.PesoAnimalRepository;
-import com.rural_link.repositories.ProprietarioRepository;
-import com.rural_link.repositories.TrabalhadorRuralRepository;
+import com.rural_link.repositories.*;
 import com.rural_link.specifications.AnimalQueryFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cglib.core.Local;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -30,10 +24,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AnimalService {
     private final AnimalRepository animalRepository;
-    private final ProprietarioRepository proprietarioRepository;
-    private final TrabalhadorRuralRepository trabalhadorRuralRepository;
+    private final PessoaRepository pessoaRepository;
     private final PesoAnimalRepository pesoAnimalRepository;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final TrabalhadorRuralRepository trabalhadorRuralRepository;
+    private final ProprietarioRepository proprietarioRepository;
 
     //Códigos de auxílio
 
@@ -73,7 +68,8 @@ public class AnimalService {
     //Services para Controllers
 
     public void salvar(AnimalRequestDTO animalRequestDTO, Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         if (animalRepository.findByCodigoAndFazenda(animalRequestDTO.codigo(), fazenda).isPresent()){
             throw new RuntimeException("Animal já está cadastado");
         }
@@ -85,28 +81,32 @@ public class AnimalService {
     }
 
     public List<AnimalListResponseDTO> listarTodosAnimais(Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         List<Animal> animais = animalRepository.findByFazenda(fazenda);
         List<AnimalListResponseDTO> animaisListResponseDTO = AnimalMapper.INSTANCE.toListOfAnimalListResponseDTO(animais);
         return setarAnimalIdEIdade(animais,animaisListResponseDTO);
     }
 
     public List<AnimalListResponseDTO> buscarAnimalPorNome(String nome, Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         List<Animal> animais = animalRepository.findByNomeLikeAndFazenda("%" + nome + "%", fazenda);
         List<AnimalListResponseDTO> animaisListResponseDTO = AnimalMapper.INSTANCE.toListOfAnimalListResponseDTO(animais);
         return setarAnimalIdEIdade(animais,animaisListResponseDTO);
     }
     
     public List<AnimalListResponseDTO> filtrarPorCampos(AnimalQueryFilter animalQueryFilter, Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         List<Animal> animais = animalRepository.findAll(animalQueryFilter.toSpecification(fazenda));
         List<AnimalListResponseDTO> animaisListResponseDTO = AnimalMapper.INSTANCE.toListOfAnimalListResponseDTO(animais);
         return setarAnimalIdEIdade(animais, animaisListResponseDTO);
     }
 
     public AnimalResponseDTO atualizarDadosDoAnimal(AnimalPutRequestDTO animalPutRequestDTO, Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
+        Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animalSalvo = animalRepository.findByIdAndFazenda(animalPutRequestDTO.id(), fazenda).orElseThrow(() -> new RuntimeException("Animal não foi encontrado"));
         Animal animal = AnimalMapper.INSTANCE.toAnimal(animalPutRequestDTO);
         animal.setFazenda(fazenda);
@@ -115,19 +115,22 @@ public class AnimalService {
         return AnimalMapper.INSTANCE.toAnimalResponseDTO(animalAtualizado);
     }
 
-    public QrCodeResponseDTO buscarQrCode(Pessoa pessoaAutenticada, Long id){
+    public QrCodeResponseDTO buscarQrCode(Pessoa pessoa, Long id){
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Id do animal não foi encontrado"));
         return new QrCodeResponseDTO(animal.getUrlQrCode());
     }
 
-    public void removerAnimal(Pessoa pessoaAutenticada, Long id){
+    public void removerAnimal(Pessoa pessoa, Long id){
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
         animalRepository.delete(animal);
     }
 
-    public List<CriaResponseDTO> buscarCriasDoAnimal(Pessoa pessoaAutenticada, Long id){
+    public List<CriaResponseDTO> buscarCriasDoAnimal(Pessoa pessoa, Long id){
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Id do Animal não existe"));
         List<Animal> animais = buscarAnimalPorCodigoFamiliar(animal);
@@ -149,7 +152,8 @@ public class AnimalService {
         return crias;
     }
 
-    public AnimalResponseDTO buscarAnimalPorId(Pessoa pessoaAutenticada, Long id){
+    public AnimalResponseDTO buscarAnimalPorId(Pessoa pessoa, Long id){
+        Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Id do Animal não existe"));
         AnimalResponseDTO animalResponseDTO = AnimalMapper.INSTANCE.toAnimalResponseDTO(animal);
