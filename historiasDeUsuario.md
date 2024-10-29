@@ -14,14 +14,14 @@ Realizar cadastro de usuário na aplicação
 ### **Descrição**
 
 COMO proprietário de fazenda<br>
-QUERO realizar o cadastro da minha fazenda na aplicação<br>
+QUERO realizar meu cadastro na aplicação<br>
 PARA possuir uma conta na aplicação<br>
 
 ### **Critérios de Aceitação:**
 #### Cenário 1: Cadastro realizado com sucesso
 
-**Dado** que o proprietário de fazenda está na página inicial da aplicação<br>
-**Quando** ele clica em "Faça seu cadastro"<br>
+**Dado** que o proprietário de fazenda está na página de login da aplicação<br>
+**Quando** ele clica em "Cadastre-se"<br>
 **E** acessa a página de realização de cadastro<br>
 **E** preenche todos os dados obrigatórios indicados<br>
 **E** confirma seu cadastro<br>
@@ -81,7 +81,6 @@ Usuário = proprietário da fazenda ou trabalhador rural<br>
 **Quando** o usuário entra com seu email e senha<br>
 **E** digita corretamente tanto o email, quanto a senha<br>
 **Então** o usuário acessa a aplicação<br>
-**E** abre a página do dashboard<br>
 
 #### Cenário 2: Não realiza login usando usuário e/ou senha incorretos
 
@@ -110,16 +109,72 @@ Nota 1: a mensagem informando que o login está incorreto deve ser um pop-up no 
 
 ## **História de Usuário HU-1.3**
 ### **Autor e Data de Criação**
+Stephano, 29/10/2024
+ 
+### **Fluxo:**
+Cadastro de usuário e login [1]
+
+### **ID:**
+HU-1.3
+
+### **Título:**
+Realizar cadastro de fazenda na aplicação
+
+### **Descrição**
+
+COMO proprietário de fazenda<br>
+QUERO realizar o cadastro da minha fazenda na aplicação<br>
+PARA que minha fazenda esteja cadastrada na aplicação<br>
+
+### **Critérios de Aceitação:**
+#### Cenário 1: Primeiro acesso de login após o cadastro de dados pessoais do proprietário de fazenda
+
+**Dado** que o proprietário de fazenda está na página de login da aplicação<br>
+**E** é a primeira vez que ele vai acessar sua conta após cadastrar seus dados pessoais na Área de Cadastro<br>
+**Quando** ele utiliza seu email e senha para fazer login<br>
+**E** o login é autenticado corretamente<br>
+**E** ele visualiza a página de Área de Cadastro de sua fazenda<br>
+**E** preenche todos os dados obrigatórios para realização do cadastro da fazenda<br>
+**E** o código da fazenda é gerado com sucesso<br> 
+**Então** o proprietário rural cadastrou com sucesso sua fazenda na aplicação<br>
+**E** é redirecionado para a página inicial da aplicação<br>
+**E** não precisará repetir este processo após o cadastro da fazenda na próxima vez que fizer login<br>
+
+#### Cenário 2: Segundo acesso de login após o cadastro de dados pessoais do proprietário da fazenda
+
+**Dado** que o proprietário de fazenda está na página de login da aplicação<br>
+**Mas** não é a primeira vez que ele vai acessar sua conta após cadastrar seus dados pessoais na Área de Cadastro<br>
+**E** já cadastrou os dados fazenda na aplicação<br>
+**Quando** ele realiza o login<br>
+**E** o login é autenticado corretamente<br>
+**Então** o proprietário de fazenda será redirecionado para a página inicial da aplicação<br>
+
+### **Prioridade:**
+Alta
+
+### **Estimativa de Esforço:**
+8 story points 
+
+### **Dependências:**
+Dependência 1: Desenvolvimento de interface de login e de cadastro ();<br>
+Dependência 2: Integração com o sistema de armazenamento de dados de cadastro e de login no banco de dados ();
+
+### **Notas / Comentários adicionais:**
+Nada a declarar a priori;
+
+
+## **História de Usuário HU-1.4**
+### **Autor e Data de Criação**
 Omar, 23/09/2024;
 
 ### **Fluxo:**
 Cadastro de usuário e login[1]
 
 ### **ID:**
-HU-1.3
+HU-1.4
 
 ### **Título:**
-Alterar a senha do usuário
+Esqueceu a senha do usuário
 
 ### **Descrição**
 
@@ -134,8 +189,9 @@ Usuário = proprietário da fazenda ou trabalhador rural<br>
 
 **Dado** que o usuário está na página de login<br>
 **E** ele já possui conta cadastrada<br>
-**E** ele deseja alterar sua senha<br>
-**Quando** ele clicar no botão “esqueceu a senha?”<br>
+**E** ele esqueceu sua senha<br>
+**Ou** ele deseja alterar sua senha<br>
+**Quando** ele clicar no botão “Esqueceu a senha?”<br>
 **E** digitar uma nova senha<br>
 **E** confirmar a nova senha<br>
 **Então** a senha do usuário será modificada<br>
@@ -175,7 +231,8 @@ Nota 1: a mensagem informando que as senhas não podem ser diferentes deve ser u
 
 ## **História de Usuário HU-2.1**
 ### **Autor e Data de Criação**
-Omar, 23/09/2024;;
+Omar, 23/09/2024;
+Stephano, 29/10/2024 (edição);
 
 ### **Fluxo:**
 Interação do usuário com as páginas dentro da aplicação [2]
@@ -197,11 +254,12 @@ PARA realizar novo cadastro de animal<br>
 
 Usuário = proprietário da fazenda ou trabalhador rural<br>
 
-**Dado** que o usuário está na página do dashboard<br>
+**Dado** que o usuário está em alguma página da aplicação<br>
 **E** ele deseja cadastrar um novo animal<br>
-**Quando** ele clica no ícone de novo cadastro<br>
-**Então** o usuário é redirecionado para página de novo cadastro<br>
-**E** o usuário pode cadastrar novos animais<br>
+**Quando** ele clica na aba lateral<br>
+**E** clica no ícone de Novo Cadastro<br>
+**Então** o usuário é redirecionado para página de Novo Cadastro<br>
+**E** pode cadastrar um novo animal<br>
 
 ### **Prioridade:**
 Alta
@@ -614,13 +672,13 @@ PARA ter acesso aos seus dados<br>
 
 Usuário = proprietário da fazenda ou trabalhador rural<br>
 
-**Dado** que o usuário está na página de animais cadastrados<br>
+**Dado** que o usuário está na página de lista de fichas de animais cadastrados<br>
 **E** deseja pesquisar por animais cadastrados<br>
 **E** clica na função pesquisar nominalmente por animal<br>
-**Quando** ele digita o nome de um animal existente<br>
+**Quando** ele digita o nome ou código de um animal existente<br>
 **E** clica no botão de pesquisar<br>
-**Então** o sistema retorna todos os animais cadastrados com o nome pesquisado<br>
-**E** o sistema permite que o usuário possa ver a lista dos animais.<br>
+**Então** o sistema retorna todos os animais cadastrados com o nome ou código pesquisado<br>
+**E** o sistema permite que o usuário possa ver a lista completa respectiva.<br>
 
 #### Cenário 2: Pesquisa por animais não retorna nenhum animal
 
@@ -629,10 +687,10 @@ Usuário = proprietário da fazenda ou trabalhador rural<br>
 **Dado** que o usuário está na página de animais cadastrados<br>
 **E** deseja pesquisar por animais cadastrados<br>
 **E** clica na função pesquisar nominalmente por animal<br>
-**Quando** ele digita o nome de um animal não cadastrado<br>
+**Quando** ele digita o nome ou código de um animal não cadastrado<br>
 **E** clica no botão de pesquisar<br>
 **Então** o sistema não retorna nenhum animal<br>
-**E** o sistema emite uma mensagem dizendo que não há animais cadastrados com o nome pesquisado<br>
+**E** o sistema emite uma mensagem dizendo que não há animais cadastrados com o nome ou código pesquisado<br>
 
 ### **Prioridade:**
 Alta
@@ -734,7 +792,7 @@ Usuário = proprietário da fazenda ou trabalhador rural<br>
 **E** deseja editar dados no presente ficha<br>
 **E** clica no dado específico<br>
 **Quando** o usuário edita esse dado<br>
-**E** clica no botão de “Confirmar”<br>
+**E** clica no botão de “Confirmar edição”<br>
 **Então**  o sistema emite uma mensagem informando da atualização de edição feita com sucesso<br>
 **E** o sistema atualiza a ficha do animal cadastrado com as novas informações inseridas nessa edição.<br>
 
@@ -852,7 +910,7 @@ PARA utilizar o arquivo para diferentes finalidades<br>
 
 Usuário = proprietário da fazenda ou trabalhador rural<br>
 
-**Dado** que o usuário está na página de animais cadastrados <br>
+**Dado** que o usuário está na página da ficha de um animal cadastrado <br>
 **E** deseja obter o  arquivo PDF com os dados cadastrados do animal em questão <br>
 **Quando** o usuário pesquisa pelo animal em questão<br>
 **E** clica em seu cadastro<br>

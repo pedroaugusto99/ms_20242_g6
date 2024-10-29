@@ -7,19 +7,13 @@ function Fichamento() {
 
     const[animals, setAnimals] = React.useState(null);
 
-    React.useEffect (() =>{
-        AuthService.listarAnimais().then((response) => {
-            setAnimals(response.data)
-        })
-    }, []);
-
     const handleAccess = (id) => {
         console.log(`Acessando detalhes do animal com ID: ${id}`);
     };
 
     return (
         <div className={styles.body}>
-            <Sidebar title='Fichamento de Animais'/>
+            <Sidebar title='Lista de Fichas de Animais'/>
             <div className={styles.containerTable}>
                 <div className={styles.header}>   
                     <div className={styles.searchContainer}>
@@ -27,8 +21,8 @@ function Fichamento() {
                         <button className={styles.searchButton}><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                     <div className={styles.filterContainer}>
-                        <button className={styles.filterButton}><i class='bx bx-filter-alt' ></i>Filtrar</button>
-                        <button className={styles.filterButton}><i class='bx bx-brush-alt'></i>Limpar</button>
+                        <button className={styles.filterButton}><i class='bx bx-filter-alt' ></i>Filtros</button>
+                        <button className={styles.filterButton}><i class='bx bx-brush-alt'></i>Limpar Filtros</button>
                     </div>
                 </div>
                     <div className={styles.titleContainer}>
@@ -37,7 +31,7 @@ function Fichamento() {
                 <table className={styles.animalTable}>
                     <thead>
                         <tr>
-                            <th>#ID</th>
+                            <th>Código</th>
                             <th>Nome</th>
                             <th>Sexo</th>
                             <th>Espécie</th>
