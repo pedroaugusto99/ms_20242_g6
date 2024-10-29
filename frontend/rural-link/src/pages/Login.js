@@ -95,7 +95,7 @@ function Login() {
 
                         <span className={styles.registerSpan}>
                             Não possui uma conta?
-                            <a href="#" className={styles.registerLink} onClick={handleRegister}>Registre-se</a>
+                            <a href="#" className={styles.registerLink} onClick={handleRegister}>Cadastre-se</a>
                         </span>          
                     </form>
                 </div>
