@@ -10,7 +10,7 @@ body.activeModal {
 .filterButton {
     display: flex;
     align-items: center;
-    background-color: #4CAF50;
+    background-color: #5CAF50;
     color: white;
     border: none;
     cursor: pointer;
@@ -47,7 +47,7 @@ body.activeModal {
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
-    background: #f1f1f1;
+    background: #EFE9DB;
     padding: 14px 28px;
     border-radius: 3px;
     max-width: 600px;
@@ -86,14 +86,14 @@ h2 {
     align-items: center;
     margin: 20px 0;
     padding: 7px 12px;
-    background-color: #d9d9d973;
+    background-color: white;
     border-radius: 100px;
     text-decoration: none;
     transition: all 0.4s ease;
   }
 
   .link {
-    color: #425A67;
+    color: white;
     font-weight: 700;
     font-size: 16px;
   }
