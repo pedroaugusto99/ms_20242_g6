@@ -1,7 +1,7 @@
 package com.rural_link.specifications;
 
-import com.rural_link.domain.animal.*;
-import com.rural_link.domain.fazenda.Fazenda;
+import com.rural_link.entities.animal.*;
+import com.rural_link.entities.fazenda.Fazenda;
 import lombok.Data;
 import org.springframework.data.jpa.domain.Specification;
 

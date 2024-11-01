@@ -18,6 +18,9 @@ public record CodeGenerator() {
             stringBuffer.append(0);
         }
         stringBuffer.append(horaDoDia);
+        if (diaDoMes < 10){
+            stringBuffer.append(0);
+        }
         stringBuffer.append(diaDoMes);
         return stringBuffer.toString();
     }
