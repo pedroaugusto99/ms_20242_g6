@@ -28,6 +28,28 @@ function RegistrarAnimal() {
         OVINOS: ["Santa Inês", "Morada Nova", "Suffolk", "Bergamácia", "Hampshire Down", "Outra"],
         SUINOS: ["Landrace", "Large White", "Duroc", "Piétrain", "Hampshire", "Outra"]
     };
+    
+    /*
+    
+    Função para converter o objeto das especies
+        
+    function objParaBack(obj) {
+        const converterObjBack = {};
+        Object.keys(obj).forEach(key => {
+            converterObjBack[key] = obj[key].map(value =>
+                value
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "") // Aqui tira os acentos
+                    .toUpperCase()
+                    .replace(/\s/g, "_") // Essa troca o espaço pelo "_"
+            );
+    });
+    return converterObjBack;
+    }
+    
+    const racasParaBackend = objParaBack(racasPorEspecie);
+    */
+
 
     const handleEspecieChange = (e) => {
         const selectedEspecie = e.target.value;
