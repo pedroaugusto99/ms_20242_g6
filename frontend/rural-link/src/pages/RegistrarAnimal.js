@@ -34,25 +34,6 @@ function RegistrarAnimal() {
         SUINO: ["Landrace", "Large White", "Duroc", "Piétrain", "Hampshire", "Outra"]
     };
 
-        
-    function objParaBack(obj) {
-        const converterObjBack = {};
-        Object.keys(obj).forEach(key => {
-            if (Array.isArray(obj[key])){
-                converterObjBack[key] = obj[key].map(value =>
-                    value
-                        .normalize("NFD")
-                        .replace(/[\u0300-\u036f]/g, "") // Aqui tira os acentos
-                        .toUpperCase()
-                        .replace(/\s/g, "_") // Essa troca o espaço pelo "_"
-                );
-            } else{
-                converterObjBack[key] = obj[key];
-            }
-    });
-    return converterObjBack;
-    }
-
     const handleEspecieChange = (e) => {
         const selectedEspecie = e.target.value;
         setEspecie(selectedEspecie);
@@ -162,13 +143,23 @@ function RegistrarAnimal() {
                                 <select
                                     required
                                     value={raca}
-                                    onChange={(e) => setRaca(e.target.value)}
+                                    onChange={(e) => {
+                                        const selectedRaca = e.target.value
+                                            .normalize("NFD")
+                                            .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+                                            .toUpperCase()
+                                            .replace(/\s/g, "_"); // Troca espaços por "_"
+                                        setRaca(selectedRaca);
+                                        console.log(selectedRaca);
+                                    }}
                                     className={styles.select}
                                     disabled={!especie}
                                 >
                                     <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
                                     {especie && racasPorEspecie[especie].map((racaOption) => (
-                                        <option key={racaOption} value={JSON.stringify(objParaBack(racaOption))}>{racaOption}</option>
+                                        <option key={racaOption} value={racaOption}>
+                                            {racaOption}
+                                        </option>
                                     ))}
                                 </select>
                             </label>
