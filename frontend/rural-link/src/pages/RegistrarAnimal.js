@@ -33,6 +33,14 @@ function RegistrarAnimal() {
         OVINO: ["Santa Inês", "Morada Nova", "Suffolk", "Bergamácia", "Hampshire Down", "Outra"],
         SUINO: ["Landrace", "Large White", "Duroc", "Piétrain", "Hampshire", "Outra"]
     };
+    
+    function formatarRaca(value) {
+        return value
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+            .toUpperCase()
+            .replace(/\s/g, "_"); // Troca espaços por "_"
+    }
 
     const handleEspecieChange = (e) => {
         const selectedEspecie = e.target.value;
@@ -140,28 +148,29 @@ function RegistrarAnimal() {
                                 Raça <span className={styles.required} title="Campo obrigatório">*</span>
                             </p>
                             <label className={styles.labelShortInput}>
-                                <select
-                                    required
-                                    value={raca}
-                                    onChange={(e) => {
-                                        const selectedRaca = e.target.value
-                                            .normalize("NFD")
-                                            .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-                                            .toUpperCase()
-                                            .replace(/\s/g, "_"); // Troca espaços por "_"
-                                        setRaca(selectedRaca);
-                                        console.log(selectedRaca);
-                                    }}
-                                    className={styles.select}
-                                    disabled={!especie}
-                                >
-                                    <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
-                                    {especie && racasPorEspecie[especie].map((racaOption) => (
-                                        <option key={racaOption} value={racaOption}>
+                            <select
+                                required
+                                value={raca}
+                                onChange={(e) => {
+                                    setRaca(e.target.value);
+                                    console.log(e.target.value);
+                                }}
+                                className={styles.select}
+                                disabled={!especie}
+                            >
+                                <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
+                                {especie && racasPorEspecie[especie].map((racaOption) => {
+                                    const formatRaca = formatarRaca(racaOption);
+                                    return (
+                                        <option key={racaOption} value={formatRaca}>
                                             {racaOption}
                                         </option>
-                                    ))}
-                                </select>
+                                    );
+                                })}
+                            </select>
+
+
+
                             </label>
                         </div>
                     </div>
