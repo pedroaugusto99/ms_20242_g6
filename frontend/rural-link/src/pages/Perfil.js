@@ -6,11 +6,27 @@ import AuthService from '../autenticacao/AuthService';
 
 function Perfil () {
 
-    const[nomeUsuario, setUsuario] = React.useState(null);
+    const[nomeUsuario, setNomeUsuario] = React.useState(null);
+    const[roleUsuario, setRoleUsuario] = React.useState(null);
+    const[emailUsuario, setEmailUsuario] = React.useState(null);
+    const[telefoneUsuario, setTelefoneUsuario] = React.useState(null);
+    const[enderecoFazenda, setEnderecoFazenda] = React.useState(null);
+    const[complementoFazenda, setComplementoFazenda] = React.useState(null);
+    const[cidadeFazenda, setCidadeFazenda] = React.useState(null);
+    const[cepFazenda, setCepFazenda] = React.useState(null);
+    const[estadoFazenda, setEstadoFazenda] = React.useState(null);
 
     React.useEffect (() =>{
         AuthService.pegarDadosDoUsuario().then((response) => {
-            setUsuario(response.data);
+            setNomeUsuario(response.data['nome']); 
+            setRoleUsuario(response.data['role']);
+            setEmailUsuario(response.data['email'])
+            setTelefoneUsuario(response.data['telefone'])
+            setEnderecoFazenda(response.data['endereco'])
+            setComplementoFazenda(response.data['complemento'])
+            setCidadeFazenda(response.data['cidade'])
+            setCepFazenda(response.data['cep'])
+            setEstadoFazenda(response.data['estado'])
         })
     }, []);
 
@@ -37,8 +53,8 @@ function Perfil () {
             <div className={styles.conteudo}>
                 <div className='profile'>
                 <Profile 
-                    name="Matheus"
-                    role="Proprietário"
+                    name={nomeUsuario}
+                    role={roleUsuario}
                     imgSrc="https://via.placeholder.com/150"
                     stylesImg={styles.imgPerfil}
                     stylesPerfilInfos={styles.perfilInfos}
@@ -49,18 +65,18 @@ function Perfil () {
                 <div className='inputsData'>
                     <div className='dataProfile'>
                         <h1> Meus Dados: </h1>
-                        <DataField label="Nome" value="" />
-                        <DataField label="Email" value="" />
-                        <DataField label="Telefone" value="" />
+                        <DataField label="Nome" value={nomeUsuario} />
+                        <DataField label="Email" value={emailUsuario} />
+                        <DataField label="Telefone" value={telefoneUsuario} />
 
                     </div>
                     <div className='dataFarm'>
                         <h1> Fazenda Cadastrada: </h1>
-                        <DataField label="Endereço" value=""/>
-                        <DataField label="Complemento" value=""/>
-                        <DataField label="Cidade" value="" />
-                        <DataField label="Cep" value="" />
-                        <DataField label="Estado" value="" />
+                        <DataField label="Endereço" value={enderecoFazenda}/>
+                        <DataField label="Complemento" value={complementoFazenda}/>
+                        <DataField label="Cidade" value={cidadeFazenda} />
+                        <DataField label="Cep" value={cepFazenda} />
+                        <DataField label="Estado" value={estadoFazenda} />
                     </div>
                 </div>
             </div>
