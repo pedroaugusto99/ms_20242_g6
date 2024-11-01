@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
-import DashboardComponent from './pages/DashboardComponent';
 import RegistrarFazenda from './pages/RegistroFazenda'
 import RegistrarProprietario from './pages/RegistroProprietario'
 import RegistrarTrabalhador from './pages/RegistroTrabalhador'
@@ -25,12 +24,11 @@ export function App(){
                     <Route path="/login" element={<Login />} />
                     <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
                     <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
-                    <Route element={<ProtectedRouteProprietario/>}>
-                        <Route path="/dashboardcomponent" element={<DashboardComponent />} />
-                    </Route>
                     <Route path="/user-selection" element={<UserSelection />} />
                     <Route path="/perfil" element={<Perfil />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route element={<ProtectedRouteProprietario/>}>
+                        <Route path="/dashboard" element={<Dashboard />} />
+                    </Route>
                     <Route path="/faq" element={<Faq/>} />
                     <Route path="/fichamento" element={<Fichamento/>} />
                     <Route path="/registraranimal" element={<RegistrarAnimal />} />
