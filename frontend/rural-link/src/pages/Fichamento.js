@@ -7,6 +7,12 @@ function Fichamento() {
 
     const[animals, setAnimals] = React.useState(null);
 
+    React.useEffect (() =>{
+        AuthService.listarAnimais().then((response) => {
+            setAnimals(response.data)
+        })
+    }, []);
+
     const handleAccess = (id) => {
         console.log(`Acessando detalhes do animal com ID: ${id}`);
     };

@@ -52,6 +52,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/autenticacao/registrar/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/fazenda/criar").hasRole("PROPRIETARIO")
                         .requestMatchers(HttpMethod.GET, "/fazenda/gerar-codigo").hasRole("PROPRIETARIO")
+                        .requestMatchers(HttpMethod.GET, "/fazenda/listar-trabalhadores").hasRole("PROPRIETARIO")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
