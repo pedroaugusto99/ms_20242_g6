@@ -6,7 +6,7 @@ import AuthService from '../autenticacao/AuthService';
 
 function Perfil () {
 
-    const[usuario, setUsuario] = React.useState(null);
+    const[nomeUsuario, setUsuario] = React.useState(null);
 
     React.useEffect (() =>{
         AuthService.pegarDadosDoUsuario().then((response) => {
@@ -18,8 +18,8 @@ function Perfil () {
     const Profile = ({ name, role, imgSrc, stylesImg, stylesPerfilInfos, stylesNamePerfil, stylesDescPerfil }) => (
         <div id={stylesPerfilInfos} className="perfilInfos">
             <img src={imgSrc} alt="profile" className={stylesImg} />
-            <h3 className="namePerfil" id={stylesNamePerfil}>{usuario.nome}</h3>
-            <p className="descPerfil" id={stylesDescPerfil}>{usuario.role}</p>
+            <h3 className="namePerfil" id={stylesNamePerfil}>{name}</h3>
+            <p className="descPerfil" id={stylesDescPerfil}>{role}</p>
         </div>
     );
 
@@ -37,6 +37,8 @@ function Perfil () {
             <div className={styles.conteudo}>
                 <div className='profile'>
                 <Profile 
+                    name="Matheus"
+                    role="Proprietário"
                     imgSrc="https://via.placeholder.com/150"
                     stylesImg={styles.imgPerfil}
                     stylesPerfilInfos={styles.perfilInfos}
@@ -47,18 +49,18 @@ function Perfil () {
                 <div className='inputsData'>
                     <div className='dataProfile'>
                         <h1> Meus Dados: </h1>
-                        <DataField label="Nome" value={usuario.nome} />
-                        <DataField label="Email" value={usuario.email} />
-                        <DataField label="Telefone" value={usuario.telefone} />
+                        <DataField label="Nome" value="" />
+                        <DataField label="Email" value="" />
+                        <DataField label="Telefone" value="" />
 
                     </div>
                     <div className='dataFarm'>
                         <h1> Fazenda Cadastrada: </h1>
-                        <DataField label="Endereço" value={usuario.endereco} />
-                        <DataField label="Complemento" value={usuario.complemento} />
-                        <DataField label="Cidade" value={usuario.cidade} />
-                        <DataField label="Cep" value={usuario.cep} />
-                        <DataField label="Estado" value={usuario.estado} />
+                        <DataField label="Endereço" value=""/>
+                        <DataField label="Complemento" value=""/>
+                        <DataField label="Cidade" value="" />
+                        <DataField label="Cep" value="" />
+                        <DataField label="Estado" value="" />
                     </div>
                 </div>
             </div>
