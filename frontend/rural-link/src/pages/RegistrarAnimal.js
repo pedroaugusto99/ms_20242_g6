@@ -41,6 +41,27 @@ function RegistrarAnimal() {
         SUINO: ["LANDRACE", "LARGE_WHITE", "DUROC", "PIETRAIN", "HAMPSHIRE", "OUTRA"]
     };
 
+    /*
+    
+    Função para converter o objeto das especies
+        
+    function objParaBack(obj) {
+        const converterObjBack = {};
+        Object.keys(obj).forEach(key => {
+            converterObjBack[key] = obj[key].map(value =>
+                value
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "") // Aqui tira os acentos
+                    .toUpperCase()
+                    .replace(/\s/g, "_") // Essa troca o espaço pelo "_"
+            );
+    });
+    return converterObjBack;
+    }
+    
+    const racasParaBackend = objParaBack(racasPorEspecie);
+    */
+
     const handleEspecieChange = (e) => {
         const selectedEspecie = e.target.value;
         setEspecie(selectedEspecie);
