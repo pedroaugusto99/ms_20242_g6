@@ -14,6 +14,13 @@ function RegistrarAnimal() {
     const [sexo, setSexo] = useState('');
     const [iconeAnimal, setIconeAnimal] = useState('');
     const [dataNascimento, setDataNascimento] = useState(null);
+    const [codigoAnimal, setCodigoAnimal] = useState('');
+    const [nomeAnimal, setNomeAnimal] = useState('');
+    const [dataAquisicao, setDataAquisicao] = useState('');
+    const [status, setStatus] = useState('');
+    const [lote, setLote] = useState('');
+    const [paiCodigo, setPaiCodigo] = useState('');
+    const [maeCodigo, setMaeCodigo] = useState('');
 
     const racasPorEspecie = {
         BOVINOS: ["Angus", "Nelore", "Brahman", "Brangus", "Senepol", "Hereford", "Outra"],
@@ -50,7 +57,7 @@ function RegistrarAnimal() {
             <Sidebar title='Cadastro de Animais'/>
             <div className={styles.containerTable}>
                 <div className={styles.iconContainer}>
-                    <img src={iconeAnimal} className={styles.icon}/>
+                    <img src={iconeAnimal} className={styles.icon} />
                 </div>
                 <div className={styles.header1}> 
                     <p>Dados Essenciais</p>
@@ -67,6 +74,8 @@ function RegistrarAnimal() {
                                 placeholder="Digite o Código do Animal:"
                                 required
                                 name="codigoAnimal"
+                                value={codigoAnimal}
+                                onChange={(e) => setCodigoAnimal(e.target.value)}
                             />
                         </label>
                     </div>
@@ -81,6 +90,8 @@ function RegistrarAnimal() {
                                 placeholder="Digite o Nome do Animal:"
                                 required
                                 name="NomeAnimal"
+                                value={nomeAnimal}
+                                onChange={(e) => setNomeAnimal(e.target.value)}
                             />
                         </label>
                     </div>
@@ -93,7 +104,7 @@ function RegistrarAnimal() {
                             <select
                                 required
                                 value={especie}
-                                onChange={handleEspecieChange}
+                                onChange={(e) => handleEspecieChange(e)}
                                 className={styles.select}
                             >
                                 <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
@@ -154,6 +165,8 @@ function RegistrarAnimal() {
                                 type="date" 
                                 name="dataNascimento" 
                                 className={styles.dateInput} 
+                                value={dataNascimento}
+                                onChange={(e) => setDataNascimento(e.target.value)}
                             />
                         </label>
                     </div>
@@ -180,6 +193,8 @@ function RegistrarAnimal() {
                                 type="date" 
                                 name="dataAquisição" 
                                 className={styles.dateInput} 
+                                value={dataAquisicao}
+                                onChange={(e) => setDataAquisicao(e.target.value)}
                             />
                         </label>
                     </div>
@@ -198,6 +213,8 @@ function RegistrarAnimal() {
                             <select
                                 className={styles.select}
                                 name="status"
+                                value={status}
+                                onChange={(e) => setStatus(e.target.value)}
                             >
                                 <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
                                 <option value="Ativo">Ativo</option>
@@ -217,6 +234,8 @@ function RegistrarAnimal() {
                                 type="text"
                                 placeholder="Digite o Lote:"
                                 name="lote"
+                                value={lote}
+                                onChange={(e) => setLote(e.target.value)}
                             />
                         </label>
                     </div>
@@ -230,6 +249,8 @@ function RegistrarAnimal() {
                                 type="text"
                                 placeholder="Digite o Código do Pai:"
                                 name="paiCodigo"
+                                value={paiCodigo}
+                                onChange={(e) => setPaiCodigo(e.target.value)}
                             />
                         </label>
                     </div>
@@ -243,6 +264,8 @@ function RegistrarAnimal() {
                                 type="text"
                                 placeholder="Digite o Código da Mãe:"
                                 name="maeCodigo"
+                                value={maeCodigo}
+                                onChange={(e) => setMaeCodigo(e.target.value)}
                             />
                         </label>
                     </div>
