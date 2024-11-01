@@ -30,7 +30,7 @@ public class FazendaService {
     private final ProprietarioRepository proprietarioRepository;
     private final TrabalhadorRuralRepository trabalhadorRuralRepository;
 
-    public Fazenda encontrarFazendaDoAnimal(Pessoa pessoa){
+    public Fazenda encontrarFazenda(Pessoa pessoa){
         if (pessoa.getRole() == UserRole.PROPRIETARIO){
             Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(() -> new RuntimeException("Proprietário não foi encontrado"));
             return proprietario.getFazenda();
@@ -64,7 +64,7 @@ public class FazendaService {
     }
 
     public List<FazendaTrabalhadoresResponseDTO> listarTrabalhadoresDaFazenda(Pessoa pessoa){
-        Fazenda fazenda = encontrarFazendaDoAnimal(pessoa);
+        Fazenda fazenda = encontrarFazenda(pessoa);
         List<TrabalhadorRural> trabalhadores = trabalhadorRuralRepository.findByFazenda(fazenda);
         return TrabalhadorRuralMapper.INSTANCE.toListOfFazendaTrabalhadorResponseDTO(trabalhadores);
     }
