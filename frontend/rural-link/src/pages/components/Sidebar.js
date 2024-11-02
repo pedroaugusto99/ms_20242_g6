@@ -2,14 +2,24 @@
 import React, { useState } from 'react';
 import '../css/Sidebar.css';
 import logo from '../images/logo-simples-png-pq.png';
+import AuthService from '../../autenticacao/AuthService';
 
 // Componente Sidebar principal
 const Sidebar = ({ title = "Titulo" }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [nomeUsuario, setNomeUsuario] = React.useState('');
+  const [roleUsuario, setRoleUsuario] = React.useState('');
 
   const toggleSidebar = () => setIsOpen(prev => !prev);
   const closeSidebar = () => setIsOpen(false);
 
+
+  React.useEffect (() =>{
+    AuthService.pegarDadosDoUsuario().then((response) => {
+        setNomeUsuario(response.data['nome']); 
+        setRoleUsuario(response.data['role']);
+    })
+}, []); 
 // Componente Logo
 const Logo = () => (
   <div className="logo">
@@ -55,8 +65,8 @@ const NavItem = ({ icon, label }) => (
           <div className="sidebar-content">
           <i className="bx bx-menu menu-icon2" onClick={closeSidebar}></i>
             <Profile 
-              name="Marcos Antunes" 
-              role="Fazendeiro" 
+              name={nomeUsuario}
+              role={roleUsuario}
               imgSrc="https://via.placeholder.com/150" 
             />
 

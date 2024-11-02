@@ -33,13 +33,12 @@ function RegistrarAnimal() {
         OVINO: ["Santa Inês", "Morada Nova", "Suffolk", "Bergamácia", "Hampshire Down", "Outra"],
         SUINO: ["Landrace", "Large White", "Duroc", "Piétrain", "Hampshire", "Outra"]
     };
-    
-    function formatarRaca(value) {
-        return value
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-            .toUpperCase()
-            .replace(/\s/g, "_"); // Troca espaços por "_"
+
+    const racasParaEnum = {
+        BOVINO: ["ANGUS", "NELORE", "BRAHMAN", "BRANGUS", "SENEPOL", "HEREFORD", "OUTRA"],
+        CAPRINO: ["SAANEN", "TOGGENBURG", "MURCIANA", "PARDA_ALPINA", "BOER", "SAVANNA", "CANINDE", "MOXOTO", "REPARTIDA", "OUTRA"],
+        OVINO: ["SANTA_INES", "MORADA_NOVA", "SUFFOLK", "BERGAMACIA", "HAMPSHIRE_DOWN", "OUTRA"],
+        SUINO: ["LANDRACE", "LARGE_WHITE", "DUROC", "PIETRAIN", "HAMPSHIRE", "OUTRA"]
     }
 
     const handleEspecieChange = (e) => {
@@ -153,17 +152,16 @@ function RegistrarAnimal() {
                                 value={raca}
                                 onChange={(e) => {
                                     setRaca(e.target.value);
-                                    console.log(e.target.value);
                                 }}
                                 className={styles.select}
                                 disabled={!especie}
                             >
                                 <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
-                                {especie && racasPorEspecie[especie].map((racaOption) => {
-                                    const formatRaca = formatarRaca(racaOption);
+                                {especie && racasParaEnum[especie].map((racasEnum) => {
+                                    const valorUsuario = racasPorEspecie[especie][racasParaEnum[especie].indexOf(racasEnum)];
                                     return (
-                                        <option key={racaOption} value={formatRaca}>
-                                            {racaOption}
+                                        <option value={racasEnum}>
+                                            {valorUsuario}
                                         </option>
                                     );
                                 })}
