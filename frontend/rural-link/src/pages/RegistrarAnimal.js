@@ -39,28 +39,7 @@ function RegistrarAnimal() {
         CAPRINO: ["SAANEN", "TOGGENBURG", "MURCIANA", "PARDA_ALPINA", "BOER", "SAVANNA", "CANINDE", "MOXOTO", "REPARTIDA", "OUTRA"],
         OVINO: ["SANTA_INES", "MORADA_NOVA", "SUFFOLK", "BERGAMACIA", "HAMPSHIRE_DOWN", "OUTRA"],
         SUINO: ["LANDRACE", "LARGE_WHITE", "DUROC", "PIETRAIN", "HAMPSHIRE", "OUTRA"]
-    };
-
-    /*
-    
-    Função para converter o objeto das especies
-        
-    function objParaBack(obj) {
-        const converterObjBack = {};
-        Object.keys(obj).forEach(key => {
-            converterObjBack[key] = obj[key].map(value =>
-                value
-                    .normalize("NFD")
-                    .replace(/[\u0300-\u036f]/g, "") // Aqui tira os acentos
-                    .toUpperCase()
-                    .replace(/\s/g, "_") // Essa troca o espaço pelo "_"
-            );
-    });
-    return converterObjBack;
     }
-    
-    const racasParaBackend = objParaBack(racasPorEspecie);
-    */
 
     const handleEspecieChange = (e) => {
         const selectedEspecie = e.target.value;
@@ -168,18 +147,28 @@ function RegistrarAnimal() {
                                 Raça <span className={styles.required} title="Campo obrigatório">*</span>
                             </p>
                             <label className={styles.labelShortInput}>
-                                <select
-                                    required
-                                    value={raca}
-                                    onChange={(e) => setRaca(e.target.value)}
-                                    className={styles.select}
-                                    disabled={!especie}
-                                >
-                                    <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
-                                    {especie && racasPorEspecie[especie].map((racaOption) => (
-                                        <option key={racaOption} value={racaOption}>{racaOption}</option>
-                                    ))}
-                                </select>
+                            <select
+                                required
+                                value={raca}
+                                onChange={(e) => {
+                                    setRaca(e.target.value);
+                                }}
+                                className={styles.select}
+                                disabled={!especie}
+                            >
+                                <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
+                                {especie && racasParaEnum[especie].map((racasEnum) => {
+                                    const valorUsuario = racasPorEspecie[especie][racasParaEnum[especie].indexOf(racasEnum)];
+                                    return (
+                                        <option value={racasEnum}>
+                                            {valorUsuario}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+
+
+
                             </label>
                         </div>
                     </div>

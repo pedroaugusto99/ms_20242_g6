@@ -33,6 +33,10 @@ class AuthService{
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/perfil/pegar-dados`);
     }
+    listarTrabalhadores(){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/fazenda/listar-trabalhadores`);
+    }
 }
 
 export default new AuthService();

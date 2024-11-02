@@ -15,8 +15,9 @@ public record AnimalRequestDTO(
         String codigo,
         @Schema(description = "Espécie do animal", example = "BOVINO", allowableValues = {"BOVINO", "CAPRINO", "EQUINO", "OVINO", "SUINO"}, requiredMode = Schema.RequiredMode.REQUIRED)
         Especie especie,
-        @Schema(description = "Raça do animal", example = "NELORE", allowableValues = {"ANGUS", "NELORE", "BRAHMAN", "BRANGUS", "SENEPOL", "HEREFORD", "SAANEN", "TOGGENBURG", "MURCIANA", "PARDA", "ALPINA",
-                "BOER", "SANTA_INES", "MORADA_NOVA", "LANDRACE", "LARGE_WHITE"}, requiredMode = Schema.RequiredMode.REQUIRED)
+        @Schema(description = "Raça do animal", example = "NELORE", allowableValues = {"ANGUS", "NELORE", "BRAHMAN", "BRANGUS", "SENEPOL", "HEREFORD", "OUTRA", "SAANEN", "TOGGENBURG", "MURCIANA",
+                "PARDA_ALPINA", "BOER", "SAVANNA", "CANINDE", "MOXOTO", "REPARTIDA", "SANTA_INES", "MORADA_NOVA", "SUFFOLK", "BERGAMACIA", "HAMPSHIRE_DOWN", "LANDRACE", "LARGE_WHITE", "DUROC",
+                "PIETRAIN", "HAMPSHIRE"}, requiredMode = Schema.RequiredMode.REQUIRED)
         Raca raca,
         @Schema(description = "Sexo do animal", example = "FEMEA", allowableValues = {"FEMEA", "MACHO"}, requiredMode = Schema.RequiredMode.REQUIRED)
         Sexo sexo,
@@ -30,7 +31,7 @@ public record AnimalRequestDTO(
         String codigoDaMae,
         @Schema(description = "Código do pai do animal", example = "23", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
         String codigoDoPai,
-        @Schema(description = "Status do animal", example = "ATIVO", allowableValues = {"ATIVO", "VENDIDO", "ABATIDO", "DESAPARECIDO"}, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+        @Schema(description = "Status do animal", example = "ATIVO", allowableValues = {"ATIVO", "VENDIDO", "FALECEU", "DESAPARECIDO"}, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
         Status status,
         @Schema(description = "Lote em que o animal está", example = "Lt 23", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
         String lote) {

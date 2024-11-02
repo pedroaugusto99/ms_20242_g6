@@ -12,6 +12,7 @@ import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.mappers.AnimalMapper;
 import com.rural_link.repositories.*;
 import com.rural_link.specifications.AnimalQueryFilter;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -66,7 +67,7 @@ public class AnimalService {
     }
 
     //Services para Controllers
-
+    @Transactional
     public void salvar(AnimalRequestDTO animalRequestDTO, Pessoa pessoa){
         Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
