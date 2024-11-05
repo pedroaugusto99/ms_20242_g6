@@ -10,6 +10,7 @@ import Dashboard from '../src/pages/Dashboard';
 import Faq from '../src/pages/Faq';
 import Fichamento from '../src/pages/Fichamento';
 import RegistrarAnimal from '../src/pages/RegistrarAnimal'
+import FichaAnimal from '../src/pages/FichaAnimal'
 
 export function App(){
     
@@ -32,6 +33,7 @@ export function App(){
                     <Route path="/faq" element={<Faq/>} />
                     <Route path="/fichamento" element={<Fichamento/>} />
                     <Route path="/registraranimal" element={<RegistrarAnimal />} />
+                    <Route path="/fichaanimal" element={<FichaAnimal/>} />
                 </Routes>
             </div>
         </Router>
