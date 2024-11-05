@@ -12,17 +12,6 @@ import Donut from './components/Donut';
 import AuthService from '../autenticacao/AuthService';
 
 const Dashboard = () => {
-    const referenceValue = 600;
-    const currentValue = 500;
-    const maleCurrentValue = 350;
-    const maleReferenceValue = 500;
-    const femaleCurrentValue = 150;
-    const femaleReferenceValue = 500;
-
-    const totalColor = '#2ecc71'; // Verde
-    const maleColor = '#3498db'; // Azul
-    const femaleColor = '#e74c3c'; // Vermelho
-
 
     const [orders, setOrders] = useState([]);
     const [reminders, setReminders] = useState([]);
@@ -31,7 +20,21 @@ const Dashboard = () => {
     const [nomeUsuario, setNomeUsuario] = React.useState('');
     const [roleUsuario, setRoleUsuario] = React.useState('');
     const [trabalhadores, setTrabalhadores] = React.useState('');
-  
+    const [numeroDeAnimais, setNumeroDeAnimais] = React.useState('');
+    const [numeroDeAnimaisFemeas, setNumeroDeAnimaisFemeas] = React.useState(null);
+    const [numeroDeAnimaisMachos, setNumeroDeAnimaisMachos] = React.useState(null);
+
+    const referenceValue = 600; //Ver oq fazer aqui, pq o valor não está no cadastro
+    const currentValue = numeroDeAnimais;
+    const maleCurrentValue = numeroDeAnimaisMachos;
+    const maleReferenceValue = numeroDeAnimais;
+    const femaleCurrentValue = numeroDeAnimaisFemeas;
+    const femaleReferenceValue = numeroDeAnimais;
+
+    const totalColor = '#2ecc71'; // Verde
+    const maleColor = '#3498db'; // Azul
+    const femaleColor = '#e74c3c'; // Vermelho
+
     React.useEffect (() =>{
         AuthService.pegarDadosDoUsuario().then((response) => {
             setNomeUsuario(response.data['nome']); 
@@ -42,6 +45,14 @@ const Dashboard = () => {
     React.useEffect (() => {
         AuthService.listarTrabalhadores().then((response) => {
             setTrabalhadores(response.data);
+        })
+    }, []);
+
+    React.useEffect(() => {
+        AuthService.pegarDadosParaGraficos().then(response => {
+            setNumeroDeAnimais(response.data['animaisCadastrados']);
+            setNumeroDeAnimaisFemeas(response.data['animaisFemea']);
+            setNumeroDeAnimaisMachos(response.data['animaisMacho']);
         })
     }, []);
 
