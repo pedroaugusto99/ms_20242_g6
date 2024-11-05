@@ -21,7 +21,7 @@ const Dashboard = () => {
     const [numeroDeAnimaisFemeas, setNumeroDeAnimaisFemeas] = React.useState(null);
     const [numeroDeAnimaisMachos, setNumeroDeAnimaisMachos] = React.useState(null);
 
-    const referenceValue = numeroDeAnimais; //Ver oq fazer aqui, pq o valor não está no cadastro
+    const referenceValue = numeroDeAnimais; 
     const currentValue = numeroDeAnimais;
     const maleCurrentValue = numeroDeAnimaisMachos;
     const maleReferenceValue = numeroDeAnimais;

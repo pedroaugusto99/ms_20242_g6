@@ -4,6 +4,9 @@ import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
 import ManejoTable from './components/ManejoTable';
 import styles from './css/FichaAnimal.module.css';
+import AuthService from '../autenticacao/AuthService';
+import React from 'react';
+import { setsEqual } from 'chart.js/helpers';
 
 function FichaAnimal() {
     const pesagemData = [
@@ -15,6 +18,47 @@ function FichaAnimal() {
     const criasData = [
         { codigo: '1234', nascimento: '2023-05-01', pai: '5678', idade: '1 ano' },
     ];
+
+    const [nomeAnimal, setNomeAnimal] = React.useState(''); 
+    const [codigoAnimal, setCodigoAnimal] = React.useState('');
+    const [especieAnimal, setEspecieAnimal] = React.useState('');
+    const [racaAnimal, setRacaAnimal] = React.useState('');
+    const [sexoAnima, setSexoAnimal] = React.useState('');
+    const [dataDeNascimentoAnimal, setDataDeNascimentoAnimal] = React.useState('');
+    const [idadeAnimal, setIdadeAnimal] = React.useState('');
+    const [dataDeAquisicaoAnimal, setDataDeAquisicaoAnimal] = React.useState('');
+    const [statusAnimal, setStatusAnimal] = React.useState('');
+    const [loteAnimal, setLoteAnimal] = React.useState('');
+    const [codigoDoPaiDoAnimal, setCodigoDoPaiDoAnimal] = React.useState('');
+    const [codigoDaMaeDoAnimal, setCodigoDaMaeDoAnimal] = React.useState('');
+    const [pesoAtualDoAnimal, setPesoAtualDoAnimal] = React.useState(null);
+    const [numeroDeCriasDoAnimal, setNumeroDeCriasDoAnimal] = React.useState(null);
+    const [qrCodeAnimal, setQrCodeAnimal] = React.useState('');
+
+    React.useEffect (() =>{
+        AuthService.pegarDadosDoAnimal(1).then((response) => {
+            setNomeAnimal(response.data['nome'])
+            setCodigoAnimal(response.data['codigo'])
+            setEspecieAnimal(response.data['especie'])
+            setRacaAnimal(response.data['raca'])
+            setSexoAnimal(response.data['sexo'])
+            setDataDeNascimentoAnimal(response.data['dataDeNascimento'])
+            setIdadeAnimal(response.data['idade'])
+            setDataDeAquisicaoAnimal(response.data['dataDeAquisicao'])
+            setStatusAnimal(response.data['status'])
+            setLoteAnimal(response.data['lote'])
+            setCodigoDoPaiDoAnimal(response.data['codigoDoPai'])
+            setCodigoDaMaeDoAnimal(response.data['codigoDaMae'])
+            setPesoAtualDoAnimal(response.data['pesoAtual'])
+            setNumeroDeCriasDoAnimal(response.data['numeroDeCrias'])
+        })
+    }, []); 
+
+    React.useEffect (() =>{
+        AuthService.pegarQrCode(1).then((response) => {
+            setQrCodeAnimal(response.data['qrCode'])
+        })
+    }, []); 
 
     return (
         <div className={styles.body}>
