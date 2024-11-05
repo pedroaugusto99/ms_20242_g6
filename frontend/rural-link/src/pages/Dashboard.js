@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './css/Dashboard.module.css';
 
-import profile2 from './images/dashboard/profile-2.jpg';
-import profile3 from './images/dashboard/profile-3.jpg';
 import profile4 from './images/dashboard/profile-4.jpg';
-import plus from './images/dashboard/plus.png';
 
 import Sidebar from './components/Sidebar';
 import Grafico from './components/Grafico';
@@ -24,7 +21,7 @@ const Dashboard = () => {
     const [numeroDeAnimaisFemeas, setNumeroDeAnimaisFemeas] = React.useState(null);
     const [numeroDeAnimaisMachos, setNumeroDeAnimaisMachos] = React.useState(null);
 
-    const referenceValue = 600; //Ver oq fazer aqui, pq o valor não está no cadastro
+    const referenceValue = numeroDeAnimais; //Ver oq fazer aqui, pq o valor não está no cadastro
     const currentValue = numeroDeAnimais;
     const maleCurrentValue = numeroDeAnimaisMachos;
     const maleReferenceValue = numeroDeAnimais;

@@ -257,7 +257,7 @@ function RegistrarAnimal() {
                                     <option value="" className={styles.selectHidden} disabled hidden>Selecione:</option>
                                     <option value="ATIVO">Ativo</option>
                                     <option value="VENDIDO">Vendido</option>
-                                    <option value="FALECEU">Faleceu</option>
+                                    <option value="ABATIDO">Abatido</option>
                                     <option value="DESAPARECIDO">Desaparecido</option>
                                 </select>
                             </label>
