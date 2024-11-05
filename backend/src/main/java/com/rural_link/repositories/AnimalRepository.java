@@ -1,10 +1,8 @@
 package com.rural_link.repositories;
 
-import com.rural_link.domain.animal.Animal;
-import com.rural_link.domain.fazenda.Fazenda;
-import com.rural_link.dto.animal.AnimalResponseDTO;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.rural_link.entities.animal.Animal;
+import com.rural_link.entities.animal.Sexo;
+import com.rural_link.entities.fazenda.Fazenda;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -21,5 +19,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Long>, JpaSpecif
     List<Animal> findByCodigoDoPai(String codigoDoPai);
     List<Animal> findByCodigoDaMae(String codigoDaMae);
     boolean existsByIdAndFazenda(Long id, Fazenda fazenda);
+    long countByFazenda(Fazenda fazenda);
+    long countByFazendaAndSexo(Fazenda fazenda, Sexo sexo);
 }
 

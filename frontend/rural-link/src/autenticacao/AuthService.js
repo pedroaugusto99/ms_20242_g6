@@ -25,6 +25,22 @@ class AuthService{
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/listar-todos`)
     }
+    registrarAnimal(credentials){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.post(`${API_BASE_URL}/animal/cadastrar`, credentials);
+    }
+    pegarDadosDoUsuario(){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/perfil/pegar-dados`);
+    }
+    listarTrabalhadores(){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/fazenda/listar-trabalhadores`);
+    }
+    pegarDadosParaGraficos(){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/graficos/dados-dashboard`);
+    }
 }
 
 export default new AuthService();
