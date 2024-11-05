@@ -31,7 +31,7 @@ public record AnimalRequestDTO(
         String codigoDaMae,
         @Schema(description = "Código do pai do animal", example = "23", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
         String codigoDoPai,
-        @Schema(description = "Status do animal", example = "ATIVO", allowableValues = {"ATIVO", "VENDIDO", "FALECEU", "DESAPARECIDO"}, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+        @Schema(description = "Status do animal", example = "ATIVO", allowableValues = {"ATIVO", "VENDIDO", "ABATIDO", "DESAPARECIDO"}, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
         Status status,
         @Schema(description = "Lote em que o animal está", example = "Lt 23", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
         String lote) {
