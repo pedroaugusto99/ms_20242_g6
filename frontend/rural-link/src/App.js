@@ -10,6 +10,7 @@ import Perfil from '../src/pages/Perfil';
 import Dashboard from '../src/pages/Dashboard';
 import Faq from '../src/pages/Faq';
 import Fichamento from '../src/pages/Fichamento';
+import FichaAnimal from '../src/pages/FichaAnimal';
 
 export function App(){
     const animals = [
@@ -48,6 +49,7 @@ export function App(){
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/faq" element={<Faq/>} />
                     <Route path="/fichamento" element={<Fichamento animals={animals} />} />
+                    <Route path="/fichaanimal" element={<FichaAnimal/>} />
                 </Routes>
             </div>
         </Router>
