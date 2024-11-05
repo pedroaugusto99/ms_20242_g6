@@ -1,6 +1,6 @@
 package com.rural_link.repositories;
 
-import com.rural_link.domain.fazenda.Fazenda;
+import com.rural_link.entities.fazenda.Fazenda;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

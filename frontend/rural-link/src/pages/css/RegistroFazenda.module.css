@@ -73,6 +73,10 @@
 
 }
 
+.qrcode{
+    margin-left: 500px;
+}
+
 .required {
     color: red;
     margin-left: 5px; 

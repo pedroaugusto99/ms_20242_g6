@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './css/Fichamento.module.css';
 import Sidebar from './components/Sidebar';
+import AuthService from '../autenticacao/AuthService';
 
-function Fichamento({ animals }) {
+function Fichamento() {
+
+    const[animals, setAnimals] = React.useState(null);
+
+    React.useEffect (() =>{
+        AuthService.listarAnimais().then((response) => {
+            setAnimals(response.data)
+        })
+    }, []);
+
     const handleAccess = (id) => {
         console.log(`Acessando detalhes do animal com ID: ${id}`);
     };
 
     return (
         <div className={styles.body}>
-            <Sidebar title='Fichamento de Animais'/>
+            <Sidebar title='Lista de Fichas de Animais'/>
             <div className={styles.containerTable}>
                 <div className={styles.header}>   
                     <div className={styles.searchContainer}>
@@ -17,8 +27,8 @@ function Fichamento({ animals }) {
                         <button className={styles.searchButton}><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                     <div className={styles.filterContainer}>
-                        <button className={styles.filterButton}><i class='bx bx-filter-alt' ></i>Filtrar</button>
-                        <button className={styles.filterButton}><i class='bx bx-brush-alt'></i>Limpar</button>
+                        <button className={styles.filterButton}><i class='bx bx-filter-alt' ></i>Filtros</button>
+                        <button className={styles.filterButton}><i class='bx bx-brush-alt'></i>Limpar Filtros</button>
                     </div>
                 </div>
                     <div className={styles.titleContainer}>
@@ -27,7 +37,7 @@ function Fichamento({ animals }) {
                 <table className={styles.animalTable}>
                     <thead>
                         <tr>
-                            <th>#ID</th>
+                            <th>Código</th>
                             <th>Nome</th>
                             <th>Sexo</th>
                             <th>Espécie</th>
@@ -41,7 +51,7 @@ function Fichamento({ animals }) {
                         {Array.isArray(animals) && animals.length > 0 ? (
                             animals.map((animal) => (
                                 <tr key={animal.id}>
-                                    <td>{animal.id}</td>
+                                    <td>{animal.codigo}</td>
                                     <td>{animal.nome}</td>
                                     <td>{animal.sexo}</td>
                                     <td>{animal.especie}</td>
@@ -49,7 +59,7 @@ function Fichamento({ animals }) {
                                     <td>{animal.idade}</td>
                                     <td>{animal.lote}</td>
                                     <td>
-                                        <button onClick={() => handleAccess(animal.id)}>Acessar</button>
+                                        <button onClick={() => handleAccess(animal.animalId)}>Acessar</button>
                                     </td>
                                 </tr>
                             ))

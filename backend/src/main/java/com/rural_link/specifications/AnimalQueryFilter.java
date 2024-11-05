@@ -1,9 +1,7 @@
 package com.rural_link.specifications;
 
-import com.rural_link.domain.animal.Animal;
-import com.rural_link.domain.animal.Origem;
-import com.rural_link.domain.animal.Sexo;
-import com.rural_link.domain.fazenda.Fazenda;
+import com.rural_link.entities.animal.*;
+import com.rural_link.entities.fazenda.Fazenda;
 import lombok.Data;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -15,19 +13,26 @@ import static com.rural_link.specifications.AnimalSpecifications.*;
 @Data
 public class AnimalQueryFilter {
 
-    private String raca;
+    private Raca raca;
     private BigDecimal pesoGte;
     private BigDecimal pesoLte;
+    private Integer idadeGte;
+    private Integer idadeLte;
     private LocalDate dataDeNascimento;
     private Sexo sexo;
-    private Origem origem;
+    private Status status;
+    private String lote;
+    private Especie especie;
 
     public Specification<Animal> toSpecification(Fazenda fazenda){
         return racaEquals(raca, fazenda)
                 .and(pesoGreaterThanOrEqualTo(pesoGte, fazenda))
                 .and(pesoLessThanOrEqualTo(pesoLte, fazenda))
-                .and(dataDeNascimentoEquals(dataDeNascimento, fazenda))
                 .and(sexoEquals(sexo, fazenda))
-                .and(origemEquals(origem, fazenda));
+                .and(loteEquals(lote, fazenda))
+                .and(especieEquals(especie, fazenda))
+                .and(statusEquals(status, fazenda))
+                .and(idadeLessThanOrEqualTo(idadeLte, fazenda))
+                .and(idadeGreaterThanOrEqualTo(idadeGte, fazenda));
     }
 }

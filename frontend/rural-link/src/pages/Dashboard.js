@@ -9,23 +9,52 @@ import plus from './images/dashboard/plus.png';
 import Sidebar from './components/Sidebar';
 import Grafico from './components/Grafico';
 import Donut from './components/Donut';
+import AuthService from '../autenticacao/AuthService';
 
 const Dashboard = () => {
-    const referenceValue = 600;
-    const currentValue = 500;
-    const maleCurrentValue = 350;
-    const maleReferenceValue = 500;
-    const femaleCurrentValue = 150;
-    const femaleReferenceValue = 500;
-
-    const totalColor = '#2ecc71'; // Verde
-    const maleColor = '#3498db'; // Azul
-    const femaleColor = '#e74c3c'; // Vermelho
 
     const [orders, setOrders] = useState([]);
     const [reminders, setReminders] = useState([]);
     const [reminderTitle, setReminderTitle] = useState('');
     const [reminderTime, setReminderTime] = useState('');
+    const [nomeUsuario, setNomeUsuario] = React.useState('');
+    const [roleUsuario, setRoleUsuario] = React.useState('');
+    const [trabalhadores, setTrabalhadores] = React.useState('');
+    const [numeroDeAnimais, setNumeroDeAnimais] = React.useState('');
+    const [numeroDeAnimaisFemeas, setNumeroDeAnimaisFemeas] = React.useState(null);
+    const [numeroDeAnimaisMachos, setNumeroDeAnimaisMachos] = React.useState(null);
+
+    const referenceValue = 600; //Ver oq fazer aqui, pq o valor não está no cadastro
+    const currentValue = numeroDeAnimais;
+    const maleCurrentValue = numeroDeAnimaisMachos;
+    const maleReferenceValue = numeroDeAnimais;
+    const femaleCurrentValue = numeroDeAnimaisFemeas;
+    const femaleReferenceValue = numeroDeAnimais;
+
+    const totalColor = '#2ecc71'; // Verde
+    const maleColor = '#3498db'; // Azul
+    const femaleColor = '#e74c3c'; // Vermelho
+
+    React.useEffect (() =>{
+        AuthService.pegarDadosDoUsuario().then((response) => {
+            setNomeUsuario(response.data['nome']); 
+            setRoleUsuario(response.data['role']);
+        })
+    }, []); 
+
+    React.useEffect (() => {
+        AuthService.listarTrabalhadores().then((response) => {
+            setTrabalhadores(response.data);
+        })
+    }, []);
+
+    React.useEffect(() => {
+        AuthService.pegarDadosParaGraficos().then(response => {
+            setNumeroDeAnimais(response.data['animaisCadastrados']);
+            setNumeroDeAnimaisFemeas(response.data['animaisFemea']);
+            setNumeroDeAnimaisMachos(response.data['animaisMacho']);
+        })
+    }, []);
 
     useEffect(() => {
         const fetchedOrders = [
@@ -86,10 +115,17 @@ const Dashboard = () => {
                     <div className={styles.newUsers}>
                         <h1>Trabalhadores</h1>
                         <div className={styles.userList}>
-                            <UserCard name="João" time="54 Minutos atrás" image={profile2} />
-                            <UserCard name="Sebastião" time="3 Horas atrás" image={profile3} />
-                            <UserCard name="Antônio" time="6 Horas atrás" image={profile4} />
-                            <UserCard name="Adicionar" time="Novo Usuário" image={plus} />
+                        {Array.isArray(trabalhadores) && trabalhadores.length > 0 ? (
+                            trabalhadores.map((trabalhador) => (
+                                <tr>
+                                    <UserCard name={trabalhador.nomeCompleto} telefone={trabalhador.telefone} image={profile4} />
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="8">Nenhum trabalhador encontrado.</td>
+                            </tr>
+                        )}
                         </div>
                     </div>
 
@@ -101,6 +137,8 @@ const Dashboard = () => {
                 </main>
 
                 <RightSection 
+                    nome={nomeUsuario}
+                    role={roleUsuario}
                     reminderTitle={reminderTitle}
                     setReminderTitle={setReminderTitle}
                     reminderTime={reminderTime}
@@ -141,13 +179,14 @@ const OrdersTable = ({ orders }) => (
     </table>
 );
 
-const RightSection = ({ reminderTitle, setReminderTitle, reminderTime, setReminderTime, addReminder, reminders, removeReminder }) => (
+
+const RightSection = ({ reminderTitle, setReminderTitle, reminderTime, setReminderTime, addReminder, reminders, removeReminder, nome, role }) => (
     <div className={styles.rightSection}>
         <div className={styles.nav}>
             <div className={styles.profile}>
                 <div className={styles.info}>
-                    <p className={styles.p}>Opa, <b>Tião</b></p>
-                    <small className="textMuted">Fazendeiro</small>
+                    <p className={styles.p}>Opa, <b>{nome}</b></p>
+                    <small className="textMuted">{role}</small>
                 </div>
             </div>
         </div>
@@ -207,11 +246,11 @@ const AnalysisCard = ({ title, amount, percentage, referenceValue, currentValue,
 );
 
 // UserCard Componente
-const UserCard = ({ name, time, image }) => (
+const UserCard = ({ name, telefone, image }) => (
     <div className={styles.user}>
         <img src={image} alt={name} />
         <h2>{name}</h2>
-        <p>{time}</p>
+        <p>{telefone}</p>
     </div>
 );
 

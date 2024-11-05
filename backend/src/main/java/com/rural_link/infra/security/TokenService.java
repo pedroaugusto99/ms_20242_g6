@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.rural_link.domain.usuarios.Pessoa;
+import com.rural_link.entities.usuarios.Pessoa;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
