@@ -1,4 +1,4 @@
-package com.rural_link.services.authentication;
+package com.rural_link.services;
 
 import com.rural_link.entities.usuarios.Proprietario;
 import com.rural_link.dtos.authentication.LoginRequestDTO;

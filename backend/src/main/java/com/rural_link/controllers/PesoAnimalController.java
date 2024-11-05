@@ -3,7 +3,7 @@ package com.rural_link.controllers;
 import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.dtos.animal.PesoAnimalRequestDTO;
 import com.rural_link.dtos.animal.PesoAnimalResponseDTO;
-import com.rural_link.services.animal.PesoAnimalService;
+import com.rural_link.services.PesoAnimalService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -21,6 +21,7 @@ import java.util.List;
 @RequestMapping("/animal/peso")
 @RequiredArgsConstructor
 @SecurityRequirement(name = "securityConfig")
+@CrossOrigin("http://localhost:3000")
 public class PesoAnimalController {
 
     private final PesoAnimalService pesoAnimalService;

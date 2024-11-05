@@ -1,4 +1,4 @@
-package com.rural_link.services.fazenda;
+package com.rural_link.services;
 
 import com.rural_link.entities.fazenda.Fazenda;
 import com.rural_link.entities.usuarios.Pessoa;
@@ -16,7 +16,6 @@ import com.rural_link.mappers.TrabalhadorRuralMapper;
 import com.rural_link.repositories.FazendaRepository;
 import com.rural_link.repositories.ProprietarioRepository;
 import com.rural_link.repositories.TrabalhadorRuralRepository;
-import com.rural_link.services.proprietario.ProprietarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

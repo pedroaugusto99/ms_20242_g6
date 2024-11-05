@@ -1,4 +1,4 @@
-package com.rural_link.services.animal;
+package com.rural_link.services;
 
 import com.rural_link.entities.animal.Animal;
 import com.rural_link.entities.animal.Sexo;

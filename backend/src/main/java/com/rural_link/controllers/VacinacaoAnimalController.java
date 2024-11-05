@@ -2,7 +2,7 @@ package com.rural_link.controllers;
 
 import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.dtos.animal.VacinacaoAnimalDTO;
-import com.rural_link.services.animal.VacinacaoAnimalService;
+import com.rural_link.services.VacinacaoAnimalService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -20,6 +20,7 @@ import java.util.List;
 @RequestMapping("/animal/vacinacao")
 @RequiredArgsConstructor
 @SecurityRequirement(name = "securityConfig")
+@CrossOrigin("http://localhost:3000")
 public class VacinacaoAnimalController {
 
     private final VacinacaoAnimalService vacinacaoAnimalService;

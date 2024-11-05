@@ -4,7 +4,7 @@ import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.dtos.fazenda.CriarFazendaRequestDTO;
 import com.rural_link.dtos.fazenda.CriarFazendaResponseDTO;
 import com.rural_link.dtos.fazenda.FazendaTrabalhadoresResponseDTO;
-import com.rural_link.services.fazenda.FazendaService;
+import com.rural_link.services.FazendaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
