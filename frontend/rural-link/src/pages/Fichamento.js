@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import styles from './css/Fichamento.module.css';
 import Sidebar from './components/Sidebar';
+import PopUpFiltro from './components/PopUpFiltro';
 import AuthService from '../autenticacao/AuthService';
+
 
 function Fichamento() {
 
@@ -20,6 +22,7 @@ function Fichamento() {
     return (
         <div className={styles.body}>
             <Sidebar title='Lista de Fichas de Animais'/>
+            
             <div className={styles.containerTable}>
                 <div className={styles.header}>   
                     <div className={styles.searchContainer}>
@@ -27,8 +30,9 @@ function Fichamento() {
                         <button className={styles.searchButton}><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                     <div className={styles.filterContainer}>
-                        <button className={styles.filterButton}><i class='bx bx-filter-alt' ></i>Filtros</button>
+                        <PopUpFiltro />
                         <button className={styles.filterButton}><i class='bx bx-brush-alt'></i>Limpar Filtros</button>
+                    
                     </div>
                 </div>
                     <div className={styles.titleContainer}>
