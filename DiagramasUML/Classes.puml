@@ -23,7 +23,7 @@ class Proprietario {
 }
 
 class TrabalhadorRural {
-
+    +utilizarCodigoFazendaNoCadasstro(): void
 }
 
 class Fazenda {
