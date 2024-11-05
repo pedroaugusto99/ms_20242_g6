@@ -2,7 +2,7 @@ package com.rural_link.controllers;
 
 import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.dtos.animal.*;
-import com.rural_link.services.animal.AnimalService;
+import com.rural_link.services.AnimalService;
 import com.rural_link.specifications.AnimalQueryFilter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

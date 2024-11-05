@@ -1,4 +1,4 @@
-package com.rural_link.services.perfil;
+package com.rural_link.services;
 
 import com.rural_link.dtos.perfil.PerfilResponseDTO;
 import com.rural_link.entities.fazenda.Fazenda;

@@ -2,7 +2,7 @@ package com.rural_link.controllers;
 
 import com.rural_link.dtos.perfil.PerfilResponseDTO;
 import com.rural_link.entities.usuarios.Pessoa;
-import com.rural_link.services.perfil.PerfilService;
+import com.rural_link.services.PerfilService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

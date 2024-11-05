@@ -1,4 +1,4 @@
-package com.rural_link.services.proprietario;
+package com.rural_link.services;
 
 import com.rural_link.entities.fazenda.Fazenda;
 import com.rural_link.entities.usuarios.Proprietario;
