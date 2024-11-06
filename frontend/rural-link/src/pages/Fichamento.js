@@ -3,11 +3,12 @@ import styles from './css/Fichamento.module.css';
 import Sidebar from './components/Sidebar';
 import PopUpFiltro from './components/PopUpFiltro';
 import AuthService from '../autenticacao/AuthService';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Fichamento() {
 
     const[animals, setAnimals] = React.useState(null);
+    const navigate = useNavigate();
 
     React.useEffect (() =>{
         AuthService.listarAnimais().then((response) => {
@@ -16,7 +17,7 @@ function Fichamento() {
     }, []);
 
     const handleAccess = (id) => {
-        console.log(`Acessando detalhes do animal com ID: ${id}`);
+        navigate('/fichaanimal', {state:{identificador: id}})
     };
 
     return (
