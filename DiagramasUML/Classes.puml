@@ -1,66 +1,77 @@
 @startuml
 class Pessoa {
-    -Nome: String
-    -Sobrenome: String
-    -DataNascimento: Date
-    -Email: String
+    -nomeCompleto: String
+    -sobrenome: String
+    -dataNascimento: Date
+    -email: String
+    -password: String
+    -telefone: String
     
-    +EditarDadosPerfil(): void
-    +EditarDadosAnimal(): void
-    +AdicionarAnimal(animal: Animal): void
-    +RemoverAnimal(animal: Animal): void
+    +editarDadosPerfil(): void
+    +editarDadosAnimal(): void
+    +adicionarAnimal(animal: Animal): void
+    +removerAnimal(animal: Animal): void
 }
 
-class Fazendeiro {
-    -Telefone: String
-    -NumeroFuncionarios: int
-
-    +VisualizarGraficos(): void
-    +GerarRelatorios(): void
+class Proprietario {
+    +cadastrarFazenda(): void
+    +gerarCodigoFazenda(): void
+    +visualizarGraficos(): void
+    +gerarRelatorios(): void
     +AdicionarFuncionario(funcionario: TrabalhadorRural): void
     +RemoverFuncionario(funcionario: TrabalhadorRural): void
 }
 
 class TrabalhadorRural {
-    +AtualizarLeite(): void
+    +utilizarCodigoFazendaNoCadasstro(): void
 }
 
 class Fazenda {
-    -Nome: String
-    -Tamanho: int
+    -nomeDaFazenda: String
+    -tamanhoFazenda: Float
+    -tipoDaFazenda: String
+    -endereco: String
+    -complemento: String
+    -cep: int
+    -cidade: String
+    -estado: String
+    -codigoDeAutenticacao: String
 }
 
-class Rebanho {
-    +NumeroDeIndividuos: int
-    +NumeroDeCrias: int
+class VacinacaoAnimal {
+    -nomeDaVacina: String
+    -dataDeVacinacao: Date
+    -numeroDeDoses: int
+    -dataProximaVacinacao: Date
 }
 
-class Vacina {
-    -NomeVacina: String
-    -DataVacina: Date
+class PesoAnimal {
+    -peso: Float
+    -dataDePesagem: Date
 }
 
-class Localizacao {
-    -Cidade: String
-    -Estado: String
-    -Latitude: float
-    -Longitude: float
-}
 
 class Animal {
-    +ID: String
-    +Nome: String
-    +Raca: String
-    +Idade: int
+    -codigo: String
+    -nome: String
+    -especie: String
+    -raça: String
+    -sexo: String
+    -dataDeNascimento: Date
+    -idade: int
+    -dataDeAquisicao: Date
+    -codigoDoPai: String
+    -codigoDaMae: String
+    -status: String
+    -lote: String
 }
 
-
-Fazenda "1" <-- "*" Pessoa
-Fazenda "1" <-- "*" Rebanho
-Animal "*" <-- "*" Vacina
-Fazenda "1" <-- "1" Localizacao
-Rebanho "*" <-- "*" Animal
-Pessoa "1" <|-- "1..*" Fazendeiro
+Fazenda "1" <-- "1" Proprietario
+Fazenda "1" <-- "0..*" TrabalhadorRural
+Fazenda "1" <-- "0..*" Animal
+Animal "*" <-- "*" VacinacaoAnimal
+Animal "*" <-- "*" PesoAnimal
+Pessoa "1" <|-- "1" Proprietario
 Pessoa "1" <|-- "0.. *" TrabalhadorRural
 
 @enduml
