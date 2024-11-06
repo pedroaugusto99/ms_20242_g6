@@ -98,7 +98,7 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |1|Concepção|10/09/2024|17/09/2024|Grupo 6|Concluída|
 |2|Preparação|18/09/2024|01/10/2024|Grupo 6|Concluída|
 |3|Itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Concluída|
-|4|Itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
+|4|Itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
 |5|Itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
 |6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|
 
@@ -113,16 +113,12 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |2|Distribuição dos itens do backlog entre as iterações|18/09/2024|01/10/2024|Grupo 6|Concluída|
 |3|Definição do modelo arquitetural|02/10/2024|15/10/2024|Grupo 6|Concluída|
 |3|Diagrama de classes dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Concluída|
-|3|Diagrama de interação/sequencia dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Desnecessário|
 |3|Projeto de Interfaces gráficas dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Concluída|
-|3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Parcialemnte concluída|
-|4|Diagrama de interação/sequencia dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|4|Projeto de persistência dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|5|Diagrama de classes dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
+|3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Parcialmente concluída|
+|4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
+|4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Em andamento|
+|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
+|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
+|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
+|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
 |6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|

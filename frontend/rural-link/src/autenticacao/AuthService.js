@@ -17,9 +17,9 @@ class AuthService{
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.post(`${API_BASE_URL}/fazenda/criar`, credentials);
     }
-    pegarQrCode(){
+    pegarQrCode(id){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
-        return axios.get(`${API_BASE_URL}/animal/qr-code/1`)
+        return axios.get(`${API_BASE_URL}/animal/qr-code/${id}`);
     }
     listarAnimais(){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
@@ -40,6 +40,10 @@ class AuthService{
     pegarDadosParaGraficos(){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/graficos/dados-dashboard`);
+    }
+    pegarDadosDoAnimal(id){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/animal/listar/${id}`)
     }
 }
 

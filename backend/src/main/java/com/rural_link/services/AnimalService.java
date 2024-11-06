@@ -163,7 +163,9 @@ public class AnimalService {
         if (animalResponseDTO.getIdade() == null && animalResponseDTO.getDataDeNascimento() != null){
             animalResponseDTO.setIdade(Period.between(animal.getDataDeNascimento(), LocalDate.now()).getYears());
         }
-        animalResponseDTO.setPesoAtual(pesoAnimalRepository.findFirstByOrderByIdDesc().getPeso());
+        if (pesoAnimalRepository.findFirstByOrderByIdDesc() != null){
+            animalResponseDTO.setPesoAtual(pesoAnimalRepository.findFirstByOrderByIdDesc().getPeso());
+        }
         animalResponseDTO.setNumeroDeCrias(buscarAnimalPorCodigoFamiliar(animal).size());
         animalResponseDTO.setId(id);
         return animalResponseDTO;
