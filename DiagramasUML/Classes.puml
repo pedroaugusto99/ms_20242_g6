@@ -1,0 +1,77 @@
+@startuml
+class Pessoa {
+    -nomeCompleto: String
+    -sobrenome: String
+    -dataNascimento: Date
+    -email: String
+    -password: String
+    -telefone: String
+    
+    +editarDadosPerfil(): void
+    +editarDadosAnimal(): void
+    +adicionarAnimal(animal: Animal): void
+    +removerAnimal(animal: Animal): void
+}
+
+class Proprietario {
+    +cadastrarFazenda(): void
+    +gerarCodigoFazenda(): void
+    +visualizarGraficos(): void
+    +gerarRelatorios(): void
+    +AdicionarFuncionario(funcionario: TrabalhadorRural): void
+    +RemoverFuncionario(funcionario: TrabalhadorRural): void
+}
+
+class TrabalhadorRural {
+    +utilizarCodigoFazendaNoCadasstro(): void
+}
+
+class Fazenda {
+    -nomeDaFazenda: String
+    -tamanhoFazenda: Float
+    -tipoDaFazenda: String
+    -endereco: String
+    -complemento: String
+    -cep: int
+    -cidade: String
+    -estado: String
+    -codigoDeAutenticacao: String
+}
+
+class VacinacaoAnimal {
+    -nomeDaVacina: String
+    -dataDeVacinacao: Date
+    -numeroDeDoses: int
+    -dataProximaVacinacao: Date
+}
+
+class PesoAnimal {
+    -peso: Float
+    -dataDePesagem: Date
+}
+
+
+class Animal {
+    -codigo: String
+    -nome: String
+    -especie: String
+    -raça: String
+    -sexo: String
+    -dataDeNascimento: Date
+    -idade: int
+    -dataDeAquisicao: Date
+    -codigoDoPai: String
+    -codigoDaMae: String
+    -status: String
+    -lote: String
+}
+
+Fazenda "1" <-- "1" Proprietario
+Fazenda "1" <-- "0..*" TrabalhadorRural
+Fazenda "1" <-- "0..*" Animal
+Animal "*" <-- "*" VacinacaoAnimal
+Animal "*" <-- "*" PesoAnimal
+Pessoa "1" <|-- "1" Proprietario
+Pessoa "1" <|-- "0.. *" TrabalhadorRural
+
+@enduml
