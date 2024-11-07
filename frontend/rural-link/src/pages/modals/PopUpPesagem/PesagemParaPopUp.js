@@ -1,11 +1,10 @@
-import styles from '../css/cssPages/FichaAnimal.module.css';
+import styles from './PopUpPesagem.module.css';
 
-function ManejoTable({ title, data, columns, toggleModal }) {
+function PesagemParaPopUp({ data, columns }) {
     return (
         <div className={styles.manejoTable}>
             <div className={styles.manejoTableContainer}>
                 <table className={styles.tableManejo}>
-                    <caption>{title}</caption>
                     <thead>
                         <tr>
                             {columns.map((col, idx) => (
@@ -18,7 +17,6 @@ function ManejoTable({ title, data, columns, toggleModal }) {
                             <tr key={rowIndex}>
                                 {columns.map((col, colIndex) => (
                                     <td key={colIndex}>
-                                        {/* Acessar o valor dinamicamente com base no nome da coluna */}
                                         {row[col.toLowerCase().replace(/\s+/g, '')] || '####'}
                                     </td>
                                 ))}
@@ -26,10 +24,14 @@ function ManejoTable({ title, data, columns, toggleModal }) {
                         ))}
                     </tbody>
                 </table>
-                <button className={styles.buttonManejo} onClick={toggleModal}>Ver detalhes de manejo</button>
+
+                <div className={styles.graficoPesagem}>
+                        <h2>Gráfico</h2>
+                </div>
             </div>
+
         </div>
     );
 }
 
-export default ManejoTable;
+export default PesagemParaPopUp;

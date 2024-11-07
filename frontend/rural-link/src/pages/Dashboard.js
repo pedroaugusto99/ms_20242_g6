@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './css/Dashboard.module.css';
+import styles from './css/cssPages/Dashboard.module.css';
 
 import profile4 from './images/dashboard/profile-4.jpg';
 

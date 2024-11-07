@@ -1,7 +1,7 @@
 import React from 'react';
 import Conteudo from './components/Conteudo';
 import Header from './components/Header';
-import './css/UserSelection.css';
+import './css/cssPages/UserSelection.css';
 
 import prop_rural from './images/prop-rural.png';
 import trab_rural from './images/trab-rural.png';

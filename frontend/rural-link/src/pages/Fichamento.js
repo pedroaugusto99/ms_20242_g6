@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import styles from './css/Fichamento.module.css';
+import styles from './css/cssPages/Fichamento.module.css';
 import Sidebar from './components/Sidebar';
-import PopUpFiltro from './components/PopUpFiltro';
+import PopUpFiltro from './modals/PopUpFiltro/PopUpFiltro';
 import AuthService from '../autenticacao/AuthService';
 
 

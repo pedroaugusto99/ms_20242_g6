@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './css/RegistroFazenda.module.css';
+import styles from './css/cssPages/RegistroFazenda.module.css';
 import iconnomefazenda from './images/Icon/iconnomefazenda.png';
 import icontamanhofazenda from './images/Icon/icontamanhofazenda.png';
 import iconcow from './images/Icon/iconcow.png';
