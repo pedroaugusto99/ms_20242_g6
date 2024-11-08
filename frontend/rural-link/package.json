@@ -12,6 +12,8 @@
     "boxicons": "^2.1.4",
     "chart.js": "^4.4.5",
     "chartjs-plugin-datalabels": "^2.2.0",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "jwt-decode": "^4.0.0",
     "qrcode.react": "^4.1.0",
     "react": "^18.3.1",

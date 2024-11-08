@@ -6,6 +6,8 @@ import styles from './css/FichaAnimal.module.css';
 import AuthService from '../autenticacao/AuthService';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { handleGeneratePDF } from './components/GerarPDF';
+
 
 function FichaAnimal() {
     const pesagemData = [
@@ -140,7 +142,11 @@ function FichaAnimal() {
 
                 <div className={styles.Rowbtn}>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAccessVoltar}>Voltar</button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button">Gerar PDF</button>
+                    <button className={`${styles.btn} ${styles.btnPrimario}`}
+  type="button"
+  onClick={handleGeneratePDF}
+>
+  Gerar PDF</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button"><i className="fa-solid fa-trash-can"></i> Excluir Cadastro</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Confirmar Edição</button>
 
