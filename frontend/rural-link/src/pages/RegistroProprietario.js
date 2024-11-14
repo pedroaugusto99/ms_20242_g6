@@ -141,7 +141,7 @@ function RegistrarProprietario() {
                         </label>
                     </div>
 
-                    <button className={`${styles.btnProp} ${styles.btnPrimario}`} type="submit">Continuar</button>
+                    <button className={`${styles.btnProp} ${styles.btnPrimario}`} type="submit">Cadastrar</button>
 
                 </form>
             </div>

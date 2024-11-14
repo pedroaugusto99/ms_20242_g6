@@ -66,8 +66,8 @@ class Animal {
     -lote: String
 }
 
-Fazenda "1" <-- "1" Proprietario
-Fazenda "1" <-- "0..*" TrabalhadorRural
+Fazenda "1" <-- "1" Pessoa
+Fazenda "1" <-- "0..*" Pessoa
 Fazenda "1" <-- "0..*" Animal
 Animal "*" <-- "*" VacinacaoAnimal
 Animal "*" <-- "*" PesoAnimal
