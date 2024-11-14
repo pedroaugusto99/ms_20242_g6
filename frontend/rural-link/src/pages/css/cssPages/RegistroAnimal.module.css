@@ -56,7 +56,7 @@ html, body {
 
 .iconContainer {
     
-    background-image: url('../images/logovariant.png');
+    background-image: url('../../images/logovariant.png');
     background-size: contain;
     background-repeat: no-repeat; 
     background-position: center; 

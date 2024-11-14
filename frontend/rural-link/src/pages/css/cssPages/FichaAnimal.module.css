@@ -253,16 +253,12 @@
     background-color: #9f69459b;
 }
 
-.btnPrimario {
-    border: 1px solid var(--cor-terciaria);
-    background-color: var(--cor-terciaria);
-    transition: background-color 0.5s;
-}
-
-.btnPrimario:hover {
-    background-color: transparent;
-    color: var(--cor-padrao);
-    border: 1px solid var(--cor-padrao);
+.Rowbtn {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    margin: 1vw;
+    margin-top: 1.7vw;
 }
 
 .btn {
@@ -274,10 +270,14 @@
     padding-left: 1.4vw;
 }
 
-.Rowbtn {
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
-    margin: 1vw;
-    margin-top: 1.7vw;
+.btnPrimario {
+    border: 1px solid var(--cor-terciaria);
+    background-color: var(--cor-terciaria);
+    transition: background-color 0.5s;
+}
+
+.btnPrimario:hover {
+    background-color: transparent;
+    color: var(--cor-padrao);
+    border: 1px solid var(--cor-padrao);
 }
