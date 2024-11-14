@@ -45,6 +45,10 @@ class AuthService{
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/listar/${id}`)
     }
+    listarAnimaisPorNome(nome){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/animal/listar?nome=${nome}`);
+    }
 }
 
 export default new AuthService();
