@@ -36,7 +36,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar cadastro(Internal Server Error)")
     })
-    @PostMapping(value = "/cadastrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/cadastro", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> salvarAnimal(@RequestBody @Valid AnimalRequestDTO animalRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -67,7 +67,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
-    @GetMapping(value = "/listar-todos", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AnimalListResponseDTO>> listarTodosAnimais(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -82,7 +82,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
-    @GetMapping(value = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/busca", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AnimalListResponseDTO>> buscarAnimalPorNome(@RequestParam String nome){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -97,7 +97,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
-    @GetMapping(value = "/listar-crias/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/crias/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CriaResponseDTO>> buscarCriasDoAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -112,7 +112,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
-    @GetMapping(value = "/listar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AnimalResponseDTO> buscarAnimalPorId(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -127,7 +127,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
-    @GetMapping(value = "/filtrar", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/filtro", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AnimalListResponseDTO>> filtrarPorCampos(AnimalQueryFilter animalQueryFilter){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -142,7 +142,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar atualização(Internal Server Error)")
     })
-    @PutMapping(value = "/atualizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AnimalResponseDTO> atualizarDadosDoAnimal(@RequestBody @Valid AnimalPutRequestDTO animal){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -157,7 +157,7 @@ public class AnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar delete(Internal Server Error)")
     })
-    @DeleteMapping("/remover/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();

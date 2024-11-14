@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/animal/vacinacao")
+@RequestMapping("/vacinacao")
 @RequiredArgsConstructor
 @SecurityRequirement(name = "securityConfig")
 @CrossOrigin("http://localhost:3000")
@@ -33,7 +33,7 @@ public class VacinacaoAnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar registro(Internal Server Error)")
     })
-    @PostMapping(value = "/salvar", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> salvarVacinacaoDoAnimal(@RequestBody VacinacaoAnimalDTO vacinacaoAnimalDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -49,7 +49,7 @@ public class VacinacaoAnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar delete(Internal Server Error)")
     })
-    @DeleteMapping("/remover/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerVacinacaoDoAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -65,7 +65,7 @@ public class VacinacaoAnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
-    @GetMapping(value = "/listar/{animalId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{animalId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<VacinacaoAnimalDTO>> listarVacinacoesDoAnimal(@PathVariable Long animalId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();

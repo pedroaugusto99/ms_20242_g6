@@ -36,7 +36,7 @@ public class FazendaController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar cadastro(Internal Server Error)")
     })
-    @PostMapping(value = "/criar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/cadastro", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CriarFazendaResponseDTO> criarFazenda(@RequestBody @Valid CriarFazendaRequestDTO criarFazendaRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -51,7 +51,7 @@ public class FazendaController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao gerar o código(Internal Server Error)")
     })
-    @GetMapping(value = "/gerar-codigo", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/codigo", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CriarFazendaResponseDTO> gerarNovoCodigo(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -66,7 +66,7 @@ public class FazendaController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao buscar trabalhadores(Internal Server Error)")
     })
-    @GetMapping(value = "/listar-trabalhadores", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/trabalhadores", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<FazendaTrabalhadoresResponseDTO>> listarTrabalhadoresDaFazenda(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();

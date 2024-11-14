@@ -55,7 +55,7 @@ public class AuthenticationController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar cadastro(Internal Server Error)")
     })
-    @PostMapping(value = "/registrar/proprietario", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/registro/proprietario", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> registrarProprietario(@RequestBody @Valid RegistrarProprietarioRequestDTO data){
         proprietarioService.registrarProprietario(data);
         return ResponseEntity.ok().build();
@@ -67,7 +67,7 @@ public class AuthenticationController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar cadastro(Internal Server Error)")
     })
-    @PostMapping(value = "/registrar/trabalhador", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/registro/trabalhador", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> registrarTrabalhador(@RequestBody @Valid RegistrarTrabalhadorRequestDTO data){
         trabalhadorRuralService.registrarTrabalhador(data);
         return ResponseEntity.ok().build();
