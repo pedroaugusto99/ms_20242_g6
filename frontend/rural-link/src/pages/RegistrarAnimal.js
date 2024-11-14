@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-import styles from './css/RegistroAnimal.module.css';
+import styles from './css/cssPages/RegistroAnimal.module.css';
 import Sidebar from './components/Sidebar';
 import 'react-datepicker/dist/react-datepicker.css';
 
