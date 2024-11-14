@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/animal/peso")
+@RequestMapping("/peso")
 @RequiredArgsConstructor
 @SecurityRequirement(name = "securityConfig")
 @CrossOrigin("http://localhost:3000")
@@ -34,7 +34,7 @@ public class PesoAnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar registro do peso(Internal Server Error)")
     })
-    @PostMapping(value = "/salvar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PesoAnimalResponseDTO> salvarPesoDoAnimal(@RequestBody PesoAnimalRequestDTO pesoAnimalRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -49,7 +49,7 @@ public class PesoAnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar delete(Internal Server Error)")
     })
-    @DeleteMapping("/remover/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerPesoDoAnimal(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
@@ -65,7 +65,7 @@ public class PesoAnimalController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
-    @GetMapping(value = "/listar/{animalId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{animalId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<PesoAnimalResponseDTO>> listarTodosPesos(@PathVariable Long animalId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
