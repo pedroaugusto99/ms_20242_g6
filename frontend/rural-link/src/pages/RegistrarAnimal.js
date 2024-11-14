@@ -49,10 +49,6 @@ function RegistrarAnimal() {
         setIconeAnimal(getIcone(selectedEspecie)); 
     };
 
-    const handleAccessVoltar = () => {
-        navigate('/fichamento')
-    };
-
     const submitHandler = (event) => {
         event.preventDefault();
         try{
@@ -314,7 +310,7 @@ function RegistrarAnimal() {
                     </div>
 
                     <div className={styles.Rowbtn}> 
-                        <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAccessVoltar}>Voltar</button>
+                        <button className={`${styles.btn} ${styles.btnPrimario}`} type="button">Voltar</button>
                         <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Cadastrar Animal</button>
                     </div>
                 </form>
