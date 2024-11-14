@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './css/Perfil.module.css';
+import styles from './css/cssPages/Perfil.module.css';
 
 import Sidebar from './components/Sidebar';
 import AuthService from '../autenticacao/AuthService';

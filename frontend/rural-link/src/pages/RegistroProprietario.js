@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './css/RegistroUser.module.css';
+import styles from './css/cssPages/RegistroUser.module.css';
 import iconemail from './images/Icon/iconemail.png';
 import iconperfil from './images/Icon/iconperfil.png';
 import icontelefone from './images/Icon/icontelefone.png';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './css/Login.module.css';
+import styles from './css/cssPages/Login.module.css';
 import {useNavigate} from 'react-router-dom';
 import logo from './images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';

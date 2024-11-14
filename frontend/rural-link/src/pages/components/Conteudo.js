@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Conteudo.css';
+import '../css/cssComponents/Conteudo.css';
 
 const Conteudo = ({ children }) => { 
   return (

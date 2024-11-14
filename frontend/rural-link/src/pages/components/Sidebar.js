@@ -1,6 +1,6 @@
 // Sidebar.js
 import React, { useState } from 'react';
-import '../css/Sidebar.css';
+import '../css/cssComponents/Sidebar.css';
 import logo from '../images/logo-simples-png-pq.png';
 import AuthService from '../../autenticacao/AuthService';
 
@@ -41,9 +41,9 @@ const Profile = ({ name, role, imgSrc }) => (
 );
 
 // Componente NavItem
-const NavItem = ({ icon, label, link }) => (
+const NavItem = ({ icon, label }) => (
   <li className="list">
-    <a href={link} className="nav-link">
+    <a href="#" className="nav-link">
       <i className={icon}></i>
       <span className="link">{label}</span>
     </a>
@@ -58,7 +58,7 @@ const NavItem = ({ icon, label, link }) => (
           <h1 className="titleText">{title}</h1>
         </div>
         <div className="sair">
-          <div className="sairText"><a href="/login">Sair</a></div>
+          <div className="sairText"><a href="#">Sair</a></div>
         </div>
 
         <div className="sidebar">
@@ -71,10 +71,10 @@ const NavItem = ({ icon, label, link }) => (
             />
 
             <ul className="lists">
-              <NavItem icon="fa-solid fa-user icon" label="Perfil" link="/perfil" />
-              <NavItem icon="fa-solid fa-chart-pie icon" label="Dashboard" link="/dashboard"/>
-              <NavItem icon="fa-solid fa-circle-plus icon" label="Novo Cadastro" link="/registraranimal"/>
-              <NavItem icon="fa-solid fa-clipboard icon" label="Rebanho" link="/fichamento"/>
+              <NavItem icon="fa-solid fa-user icon" label="Perfil" />
+              <NavItem icon="fa-solid fa-chart-pie icon" label="Dashboard" />
+              <NavItem icon="fa-solid fa-circle-plus icon" label="Novo Cadastro" />
+              <NavItem icon="fa-solid fa-clipboard icon" label="Rebanho" />
               <NavItem icon="fa-solid fa-qrcode icon" label="Ler QR Code" />
             </ul>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './css/Faq.module.css';
+import styles from './css/cssPages/Faq.module.css';
 import Sidebar from './components/Sidebar';
 
 import vector1 from './images/Icon/Vector.png';

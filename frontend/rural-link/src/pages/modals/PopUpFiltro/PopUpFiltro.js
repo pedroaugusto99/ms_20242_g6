@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../css/PopUpFiltro.module.css';
+import styles from './PopUpFiltro.module.css';
 
 export default function Modal() {
   const [modal, setModal] = useState(false);
@@ -25,8 +25,6 @@ const NavItem = ({ label }) => (
 
   return (
     <>
-
-      <button onClick={toggleModal} className={styles.filterButton}><i class='bx bx-filter-alt' ></i>Filtros</button>
 
       {modal && (
         <div className={styles.modal}>

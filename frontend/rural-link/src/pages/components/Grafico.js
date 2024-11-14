@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Chart, registerables } from 'chart.js';
-import '../css/Grafico.css';
+import '../css/cssComponents/Grafico.css';
 
 Chart.register(...registerables);
 

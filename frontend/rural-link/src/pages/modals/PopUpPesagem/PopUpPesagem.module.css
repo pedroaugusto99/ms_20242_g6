@@ -1,0 +1,134 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent {
+  height: 29vw;
+  border: 2px solid black;
+  background: #EFE9DB;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  z-index: 10;
+}
+
+.titlePesagem {
+  margin-top: 0vw;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manejoTableContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1vw;
+  width: 70vw;
+  height: 30vw;
+}
+
+.tableManejo {
+  display: block;
+  background-color: white;
+  width: 70%;
+  height: 20vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-collapse: collapse;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.tableManejo th, .tableManejo td {
+  padding: 8px;
+  width: 100vw;
+}
+
+.tableManejo th {
+  color: black;
+  border-bottom: 2px solid #000;
+  position: sticky;
+  background-color: white;
+  top: 0;
+  z-index: 10;
+}
+
+.tableManejo td {
+  border-bottom: 1px solid #000;
+}
+
+.graficoPesagem {
+  background-color: white;
+  height: 20vw;
+  width: 30%;
+  margin-left: 20px;
+}
+
+.rowbtn {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -8.5vw;
+}
+
+.btn {
+  border-radius: 15px;
+  font-size: 2vh; 
+  cursor: pointer;
+  padding: 0.4vw;
+  padding-right: 1.4vw;
+  padding-left: 1.4vw;
+}
+
+.btnPrimario {
+  border: 1px solid var(--cor-terciaria);
+  background-color: var(--cor-terciaria);
+  transition: background-color 0.5s;
+}
+
+.btnPrimario:hover {
+  background-color: transparent;
+  color: var(--cor-padrao);
+  border: 1px solid var(--cor-padrao);
+}
+
+
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #D9D9D9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #B0B0B0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

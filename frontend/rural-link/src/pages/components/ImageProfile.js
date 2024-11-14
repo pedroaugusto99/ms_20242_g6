@@ -1,6 +1,6 @@
 import imageProfile from '../images/ficha/profileGado.png';
 import qrCode from '../images/ficha/qrcode.png';
-import styles from '../css/FichaAnimal.module.css';
+import styles from '../css/cssPages/FichaAnimal.module.css';
 
 function ImageProfile() {
     return (

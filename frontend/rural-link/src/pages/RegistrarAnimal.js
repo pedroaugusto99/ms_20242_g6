@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-import styles from './css/RegistroAnimal.module.css';
+import styles from './css/cssPages/RegistroAnimal.module.css';
 import Sidebar from './components/Sidebar';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -47,10 +47,6 @@ function RegistrarAnimal() {
         setRaca(''); 
         setSexo(''); 
         setIconeAnimal(getIcone(selectedEspecie)); 
-    };
-
-    const handleAccessVoltar = () => {
-        navigate('/fichamento')
     };
 
     const submitHandler = (event) => {
@@ -314,7 +310,7 @@ function RegistrarAnimal() {
                     </div>
 
                     <div className={styles.Rowbtn}> 
-                        <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAccessVoltar}>Voltar</button>
+                        <button className={`${styles.btn} ${styles.btnPrimario}`} type="button">Voltar</button>
                         <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Cadastrar Animal</button>
                     </div>
                 </form>
