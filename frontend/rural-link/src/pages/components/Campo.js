@@ -1,4 +1,4 @@
-import styles from '../css/FichaAnimal.module.css';
+import styles from '../css/cssPages/FichaAnimal.module.css';
 
 function Campo({ label, editable = false }) {
     return (

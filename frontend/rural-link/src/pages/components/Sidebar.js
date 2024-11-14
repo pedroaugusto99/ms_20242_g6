@@ -1,6 +1,6 @@
 // Sidebar.js
 import React, { useState } from 'react';
-import '../css/Sidebar.css';
+import '../css/cssComponents/Sidebar.css';
 import logo from '../images/logo-simples-png-pq.png';
 import AuthService from '../../autenticacao/AuthService';
 
