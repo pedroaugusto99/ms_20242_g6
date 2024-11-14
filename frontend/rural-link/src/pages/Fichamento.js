@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './css/cssPages/Fichamento.module.css';
 import Sidebar from './components/Sidebar';
 import PopUpFiltro from './modals/PopUpFiltro/PopUpFiltro';
 import AuthService from '../autenticacao/AuthService';
-
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 
 function Fichamento() {
 
     const[animals, setAnimals] = React.useState(null);
+    const[message, setMessage] = useState('');
+    const[nomeAnimal, setNomeAnimal] = useState('');
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams()
 
     React.useEffect (() =>{
         AuthService.listarAnimais().then((response) => {
@@ -16,8 +20,27 @@ function Fichamento() {
     }, []);
 
     const handleAccess = (id) => {
-        console.log(`Acessando detalhes do animal com ID: ${id}`);
+        navigate('/fichaanimal', {state:{identificador: id}});
     };
+
+    const getEventTarget = (event) => {
+        event.preventDefault();
+        setNomeAnimal(event.target.value);
+    }
+    const onChangeHandler = (event) =>{
+        getEventTarget(event)
+        setSearchParams(`?${new URLSearchParams({ nome: nomeAnimal })}`)
+        AuthService.listarAnimaisPorNome(nomeAnimal).then((response) => {
+            setAnimals(response.data)
+        })
+    }
+    const submitHandler = (event) => {
+        getEventTarget(event)
+        setSearchParams(`?${new URLSearchParams({ nome: nomeAnimal })}`)
+        AuthService.listarAnimaisPorNome(nomeAnimal).then((response) => {
+            setAnimals(response.data)
+        })
+    }
 
     return (
         <div className={styles.body}>
@@ -25,13 +48,15 @@ function Fichamento() {
             
             <div className={styles.containerTable}>
                 <div className={styles.header}>   
-                    <div className={styles.searchContainer}>
-                        <input type="text" placeholder="Pesquisar..." className={styles.searchInput} />
-                        <button className={styles.searchButton}><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <form onSubmit={submitHandler}>
+                        <div className={styles.searchContainer}>
+                            <input type="text" placeholder="Pesquisar..." className={styles.searchInput}  onChange={onChangeHandler} />
+                            <button className={styles.searchButton}><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
                     <div className={styles.filterContainer}>
                         <PopUpFiltro />
-                        <button className={styles.filterButton}><i class='bx bx-brush-alt'></i>Limpar Filtros</button>
+                        <a href="/fichamento"><button className={styles.filterButton}><i class='bx bx-brush-alt'></i>Limpar Filtros</button></a>
                     
                     </div>
                 </div>
