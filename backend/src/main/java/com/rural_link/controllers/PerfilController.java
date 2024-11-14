@@ -35,7 +35,7 @@ public class PerfilController {
             @ApiResponse(responseCode = "403", description = "Usuário não tem a permissão necessária para efetuar a operação"),
             @ApiResponse(responseCode = "500", description = "Erro ao buscar dados(Internal Server Error)")
     })
-    @GetMapping(value = "/pegar-dados", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/busca-dados", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PerfilResponseDTO> pegarDadosDoUsuario(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
