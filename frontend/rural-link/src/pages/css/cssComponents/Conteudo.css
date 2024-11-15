@@ -12,13 +12,12 @@
 }
 
 .conteudo {
-    position: relative;
+    position: absolute;
     border-radius: 15px;
     background-color: #ededed;
     width: 1080px;
     height: 90%;
     align-items: center;
     justify-content: space-between;
-
     box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
 }

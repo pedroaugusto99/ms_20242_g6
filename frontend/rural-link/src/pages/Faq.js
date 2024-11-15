@@ -15,7 +15,7 @@ function Faq() {
 
     return (
         <div className={styles.body}>
-            <Sidebar title="FAQ" />
+            <Sidebar title="Perguntas Frequentes" />
             <div className={styles.faqContainer}>
                 <div className={styles.faqContent}>
                     <img src={logo} alt="Logo" className={styles.logo} />

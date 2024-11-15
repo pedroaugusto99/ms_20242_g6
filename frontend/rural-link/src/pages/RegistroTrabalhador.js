@@ -44,6 +44,10 @@ function RegistrarTrabalhador() {
         }
     };
 
+    const handleClick = () => {
+        navigate('/user-selection');
+      };
+
     return (
         <div className={styles.container}>
             <div className={styles.conteudo}>
@@ -171,7 +175,9 @@ function RegistrarTrabalhador() {
                         </label>
                     </div>
 
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleClick}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
                     <button className={`${styles.btnTrab} ${styles.btnPrimario}`} type="submit">Cadastrar</button>
+
                 </form>
             </div>
         </div>

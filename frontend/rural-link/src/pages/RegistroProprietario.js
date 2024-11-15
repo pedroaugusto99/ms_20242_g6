@@ -36,6 +36,10 @@ function RegistrarProprietario() {
         }
     };
 
+    const handleClick = () => {
+        navigate('/user-selection');
+      };
+
     return (
         <div className={styles.container}>
             <div className={styles.conteudo}>
@@ -141,6 +145,7 @@ function RegistrarProprietario() {
                         </label>
                     </div>
 
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleClick}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
                     <button className={`${styles.btnProp} ${styles.btnPrimario}`} type="submit">Cadastrar</button>
 
                 </form>

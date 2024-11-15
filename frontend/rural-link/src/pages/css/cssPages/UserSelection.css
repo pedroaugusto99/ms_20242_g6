@@ -1,16 +1,26 @@
 h2 {
-    font-size: 38px;
-    color: #017A1B;
+    font-size: 32px;
+    color: #ffffff;
+    align-items: center;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
     font-weight: bold;
-    margin-top: 20px;
+    color: #017A1B;
     text-align: center;
 }
 
 .user-selection {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    margin-top: 20px;
+    align-items: center;
+    margin-top: 50px;
 }
 
 a{
