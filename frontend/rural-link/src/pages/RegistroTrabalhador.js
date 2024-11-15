@@ -46,7 +46,7 @@ function RegistrarTrabalhador() {
     };
 
     const handleClick = () => {
-        navigate('/user-selection');
+        navigate('/selecaousuario');
       };
 
     return (

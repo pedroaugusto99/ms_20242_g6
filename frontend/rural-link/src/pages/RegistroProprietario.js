@@ -38,7 +38,7 @@ function RegistrarProprietario() {
     };
 
     const handleClick = () => {
-        navigate('/user-selection');
+        navigate('/selecaousuario');
       };
 
     return (

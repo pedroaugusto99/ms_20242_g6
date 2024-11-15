@@ -38,7 +38,7 @@ function Login() {
 
     const handleRegister = (event) => {
         event.preventDefault();
-        navigate('/user-selection'); 
+        navigate('/selecaousuario'); 
     };
 
     return (
