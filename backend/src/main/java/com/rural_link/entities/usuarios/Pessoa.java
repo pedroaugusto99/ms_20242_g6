@@ -1,5 +1,6 @@
 package com.rural_link.entities.usuarios;
 
+import com.rural_link.entities.redefinirsenha.RedefinirSenha;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -39,6 +40,9 @@ public class Pessoa implements UserDetails {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToOne(mappedBy = "pessoa")
+    private RedefinirSenha redefinirSenha;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
