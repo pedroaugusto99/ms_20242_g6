@@ -4,7 +4,7 @@ import RegistrarFazenda from './pages/RegistroFazenda'
 import RegistrarProprietario from './pages/RegistroProprietario'
 import RegistrarTrabalhador from './pages/RegistroTrabalhador'
 import ProtectedRouteProprietario from './routes/ProtectedRouteProprietario';
-import UserSelection from '../src/pages/UserSelection';
+import SelecaoUsuario from '../src/pages/SelecaoUsuario';
 import Perfil from '../src/pages/Perfil';
 import Dashboard from '../src/pages/Dashboard';
 import Faq from '../src/pages/Faq';
@@ -25,7 +25,7 @@ export function App(){
                     <Route path="/login" element={<Login />} />
                     <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
                     <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
-                    <Route path="/user-selection" element={<UserSelection />} />
+                    <Route path="/selecaousuario" element={<SelecaoUsuario />} />
                     <Route path="/perfil" element={<Perfil />} />
                     <Route element={<ProtectedRouteProprietario/>}>
                         <Route path="/dashboard" element={<Dashboard />} />

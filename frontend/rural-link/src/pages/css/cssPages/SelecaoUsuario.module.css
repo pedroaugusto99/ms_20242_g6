@@ -1,4 +1,4 @@
-h2 {
+.tituloPrincipal {
     font-size: 38px;
     color: #017A1B;
     font-weight: bold;
@@ -6,29 +6,29 @@ h2 {
     text-align: center;
 }
 
-.user-selection {
+.selecaoUsuario {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     margin-top: 20px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.button-container {
+.cardUsuario {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 40%;
 }
 
-.button-container:first-child {
+.cardUsuario:first-child {
     margin-right: -4vw;
 }
 
-.user-selection .desc_user {
+.descricaoUsuario {
     font-size: 16px;
     color: var(--preto);
     font-weight: bold;
@@ -37,7 +37,7 @@ a{
     width: 50%;
 }
 
-.btn-user {
+.botaoUsuario {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,23 +53,19 @@ a{
     flex-direction: column;
 }
 
-.btn-user:hover {
+.botaoUsuario:hover {
     background-color: #20b44048;
 }
 
-.btn-user:active {
+.botaoUsuario:active {
     background-color: #20b440a6;
 }
 
-.prop_rural {
+.iconeUsuario {
     width: 30%;
 }
 
-.trab_rural {
-    width: 40%;
-}
-
-.title_user {
+.tituloUsuario {
     margin-top: 1.2vw;
     font-size: 36px;
     text-align: center;
@@ -77,7 +73,7 @@ a{
     font-weight: bold;
 }
 
-.spanLogin {
+.opcaoLogin {
     display: flex;
     justify-content: center;
     align-items: center;
