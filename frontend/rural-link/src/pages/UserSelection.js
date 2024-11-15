@@ -9,7 +9,7 @@ import trab_rural from './images/trab-rural.png';
 function UserSelection() {
     return (
         <Conteudo>
-            <Header/>
+            <Header></Header>
             <h2>Área de Cadastro</h2>
             <h3>Selecione que tipo de usuário você é</h3>
             <div className="user-selection">
