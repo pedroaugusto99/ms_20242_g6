@@ -9,8 +9,9 @@ import trab_rural from './images/trab-rural.png';
 function UserSelection() {
     return (
         <Conteudo>
-            <Header title="Área de Cadastro" />
-            <h2>Selecione seu tipo de usuário</h2>
+            <Header></Header>
+            <h2>Área de Cadastro</h2>
+            <h3>Selecione que tipo de usuário você é</h3>
             <div className="user-selection">
                 <div className="button-container">
                     <p className="desc_user">Se você é proprietário de fazenda clique no ícone abaixo</p>
@@ -22,7 +23,7 @@ function UserSelection() {
                     </a>
                 </div>
                 <div className="button-container">
-                    <p className="desc_user">Se você é um trabalhador associado a uma fazenda clique no ícone abaixo</p>
+                    <p className="desc_user">Se você é trabalhador associado a uma fazenda clique no ícone abaixo</p>
                     <a href="/registrartrabalhador">
                         <div className="btn-user">
                             <img src={trab_rural} alt="Botao" className="trab_rural"/>

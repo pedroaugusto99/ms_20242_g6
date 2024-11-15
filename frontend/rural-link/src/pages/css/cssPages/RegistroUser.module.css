@@ -35,29 +35,29 @@
     height: 90%;
     align-items: center;
     justify-content: space-between;
-
     box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
 }
 
 .header {
-    padding: 5px;
-    padding-bottom: 15px;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     width: 1080px;
+    height: 50px;
     background-color: #2bb749;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tituloPrimario{
     color: rgb(255, 255, 255);
-    justify-content: center; 
-    align-items: center; 
-
+    font-size: 32px;
 }
 
 .tituloSecundario {
-    margin-top: 40px;
-    margin-bottom: 50px;
-    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 30px;
     font-weight: bold;
     color: #017A1B;
     text-align: center;
@@ -70,7 +70,6 @@
     text-align: left;
     text-indent: 20%;
     margin: 13px;
-
 }
 
 .required {
@@ -118,7 +117,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .inputRow {
     display: flex; 
     gap: 50px; 
-    
 }
 
 .inputGroup {
@@ -127,10 +125,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .labelShortInput {
-    margin-top: -7px;
+    margin-top: -10px;
     display: flex;
     align-items: center; 
-    height: 60px; 
+    height: 45px; 
     width: 300px; 
     background-color: #E1E1E1;
     border-radius: 5px;
@@ -154,10 +152,9 @@ input[type="number"]::-webkit-outer-spin-button {
     cursor: pointer;
     font-size: 20px;
     height: 55px;
-    width: 30%; 
-    margin: 3.8rem auto 1rem auto;
-    display: block; 
-    align-self: center; 
+    width: 15%; 
+    margin: 9rem 0rem 0rem 50rem;
+    align-self: center;
 }
 
 .btnTrab {
@@ -166,17 +163,29 @@ input[type="number"]::-webkit-outer-spin-button {
     cursor: pointer;
     font-size: 20px;
     height: 55px;
-    width: 30%; 
-    margin: 3rem auto 1rem auto;
-    display: block; 
-    align-self: center; 
+    width: 15%; 
+    margin: 2.3rem 0rem 0rem 50rem;
+    align-self: center;
 }
 
+.btnVoltar{
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 55px;
+    width: 13%; 
+    margin: 0rem 0rem 0rem 2rem;
+}
+
+.btnVoltar i {
+    margin-right: 15px;
+  }
 
 .btnPrimario {
     border: 1px solid var(--cor-terciaria);
     background-color: var(--cor-terciaria);
-    transition: background-color 0.5s;
+    transition: 0.5s;
 }
 
 .btnPrimario:hover {
@@ -224,7 +233,7 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 15px;
     margin-right: 7px;
     position: absolute; 
-    left: 95%; 
+    left: 90%; 
     top: 50%; 
     transform: translateY(-50%); 
     height: 28px; 
