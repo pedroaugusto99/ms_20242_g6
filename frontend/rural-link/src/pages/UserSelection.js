@@ -1,40 +1,53 @@
 import React from 'react';
 import Conteudo from './components/Conteudo';
 import Header from './components/Header';
-import './css/cssPages/UserSelection.css';
+import styles from './css/cssPages/SelecaoUsuario.module.css';
 
-import prop_rural from './images/prop-rural.png';
-import trab_rural from './images/trab-rural.png';
+import iconeProprietario from './images/prop-rural.png';
+import iconeTrabalhador from './images/trab-rural.png';
 
-function UserSelection() {
+function SelecaoUsuario() {
     return (
         <Conteudo>
-            <Header></Header>
-            <h2>Área de Cadastro</h2>
-            <h3>Selecione que tipo de usuário você é</h3>
-            <div className="user-selection">
-                <div className="button-container">
-                    <p className="desc_user">Se você é proprietário de fazenda clique no ícone abaixo</p>
-                    <a href="/registrarproprietario">
-                        <div className="btn-user">
-                            <img src={prop_rural} alt="Botao" className="prop_rural"/>
-                            <p className="title_user">Proprietário Rural</p>
-                        </div>
-                    </a>
-                </div>
-                <div className="button-container">
-                    <p className="desc_user">Se você é trabalhador associado a uma fazenda clique no ícone abaixo</p>
-                    <a href="/registrartrabalhador">
-                        <div className="btn-user">
-                            <img src={trab_rural} alt="Botao" className="trab_rural"/>
-                            <p className="title_user">Trabalhador Rural</p>
-                        </div>
-                    </a>
-                </div>
+            <Header title="Área de Cadastro" />
+            <h2 className={styles.tituloPrincipal}>Selecione seu tipo de usuário</h2>
+            <div className={styles.selecaoUsuario}>
+            <CardUsuario
+                descricao="Se você é proprietário de fazenda clique no ícone abaixo"
+                link="/registrarproprietario"
+                icone={iconeProprietario}
+                titulo="Proprietário Rural"
+                iconeClasse="iconeProprietario"
+            />
+            <CardUsuario
+                descricao="Se você é um trabalhador associado a uma fazenda clique no ícone abaixo"
+                link="/registrartrabalhador"
+                icone={iconeTrabalhador}
+                titulo="Trabalhador Rural"
+                iconeClasse="iconeTrabalhador"
+            />
+
             </div>
-            <span className='spanLogin'>Já possui uma conta?<a href="/login" className='linkLogin'>Login</a></span>
+            <span className={styles.opcaoLogin}>
+                Já possui uma conta? <a href="/login" className={styles.linkLogin}>Login</a>
+            </span>
         </Conteudo>
     );
 }
 
-export default UserSelection;
+function CardUsuario({ descricao, link, icone, titulo, iconeClasse }) {
+    return (
+        <div className={styles.cardUsuario}>
+            <p className={styles.descricaoUsuario}>{descricao}</p>
+            <a href={link} className={styles.linkUsuario}>
+                <div className={styles.botaoUsuario}>
+                    <img src={icone} alt={`Ícone de ${titulo}`} className={`${styles.iconeUsuario} ${styles[iconeClasse]}`} />
+                    <p className={styles.tituloUsuario}>{titulo}</p>
+                </div>
+            </a>
+        </div>
+    );
+}
+
+
+export default SelecaoUsuario;

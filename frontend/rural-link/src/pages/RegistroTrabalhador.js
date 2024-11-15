@@ -8,6 +8,7 @@ import iconkey from './images/Icon/iconkey.png';
 import iconinforma from './images/Icon/iconinforma.png';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../autenticacao/AuthService';
+import Header from './components/Header';
 
 function RegistrarTrabalhador() {
     const [nomeCompleto, setNomeProprietario] = useState('');
@@ -51,11 +52,7 @@ function RegistrarTrabalhador() {
     return (
         <div className={styles.container}>
             <div className={styles.conteudo}>
-                <div className={styles.header}>
-                    <h2 className={styles.tituloPrimario}>
-                        Área de Cadastro
-                    </h2>
-                </div>
+            <Header title="Área de Cadastro"/>
                 <h3 className={styles.tituloSecundario}>Trabalhador Rural</h3>
                 <form className={styles.form} onSubmit={submitHandler}>
                     <div className={styles.iconGroup}>
