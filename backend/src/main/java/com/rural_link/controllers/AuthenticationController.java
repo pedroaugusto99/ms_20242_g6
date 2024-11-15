@@ -1,10 +1,10 @@
 package com.rural_link.controllers;
 
-import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.dtos.authentication.LoginRequestDTO;
 import com.rural_link.dtos.authentication.LoginResponseDTO;
 import com.rural_link.dtos.authentication.RegistrarProprietarioRequestDTO;
 import com.rural_link.dtos.authentication.RegistrarTrabalhadorRequestDTO;
+import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.infra.security.TokenService;
 import com.rural_link.services.AuthenticationService;
 import com.rural_link.services.ProprietarioService;
@@ -72,4 +72,6 @@ public class AuthenticationController {
         trabalhadorRuralService.registrarTrabalhador(data);
         return ResponseEntity.ok().build();
     }
+
+
 }
