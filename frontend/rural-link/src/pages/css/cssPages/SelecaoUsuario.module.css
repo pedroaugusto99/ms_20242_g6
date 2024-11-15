@@ -1,14 +1,5 @@
-h2 {
-    font-size: 32px;
-    color: #ffffff;
-     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -7vh;
-}
-
-h3 {
-    margin-top: 10px;
+.tituloPrincipal {
+    margin-top: 1.5vw;
     margin-bottom: 10px;
     font-size: 30px;
     font-weight: bold;
@@ -16,29 +7,29 @@ h3 {
     text-align: center;
 }
 
-.user-selection {
+.selecaoUsuario {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.button-container {
+.cardUsuario {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 40%;
 }
 
-.button-container:first-child {
+.cardUsuario:first-child {
     margin-right: -4vw;
 }
 
-.user-selection .desc_user {
+.cardUsuario .descricaoUsuario {
     font-size: 16px;
     color: var(--preto);
     font-weight: bold;
@@ -47,7 +38,7 @@ a{
     width: 50%;
 }
 
-.btn-user {
+.botaoUsuario {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,23 +54,27 @@ a{
     flex-direction: column;
 }
 
-.btn-user:hover {
+.botaoUsuario:hover {
     background-color: #20b44048;
 }
 
-.btn-user:active {
+.botaoUsuario:active {
     background-color: #20b440a6;
 }
 
-.prop_rural {
+.iconeUsuario {
     width: 30%;
 }
 
-.trab_rural {
+.iconeTrabalhador {
     width: 40%;
 }
 
-.title_user {
+.iconeProprietario {
+    width: 30%;
+}
+
+.tituloUsuario {
     margin-top: 1.2vw;
     font-size: 36px;
     text-align: center;
@@ -87,7 +82,7 @@ a{
     font-weight: bold;
 }
 
-.spanLogin {
+.opcaoLogin {
     display: flex;
     justify-content: center;
     align-items: center;

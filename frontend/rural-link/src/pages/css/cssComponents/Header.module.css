@@ -8,3 +8,10 @@
     border-top-right-radius: 15px;
 }
 
+.title {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
