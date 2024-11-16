@@ -43,7 +43,7 @@ function Login() {
 
     const handleRegisterEsqueceu = (event) => {
         event.preventDefault();
-        navigate('/esqueceusenha'); 
+        navigate('/esqueceusenhaconfemail'); 
     };
 
     return (
