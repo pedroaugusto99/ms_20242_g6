@@ -9,8 +9,9 @@ import Perfil from '../src/pages/Perfil';
 import Dashboard from '../src/pages/Dashboard';
 import Faq from '../src/pages/Faq';
 import Fichamento from '../src/pages/Fichamento';
-import RegistrarAnimal from '../src/pages/RegistrarAnimal'
-import FichaAnimal from '../src/pages/FichaAnimal'
+import RegistrarAnimal from '../src/pages/RegistrarAnimal';
+import FichaAnimal from '../src/pages/FichaAnimal';
+import EsqueceuSenha from '../src/pages/EsqueceuSenha';
 
 export function App(){
     
@@ -23,6 +24,7 @@ export function App(){
                         <Route path="/registrarfazenda" element={<RegistrarFazenda />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
+                    <Route path="/esqueceusenha" element={<EsqueceuSenha />} />
                     <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
                     <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
                     <Route path="/selecaousuario" element={<SelecaoUsuario />} />

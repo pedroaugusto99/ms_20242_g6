@@ -152,7 +152,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--branco);
     cursor: pointer;
     font-size: 20px;
-    height: 55px;
+    height: 45px;
     width: 15%; 
     margin: 9rem 0rem 0rem 50rem;
     align-self: center;
@@ -163,7 +163,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--branco);
     cursor: pointer;
     font-size: 20px;
-    height: 55px;
+    height: 45px;
     width: 15%; 
     margin: 2.3rem 0rem 0rem 50rem;
     align-self: center;
@@ -174,7 +174,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--branco);
     cursor: pointer;
     font-size: 20px;
-    height: 55px;
+    height: 45px;
     width: 13%; 
     margin: 0rem 0rem 0rem 2rem;
 }
