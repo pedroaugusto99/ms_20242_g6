@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import styles from './css/cssPages/EsqueceuSenha.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from './images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthService from '../autenticacao/AuthService';
 
 function EsqueceuSenha() {
     const [senha, setSenha] = useState('');
+    const [email, setEmail] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
     const [mensagem, setMensagem] = useState('');
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const alternarVisibilidadeSenha = () => {
         setMostrarSenha(prevState => !prevState);
@@ -23,8 +25,8 @@ function EsqueceuSenha() {
             return;
         }
         try {
-            const resposta = await AuthService.resetPassword({ password: senha });
-            if (resposta.data === 'Senha redefinida com sucesso') {
+            const resposta = await AuthService.redefinirsenha({ email: location.state.emailUsuarioToken, password: senha });
+            if (resposta.statusText === 'OK') {
                 setMensagem('Senha redefinida com sucesso!');
                 navigate('/login');
             } else {
