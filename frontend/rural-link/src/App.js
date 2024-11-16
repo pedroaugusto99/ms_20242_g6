@@ -12,6 +12,8 @@ import Fichamento from '../src/pages/Fichamento';
 import RegistrarAnimal from '../src/pages/RegistrarAnimal';
 import FichaAnimal from '../src/pages/FichaAnimal';
 import EsqueceuSenha from '../src/pages/EsqueceuSenha';
+import EsqueceuSenhaConfEmail from '../src/pages/EsqueceuSenhaConfEmail';
+import EsqueceuSenhaToken from '../src/pages/EsqueceuSenhaToken';
 
 export function App(){
     
@@ -24,6 +26,8 @@ export function App(){
                         <Route path="/registrarfazenda" element={<RegistrarFazenda />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
+                    <Route path="/esqueceusenhaconfemail" element={<EsqueceuSenhaConfEmail />} />
+                    <Route path="/esqueceusenhatoken" element={<EsqueceuSenhaToken />} />
                     <Route path="/esqueceusenha" element={<EsqueceuSenha />} />
                     <Route path="/registrarproprietario" element={<RegistrarProprietario />} />
                     <Route path="/registrartrabalhador" element={<RegistrarTrabalhador />} />
