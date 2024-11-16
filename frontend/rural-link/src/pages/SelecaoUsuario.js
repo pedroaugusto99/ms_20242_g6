@@ -16,7 +16,7 @@ function SelecaoUsuario() {
                 descricao="Se você é proprietário de fazenda clique no ícone abaixo"
                 link="/registrarproprietario"
                 icone={iconeProprietario}
-                titulo="Proprietário Rural"
+                titulo="Proprietário de Fazenda"
                 iconeClasse="iconeProprietario"
             />
             <CardUsuario

@@ -47,7 +47,7 @@ function RegistrarTrabalhador() {
 
     const handleClick = () => {
         navigate('/selecaousuario');
-      };
+    };
 
     return (
         <div className={styles.container}>
