@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
 import styles from './css/cssPages/EsqueceuSenhaEmailToken.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from './images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthService from '../autenticacao/AuthService';
 
 function EsqueceuSenha() {
-    const [senha, setSenha] = useState('');
+    const [token, setToken] = useState('');
     const [mensagem, setMensagem] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
 
     const aoEnviarFormulario = async (event) => {
         event.preventDefault();
         try {
-            const resposta = await AuthService.resetPassword({ password: senha });
-            if (resposta.data === 'Senha redefinida com sucesso') {
-                setMensagem('Senha redefinida com sucesso!');
-                navigate('/login');
+            const resposta = await AuthService.validartoken({ email: location.state.emailUsuario, token: token });
+            if (resposta.data['tokenValido'] === true) {
+                setMensagem('Token validado com sucesso!');
+                navigate('/esqueceusenha', {state:{emailUsuarioToken: location.state.emailUsuario}});
             } else {
-                setMensagem('Erro ao redefinir a senha. Tente novamente.');
+                setMensagem('Erro ao validar token. Tente novamente.');
             }
         } catch (erro) {
-            setMensagem('Erro ao redefinir a senha. Tente novamente.');
+            setMensagem('Erro ao validar token. Tente novamente.');
         }
     };
 
     const EntradaEmail = ({ label, valor, aoMudar }) => (
         <div className={styles.campoSenha}>
             <input
-                type={setSenha ? 'text' : 'password'}
+                type={setToken ? 'text' : 'token'}
                 placeholder={label}
                 required
                 value={valor}
@@ -40,7 +41,7 @@ function EsqueceuSenha() {
     const FormularioRedefinicaoSenha = () => (
         <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
             <p className={styles.rotuloSenha}>Token de Validação:</p>
-            <EntradaEmail label="Digite o código" valor={senha} aoMudar={(e) => setSenha(e.target.value)} />
+            <EntradaEmail label="Digite o código" valor={token} aoMudar={(e) => setToken(e.target.value)} />
             {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
         </form>
     );

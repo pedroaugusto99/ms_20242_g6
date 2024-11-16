@@ -6,29 +6,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthService from '../autenticacao/AuthService';
 
 function EsqueceuSenha() {
-    const [senha, setSenha] = useState('');
+    const [email, setEmail] = useState('');
     const [mensagem, setMensagem] = useState('');
     const navigate = useNavigate();
 
     const aoEnviarFormulario = async (event) => {
         event.preventDefault();
         try {
-            const resposta = await AuthService.resetPassword({ password: senha });
-            if (resposta.data === 'Senha redefinida com sucesso') {
-                setMensagem('Senha redefinida com sucesso!');
-                navigate('/login');
+            const resposta = await AuthService.validaremail({ email: email });
+            if (resposta.statusText === 'OK') {
+                setMensagem('Email enviado com sucesso!');
+                navigate('/esqueceusenhatoken' , {state:{emailUsuario: email}});
             } else {
-                setMensagem('Erro ao redefinir a senha. Tente novamente.');
+                setMensagem('Erro ao enviar email. Tente novamente.');
             }
         } catch (erro) {
-            setMensagem('Erro ao redefinir a senha. Tente novamente.');
+            setMensagem('Erro ao enviar email. Tente novamente.');
         }
     };
 
     const EntradaEmail = ({ label, valor, aoMudar }) => (
         <div className={styles.campoSenha}>
             <input
-                type={setSenha ? 'text' : 'password'}
+                type={setEmail ? 'text' : 'email'}
                 placeholder={label}
                 required
                 value={valor}
@@ -40,7 +40,7 @@ function EsqueceuSenha() {
     const FormularioRedefinicaoSenha = () => (
         <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
             <p className={styles.rotuloSenha}>Email:</p>
-            <EntradaEmail label="Digite seu email" valor={senha} aoMudar={(e) => setSenha(e.target.value)} />
+            <EntradaEmail label="Digite seu email" valor={email} aoMudar={(e) => setEmail(e.target.value)} />
             {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
         </form>
     );
