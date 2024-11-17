@@ -38,7 +38,12 @@ function Login() {
 
     const handleRegister = (event) => {
         event.preventDefault();
-        navigate('/user-selection'); 
+        navigate('/selecaousuario'); 
+    };
+
+    const handleRegisterEsqueceu = (event) => {
+        event.preventDefault();
+        navigate('/esqueceusenhaconfemail'); 
     };
 
     return (
@@ -46,8 +51,7 @@ function Login() {
             <div className={`${styles.conteudo} ${styles.primeiroConteudo}`}>
                 <div className={styles.primeiraColuna}>
                     <h2 className={`${styles.titulo} ${styles.tituloPrimario}`}>Bem-Vindo(a) !</h2>
-                    <p className={`${styles.descricao} ${styles.descricaoPrimaria}`}>Faça Login para ter acesso a</p>
-                    <p className={`${styles.descricao} ${styles.descricaoPrimaria}`}>sua conta</p>
+                    <p className={`${styles.descricao} ${styles.descricaoPrimaria}`}>Faça Login para ter acesso a sua conta</p>
                 </div>
 
                 <div className={styles.segundaColuna}>
@@ -65,7 +69,7 @@ function Login() {
                             />
                         </label>
                         <p className={styles.otherLabel}>Senha:
-                            <a href="#" className={styles.forgetpassword}>Esqueceu a senha?</a>
+                            <a href="#" className={styles.forgetpassword} onClick={handleRegisterEsqueceu}>Esqueceu a senha?</a>
                         </p>
                         <label className={styles.labelInput}>
                             <input

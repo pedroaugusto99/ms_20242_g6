@@ -49,6 +49,10 @@ function RegistrarAnimal() {
         setIconeAnimal(getIcone(selectedEspecie)); 
     };
 
+    const handleAccessVoltar = () => {
+        navigate('/fichamento')
+    };
+
     const submitHandler = (event) => {
         event.preventDefault();
         try{
@@ -209,12 +213,12 @@ function RegistrarAnimal() {
 
                         <div className={styles.inputGroup}>
                             <p className={`${styles.otherLabel} ${styles.labelShifted}`}>
-                                OQUE COLOCAR AQUI? SUBSTITUIR IDADE
+                            Idade
                             </p>
                             <label className={styles.labelShortInput}>
                                 <input
                                     type="text"
-                                    placeholder="Digite algo aqui:"
+                                    placeholder="Digite a idade do animal"
                                     name="campoExtra"
                                     value={idade}
                                     onChange={(e) => setIdade(e.target.value)}
@@ -310,7 +314,7 @@ function RegistrarAnimal() {
                     </div>
 
                     <div className={styles.Rowbtn}> 
-                        <button className={`${styles.btn} ${styles.btnPrimario}`} type="button">Voltar</button>
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleAccessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
                         <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Cadastrar Animal</button>
                     </div>
                 </form>

@@ -12,6 +12,7 @@ import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
 import PopUpExclusao from './modals/PopUpExclusao/PopUpExclusao';
 import PopUpConfirmacao from './modals/PopUpConfirmacao/PopUpConfirmacao';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function FichaAnimal() {
     // Dados
@@ -31,6 +32,9 @@ function FichaAnimal() {
     const [modalCrias, setModalCrias] = React.useState(false);
     const [modalExclusao, setModalExclusao] = React.useState(false);
     const [modalConfirmacao, setModalConfirmacao] = React.useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     // Funções de controle dos modais
     const togglePesagemModal = () => {
@@ -71,7 +75,7 @@ function FichaAnimal() {
     const [qrCodeAnimal, setQrCodeAnimal] = React.useState('');
 
     React.useEffect(() => {
-        AuthService.pegarDadosDoAnimal(1).then((response) => {
+        AuthService.pegarDadosDoAnimal(location.state.identificador).then((response) => {
             setNomeAnimal(response.data['nome'])
             setCodigoAnimal(response.data['codigo'])
             setEspecieAnimal(response.data['especie'])
@@ -90,10 +94,14 @@ function FichaAnimal() {
     }, []);
 
     React.useEffect(() => {
-        AuthService.pegarQrCode(1).then((response) => {
+        AuthService.pegarQrCode(location.state.identificador).then((response) => {
             setQrCodeAnimal(response.data['qrCode'])
         })
     }, []);
+
+    const handleAcessVoltar =() => {
+        navigate('/fichamento')
+    };
 
     return (
         <div className={styles.body}>
@@ -158,7 +166,7 @@ function FichaAnimal() {
 
                 {/* Botões */}
                 <div className={styles.Rowbtn}>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button">Voltar</button>
+                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}>Voltar</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
                     <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
                     </button>

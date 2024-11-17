@@ -8,6 +8,7 @@ import iconkey from './images/Icon/iconkey.png';
 import iconinforma from './images/Icon/iconinforma.png';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../autenticacao/AuthService';
+import Header from './components/Header';
 
 function RegistrarTrabalhador() {
     const [nomeCompleto, setNomeProprietario] = useState('');
@@ -44,14 +45,14 @@ function RegistrarTrabalhador() {
         }
     };
 
+    const handleClick = () => {
+        navigate('/selecaousuario');
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.conteudo}>
-                <div className={styles.header}>
-                    <h2 className={styles.tituloPrimario}>
-                        Área de Cadastro
-                    </h2>
-                </div>
+            <Header title="Área de Cadastro"/>
                 <h3 className={styles.tituloSecundario}>Trabalhador Rural</h3>
                 <form className={styles.form} onSubmit={submitHandler}>
                     <div className={styles.iconGroup}>
@@ -171,7 +172,9 @@ function RegistrarTrabalhador() {
                         </label>
                     </div>
 
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleClick}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
                     <button className={`${styles.btnTrab} ${styles.btnPrimario}`} type="submit">Cadastrar</button>
+
                 </form>
             </div>
         </div>

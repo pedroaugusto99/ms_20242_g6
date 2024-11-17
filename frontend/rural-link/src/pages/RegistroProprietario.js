@@ -6,6 +6,7 @@ import icontelefone from './images/Icon/icontelefone.png';
 import iconsenha from './images/Icon/iconsenha.png';
 import AuthService from '../autenticacao/AuthService';
 import { useNavigate } from 'react-router-dom';
+import Header from './components/Header';
 
 
 function RegistrarProprietario() {
@@ -36,15 +37,15 @@ function RegistrarProprietario() {
         }
     };
 
+    const handleClick = () => {
+        navigate('/selecaousuario');
+      };
+
     return (
         <div className={styles.container}>
             <div className={styles.conteudo}>
 
-                <div className={styles.header}>
-                    <h2 className={styles.tituloPrimario}>
-                        Área de Cadastro
-                    </h2>
-                </div>
+                <Header title="Área de Cadastro"/>
 
                 <h3 className={styles.tituloSecundario}>Proprietário de Fazenda</h3>
                 <form className={styles.form} onSubmit={submitHandler}>
@@ -141,7 +142,8 @@ function RegistrarProprietario() {
                         </label>
                     </div>
 
-                    <button className={`${styles.btnProp} ${styles.btnPrimario}`} type="submit">Continuar</button>
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleClick}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
+                    <button className={`${styles.btnProp} ${styles.btnPrimario}`} type="submit">Cadastrar</button>
 
                 </form>
             </div>

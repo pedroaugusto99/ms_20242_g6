@@ -56,7 +56,7 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 4. RNF04 - Segurança: O sistema deve utilizar protocolos e algoritmos para garantir a segurança durante a autenticação e navegação na aplicação, em conformidade com normas da LGPD.
 5. RNF05 - Segurança: O sistema deve gerar um código da fazenda que seja válido para uso somente por 24 horas.
 6. RNF06 - Desempenho: O sistema deve funcionar de maneira eficaz, suportando grandes volumes de dados e acessos simultâneos de múltiplos usuários, suportando picos de uso.
-7. RNF07 - Compatibildade: O sistema deve ser compatível com diferentes dispositivos e sistemas operacionais.
+7. RNF07 - Compatibilidade: O sistema deve ser compatível com diferentes dispositivos, sistemas operacionais e ter telas responsivas.
 8. RNF08 - Confiabilidade: O sistema deve operar de forma consistente e sem falhas, minimizando períodos de inatividade.
 9. RNF09 - Conectividade: O sistema só poderá funcionar mediante o acesso à internet.
 10. RNF10 - Aparência: O sistema deve ser consistente com o padrão de design em termos de cores, fontes e  espaçamento.
@@ -78,15 +78,17 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 
 ### Modelo Arquitetural
 O modelo arquitetural mais próximo do produto final é o Cliente-Servidor. Nesse modelo, o cliente é responsável por iniciar a comunicação com o servidor, que aguarda as requisições de entrada para fornecer os serviços. Uma das abordagens mais comuns desse modelo é a arquitetura em três camadas:
-- Camada de Apresentação (Cliente):  Interface com o usuário será feita em React
-- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente através de Java
-- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados pelo PostgreSQL
+- Camada de Apresentação (Cliente):  Interface com o usuário será feita em React;
+- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente através de Java;
+- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados pelo PostgreSQL;
 
 ### Modelo de Interfaces Gráficas
-<Apresentar uma descrição sucinta do modelo de interfaces gráficas do Produto.>
-
-### Tecnologia de Persistência de Dados
-<Apresentar uma descrição sucinta do modelo de persistência do Produto.>
+O modelo de interface gráfica utilizado neste projeto é React, framework front-end de JavaScript, baseado em componentes reutilizáveis, que gerenciam o estado da interface e atualizam a UI de forma eficiente e reativa. Principais características desse modelo:
+- Componentização: A UI é dividida em pequenos componentes independentes, cada um com sua própria lógica e visual, que podem ser reutilizados e compostos para formar a interface completa.
+- JSX: O React utiliza JSX (JavaScript XML), uma sintaxe que permite escrever HTML dentro de código JavaScript, tornando o desenvolvimento da interface mais intuitivo e legível.
+- Estado e Props: O estado (state) armazena informações locais de cada componente, enquanto as propriedades (props) são utilizadas para passar dados de um componente pai para um componente filho.
+- Virtual DOM: O React utiliza um "DOM virtual" para otimizar a performance. Quando o estado ou as props mudam, o React calcula as diferenças entre a versão anterior e a nova do DOM, atualizando apenas as partes da interface que realmente mudaram.
+- Unidirecionalidade de dados: Os dados fluem de forma unidirecional, do componente pai para o filho, através das props, garantindo previsibilidade e maior controle sobre a UI.
 
 ### Local do _Deploy_
 O nosso planejamento inicial é hospedar nossa aplicação no [local a definir], sendo crucial para nossa escolha a facilidade de configuração e também os recursos ofertados na versão gratuita.
@@ -116,9 +118,9 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |3|Projeto de Interfaces gráficas dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Concluída|
 |3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Parcialmente concluída|
 |4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
-|4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Em andamento|
-|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
-|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
-|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
-|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Em andamento|
+|4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
+|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
+|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
+|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
+|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
 |6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|

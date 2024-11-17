@@ -6,12 +6,9 @@
     --cor-terciaria: #009F22;
     --cor-background: lightgray;
     --cor-input: #ecf0f1;
-
     --branco: white;
     --preto: black;
 }
-
-
 
 .container {
     display: flex;
@@ -35,29 +32,29 @@
     height: 90%;
     align-items: center;
     justify-content: space-between;
-
     box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
 }
 
 .header {
-    padding: 5px;
-    padding-bottom: 15px;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     width: 1080px;
+    height: 50px;
     background-color: #2bb749;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tituloPrimario{
     color: rgb(255, 255, 255);
-    justify-content: center; 
-    align-items: center; 
-
+    font-size: 32px;
 }
 
 .tituloSecundario {
-    margin-top: 40px;
-    margin-bottom: 50px;
-    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 30px;
     font-weight: bold;
     color: #017A1B;
     text-align: center;
@@ -70,15 +67,13 @@
     text-align: left;
     text-indent: 20%;
     margin: 13px;
-
 }
 
 .required {
     color: red;
-    margin-left: 5px; 
+    margin-left: 4px; 
     cursor: pointer; 
 }
-
 
 .labelInput {
     height: 45px;
@@ -90,6 +85,7 @@
     transition: all 0.3s ease;
     border-radius: 5px;
     position: relative;
+    padding-left: 40px;
 }
 
 input {
@@ -99,6 +95,7 @@ input {
     border: none;
     background-color: #E1E1E1;
     border-radius: 5px;
+    z-index: -2;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -118,7 +115,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .inputRow {
     display: flex; 
     gap: 50px; 
-    
 }
 
 .inputGroup {
@@ -127,14 +123,17 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .labelShortInput {
-    margin-top: -7px;
+    margin-top: -10px;
     display: flex;
     align-items: center; 
-    height: 60px; 
+    height: 45px; 
     width: 300px; 
     background-color: #E1E1E1;
     border-radius: 5px;
     position: relative; 
+    padding-left: 40px;
+    z-index: -3;
+
 }
 
 .labelShifted {
@@ -153,11 +152,10 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--branco);
     cursor: pointer;
     font-size: 20px;
-    height: 55px;
-    width: 30%; 
-    margin: 3.8rem auto 1rem auto;
-    display: block; 
-    align-self: center; 
+    height: 45px;
+    width: 15%; 
+    margin: 9rem 0rem 0rem 50rem;
+    align-self: center;
 }
 
 .btnTrab {
@@ -165,18 +163,30 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--branco);
     cursor: pointer;
     font-size: 20px;
-    height: 55px;
-    width: 30%; 
-    margin: 3rem auto 1rem auto;
-    display: block; 
-    align-self: center; 
+    height: 45px;
+    width: 15%; 
+    margin: 2.3rem 0rem 0rem 50rem;
+    align-self: center;
 }
 
+.btnVoltar{
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 13%; 
+    margin: 0rem 0rem 0rem 2rem;
+}
+
+.btnVoltar i {
+    margin-right: 15px;
+  }
 
 .btnPrimario {
     border: 1px solid var(--cor-terciaria);
     background-color: var(--cor-terciaria);
-    transition: background-color 0.5s;
+    transition: 0.5s;
 }
 
 .btnPrimario:hover {
@@ -186,15 +196,14 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .infobtn {
-    z-index: 1;
-    left: 37%;
-    top: 46.3%;
-    position: absolute;
-    background: none;
+    z-index: 4;
+    position: relative;
+    top: 2vh;
+    left: 3vw;
+    background-color: transparent;
     border: none;
     cursor: pointer;
-    outline: none;
-    transition: transform 0.2s; 
+    transition: 0.2s; 
 }
 
 .infobtn:hover {
@@ -205,7 +214,7 @@ input[type="number"]::-webkit-outer-spin-button {
     position: absolute; 
     font-weight: 600;
     top: 38%; 
-    left: 18%; 
+    left: 38%; 
     border-radius: 10px;
     background-color: #f9f9f9; 
     border: 1px solid #ccc; 
@@ -213,8 +222,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #333; 
     margin-top: 5px; 
     font-size: 14px; 
-    z-index: 10; 
-    
+    z-index: 3; 
 }
 
 .toggleButton {
@@ -222,9 +230,9 @@ input[type="number"]::-webkit-outer-spin-button {
     border: none;
     cursor: pointer;
     font-size: 15px;
-    margin-right: 7px;
+    margin-right: 5px;
     position: absolute; 
-    left: 95%; 
+    left: 90%; 
     top: 50%; 
     transform: translateY(-50%); 
     height: 28px; 
@@ -237,7 +245,6 @@ input[type="number"]::-webkit-outer-spin-button {
 /* <=================== Começo Icones =================> */
 
 .nomecompleto {
-    
     position: absolute; 
     left: 20px; 
     top: 50%; 
@@ -259,7 +266,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .telefone{
     
     position: absolute; 
-    left: 20px; 
+    left: 10px; 
     top: 50%; 
     transform: translateY(-50%); 
     height: 28px; 

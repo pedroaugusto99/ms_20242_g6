@@ -25,6 +25,16 @@ public record CodeGenerator() {
         return stringBuffer.toString();
     }
 
+    public static String gerarTokenEsqueceuSenha(){
+        String pattern = "8CTJOQKXH4@F1NZ&GDLIW6!3V2%#R7A90E5BP?YSMU ";
+        SecureRandom random = new SecureRandom();
+        StringBuffer stringBuffer = new StringBuffer(11);
+        for (int i = 0; i < 11; i++) {
+            stringBuffer.append(pattern.charAt(random.nextInt(42)));
+        }
+        return stringBuffer.toString();
+    }
+
     public static boolean validarTempoDoCodigo(String codigo){
         int horaDeCriacao = Integer.parseInt(codigo.substring(6, 8));
         int diaDeCriacao = Integer.parseInt(codigo.substring(8, 10));
