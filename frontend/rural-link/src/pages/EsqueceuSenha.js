@@ -30,6 +30,7 @@ const EntradaSenha = ({ label, valor, aoMudar, mostrarSenha, alternarVisibilidad
 
 function EsqueceuSenha() {
     const [senha, setSenha] = useState('');
+    const [email, setEmail] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
     const [mensagem, setMensagem] = useState('');
     const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -49,9 +50,10 @@ function EsqueceuSenha() {
         try {
             const resposta = await AuthService.redefinirsenha({
                 email: location.state.emailUsuarioToken,
-                password: senha,
+                password: senha
             });
-            if (resposta.statusText === 'OK') {
+            console.log(resposta.status);
+            if (resposta.status === 200) {
                 setMensagem('Senha redefinida com sucesso!');
                 navigate('/login');
             } else {

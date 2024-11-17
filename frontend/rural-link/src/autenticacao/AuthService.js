@@ -49,14 +49,14 @@ class AuthService{
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/busca?nome=${nome}`);
     }
-    validaremail(){
-        return axios.post(`${API_BASE_URL}/esqueceu-senha/email`);
+    validaremail(credentials){
+        return axios.post(`${API_BASE_URL}/esqueceu-senha/email`, credentials);
     }
-    validartoken(){
-        return axios.post(`${API_BASE_URL}/esqueceu-senha/token`);
+    validartoken(credentials){
+        return axios.post(`${API_BASE_URL}/esqueceu-senha/token`, credentials);
     }
-    redefinirsenha(){
-        return axios.put(`${API_BASE_URL}/esqueceu-senha`);
+    redefinirsenha(credentials){
+        return axios.put(`${API_BASE_URL}/esqueceu-senha`, credentials);
     }
 }
 
