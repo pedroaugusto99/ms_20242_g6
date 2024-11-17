@@ -9,9 +9,11 @@ import Perfil from '../src/pages/Perfil';
 import Dashboard from '../src/pages/Dashboard';
 import Faq from '../src/pages/Faq';
 import Fichamento from '../src/pages/Fichamento';
-import RegistrarAnimal from '../src/pages/RegistrarAnimal'
-import FichaAnimal from '../src/pages/FichaAnimal'
-
+import RegistrarAnimal from '../src/pages/RegistrarAnimal';
+import FichaAnimal from '../src/pages/FichaAnimal';
+import EsqueceuSenha from '../src/pages/EsqueceuSenha';
+import EsqueceuSenhaConfEmail from '../src/pages/EsqueceuSenhaConfEmail';
+import EsqueceuSenhaToken from '../src/pages/EsqueceuSenhaToken';
 export function App(){
     
     return (
@@ -37,8 +39,6 @@ export function App(){
                     <Route path="/fichamento" element={<Fichamento/>} />
                     <Route path="/registraranimal" element={<RegistrarAnimal />} />
                     <Route path="/fichaanimal" element={<FichaAnimal/>} />
-                    <Route path="/ficha_pdf" element={<handleGeneratePDF />} />
-
                 </Routes>
             </div>
         </Router>
