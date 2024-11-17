@@ -88,18 +88,17 @@
     padding-left: 40px;
 }
 
-input {
-    height: 60px;
+.input {
+    height: 45px;
     width: 100%;
     text-indent: 65px;
     border: none;
     background-color: #E1E1E1;
     border-radius: 5px;
-    z-index: -2;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+.input[type="number"]::-webkit-inner-spin-button,
+.input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -119,7 +118,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .inputGroup {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    z-index: 1;
 }
 
 .labelShortInput {
@@ -196,7 +196,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .infobtn {
-    z-index: 4;
+    z-index: 1;
     position: relative;
     top: 2vh;
     left: 3vw;
@@ -208,6 +208,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .infobtn:hover {
     transform: scale(1.2); 
+    background: none;
 }
 
 .message {
@@ -220,9 +221,10 @@ input[type="number"]::-webkit-outer-spin-button {
     border: 1px solid #ccc; 
     padding: 10px; 
     color: #333; 
-    margin-top: 5px; 
+    margin-top: 5px;
+    z-index: 2;
     font-size: 14px; 
-    z-index: 3; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .toggleButton {
