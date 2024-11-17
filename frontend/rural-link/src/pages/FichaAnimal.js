@@ -1,4 +1,3 @@
-// Importa√ß√µes necess√°rias
 import Sidebar from './components/Sidebar';
 import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
@@ -12,7 +11,7 @@ import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
 import PopUpExclusao from './modals/PopUpExclusao/PopUpExclusao';
 import PopUpConfirmacao from './modals/PopUpConfirmacao/PopUpConfirmacao';
-import { useLocation, useNavigate } from 'react-router-dom';
+
 
 function FichaAnimal() {
     // Dados
@@ -62,7 +61,7 @@ function FichaAnimal() {
     const [codigoAnimal, setCodigoAnimal] = React.useState('');
     const [especieAnimal, setEspecieAnimal] = React.useState('');
     const [racaAnimal, setRacaAnimal] = React.useState('');
-    const [sexoAnima, setSexoAnimal] = React.useState('');
+    const [sexoAnimal, setSexoAnimal] = React.useState('');
     const [dataDeNascimentoAnimal, setDataDeNascimentoAnimal] = React.useState('');
     const [idadeAnimal, setIdadeAnimal] = React.useState('');
     const [dataDeAquisicaoAnimal, setDataDeAquisicaoAnimal] = React.useState('');
@@ -101,6 +100,7 @@ function FichaAnimal() {
 
     const handleAcessVoltar =() => {
         navigate('/fichamento')
+
     };
 
     return (
@@ -113,16 +113,16 @@ function FichaAnimal() {
                 <div className={styles.dadosEssenciais}>
                     <h1 className={styles.titleFicha}>Dados Essenciais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="C√≥digo do Animal" />
-                        <Campo label="Nome" />
-                        <Campo label="Esp√©cie" />
-                        <Campo label="Ra√ßa" />
+                        <Campo label="CÛdigo do Animal" value={codigoAnimal} />
+                        <Campo label="Nome" value={nomeAnimal} />
+                        <Campo label="EspÈcie" value={especieAnimal} />
+                        <Campo label="RaÁa" value={racaAnimal} />
                     </div>
                     <div className={styles.camposBaixo}>
-                        <Campo label="Sexo" />
-                        <Campo label="Data de Nascimento" />
-                        <Campo label="Idade" />
-                        <Campo label="Data de Aquisi√ß√£o" />
+                        <Campo label="Sexo" value={sexoAnimal} />
+                        <Campo label="Data de Nascimento" value={dataDeNascimentoAnimal} />
+                        <Campo label="Idade" value={idadeAnimal} />
+                        <Campo label="Data de AquisiÁ„o" value={dataDeAquisicaoAnimal} />
                     </div>
                 </div>
 
@@ -130,14 +130,14 @@ function FichaAnimal() {
                 <div className={styles.dadosAdicionais}>
                     <h1 className={styles.titleFicha}>Dados Adicionais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="Status" />
-                        <Campo label="Lote" />
-                        <Campo label="Pai (C√≥digo)" />
-                        <Campo label="M√£e (C√≥digo)" />
+                        <Campo label="Status" value={statusAnimal} />
+                        <Campo label="Lote" value={loteAnimal} />
+                        <Campo label="Pai (CÛdigo)" value={codigoDoPaiDoAnimal} />
+                        <Campo label="M„e (CÛdigo)" value={codigoDaMaeDoAnimal} />
                     </div>
                     <div className={styles.camposBaixo}>
-                        <Campo label="Peso Atual" editable />
-                        <Campo label="N√∫mero de Crias" editable />
+                        <Campo label="Peso Atual" value={pesoAtualDoAnimal} editable />
+                        <Campo label="N˙mero de Crias" value={numeroDeCriasDoAnimal} editable />
                     </div>
                 </div>
 
@@ -162,15 +162,13 @@ function FichaAnimal() {
                         columns={['C√≥digo da Cria', 'Data de Nascimento', 'Pai (C√≥digo)', 'Idade']} 
                         toggleModal={toggleCriasModal}
                     />
-                </div>
 
-                {/* Bot√µes */}
-                <div className={styles.Rowbtn}>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}>Voltar</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
                     <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
                     </button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Confirmar Edi√ß√£o</button>
+
                 </div>
             </div>
 
