@@ -137,7 +137,7 @@ function FichaAnimal() {
                     </div>
                     <div className={styles.camposBaixo}>
                         <Campo label="Peso Atual" value={pesoAtualDoAnimal} editable />
-                        <Campo label="Número de Crias" value={numeroDeCriasDoAnimal} editable />
+                        <Campo label="Número de crias" value={numeroDeCriasDoAnimal} editable />
                     </div>
                 </div>
 
