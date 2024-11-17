@@ -7,6 +7,7 @@ import AuthService from '../autenticacao/AuthService';
 
 function EsqueceuSenha() {
     const [token, setToken] = useState('');
+    const [email, setEmail] = useState('');
     const [mensagem, setMensagem] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -14,6 +15,7 @@ function EsqueceuSenha() {
     const aoEnviarFormulario = async (event) => {
         event.preventDefault();
         try {
+            setEmail(location.state.emailUsuario)
             const resposta = await AuthService.validartoken({ 
                 email: location.state.emailUsuario, 
                 token: token 
