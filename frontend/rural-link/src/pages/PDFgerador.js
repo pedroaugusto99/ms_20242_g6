@@ -569,13 +569,17 @@ const styles = StyleSheet.create({
   },
 
   cabecalho:{
-    fontsize: '24px',
+    top:35,
+    left:230,
+    fontSize:20,
     position: 'absolute',
     color: '#294134',
     textAlign:'center',
     justifyContent:'center',
     alignItems:'center',
     display:'flex',
+    borderBottom:2,
+    borderBottomColor: '#28a745',
 
   },
   
