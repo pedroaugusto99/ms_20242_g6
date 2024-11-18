@@ -14,7 +14,7 @@ function EsqueceuSenha() {
         event.preventDefault();
         try {
             const resposta = await AuthService.validaremail({ email: email });
-            if (resposta.statusText === 'OK') {
+            if (resposta.status === 200) {
                 setMensagem('Email enviado com sucesso!');
                 navigate('/esqueceusenhatoken', { state: { emailUsuario: email } });
             } else {
