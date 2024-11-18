@@ -76,6 +76,7 @@ const NavItem = ({ icon, label, link }) => (
               <NavItem icon="fa-solid fa-circle-plus icon" label="Novo Cadastro" link="/registraranimal"/>
               <NavItem icon="fa-solid fa-clipboard icon" label="Rebanho" link="/fichamento"/>
               <NavItem icon="fa-solid fa-qrcode icon" label="Ler QR Code" />
+              <NavItem icon="fa-solid fa-thumbtack icon" label="Dúvidas" link="/faq"/>
             </ul>
 
             <div className="bottom-content">
