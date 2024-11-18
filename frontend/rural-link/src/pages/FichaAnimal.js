@@ -1,3 +1,4 @@
+// Importações necessárias
 import Sidebar from './components/Sidebar';
 import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
@@ -11,7 +12,7 @@ import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
 import PopUpExclusao from './modals/PopUpExclusao/PopUpExclusao';
 import PopUpConfirmacao from './modals/PopUpConfirmacao/PopUpConfirmacao';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function FichaAnimal() {
     // Dados
@@ -35,7 +36,7 @@ function FichaAnimal() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // FunÃ§Ãµes de controle dos modais
+    // Funções de controle dos modais
     const togglePesagemModal = () => {
         setModalPesagem(!modalPesagem);
     };
@@ -61,7 +62,7 @@ function FichaAnimal() {
     const [codigoAnimal, setCodigoAnimal] = React.useState('');
     const [especieAnimal, setEspecieAnimal] = React.useState('');
     const [racaAnimal, setRacaAnimal] = React.useState('');
-    const [sexoAnimal, setSexoAnimal] = React.useState('');
+    const [sexoAnima, setSexoAnimal] = React.useState('');
     const [dataDeNascimentoAnimal, setDataDeNascimentoAnimal] = React.useState('');
     const [idadeAnimal, setIdadeAnimal] = React.useState('');
     const [dataDeAquisicaoAnimal, setDataDeAquisicaoAnimal] = React.useState('');
@@ -74,7 +75,7 @@ function FichaAnimal() {
     const [qrCodeAnimal, setQrCodeAnimal] = React.useState('');
 
     React.useEffect(() => {
-        AuthService.pegarDadosDoAnimal(location.state.identificador).then((response) => {
+        AuthService.pegarDadosDoAnimal(1).then((response) => {
             setNomeAnimal(response.data['nome'])
             setCodigoAnimal(response.data['codigo'])
             setEspecieAnimal(response.data['especie'])
@@ -93,15 +94,18 @@ function FichaAnimal() {
     }, []);
 
     React.useEffect(() => {
-        AuthService.pegarQrCode(location.state.identificador).then((response) => {
+        AuthService.pegarQrCode(1).then((response) => {
             setQrCodeAnimal(response.data['qrCode'])
         })
     }, []);
 
     const handleAcessVoltar =() => {
         navigate('/fichamento')
-
     };
+    const handlegenerate_pdf = () => {
+        navigate('/pdf');
+    };
+    
 
     return (
         <div className={styles.body}>
@@ -113,16 +117,16 @@ function FichaAnimal() {
                 <div className={styles.dadosEssenciais}>
                     <h1 className={styles.titleFicha}>Dados Essenciais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="Código do Animal" value={codigoAnimal} />
-                        <Campo label="Nome" value={nomeAnimal} />
-                        <Campo label="Espécie" value={especieAnimal} />
-                        <Campo label="Raça" value={racaAnimal} />
+                        <Campo label="Código do Animal" />
+                        <Campo label="Nome" />
+                        <Campo label="Espécie" />
+                        <Campo label="Raça" />
                     </div>
                     <div className={styles.camposBaixo}>
-                        <Campo label="Sexo" value={sexoAnimal} />
-                        <Campo label="Data de Nascimento" value={dataDeNascimentoAnimal} />
-                        <Campo label="Idade" value={idadeAnimal} />
-                        <Campo label="Data de Aquisição" value={dataDeAquisicaoAnimal} />
+                        <Campo label="Sexo" />
+                        <Campo label="Data de Nascimento" />
+                        <Campo label="Idade" />
+                        <Campo label="Data de Aquisição" />
                     </div>
                 </div>
 
@@ -130,14 +134,14 @@ function FichaAnimal() {
                 <div className={styles.dadosAdicionais}>
                     <h1 className={styles.titleFicha}>Dados Adicionais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="Status" value={statusAnimal} />
-                        <Campo label="Lote" value={loteAnimal} />
-                        <Campo label="Pai (Código)" value={codigoDoPaiDoAnimal} />
-                        <Campo label="Mãe (Código)" value={codigoDaMaeDoAnimal} />
+                        <Campo label="Status" />
+                        <Campo label="Lote" />
+                        <Campo label="Pai (Código)" />
+                        <Campo label="Mãe (Código)" />
                     </div>
                     <div className={styles.camposBaixo}>
-                        <Campo label="Peso Atual" value={pesoAtualDoAnimal} editable />
-                        <Campo label="Número de crias" value={numeroDeCriasDoAnimal} editable />
+                        <Campo label="Peso Atual" editable />
+                        <Campo label="Número de Crias" editable />
                     </div>
                 </div>
 
@@ -151,24 +155,27 @@ function FichaAnimal() {
                         toggleModal={togglePesagemModal}
                     />
                     <ManejoTable 
-                        title="VacinaÃ§Ã£o" 
+                        title="Vacinação" 
                         data={vacinacaoData} 
-                        columns={['Nome da Vacina', 'Data da AplicaÃ§Ã£o', 'NÃºmero de Doses', 'PrÃ³xima AplicaÃ§Ã£o']}
+                        columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
                         toggleModal={toggleVacinacaoModal}
                     />
                     <ManejoTable 
                         title="Crias" 
                         data={criasData} 
-                        columns={['CÃ³digo da Cria', 'Data de Nascimento', 'Pai (CÃ³digo)', 'Idade']} 
+                        columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']} 
                         toggleModal={toggleCriasModal}
                     />
+                </div>
 
+                {/* Botões */}
+                <div className={styles.Rowbtn}>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}>Voltar</button>
+                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handlegenerate_pdf}>Gerar PDF</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
                     <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
                     </button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Confirmar EdiÃ§Ã£o</button>
-
+                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Confirmar Edição</button>
                 </div>
             </div>
 

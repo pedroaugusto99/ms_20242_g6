@@ -14,6 +14,8 @@ import FichaAnimal from '../src/pages/FichaAnimal';
 import EsqueceuSenha from '../src/pages/EsqueceuSenha';
 import EsqueceuSenhaConfEmail from '../src/pages/EsqueceuSenhaConfEmail';
 import EsqueceuSenhaToken from '../src/pages/EsqueceuSenhaToken';
+import PDFgerador from './pages/PDFgerador';
+
 export function App(){
     
     return (
@@ -39,6 +41,7 @@ export function App(){
                     <Route path="/fichamento" element={<Fichamento/>} />
                     <Route path="/registraranimal" element={<RegistrarAnimal />} />
                     <Route path="/fichaanimal" element={<FichaAnimal/>} />
+                    <Route path="/pdf" element={<PDFgerador />} />
                 </Routes>
             </div>
         </Router>
