@@ -114,7 +114,8 @@ function Fichamento() {
         </table>
       </div>
 
-      <PopUpFiltro isVisible={isFiltroVisible} toggleModal={toggleFiltro} />
+      <PopUpFiltro visivel={isFiltroVisible} alternarModal={toggleFiltro} />
+
     </div>
   );
 }
