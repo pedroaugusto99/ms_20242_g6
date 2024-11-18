@@ -35,10 +35,10 @@ function ManejoTablePesagem({ title, data, columns, toggleModal }) {
                         cellValue = row.peso || 'N/A';
                         break;
                       case 'Data da Pesagem':
-                        cellValue = row.data || 'N/A';
+                        cellValue = row.dataDePesagem || 'N/A';
                         break;
                       case 'Saldo de Peso':
-                        cellValue = row.saldo || 'N/A';
+                        cellValue = row.saldoDePeso || 'N/A';
                         break;
                       default:
                         cellValue = 'N/A';

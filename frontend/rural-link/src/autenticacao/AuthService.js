@@ -58,6 +58,38 @@ class AuthService{
     redefinirsenha(credentials){
         return axios.put(`${API_BASE_URL}/esqueceu-senha`, credentials);
     }
+    listarPesos(animalId){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/peso/${animalId}`);
+    }
+    listarVacinas(animalId){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/vacinacao/${animalId}`); 
+    }
+    listarCrias(animalId){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/animal/crias/${animalId}`); 
+    }
+    registrarPesoAnimal(credentials){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.post(`${API_BASE_URL}/peso`, credentials); 
+    }
+    registrarVacinaAnimal(credentials){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.post(`${API_BASE_URL}/vacinacao`, credentials); 
+    }
+    removerPesoAnimal(animalId){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.delete(`${API_BASE_URL}/peso/${animalId}`); 
+    }
+    removerVacinaAnimal(animalId){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.delete(`${API_BASE_URL}/vacinacao/${animalId}`); 
+    }
+    removerAnimal(animalId){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.delete(`${API_BASE_URL}/animal/${animalId}`); 
+    }
 }
 
 export default new AuthService();

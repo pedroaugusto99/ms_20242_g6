@@ -17,6 +17,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -29,6 +30,7 @@ public class PesoAnimalService {
     private final AnimalRepository animalRepository;
     private final TrabalhadorRuralRepository trabalhadorRuralRepository;
     private final ProprietarioRepository proprietarioRepository;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Fazenda encontrarFazendaDoAnimal(Pessoa pessoa){
         if (pessoa.getRole() == UserRole.PROPRIETARIO){
@@ -57,7 +59,7 @@ public class PesoAnimalService {
         }
         return new PesoAnimalResponseDTO(
                 pesoAnimalSalvo.getPeso(),
-                pesoAnimalSalvo.getDataDePesagem(),
+                pesoAnimalSalvo.getDataDePesagem().format(formatter),
                 saldoPesos,
                 pesoAnimalSalvo.getAnimal().getId()
         );
@@ -81,6 +83,7 @@ public class PesoAnimalService {
         List<PesoAnimal> pesosAnimal = pesoAnimalRepository.findByAnimal(animal);
         List<PesoAnimalResponseDTO> pesoAnimalResponseDTO = PesoAnimalMapper.INSTANCE.toListOfPesoAnimalResponseDTO(pesosAnimal);
         for (int i = pesoAnimalResponseDTO.size()-1; i >= 0; i--) {
+            pesoAnimalResponseDTO.get(i).setDataDePesagem(formatter.format(pesosAnimal.get(i).getDataDePesagem()));
             if (i == 0){
                 pesoAnimalResponseDTO.get(i).setSaldoDePeso(BigDecimal.ZERO);
             } else{

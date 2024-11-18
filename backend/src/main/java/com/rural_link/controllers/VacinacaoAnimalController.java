@@ -1,7 +1,8 @@
 package com.rural_link.controllers;
 
+import com.rural_link.dtos.animal.VacinacaoAnimalResponseDTO;
 import com.rural_link.entities.usuarios.Pessoa;
-import com.rural_link.dtos.animal.VacinacaoAnimalDTO;
+import com.rural_link.dtos.animal.VacinacaoAnimalRequestDTO;
 import com.rural_link.services.VacinacaoAnimalService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -34,10 +35,10 @@ public class VacinacaoAnimalController {
             @ApiResponse(responseCode = "500", description = "Erro ao realizar registro(Internal Server Error)")
     })
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> salvarVacinacaoDoAnimal(@RequestBody VacinacaoAnimalDTO vacinacaoAnimalDTO){
+    public ResponseEntity<Void> salvarVacinacaoDoAnimal(@RequestBody VacinacaoAnimalRequestDTO vacinacaoAnimalRequestDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
-        vacinacaoAnimalService.salvarVacinacaoDoAnimal(vacinacaoAnimalDTO, pessoa);
+        vacinacaoAnimalService.salvarVacinacaoDoAnimal(vacinacaoAnimalRequestDTO, pessoa);
         return ResponseEntity.ok().build();
     }
 
@@ -66,7 +67,7 @@ public class VacinacaoAnimalController {
             @ApiResponse(responseCode = "500", description = "Erro ao realizar busca(Internal Server Error)")
     })
     @GetMapping(value = "/{animalId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<VacinacaoAnimalDTO>> listarVacinacoesDoAnimal(@PathVariable Long animalId){
+    public ResponseEntity<List<VacinacaoAnimalResponseDTO>> listarVacinacoesDoAnimal(@PathVariable Long animalId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Pessoa pessoa = (Pessoa) authentication.getPrincipal();
         return ResponseEntity.ok().body(vacinacaoAnimalService.listarVacinacoesDoAnimal(animalId, pessoa));

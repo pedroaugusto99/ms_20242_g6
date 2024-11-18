@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 function PesagemParaPopUp({ data, columns, onRemover, modoExclusao }) {
     const columnToKeyMap = {
         'Peso': 'peso',
-        'Data da Pesagem': 'data',
-        'Saldo de Peso': 'saldo'
+        'Data da Pesagem': 'dataDePesagem',
+        'Saldo de Peso': 'saldoDePeso'
     };
 
     const formatarData = (dataString) => {

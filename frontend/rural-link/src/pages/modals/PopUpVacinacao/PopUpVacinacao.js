@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import styles from './PopUpVacinacao.module.css';
 import VacinacaoParaPopUp from './VacinacaoParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
+import AuthService from '../../../autenticacao/AuthService';
 
-export default function PopUpVacinacao({ toggleModal }) {
+export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [modoExclusao, setModoExclusao] = useState(false);
+  const [message, setMessage] = useState('');
   const [novoRegistro, setNovoRegistro] = useState({
     nome: '',
     dataAplicacao: '',
@@ -25,6 +27,12 @@ export default function PopUpVacinacao({ toggleModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    try{
+      const response = AuthService.registrarVacinaAnimal({nomeDaVacina: novoRegistro.nome, dataDeVacinacao: novoRegistro.dataAplicacao, numeroDeDoses: novoRegistro.doses, dataDaProximaVacinacao: novoRegistro.proximaAplicacao, animalId: animalId});
+      setModalCadastroAberto(false)
+    } catch(error){
+        setMessage('Credenciais inválidas!');
+    }
     if (novoRegistro.nome && novoRegistro.dataAplicacao && novoRegistro.doses && novoRegistro.proximaAplicacao) {
       addVacinacao(novoRegistro);
 
@@ -66,7 +74,7 @@ export default function PopUpVacinacao({ toggleModal }) {
         <h1 className={styles.titleVacinacao}>VACINAÇÃO</h1>
         
         <VacinacaoParaPopUp
-          data={vacinacaoData}
+          data={dadosVacinacao}
           columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Data da Próxima Aplicação']}
           onRemover={handleRemover}  // Passe a função de remoção
           modoExclusao={modoExclusao}

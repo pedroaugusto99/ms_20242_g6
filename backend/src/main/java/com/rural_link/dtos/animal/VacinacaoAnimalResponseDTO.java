@@ -4,16 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class PesoAnimalResponseDTO{
-    private BigDecimal peso;
-    private String dataDePesagem;
-    private BigDecimal saldoDePeso;
+public class VacinacaoAnimalResponseDTO {
+    private String nomeDaVacina;
+    private String dataDeVacinacao;
+    private Integer numeroDeDoses;
+    private String dataDaProximaVacinacao;
     private Long animalId;
 }

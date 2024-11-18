@@ -3,8 +3,8 @@ import styles from './PopUpCrias.module.css';
 function CriasParaPopUp({ data, columns, onRemover, modoExclusao }) {
     const columnToKeyMap = {
       'Código da Cria': 'codigo',
-      'Data de Nascimento': 'nascimento',
-      'Pai (Código)': 'pai',
+      'Data de Nascimento': 'dataDeNascimento',
+      'Pai (Código)': 'codigoDoFamiliar',
       'Idade': 'idade'
     };
   

@@ -3,7 +3,7 @@ import styles from './PopUpCrias.module.css';
 import CriasParaPopUp from './CriasParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 
-export default function PopUpCrias({ toggleModal }) {
+export default function PopUpCrias({ toggleModal, dadosCrias }) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [modoExclusao, setModoExclusao] = useState(false);
   const [novoRegistro, setNovoRegistro] = useState({
@@ -61,7 +61,7 @@ export default function PopUpCrias({ toggleModal }) {
         <h1 className={styles.titleCrias}>CRIAS</h1>
 
         <CriasParaPopUp
-          data={criasData}
+          data={dadosCrias}
           columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']}
           modoExclusao={modoExclusao}
           onRemover={removeCrias}  // Passando a função de remoção para o componente CriasParaPopUp
