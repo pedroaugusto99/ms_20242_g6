@@ -96,6 +96,12 @@ const Sidebar = ({ title = "Titulo" }) => {
               icon={`${styles.icon} fa-solid fa-qrcode`} 
               label="Ler QR Code" 
             />
+            <NavItem 
+              icon={`${styles.icon} fa-solid fa-thumbtack`} 
+              label="Dúvidas" 
+              link="/faq"
+            />
+              
           </ul>
 
 
