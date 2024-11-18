@@ -1,53 +1,41 @@
 import React, { useState } from 'react';
 import styles from './css/cssPages/EsqueceuSenhaEmailToken.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from './images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthService from '../autenticacao/AuthService';
 
 function EsqueceuSenha() {
-    const [senha, setSenha] = useState('');
+    const [token, setToken] = useState('');
+    const [email, setEmail] = useState('');
     const [mensagem, setMensagem] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
 
     const aoEnviarFormulario = async (event) => {
         event.preventDefault();
         try {
-            const resposta = await AuthService.resetPassword({ password: senha });
-            if (resposta.data === 'Senha redefinida com sucesso') {
-                setMensagem('Senha redefinida com sucesso!');
-                navigate('/login');
+            setEmail(location.state.emailUsuario)
+            const resposta = await AuthService.validartoken({ 
+                email: location.state.emailUsuario, 
+                token: token 
+            });
+            if (resposta.data['tokenValido'] === true) {
+                setMensagem('Token validado com sucesso!');
+                navigate('/esqueceusenha', {
+                    state: { emailUsuarioToken: location.state.emailUsuario }
+                });
             } else {
-                setMensagem('Erro ao redefinir a senha. Tente novamente.');
+                setMensagem('Erro ao validar token. Tente novamente.');
             }
         } catch (erro) {
-            setMensagem('Erro ao redefinir a senha. Tente novamente.');
+            setMensagem('Erro ao validar token. Tente novamente.');
         }
     };
 
-    const EntradaEmail = ({ label, valor, aoMudar }) => (
-        <div className={styles.campoSenha}>
-            <input
-                type={setSenha ? 'text' : 'password'}
-                placeholder={label}
-                required
-                value={valor}
-                onChange={aoMudar}
-            />
-        </div>
-    );
-
-    const FormularioRedefinicaoSenha = () => (
-        <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
-            <p className={styles.rotuloSenha}>Token de Validação:</p>
-            <EntradaEmail label="Digite o código" valor={senha} aoMudar={(e) => setSenha(e.target.value)} />
-            {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
-        </form>
-    );
-
     const handleClickVoltar = () => {
         navigate('/esqueceusenhaconfemail');
-      };
+    };
 
     return (
         <div className={styles.container}>
@@ -65,12 +53,34 @@ function EsqueceuSenha() {
                     <p className={styles.textoEmail1}>Digite o token de validação enviado para o seu email</p>
                     <p className={styles.textoEmail2}>para poder alterar sua senha</p>
 
-                    <FormularioRedefinicaoSenha />
+                    <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
+                        <p className={styles.rotuloSenha}>Token de Validação:</p>
+                        <div className={styles.campoSenha}>
+                            <input
+                                type="text"
+                                placeholder="Digite o código"
+                                required
+                                value={token}
+                                onChange={(e) => setToken(e.target.value)}
+                            />
+                        </div>
+                        {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
+                    </form>
 
-                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleClickVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Confirmar</button>
-
-                    
+                    <button 
+                        type="button"
+                        className={`${styles.btnVoltar} ${styles.btnPrimario}`}
+                        onClick={handleClickVoltar}
+                    >
+                        <i className="fa-solid fa-chevron-left"></i>Voltar
+                    </button>
+                    <button 
+                        type="submit"
+                        className={`${styles.btn} ${styles.btnPrimario}`}
+                        onClick={aoEnviarFormulario}
+                    >
+                        Confirmar
+                    </button>
                 </div>
             </div>
         </div>

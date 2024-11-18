@@ -60,6 +60,7 @@ function RegistrarTrabalhador() {
                         <label className={styles.labelInput}>
                             <img src={iconperfil} className={styles.nomecompleto} alt="Ícone Perfil" />
                             <input
+                                className={styles.input}
                                 type="text"
                                 placeholder="Digite Seu Nome Completo:"
                                 required
@@ -77,6 +78,7 @@ function RegistrarTrabalhador() {
                                 <label className={styles.labelShortInput}>
                                     <img src={iconemail} className={styles.email} alt="Icon Email" />
                                     <input
+                                        className={styles.input}
                                         type="email"
                                         placeholder="Digite seu Email:"
                                         required
@@ -91,6 +93,7 @@ function RegistrarTrabalhador() {
                                 <label className={styles.labelShortInput}>
                                     <img src={icontelefone} className={styles.telefone} alt="Icon Telefone" />
                                     <input
+                                        className={styles.input}
                                         type="tel"
                                         placeholder="Digite seu Número:"
                                         required
@@ -117,6 +120,7 @@ function RegistrarTrabalhador() {
                         <label className={styles.labelInput}>
                             <img src={iconkey} className={styles.key} alt="Ícone de Chave" />
                             <input
+                                className={styles.input}
                                 type="text"
                                 placeholder="Código da Fazenda Associada:"
                                 required
@@ -133,6 +137,7 @@ function RegistrarTrabalhador() {
                         <label className={styles.labelInput}>
                             <img src={iconsenha} className={styles.senha} alt="Ícone Senha" />
                             <input
+                                className={styles.input}
                                 type={showPassword ? 'text' : 'password'} // Mude o tipo com base no estado
                                 placeholder="Senha:"
                                 required
@@ -155,6 +160,7 @@ function RegistrarTrabalhador() {
                         <label className={styles.labelInput}>
                             <img src={iconsenha} className={styles.senha} alt="Ícone Senha" />
                             <input
+                                className={styles.input}
                                 type={showPassword ? 'text' : 'password'} // Mude o tipo com base no estado
                                 placeholder="Confirmar Senha:"
                                 required
