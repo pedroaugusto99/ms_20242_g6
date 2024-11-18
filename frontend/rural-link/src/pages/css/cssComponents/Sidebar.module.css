@@ -7,7 +7,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  z-index: 1000;
 }
 
 body {
@@ -34,7 +33,7 @@ nav {
   z-index: 1000;
 }
 
-.menu-icon {
+.menuIcon {
   display: flex;
   color: var(--branco);
   font-size: 24px;
@@ -44,7 +43,7 @@ nav {
   transition: all 0.4s ease;
 }
 
-.menu-icon2 {
+.menuIcon2 {
   color: var(--preto);
   font-size: 24px;
   margin-right: 14px;
@@ -55,7 +54,7 @@ nav {
   transition: all 0.4s ease;
 }
 
-.menu-icon:hover, .menu-icon2:hover {
+.menuIcon:hover, .menuIcon2:hover {
   transform: translateY(0.2vw);
 }
 
@@ -73,7 +72,7 @@ nav {
   margin: 0 -10px;
 }
 
-.logo-name {
+.logoName {
   color: var(--branco);
   font-size: 22px;
   font-weight: 600;
@@ -119,14 +118,14 @@ nav.open .sidebar {
   left: 0;
 }
 
-.sidebar .sidebar-content {
+.sidebar .sidebarContent {
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
   padding: 30px 16px;
 }
-.sidebar-content .list {
+.sidebarContent .list {
   list-style: none;
 }
 
@@ -141,6 +140,7 @@ nav.open .sidebar {
   pointer-events: none;
   transition: all 0.4s ease;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
 }
 
 nav.open ~ .overlay {
@@ -183,7 +183,7 @@ nav.open ~ .overlay {
   list-style: none;
 }
 
-.nav-link {
+.navLink {
   display: flex;
   align-items: center;
   margin: 20px 0;
@@ -194,7 +194,7 @@ nav.open ~ .overlay {
   transition: all 0.4s ease;
 }
 
-.nav-link:hover {
+.navLink:hover {
   background-color: #d9d9d9c1;
   transform: translateY(-0.5vw);
 }
@@ -213,7 +213,7 @@ nav.open ~ .overlay {
 
 /* Estilos do Rodapé do Sidebar */
 
-.bottom-content .nav-link:hover {
+.bottomContent .navLink:hover {
   background-color: #d9d9d9c1;
   transform: translateY(-0.5vw);
 }

@@ -3,7 +3,8 @@
 
 .body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;}
+    background-color: #f0f0f0;
+}
 
 html {
     background-color: #f0f0f0;
@@ -30,7 +31,6 @@ html {
     margin-top: 12vh;
     padding: 0vh 2vh;
     box-shadow: 4px 4px 2px 2px rgba(0, 0, 0, .2);
-    z-index: 1;
 }
 
 .faqContent::-webkit-scrollbar {

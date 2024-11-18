@@ -6,48 +6,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthService from '../autenticacao/AuthService';
 
 function EsqueceuSenha() {
-    const [senha, setSenha] = useState('');
+    const [email, setEmail] = useState('');
     const [mensagem, setMensagem] = useState('');
     const navigate = useNavigate();
 
     const aoEnviarFormulario = async (event) => {
         event.preventDefault();
         try {
-            const resposta = await AuthService.resetPassword({ password: senha });
-            if (resposta.data === 'Senha redefinida com sucesso') {
-                setMensagem('Senha redefinida com sucesso!');
-                navigate('/login');
+            const resposta = await AuthService.validaremail({ email: email });
+            if (resposta.status === 200) {
+                setMensagem('Email enviado com sucesso!');
+                navigate('/esqueceusenhatoken', { state: { emailUsuario: email } });
             } else {
-                setMensagem('Erro ao redefinir a senha. Tente novamente.');
+                setMensagem('Erro ao enviar email. Tente novamente.');
             }
         } catch (erro) {
-            setMensagem('Erro ao redefinir a senha. Tente novamente.');
+            setMensagem('Erro ao enviar email. Tente novamente.');
         }
     };
 
-    const EntradaEmail = ({ label, valor, aoMudar }) => (
-        <div className={styles.campoSenha}>
-            <input
-                type={setSenha ? 'text' : 'password'}
-                placeholder={label}
-                required
-                value={valor}
-                onChange={aoMudar}
-            />
-        </div>
-    );
-
-    const FormularioRedefinicaoSenha = () => (
-        <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
-            <p className={styles.rotuloSenha}>Email:</p>
-            <EntradaEmail label="Digite seu email" valor={senha} aoMudar={(e) => setSenha(e.target.value)} />
-            {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
-        </form>
-    );
-
     const handleClickVoltar = () => {
         navigate('/login');
-      };
+    };
 
     return (
         <div className={styles.container}>
@@ -65,12 +45,34 @@ function EsqueceuSenha() {
                     <p className={styles.textoEmail1}>Digite o email vinculado à sua conta na plataforma</p>
                     <p className={styles.textoEmail2}>para receber o token de validação</p>
 
-                    <FormularioRedefinicaoSenha />
-
-                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleClickVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Confirmar</button>
-
+                    <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
+                        <p className={styles.rotuloSenha}>Email:</p>
+                        <div className={styles.campoSenha}>
+                            <input
+                                type="email"
+                                placeholder="Digite seu email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+                        {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
+                    </form>
                     
+                    <button 
+                        type="button" 
+                        className={`${styles.btnVoltar} ${styles.btnPrimario}`} 
+                        onClick={handleClickVoltar}
+                    >
+                        <i className="fa-solid fa-chevron-left"></i>Voltar
+                    </button>
+                    <button 
+                        type="submit" 
+                        className={`${styles.btn} ${styles.btnPrimario}`}
+                        onClick={aoEnviarFormulario}
+                    >
+                        Confirmar
+                    </button>
                 </div>
             </div>
         </div>
