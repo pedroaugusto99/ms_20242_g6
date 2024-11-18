@@ -73,9 +73,9 @@ const PDFGerador = () => {
   const separators = [
     { y:-637 ,text: 'Dados do animal:' },
     { y:-480,text: 'Parentesco:' },
-    { y:-180 ,text: 'Saude:' },
-    { y:-200 ,text: 'Pesagem:' },
-    { y:-260 ,text: 'Observacoes: ' },
+    { y:-290 ,text: 'Saude:' },
+    { y:-185 ,text: 'Pesagem:' },
+    { y:-80 ,text: 'Observacoes: ' },
   ];
 
   // Função para gerar o PDF
@@ -84,6 +84,14 @@ const PDFGerador = () => {
       <Document>
         <Page style={styles.page}>
 
+
+      <View>
+        <Image src="/images/logovariant.png" style={styles.imagelogo}></Image>
+      </View>
+        <Text style={styles.cabecalho}>Ficha Animal</Text>
+      <View>
+        <Image src="/images/qrcode.png" style={styles.qrcode}></Image>
+      </View>
 
           <View style={styles.fundo}>
         <View style={styles.square}>
@@ -240,6 +248,65 @@ const PDFGerador = () => {
               <Text style={styles.separatorText}>{separator.text}</Text>
             </View>
             ))}
+            <View style={styles.fichamento}>
+            <View style={[styles.row, styles.headerRow]}>
+            <Text style={[styles.cell, styles.firstCell]}>Codigo da cria</Text>
+            <Text style={styles.cell}>Data de nascimento</Text>
+            <Text style={styles.cell}>Pai(codigo)</Text>
+            <Text style={[styles.cell, styles.lastCell]}>Idade</Text>
+          </View>
+            {[1, 2, 3, 4].map((_, rowIndex) => (
+            <View key={rowIndex} style={styles.row}>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+            </View>
+          ))}
+          
+            </View>
+
+            <View style={styles.fichamento2}>
+            <View style={[styles.row, styles.headerRow]}>
+            <Text style={[styles.cell, styles.firstCell]}>Nome da vacina</Text>
+            <Text style={styles.cell}>Data de aplicacao</Text>
+            <Text style={styles.cell}>Numero de doses</Text>
+            <Text style={[styles.cell, styles.lastCell]}>Data para a proxima dose</Text>
+          </View>
+            {[1, 2, 3, 4].map((_, rowIndex) => (
+            <View key={rowIndex} style={styles.row}>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+            </View>
+          ))}
+          
+            </View>
+
+            <View style={styles.fichamento3}>
+            <View style={[styles.row, styles.headerRow]}>
+            <Text style={[styles.cell, styles.firstCell]}>Peso</Text>
+            <Text style={styles.cell}>Data da pesagem</Text>
+            <Text style={styles.cell}>Alimentacao</Text>
+            <Text style={[styles.cell, styles.lastCell]}>Saldo da pesagem</Text>
+          </View>
+            {[1, 2, 3, 4].map((_, rowIndex) => (
+            <View key={rowIndex} style={styles.row}>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+              <Text style={styles.cell}>####</Text>
+            </View>
+          ))}
+          
+            </View>
+
+          <View style={styles.fichamento4}>
+          <Text>Lorem ipsum dolor sit amet. Est voluptatum quisquam ab atque quia est autem odio ut iure odio ut veritatis obcaecati et dolor galisum ut debitis aspernatur. Ut dolore enim non explicabo vero et eaque iste ad pariatur necessitatibus non galisum delectus.
+          Et internos enim ut veritatis dicta qui vitae laboriosam qui architecto quia aut dolore expedita. Aut eligendi nisi qui debitis obcaecati ea modi mollitia aut galisum perferendis ut galisum quidem vel velit voluptas. Vel vero minus aut debitis nobis ut quod consequuntur quo assumenda voluptates nam accusamus cupiditate?</Text>
+          </View>
+
           </View>
         </Page>
       </Document>
@@ -414,6 +481,102 @@ const styles = StyleSheet.create({
     borderColor: '#28a745',
     padding:'5px',
     objectFit: 'cover', // Garante que a imagem preencha sem distorcer
+  },
+
+  imagelogo: {
+    position: 'absolute',
+    top:-30,
+    left: 5,
+    width: 110,
+    height: 110,
+    objectFit: 'cover', // Garante que a imagem preencha sem distorcer
+  },
+
+  qrcode: {
+    position: 'absolute',
+    top:-10,
+    left: 455,
+    width: 63,
+    height: 63,
+    objectFit: 'cover', // Garante que a imagem preencha sem distorcer
+  },
+
+  fichamento:{
+    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    alignItems: 'center', 
+    top: 250,
+    width: 512,
+    height: 120,
+    borderWidth: 2,
+    borderColor: '#28a745',
+    position: 'absolute',
+    borderRadius: '10px',
+    backgroundColor: '#FFFFFF',
+  },
+
+  fichamento2:{
+    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    alignItems: 'center', 
+    top: 400,
+    width: 512,
+    height: 90,
+    borderWidth: 2,
+    borderColor: '#28a745',
+    position: 'absolute',
+    borderRadius: '10px',
+    backgroundColor: '#FFFFFF',
+  },
+
+  fichamento3:{
+    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    alignItems: 'center', 
+    top: 520,
+    width: 512,
+    height: 90,
+    borderWidth: 2,
+    borderColor: '#28a745',
+    position: 'absolute',
+    borderRadius: '10px',
+    backgroundColor: '#FFFFFF',
+  },
+
+  fichamento4:{
+    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    alignItems: 'center', 
+    top: 640,
+    width: 512,
+    height: 70,
+    borderWidth: 2,
+    borderColor: '#28a745',
+    position: 'absolute',
+    borderRadius: '10px',
+    backgroundColor: '#FFFFFF',
+    fontSize:'7px',
+  },
+  
+  row: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    borderBottomStyle: 'solid',
+    paddingVertical: 1,
+    justifyContent: 'space-around',
+  },
+  cell: {
+    width: '23%',
+    textAlign: 'center',
+    fontSize: 9,
+  },
+
+  cabecalho:{
+    fontsize: '24px',
+    position: 'absolute',
+    color: '#294134',
+    textAlign:'center',
+    justifyContent:'center',
+    alignItems:'center',
+    display:'flex',
+
   },
   
 
