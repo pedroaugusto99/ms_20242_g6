@@ -1,7 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './PopUpConfirmacao.module.css';
 
-export default function PopUpConfirmacao({ toggleModal}) {
+export default function PopUpConfirmacao({ toggleModal }) {
+  const navigate = useNavigate(); // Hook para navegação
+
+  const handleConfirm = () => {
+    navigate('/fichamento');
+    toggleModal(); // Fecha o modal após a confirmação
+  };
+
   return (
     <div className={styles.modal}>
       <div onClick={toggleModal} className={styles.overlay}></div>
@@ -17,9 +25,17 @@ export default function PopUpConfirmacao({ toggleModal}) {
           <p className={styles.confirmationText}>Todos os dados atualizados estão corretos?</p>
 
           <div className={styles.rowbtn}>
-            <button onClick={toggleModal} className={`${styles.btn} ${styles.btnPrimario}`} type="button"><i class="fa-solid fa-chevron-left"></i>  Voltar</button>
-            <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Sim</button>
-        </div>
+            <button onClick={toggleModal} className={`${styles.btn} ${styles.btnPrimario}`} type="button">
+              <i className="fa-solid fa-chevron-left"></i> Voltar
+            </button>
+            <button 
+              onClick={handleConfirm}
+              className={`${styles.btn} ${styles.btnPrimario}`} 
+              type="button"
+            >
+              Sim
+            </button>
+          </div>
 
         </div>
       </div>
