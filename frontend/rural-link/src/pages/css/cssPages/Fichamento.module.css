@@ -17,7 +17,6 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1;
     position: sticky;
     top: 0;
     background-color: white;
@@ -110,7 +109,6 @@ html, body {
     color: #000;
     font-weight: bold;
     width: 100%;
-    z-index: 1;
     font-size: 1.2vw;
 }
 
@@ -125,7 +123,6 @@ html, body {
     width: 90%;
     border-collapse: collapse;
     margin-top: 20px;
-    z-index: 1;
 }
 
 .animalTable th, .animalTable td {
