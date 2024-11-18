@@ -3,6 +3,8 @@ import Sidebar from './components/Sidebar';
 import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
 import ManejoTable from './components/ManejoTable';
+import ManejoTablePesagem from './components/ManejoTablePesagem';
+import ManejoTableCrias from './components/ManejoTableCrias';
 import styles from './css/cssPages/FichaAnimal.module.css';
 import AuthService from '../autenticacao/AuthService';
 import React from 'react';
@@ -12,19 +14,13 @@ import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
 import PopUpExclusao from './modals/PopUpExclusao/PopUpExclusao';
 import PopUpConfirmacao from './modals/PopUpConfirmacao/PopUpConfirmacao';
-import { useLocation, useNavigate } from 'react-router-dom';
+ import { useLocation, useNavigate } from 'react-router-dom';
+ import { DadosParaPopUpsDeManejo } from '../hooks/DadosParaPopUpsDeManejo';
 
 function FichaAnimal() {
-    // Dados
-    const pesagemData = [
-        { peso: '100kg', data: '2024-01-01', saldo: '5kg' },
-    ];
-    const vacinacaoData = [
-        { nome: 'Vacina A', dataAplicacao: '2024-02-01', doses: 2, proximaAplicacao: '2024-06-01' },
-    ];
-    const criasData = [
-        { codigo: '1234', nascimento: '2023-05-01', pai: '5678', idade: '1 ano' },
-    ];
+    const {
+        vacinacaoData, pesagemData, criasData,
+      } = DadosParaPopUpsDeManejo();
 
     // Estados para os modais
     const [modalPesagem, setModalPesagem] = React.useState(false);
@@ -144,21 +140,21 @@ function FichaAnimal() {
                 {/* Manejo */}
                 <div className={styles.manejo}>
                     <h1 className={styles.titleManejo}>Manejos</h1>
-                    <ManejoTable
-                        title="Pesagem"
-                        data={pesagemData}
-                        columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
-                        toggleModal={togglePesagemModal}
+                    <ManejoTablePesagem
+                    title="Pesagem"
+                    data={pesagemData || []}
+                    columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
+                    toggleModal={togglePesagemModal}
                     />
-                    <ManejoTable 
+                   <ManejoTable 
                         title="Vacinação" 
-                        data={vacinacaoData} 
+                        data={vacinacaoData || []}
                         columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
                         toggleModal={toggleVacinacaoModal}
                     />
-                    <ManejoTable 
+                    <ManejoTableCrias 
                         title="Crias" 
-                        data={criasData} 
+                        data={criasData || []}
                         columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']} 
                         toggleModal={toggleCriasModal}
                     />
