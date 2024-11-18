@@ -31,6 +31,7 @@ html {
     margin-top: 12vh;
     padding: 0vh 2vh;
     box-shadow: 4px 4px 2px 2px rgba(0, 0, 0, .2);
+    position: relative;
 }
 
 .faqContent::-webkit-scrollbar {
@@ -110,4 +111,40 @@ input[type="radio"] {
     font-family: "Poppins";
     font-size: 2.5vh;
     color: black;
+}
+
+.btnPrimario {
+    border: 1px solid var(--cor-terciaria);
+    background-color: var(--cor-terciaria);
+    transition: 0.5s;
+}
+
+.btnPrimario:hover {
+    background-color: transparent;
+    color: var(--cor-padrao);
+    border: 1px solid var(--cor-padrao);
+}
+
+.btnVoltar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 9%; 
+    margin: 0rem;
+    margin-left: 8.5vw;
+    margin-bottom: 2vw;
+}
+
+.btnVoltar i {
+    margin-right: 15px;
+}
+
+.Rowbtn {
+    display: flex; 
+    gap: 108.75vh; 
 }

@@ -6,11 +6,19 @@ import vector1 from './images/Icon/Vector.png';
 import vector2 from './images/Icon/Vector2.png';
 import logo from './images/logo.png';
 
+import { useNavigate } from 'react-router-dom';
+
 function Faq() {
     const [activeIndex, setActiveIndex] = useState(null);
 
     const toggleQuestions = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
+    };
+
+    const navigate = useNavigate();
+
+    const handleAccessVoltar = () => {
+        navigate(-1);
     };
 
     return (
@@ -48,6 +56,9 @@ function Faq() {
                             </li>
                         ))}
                     </ul>
+                    <div className={styles.Rowbtn}> 
+                            <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} onClick={handleAccessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
+                    </div>
                 </div>
             </div>
         </div>
