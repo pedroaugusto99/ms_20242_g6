@@ -138,7 +138,7 @@ function FichaAnimal() {
                     <div className={styles.camposBaixo}>
                         <Campo label="Sexo" value={sexoAnimal}/>
                         <Campo label="Data de Nascimento" value={dataDeNascimentoAnimal}/>
-                        <Campo label="Idade" value={idadeAnimal}/>
+                        <Campo label="Idade" value={idadeAnimal + ' anos'}/>
                         <Campo label="Data de Aquisição" value={dataDeAquisicaoAnimal}/>
                     </div>
                 </div>

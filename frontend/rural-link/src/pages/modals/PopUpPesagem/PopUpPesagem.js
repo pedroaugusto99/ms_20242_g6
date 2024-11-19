@@ -30,6 +30,7 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
     try{
       const response = AuthService.registrarPesoAnimal({peso: novoRegistro.peso, dataDePesagem: novoRegistro.data, animalId: animalId});
       setModalCadastroAberto(false)
+      window.location.reload();
     } catch(error){
         setMessage('Credenciais inválidas!');
     }
