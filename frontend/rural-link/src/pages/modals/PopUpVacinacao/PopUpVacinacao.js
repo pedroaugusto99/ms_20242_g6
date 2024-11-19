@@ -3,8 +3,7 @@ import styles from './PopUpVacinacao.module.css';
 import VacinacaoParaPopUp from './VacinacaoParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 import AuthService from '../../../autenticacao/AuthService';
-import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'
 
 export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
@@ -31,9 +30,7 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
     e.preventDefault();
     try{
       const response = AuthService.registrarVacinaAnimal({nomeDaVacina: novoRegistro.nome, dataDeVacinacao: novoRegistro.dataAplicacao, numeroDeDoses: novoRegistro.doses, dataDaProximaVacinacao: novoRegistro.proximaAplicacao, animalId: animalId}, Cookies.get('authToken'));
-
       setModalCadastroAberto(false)
-      window.location.replace('/fichaanimal');
     } catch(error){
         setMessage('Credenciais inválidas!');
     }
@@ -48,6 +45,7 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
       });
 
       setModalCadastroAberto(false);  // Fecha o modal de cadastro após a adição
+      window.location.replace('/fichaanimal');
       toggleModal();  // Fecha o modal principal
     }
   };

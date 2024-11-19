@@ -93,6 +93,10 @@ class AuthService{
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/filtro`); 
     }
+    gerarNovoCodigo(token){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/fazenda/codigo`); 
+    }
 }
 
 export default new AuthService();

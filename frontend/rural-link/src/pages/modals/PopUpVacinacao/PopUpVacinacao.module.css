@@ -81,7 +81,11 @@
   display: flex; 
   justify-content: space-between;
   align-items: center;
-  margin-top: 44vh;
+  margin-top: 1rem;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
 }
 
 .btn {
@@ -212,10 +216,12 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-left: 40%;
 }
 
 .btnExcluir:hover {
   background-color: #cc0000;
+  color: white;
 }
 
 .btnIcone {
@@ -228,8 +234,10 @@
 
 .btnAtivo {
   background-color: #cc0000;
+  color: white;
 }
 
 .btnAtivo:hover {
   background-color: #990000;
+  color: white;
 }
