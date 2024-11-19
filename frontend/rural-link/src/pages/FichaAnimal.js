@@ -2,7 +2,7 @@
 import Sidebar from './components/Sidebar';
 import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
-import ManejoTable from './components/ManejoTable';
+import ManejoTableVacinacao from './components/ManejoTableVacinacao';
 import ManejoTablePesagem from './components/ManejoTablePesagem';
 import ManejoTableCrias from './components/ManejoTableCrias';
 import styles from './css/cssPages/FichaAnimal.module.css';
@@ -167,7 +167,7 @@ function FichaAnimal() {
                     columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
                     toggleModal={togglePesagemModal}
                     />
-                   <ManejoTable 
+                   <ManejoTableVacinacao 
                         title="Vacinação" 
                         data={dadosVacinas || []}
                         columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
@@ -202,4 +202,3 @@ function FichaAnimal() {
 }
 
 export default FichaAnimal;
-

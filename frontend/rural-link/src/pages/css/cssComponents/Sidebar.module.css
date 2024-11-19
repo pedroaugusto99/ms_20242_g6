@@ -166,6 +166,7 @@ nav.open ~ .overlay {
   font-weight: 700;
   font-size: 16px;
   margin-top: 10px;
+  text-align: center;
 }
 
 .perfilInfos .descPerfil {
@@ -177,6 +178,7 @@ nav.open ~ .overlay {
 /* Estilos dos Itens de Navegação (NavItem) */
 .lists {
   padding-left: 0;
+  margin-top: -2vw;
 }
 
 .list {
@@ -213,7 +215,12 @@ nav.open ~ .overlay {
 
 /* Estilos do Rodapé do Sidebar */
 
+.bottomContent {
+  margin-top: -0.8vw;
+}
+
 .bottomContent .navLink:hover {
   background-color: #d9d9d9c1;
   transform: translateY(-0.5vw);
+  cursor: pointer;
 }

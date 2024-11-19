@@ -1,6 +1,6 @@
 import styles from '../css/cssPages/FichaAnimal.module.css';
 
-function ManejoTable({ title, data, columns, toggleModal }) {
+function ManejoTableVacinacao({ title, data, columns, toggleModal }) {
   // Adiciona uma verificação para os dados e fornece um array vazio como valor padrão
   const safeData = data || [];
 
@@ -66,4 +66,4 @@ function ManejoTable({ title, data, columns, toggleModal }) {
   );
 }
 
-export default ManejoTable;
+export default ManejoTableVacinacao;
