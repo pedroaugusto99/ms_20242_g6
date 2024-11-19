@@ -92,6 +92,7 @@ function FichaAnimal() {
     }, []);
 
     React.useEffect(() => {
+
         AuthService.listarPesos(location.state.identificador).then((response) => {
             setDadosPesos(response.data);
         })
@@ -118,6 +119,10 @@ function FichaAnimal() {
     const handleAcessVoltar =() => {
         navigate('/fichamento')
     };
+    const handlegenerate_pdf = () => {
+        navigate('/pdf');
+    };
+    
 
     return (
         <div className={styles.body}>
@@ -129,16 +134,16 @@ function FichaAnimal() {
                 <div className={styles.dadosEssenciais}>
                     <h1 className={styles.titleFicha}>Dados Essenciais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="Código do Animal" value={codigoAnimal} />
+                        <Campo label="CÃ³digo do Animal" value={codigoAnimal} />
                         <Campo label="Nome" value={nomeAnimal}/>
-                        <Campo label="Espécie" value={especieAnimal}/>
-                        <Campo label="Raça" value={racaAnimal}/>
+                        <Campo label="EspÃ©cie" value={especieAnimal}/>
+                        <Campo label="RaÃ§a" value={racaAnimal}/>
                     </div>
                     <div className={styles.camposBaixo}>
                         <Campo label="Sexo" value={sexoAnimal}/>
                         <Campo label="Data de Nascimento" value={dataDeNascimentoAnimal}/>
                         <Campo label="Idade" value={idadeAnimal}/>
-                        <Campo label="Data de Aquisição" value={dataDeAquisicaoAnimal}/>
+                        <Campo label="Data de AquisiÃ§Ã£o" value={dataDeAquisicaoAnimal}/>
                     </div>
                 </div>
 
@@ -148,12 +153,12 @@ function FichaAnimal() {
                     <div className={styles.camposCima}>
                         <Campo label="Status" value={statusAnimal}/>
                         <Campo label="Lote" value={loteAnimal}/>
-                        <Campo label="Pai (Código)" value={codigoDoPaiDoAnimal}/>
-                        <Campo label="Mãe (Código)" value={codigoDaMaeDoAnimal}/>
+                        <Campo label="Pai (CÃ³digo)" value={codigoDoPaiDoAnimal}/>
+                        <Campo label="MÃ£e (CÃ³digo)" value={codigoDaMaeDoAnimal}/>
                     </div>
                     <div className={styles.camposBaixo}>
                         <Campo label="Peso Atual" editable value={pesoAtualDoAnimal}/>
-                        <Campo label="Número de Crias" editable value={numeroDeCriasDoAnimal}/>
+                        <Campo label="NÃºmero de Crias" editable value={numeroDeCriasDoAnimal}/>
                     </div>
                 </div>
 
@@ -169,11 +174,11 @@ function FichaAnimal() {
                         toggleModal={togglePesagemModal}
                     />
 
-                    {/* Vacinação */}
+                    {/* VacinaÃ§Ã£o */}
                     <ManejoTableVacinacao
-                        title="Vacinação"
+                        title="VacinaÃ§Ã£o"
                         data={Array.isArray(dadosVacinas) && dadosVacinas.length > 0 ? dadosVacinas : []}
-                        columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
+                        columns={['Nome da Vacina', 'Data da AplicaÃ§Ã£o', 'NÃºmero de Doses', 'PrÃ³xima AplicaÃ§Ã£o']}
                         toggleModal={toggleVacinacaoModal}
                     />
 
@@ -181,14 +186,14 @@ function FichaAnimal() {
                     <ManejoTableCrias
                         title="Crias"
                         data={Array.isArray(dadosCrias) && dadosCrias.length > 0 ? dadosCrias : []}
-                        columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']}
+                        columns={['CÃ³digo da Cria', 'Data de Nascimento', 'Pai (CÃ³digo)', 'Idade']}
                         toggleModal={toggleCriasModal}
                     />
                 </div>
 
                 {/* Botões */}
                 <div className={styles.Rowbtn}>
-                    {/* Botão Voltar */}
+                    {/* BotÃ£o Voltar */}
                     <button 
                         className={`${styles.btnVoltar} ${styles.btnPrimario}`} 
                         type="button" 
@@ -198,7 +203,7 @@ function FichaAnimal() {
                         Voltar
                     </button>
 
-                    {/* Botão Excluir Cadastro */}
+                    {/* BotÃ£o Excluir Cadastro */}
                     <button 
                         className={`${styles.btn} ${styles.btnPrimario}`} 
                         type="button" 
@@ -208,13 +213,13 @@ function FichaAnimal() {
                         Excluir Cadastro
                     </button>
 
-                    {/* Botão Confirmar Edição */}
+                    {/* BotÃ£o Confirmar EdiÃ§Ã£o */}
                     <button 
                         className={`${styles.btn} ${styles.btnPrimario}`} 
                         type="submit" 
                         onClick={toggleConfirmacaoModal}
                     >
-                        Confirmar Edição
+                        Confirmar EdiÃ§Ã£o
                     </button>
                 </div>
 
