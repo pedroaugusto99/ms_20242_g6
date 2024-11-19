@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import styles from './PopUpPesagem.module.css';
-import PesagemParaPopUp from './PesagemParaPopUp';
-import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 import AuthService from '../../../autenticacao/AuthService';
-import Cookies from 'js-cookie';
 
-export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
+export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId }) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [modoExclusao, setModoExclusao] = useState(false);
   const [message, setMessage] = useState('');
+  const [pesagens, setPesagens] = useState(dadosPesagem || []);
   const [novoRegistro, setNovoRegistro] = useState({
     animalId: '',
     peso: '',
@@ -16,11 +14,9 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
     id: ''
   });
 
-  const { pesagemData, addPesagem, removePesagem, setPesagemData } = DadosParaPopUpsDeManejo(dadosPesagem.id);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNovoRegistro(prev => ({
+    setNovoRegistro((prev) => ({
       ...prev,
       [name]: value
     }));
@@ -28,24 +24,38 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    try{
-      const response = AuthService.registrarPesoAnimal({peso: novoRegistro.peso, dataDePesagem: novoRegistro.data, animalId: animalId}, Cookies.get('authToken'));
-      setModalCadastroAberto(false)
-      window.location.replace('/fichaanimal')
-    } catch(error){
-        setMessage('Credenciais inválidas!');
-    }
-    if (novoRegistro.peso && novoRegistro.dataDePesagem) {
+    try {
+      const novaPesagem = {
+        peso: novoRegistro.peso,
+        dataDePesagem: novoRegistro.data,
+        animalId: animalId,
+        saldoDePeso: null // Você pode calcular isso conforme necessário
+      };
+
+      // Adiciona localmente
+      setPesagens([...pesagens, novaPesagem]);
+
+      // Chama o serviço para registrar no backend
+      AuthService.registrarPesoAnimal({
+        peso: novoRegistro.peso,
+        dataDePesagem: novoRegistro.data,
+        animalId: animalId
+      });
 
       setNovoRegistro({
         animalId: '',
         peso: '',
         data: ''
       });
-
       setModalCadastroAberto(false);
-      toggleModal();
+    } catch (error) {
+      setMessage('Erro ao registrar peso!');
     }
+  };
+
+  const handleRemoverPesagem = (indexParaRemover) => {
+    const novaListaPesagens = pesagens.filter((_, index) => index !== indexParaRemover);
+    setPesagens(novaListaPesagens);
   };
 
   const toggleModoExclusao = () => {
@@ -53,13 +63,75 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
   };
 
   const handleConfirmarEdicao = () => {
-    // Lógica para confirmar a edição (fechar o modal após confirmar)
-    if (modoExclusao) {
-    }
+    toggleModal();
+    setModoExclusao(false);
+  };
 
-    // Fechar o modal após confirmar a edição
-    toggleModal();  // Fecha o modal principal
-    setModoExclusao(false);  // Desativa o modo de exclusão
+  const PesagemParaPopUp = ({ data, columns, onRemover, modoExclusao }) => {
+    const columnToKeyMap = {
+      'Peso': 'peso',
+      'Data da Pesagem': 'dataDePesagem',
+      'Saldo de Peso': 'saldoDePeso'
+    };
+
+    const formatarValor = (valor, coluna) => {
+      if (coluna.includes('Data')) {
+        return valor;
+      }
+      return valor;
+    };
+
+    return (
+      <div className={styles.manejoTable}>
+        <div className={styles.manejoTableContainer}>
+          <table className={styles.tableManejo}>
+            <thead>
+              <tr>
+                {columns.map((col, idx) => (
+                  <th key={idx}>{col}</th>
+                ))}
+                {modoExclusao && <th>Ações</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {data.length === 0 ? (
+                <tr>
+                  <td colSpan={columns.length + (modoExclusao ? 1 : 0)} className={styles.semRegistros}>
+                    Nenhum registro de pesagem encontrado.
+                  </td>
+                </tr>
+              ) : (
+                data.map((row, rowIndex) => (
+                  <tr key={rowIndex}>
+                    {columns.map((col, colIndex) => {
+                      const key = columnToKeyMap[col];
+                      const valor = formatarValor(row[key], col);
+                      return <td key={colIndex}>{valor || '####'}</td>;
+                    })}
+                    {modoExclusao && (
+                      <td>
+                        <button
+                          onClick={() => onRemover(rowIndex)}
+                          className={`${styles.btnExcluir} ${styles.btnIcone}`}
+                          title="Excluir registro"
+                          aria-label="Excluir pesagem"
+                        >
+                          <i className="fa-solid fa-trash-can"></i>
+                        </button>
+                      </td>
+                    )}
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+          <div className={styles.graficoPesagem}>
+            <h2>Gráfico</h2>
+            {/* Aqui você pode colocar um gráfico real, se necessário */}
+          </div>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -69,10 +141,10 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
         <h1 className={styles.titlePesagem}>PESAGEM</h1>
 
         <PesagemParaPopUp
-          data={dadosPesagem}
+          data={pesagens}
           columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
           modoExclusao={modoExclusao}
-          onRemover={removePesagem}  // Passando a função de remoção para o componente PesagemParaPopUp
+          onRemover={handleRemoverPesagem}
         />
 
         <div className={styles.rowbtn}>
@@ -86,16 +158,16 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
           >
             Adicionar Fila
           </button>
-          <button 
-            onClick={toggleModoExclusao} 
-            className={`${styles.btn} ${styles.btnPrimario} ${modoExclusao ? styles.btnAtivo : ''}`} 
+          <button
+            onClick={toggleModoExclusao}
+            className={`${styles.btn} ${styles.btnPrimario} ${modoExclusao ? styles.btnAtivo : ''}`}
             type="button"
           >
             <i className="fa-solid fa-trash-can"></i> Remover Fila
           </button>
-          <button 
-            onClick={handleConfirmarEdicao}  // Chama a função para confirmar a edição
-            className={`${styles.btn} ${styles.btnPrimario}`} 
+          <button
+            onClick={handleConfirmarEdicao}
+            className={`${styles.btn} ${styles.btnPrimario}`}
             type="button"
           >
             Confirmar Edição
@@ -139,10 +211,7 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
                   >
                     Cancelar
                   </button>
-                  <button
-                    type="submit"
-                    className={`${styles.btn} ${styles.btnPrimario}`}
-                  >
+                  <button type="submit" className={`${styles.btn} ${styles.btnPrimario}`}>
                     Salvar
                   </button>
                 </div>
