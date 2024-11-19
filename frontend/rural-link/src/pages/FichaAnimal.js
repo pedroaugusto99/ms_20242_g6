@@ -14,9 +14,8 @@ import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
 import PopUpExclusao from './modals/PopUpExclusao/PopUpExclusao';
 import PopUpConfirmacao from './modals/PopUpConfirmacao/PopUpConfirmacao';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { DadosParaPopUpsDeManejo } from '../hooks/DadosParaPopUpsDeManejo';
-import Cookies from 'js-cookie';
+ import { useLocation, useNavigate } from 'react-router-dom';
+ import { DadosParaPopUpsDeManejo } from '../hooks/DadosParaPopUpsDeManejo';
 
 function FichaAnimal() {
     const {
@@ -75,7 +74,7 @@ function FichaAnimal() {
     const [qrCodeAnimal, setQrCodeAnimal] = React.useState('');
 
     React.useEffect(() => {
-        AuthService.pegarDadosDoAnimal(location.state.identificador, Cookies.get('authToken')).then((response) => {
+        AuthService.pegarDadosDoAnimal(location.state.identificador).then((response) => {
             setNomeAnimal(response.data['nome'])
             setCodigoAnimal(response.data['codigo'])
             setEspecieAnimal(response.data['especie'])
@@ -94,25 +93,25 @@ function FichaAnimal() {
     }, []);
 
     React.useEffect(() => {
-        AuthService.listarPesos(location.state.identificador, Cookies.get('authToken')).then((response) => {
+        AuthService.listarPesos(location.state.identificador).then((response) => {
             setDadosPesos(response.data);
         })
     }, []);
 
     React.useEffect(() => {
-        AuthService.listarVacinas(location.state.identificador, Cookies.get('authToken')).then((response) => {
+        AuthService.listarVacinas(location.state.identificador).then((response) => {
             setDadosVacinas(response.data);
         })
     }, []);
 
     React.useEffect(() => {
-        AuthService.listarCrias(location.state.identificador, Cookies.get('authToken')).then((response) => {
+        AuthService.listarCrias(location.state.identificador).then((response) => {
             setDadosCrias(response.data);
         })
     }, []);
 
     React.useEffect(() => {
-        AuthService.pegarQrCode(location.state.identificador, Cookies.get('authToken')).then((response) => {
+        AuthService.pegarQrCode(location.state.identificador).then((response) => {
             setQrCodeAnimal(response.data['qrCode'])
         })
     }, []);
@@ -139,7 +138,7 @@ function FichaAnimal() {
                     <div className={styles.camposBaixo}>
                         <Campo label="Sexo" value={sexoAnimal}/>
                         <Campo label="Data de Nascimento" value={dataDeNascimentoAnimal}/>
-                        <Campo label="Idade" value={idadeAnimal + ' anos'}/>
+                        <Campo label="Idade" value={idadeAnimal}/>
                         <Campo label="Data de Aquisição" value={dataDeAquisicaoAnimal}/>
                     </div>
                 </div>
