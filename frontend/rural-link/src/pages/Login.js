@@ -28,7 +28,7 @@ function Login() {
                 navigate('/dashboard');
                 setTimeout(() => {
                     window.location.replace('/dashboard'); 
-                }, 500);
+                });
             } else {
                 setMensagemDeErro('Senha ou email incorretos!');
             }

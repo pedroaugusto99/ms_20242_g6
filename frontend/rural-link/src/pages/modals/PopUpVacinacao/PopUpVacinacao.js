@@ -32,7 +32,7 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
       const response = AuthService.registrarVacinaAnimal({nomeDaVacina: novoRegistro.nome, dataDeVacinacao: novoRegistro.dataAplicacao, numeroDeDoses: novoRegistro.doses, dataDaProximaVacinacao: novoRegistro.proximaAplicacao, animalId: animalId});
 
       setModalCadastroAberto(false)
-      window.location.reload();
+      window.location.replace('/fichaanimal');
     } catch(error){
         setMessage('Credenciais inválidas!');
     }
