@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './PopUpPesagem.module.css';
 import AuthService from '../../../autenticacao/AuthService';
+import Cookies from 'js-cookie';
 
 export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId }) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
@@ -40,7 +41,7 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId }) {
         peso: novoRegistro.peso,
         dataDePesagem: novoRegistro.data,
         animalId: animalId
-      });
+      }, Cookies.get('authToken'));
 
       setNovoRegistro({
         animalId: '',
@@ -48,6 +49,7 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId }) {
         data: ''
       });
       setModalCadastroAberto(false);
+      window.location.replace('/fichaanimal')
     } catch (error) {
       setMessage('Erro ao registrar peso!');
     }
