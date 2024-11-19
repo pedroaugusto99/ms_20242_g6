@@ -3,7 +3,7 @@ import styles from './css/cssPages/Fichamento.module.css';
 import Sidebar from './components/Sidebar';
 import PopUpFiltro from './modals/PopUpFiltro/PopUpFiltro';
 import AuthService from '../autenticacao/AuthService';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 function Fichamento() {
   const [animals, setAnimals] = React.useState(null);
@@ -11,6 +11,7 @@ function Fichamento() {
   const [isFiltroVisible, setIsFiltroVisible] = useState(false); // Controle do modal
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [dadosFiltrados, setDadosFiltrados] = useState([]);
 
   React.useEffect(() => {
     AuthService.listarAnimais().then((response) => {
@@ -36,6 +37,10 @@ function Fichamento() {
     AuthService.listarAnimaisPorNome(nomeAnimal).then((response) => {
       setAnimals(response.data);
     });
+  };
+
+  const handleDadosFiltrados = (dados) => {
+    setAnimals(dados);  // Atualiza o estado com os dados retornados
   };
 
   // Função para mostrar ou esconder o PopUpFiltro
@@ -114,7 +119,7 @@ function Fichamento() {
         </table>
       </div>
 
-      <PopUpFiltro visivel={isFiltroVisible} alternarModal={toggleFiltro} />
+      <PopUpFiltro visivel={isFiltroVisible} alternarModal={toggleFiltro} onDadosFiltrados={handleDadosFiltrados} />
 
     </div>
   );

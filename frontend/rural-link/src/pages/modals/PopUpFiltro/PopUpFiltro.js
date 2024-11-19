@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './PopUpFiltro.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Fichamento from '../../Fichamento';
 
 // Componente ItemNavegacao
 const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = [] }) => {
@@ -71,7 +72,7 @@ const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = 
 };
 
 // Componente principal
-export default function PopUpFiltro({ visivel, alternarModal }) {
+export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados}) {
   // Estado para os filtros
   const [filtros, setFiltros] = useState({
     especie: '',
@@ -193,23 +194,26 @@ export default function PopUpFiltro({ visivel, alternarModal }) {
 
   const token = localStorage.getItem('auth_token');
   const navigate = useNavigate('');
-  const location = useLocation('');
-
+  
   // Aplica os filtros
-  const aoAplicarFiltros = (event) => {
-    event.preventDefault();
+  const aoAplicarFiltros = async () => {
     axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
-    axios.get('http://localhost:8080/animal/filtro', {
-      params: {
-        raca: filtros.raca,
-        especie: filtros.especie,
-        status: filtros.status,
-        sexo: filtros.sexo,
-        lote: filtros.lote
-      }
-    }).then((response) => {
-    })
-    alternarModal();
+    try{
+      const response = await axios.get('http://localhost:8080/animal/filtro', {
+        params: {
+          raca: filtros.raca,
+          especie: filtros.especie,
+          status: filtros.status,
+          sexo: filtros.sexo,
+          lote: filtros.lote
+        }
+      });
+      onDadosFiltrados(response.data);
+    } catch(error){
+      console.error('Erro ao aplicar filtro:', error);
+    } finally{
+      alternarModal();
+    }
   };
 
   return (
