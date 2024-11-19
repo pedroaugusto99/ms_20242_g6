@@ -26,6 +26,9 @@ function Login() {
                 navigate('/registrarfazenda');
             } else if (response.data !== 'Credenciais inválidas!') {
                 navigate('/dashboard');
+                setTimeout(() => {
+                    window.location.replace('/dashboard'); 
+                }, 500);
             } else {
                 setMensagemDeErro('Senha ou email incorretos!');
             }
