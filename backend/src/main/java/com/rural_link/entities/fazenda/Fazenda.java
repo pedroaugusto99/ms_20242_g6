@@ -6,10 +6,7 @@ import com.rural_link.entities.usuarios.TrabalhadorRural;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Data
+@ToString
 public class Fazenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

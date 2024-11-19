@@ -4,6 +4,7 @@ import VacinacaoParaPopUp from './VacinacaoParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 import AuthService from '../../../autenticacao/AuthService';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
@@ -29,7 +30,7 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
   const handleSubmit = (e) => {
     e.preventDefault();
     try{
-      const response = AuthService.registrarVacinaAnimal({nomeDaVacina: novoRegistro.nome, dataDeVacinacao: novoRegistro.dataAplicacao, numeroDeDoses: novoRegistro.doses, dataDaProximaVacinacao: novoRegistro.proximaAplicacao, animalId: animalId});
+      const response = AuthService.registrarVacinaAnimal({nomeDaVacina: novoRegistro.nome, dataDeVacinacao: novoRegistro.dataAplicacao, numeroDeDoses: novoRegistro.doses, dataDaProximaVacinacao: novoRegistro.proximaAplicacao, animalId: animalId}, Cookies.get('authToken'));
 
       setModalCadastroAberto(false)
       window.location.replace('/fichaanimal');

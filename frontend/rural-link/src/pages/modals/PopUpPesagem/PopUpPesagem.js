@@ -3,6 +3,7 @@ import styles from './PopUpPesagem.module.css';
 import PesagemParaPopUp from './PesagemParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 import AuthService from '../../../autenticacao/AuthService';
+import Cookies from 'js-cookie';
 
 export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
@@ -28,7 +29,7 @@ export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     try{
-      const response = AuthService.registrarPesoAnimal({peso: novoRegistro.peso, dataDePesagem: novoRegistro.data, animalId: animalId});
+      const response = AuthService.registrarPesoAnimal({peso: novoRegistro.peso, dataDePesagem: novoRegistro.data, animalId: animalId}, Cookies.get('authToken'));
       setModalCadastroAberto(false)
       window.location.replace('/fichaanimal')
     } catch(error){

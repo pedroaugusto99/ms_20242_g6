@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:8080";
-const token = localStorage.getItem('auth_token');
 
 class AuthService{
     login(credentials){
@@ -13,39 +12,39 @@ class AuthService{
     registrarTrabalhador(credentials){
         return axios.post(`${API_BASE_URL}/autenticacao/registro/trabalhador`, credentials);
     }
-    registrarFazenda(credentials){
+    registrarFazenda(credentials, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.post(`${API_BASE_URL}/fazenda/cadastro`, credentials);
     }
-    pegarQrCode(id){
+    pegarQrCode(id, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/qr-code/${id}`);
     }
-    listarAnimais(){
+    listarAnimais(token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal`)
     }
-    registrarAnimal(credentials){
+    registrarAnimal(credentials, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.post(`${API_BASE_URL}/animal/cadastro`, credentials);
     }
-    pegarDadosDoUsuario(){
+    pegarDadosDoUsuario(token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/perfil/busca-dados`);
     }
-    listarTrabalhadores(){
+    listarTrabalhadores(token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/fazenda/trabalhadores`);
     }
-    pegarDadosParaGraficos(){
+    pegarDadosParaGraficos(token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/graficos/dados-dashboard`);
     }
-    pegarDadosDoAnimal(id){
+    pegarDadosDoAnimal(id, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/${id}`)
     }
-    listarAnimaisPorNome(nome){
+    listarAnimaisPorNome(nome, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/busca?nome=${nome}`);
     }
@@ -58,39 +57,39 @@ class AuthService{
     redefinirsenha(credentials){
         return axios.put(`${API_BASE_URL}/esqueceu-senha`, credentials);
     }
-    listarPesos(animalId){
+    listarPesos(animalId, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/peso/${animalId}`);
     }
-    listarVacinas(animalId){
+    listarVacinas(animalId, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/vacinacao/${animalId}`); 
     }
-    listarCrias(animalId){
+    listarCrias(animalId, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/crias/${animalId}`); 
     }
-    registrarPesoAnimal(credentials){
+    registrarPesoAnimal(credentials, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.post(`${API_BASE_URL}/peso`, credentials); 
     }
-    registrarVacinaAnimal(credentials){
+    registrarVacinaAnimal(credentials, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.post(`${API_BASE_URL}/vacinacao`, credentials); 
     }
-    removerPesoAnimal(animalId){
+    removerPesoAnimal(animalId, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.delete(`${API_BASE_URL}/peso/${animalId}`); 
     }
-    removerVacinaAnimal(animalId){
+    removerVacinaAnimal(animalId, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.delete(`${API_BASE_URL}/vacinacao/${animalId}`); 
     }
-    removerAnimal(animalId){
+    removerAnimal(animalId, token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.delete(`${API_BASE_URL}/animal/${animalId}`); 
     }
-    filtrarAnimais(){
+    filtrarAnimais(token){
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.get(`${API_BASE_URL}/animal/filtro`); 
     }
