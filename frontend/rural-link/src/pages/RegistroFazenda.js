@@ -8,6 +8,7 @@ import iconenderecofazenda from './images/Icon/iconenderecofazenda.png';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../autenticacao/AuthService';
 import Header from './components/Header';
+import Cookies from 'js-cookie';
 
 function RegistrarFazenda() {
     const [nomeDaFazenda, setNomeDaFazenda] = useState('');
@@ -23,7 +24,7 @@ function RegistrarFazenda() {
     const submitHandler = async (event) => {
         event.preventDefault();
         try{
-            const response = await AuthService.registrarFazenda({nomeDaFazenda, endereco, complemento, cidade, cep, estado, tipoDaFazenda, tamanho});
+            const response = await AuthService.registrarFazenda({nomeDaFazenda, endereco, complemento, cidade, cep, estado, tipoDaFazenda, tamanho}, Cookies.get('authToken'));
             if (response.data !== 'Credenciais inválidas!'){
                 navigate('/dashboard');
             } else{

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '../css/cssComponents/Sidebar.module.css';
 import logo from '../images/logo-simples-png-pq.png';
 import AuthService from '../../autenticacao/AuthService';
+import Cookies from 'js-cookie';
 
 // Componente Sidebar principal
 const Sidebar = ({ title = "Titulo" }) => {
@@ -13,7 +14,7 @@ const Sidebar = ({ title = "Titulo" }) => {
   const closeSidebar = () => setIsOpen(false);
 
   React.useEffect(() => {
-    AuthService.pegarDadosDoUsuario().then((response) => {
+    AuthService.pegarDadosDoUsuario(Cookies.get('authToken')).then((response) => {
       setNomeUsuario(response.data['nome']);
       setRoleUsuario(response.data['role']);
     });

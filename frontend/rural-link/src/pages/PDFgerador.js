@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Document, Page, Text, View, StyleSheet, pdf } from '@react-pdf/renderer';
-import { useNavigate } from 'react-router-dom';  // Importando o hook useNavigate
-import { Font } from '@react-pdf/renderer'; // Agora estamos importando a função Font corretamente
+import { useNavigate } from 'react-router-dom';  
+import { Font } from '@react-pdf/renderer';
 import { Image } from '@react-pdf/renderer';
 
-// Registrar fonte
+
 Font.register({
   family: 'Poppins',
   src: '/fonts/Poppins-Medium.ttf'
@@ -12,9 +12,9 @@ Font.register({
 
 const PDFGerador = () => {
   const [pdfBlob, setPdfBlob] = useState(null);
-  const navigate = useNavigate();  // Inicializa o hook navigate
+  const navigate = useNavigate();  
 
-  // Dados das células
+  
   const cells = [
     { x: '175', y: 23, width: 90, text: 'Especie: ' },
     { x: '175', y: 23, width: 70, text: 'Raca: ' },
@@ -97,15 +97,14 @@ const PDFGerador = () => {
         <View style={styles.square}>
         <Image src="/images/profileGado.png" style={styles.image} />
       </View>
-            {/* Renderizar as células */}
             {cells.map((cell, index) => (
              <View
              key={index}
              style={{
                ...styles.whitecell,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,       
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -116,9 +115,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecellnoborder,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,       
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -130,9 +129,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecell,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -144,9 +143,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecellnoborder,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -157,9 +156,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecell,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -171,9 +170,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecellnoborder,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -185,9 +184,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecell,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -199,9 +198,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecellnoborder,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -213,9 +212,9 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecell,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
@@ -227,22 +226,21 @@ const PDFGerador = () => {
              key={index}
              style={{
                ...styles.whitecellnoborder,
-               width: cell.width,  // Largura da célula é dinâmica
-               top: cell.y,        // Posição Y
-               left: cell.x,       // Posição X
+               width: cell.width,  
+               top: cell.y,        
+               left: cell.x,      
              }}
            >
              <Text style={styles.text}>{cell.text}</Text>
            </View>
             ))}
 
-            {/* Renderizar os separadores */}
             {separators.map((separator, index) => (
               <View
               key={index}
               style={{
                 ...styles.separator,
-                top: separator.y,  // Posição Y do separador
+                top: separator.y,   
               }}
             >
               <Text style={styles.separatorText}>{separator.text}</Text>
@@ -322,9 +320,8 @@ const PDFGerador = () => {
     generatePDF();
   }, []);
 
-  // Função para voltar à página Ficha Animal
   const handleBackToFichaAnimal = () => {
-    navigate('/fichaanimal');  // Redireciona para a página de Ficha Animal
+    navigate('/fichaanimal');  
   };
 
   return (
@@ -333,12 +330,11 @@ const PDFGerador = () => {
         <>
           <embed
             src={URL.createObjectURL(pdfBlob)}
-            width="90%" // Ajuste o tamanho do PDF conforme necessário
-            height="1200" // Ajuste o tamanho do PDF conforme necessário
+            width="90%" 
+            height="1200" 
             type="application/pdf"
           />
 
-          {/* Container para os botões alinhados horizontalmente */}
           <div style={styles.buttonsContainer}>
             <button onClick={handleBackToFichaAnimal} style={styles.greenbutton}>
               Feito
@@ -359,7 +355,6 @@ const PDFGerador = () => {
   );
 };
 
-// Estilos do PDF e da interface
 const styles = StyleSheet.create({
   page: {
     padding: 20,
@@ -419,7 +414,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     display: 'flex',
     marginBottom: 2.75,
-    fontSize: 10, // Espaçamento entre as células
+    fontSize: 10, 
   },
   whitecellnoborder: {
     height: 20,
@@ -429,7 +424,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     display: 'flex',
     marginBottom: 2.75,
-    fontSize: 10, // Espaçamento entre as células
+    fontSize: 10, 
   },
   textinwhitecell: {
     color: '#294134',
@@ -437,9 +432,9 @@ const styles = StyleSheet.create({
   },
   separator: {
     left:'-2',
-    width: '100.5%',  // Largura total da página
-    height: 17,     // Altura do separador
-    backgroundColor: '#28a745', // Cor verde
+    width: '100.5%', 
+    height: 17,     
+    backgroundColor: '#28a745',
     justifyContent: 'center',
     alignItems: 'letf',
     display: 'flex',
@@ -449,8 +444,8 @@ const styles = StyleSheet.create({
   },
 
   separatorText: {
-    color: '#fff', // Cor do texto
-    fontSize: 8.5,  // Tamanho da fonte
+    color: '#fff',
+    fontSize: 8.5,  
     textAlign: 'left', 
     fontFamily: 'Poppins',
     marginLeft:'7px',
@@ -465,12 +460,12 @@ const styles = StyleSheet.create({
   square: {
     top: '20px',
     left: '15px',
-    width: 130, // Largura do quadrado
-    height: 130, // Altura do quadrado
-    backgroundColor: '#FFFFFF', // Cor branca
-    justifyContent: 'center', // Alinha o conteúdo verticalmente
-    alignItems: 'center', // Alinha o conteúdo horizontalmente
-    position: 'absolute', // Permite sobreposição da imagem
+    width: 130, 
+    height: 130,
+    backgroundColor: '#FFFFFF', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    position: 'absolute', 
     borderRadius: '10px',
   },
   image: {
@@ -480,7 +475,7 @@ const styles = StyleSheet.create({
     borderRadius: '70px',
     borderColor: '#28a745',
     padding:'5px',
-    objectFit: 'cover', // Garante que a imagem preencha sem distorcer
+    objectFit: 'cover',
   },
 
   imagelogo: {
@@ -489,7 +484,7 @@ const styles = StyleSheet.create({
     left: 5,
     width: 110,
     height: 110,
-    objectFit: 'cover', // Garante que a imagem preencha sem distorcer
+    objectFit: 'cover', 
   },
 
   qrcode: {
@@ -498,11 +493,11 @@ const styles = StyleSheet.create({
     left: 455,
     width: 63,
     height: 63,
-    objectFit: 'cover', // Garante que a imagem preencha sem distorcer
+    objectFit: 'cover', 
   },
 
   fichamento:{
-    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    justifyContent: 'center', 
     alignItems: 'center', 
     top: 250,
     width: 512,
@@ -515,7 +510,7 @@ const styles = StyleSheet.create({
   },
 
   fichamento2:{
-    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    justifyContent: 'center', 
     alignItems: 'center', 
     top: 400,
     width: 512,
@@ -528,7 +523,7 @@ const styles = StyleSheet.create({
   },
 
   fichamento3:{
-    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    justifyContent: 'center', 
     alignItems: 'center', 
     top: 520,
     width: 512,
@@ -541,7 +536,7 @@ const styles = StyleSheet.create({
   },
 
   fichamento4:{
-    justifyContent: 'center', // Alinha o conteúdo verticalmente
+    justifyContent: 'center', 
     alignItems: 'center', 
     top: 640,
     width: 512,

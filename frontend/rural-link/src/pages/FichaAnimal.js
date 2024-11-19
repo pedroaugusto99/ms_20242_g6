@@ -1,8 +1,8 @@
-// Importa��es necess�rias
+// Importações necessárias
 import Sidebar from './components/Sidebar';
 import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
-import ManejoTable from './components/ManejoTable';
+import ManejoTableVacinacao from './components/ManejoTableVacinacao';
 import ManejoTablePesagem from './components/ManejoTablePesagem';
 import ManejoTableCrias from './components/ManejoTableCrias';
 import styles from './css/cssPages/FichaAnimal.module.css';
@@ -14,8 +14,9 @@ import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
 import PopUpExclusao from './modals/PopUpExclusao/PopUpExclusao';
 import PopUpConfirmacao from './modals/PopUpConfirmacao/PopUpConfirmacao';
- import { useLocation, useNavigate } from 'react-router-dom';
- import { DadosParaPopUpsDeManejo } from '../hooks/DadosParaPopUpsDeManejo';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { DadosParaPopUpsDeManejo } from '../hooks/DadosParaPopUpsDeManejo';
+import Cookies from 'js-cookie';
 
 function FichaAnimal() {
     const {
@@ -32,7 +33,7 @@ function FichaAnimal() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // Fun��es de controle dos modais
+    // Funções de controle dos modais
     const togglePesagemModal = () => {
         setModalPesagem(!modalPesagem);
     };
@@ -74,7 +75,7 @@ function FichaAnimal() {
     const [qrCodeAnimal, setQrCodeAnimal] = React.useState('');
 
     React.useEffect(() => {
-        AuthService.pegarDadosDoAnimal(location.state.identificador).then((response) => {
+        AuthService.pegarDadosDoAnimal(location.state.identificador, Cookies.get('authToken')).then((response) => {
             setNomeAnimal(response.data['nome'])
             setCodigoAnimal(response.data['codigo'])
             setEspecieAnimal(response.data['especie'])
@@ -93,26 +94,25 @@ function FichaAnimal() {
     }, []);
 
     React.useEffect(() => {
-
-        AuthService.listarPesos(location.state.identificador).then((response) => {
+        AuthService.listarPesos(location.state.identificador, Cookies.get('authToken')).then((response) => {
             setDadosPesos(response.data);
         })
     }, []);
 
     React.useEffect(() => {
-        AuthService.listarVacinas(location.state.identificador).then((response) => {
+        AuthService.listarVacinas(location.state.identificador, Cookies.get('authToken')).then((response) => {
             setDadosVacinas(response.data);
         })
     }, []);
 
     React.useEffect(() => {
-        AuthService.listarCrias(location.state.identificador).then((response) => {
+        AuthService.listarCrias(location.state.identificador, Cookies.get('authToken')).then((response) => {
             setDadosCrias(response.data);
         })
     }, []);
 
     React.useEffect(() => {
-        AuthService.pegarQrCode(location.state.identificador).then((response) => {
+        AuthService.pegarQrCode(location.state.identificador, Cookies.get('authToken')).then((response) => {
             setQrCodeAnimal(response.data['qrCode'])
         })
     }, []);
@@ -120,10 +120,6 @@ function FichaAnimal() {
     const handleAcessVoltar =() => {
         navigate('/fichamento')
     };
-    const handlegenerate_pdf = () => {
-        navigate('/pdf');
-    };
-    
 
     return (
         <div className={styles.body}>
@@ -172,7 +168,7 @@ function FichaAnimal() {
                     columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
                     toggleModal={togglePesagemModal}
                     />
-                   <ManejoTable 
+                   <ManejoTableVacinacao 
                         title="Vacinação" 
                         data={dadosVacinas || []}
                         columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
@@ -186,14 +182,13 @@ function FichaAnimal() {
                     />
                 </div>
 
-                {/* Bot�es */}
+                {/* Botões */}
                 <div className={styles.Rowbtn}>
                     <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handlegenerate_pdf}>Gerar PDF</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
                     <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
                     </button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Confirmar Edi��o</button>
+                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Confirmar Edição</button>
                 </div>
             </div>
 
@@ -208,4 +203,3 @@ function FichaAnimal() {
 }
 
 export default FichaAnimal;
-

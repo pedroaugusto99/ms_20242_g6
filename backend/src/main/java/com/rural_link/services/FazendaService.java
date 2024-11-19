@@ -17,12 +17,14 @@ import com.rural_link.repositories.FazendaRepository;
 import com.rural_link.repositories.ProprietarioRepository;
 import com.rural_link.repositories.TrabalhadorRuralRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class FazendaService {
     private final FazendaRepository fazendaRepository;
     private final ProprietarioService proprietarioService;
@@ -43,6 +45,7 @@ public class FazendaService {
     public CriarFazendaResponseDTO criarFazenda(CriarFazendaRequestDTO fazendaDTO, Pessoa pessoa){
         Proprietario proprietario = proprietarioRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         if (fazendaRepository.findByEndereco(fazendaDTO.endereco()).isPresent() || proprietario.getFazenda() != null){
+            log.info(proprietario.getFazenda().getNomeDaFazenda());
             throw new FazendaAlreadyRegisteredException();
         }
         String codeGenerator = CodeGenerator.gerarCodigoDaFazenda();
