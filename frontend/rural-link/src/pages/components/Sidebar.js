@@ -3,11 +3,14 @@ import styles from '../css/cssComponents/Sidebar.module.css';
 import logo from '../images/logo-simples-png-pq.png';
 import AuthService from '../../autenticacao/AuthService';
 
+import trabalhadoricon from '../images/trabalhadoricon.jpeg';
+import fazendeiroicon from '../images/fazendeiroicon.jpeg';
+
 // Componente Sidebar principal
 const Sidebar = ({ title = "Titulo" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [nomeUsuario, setNomeUsuario] = React.useState('');
-  const [roleUsuario, setRoleUsuario] = React.useState('');
+  const [roleUsuario, setRoleUsuario] = React.useState('Proprietário');
 
   const toggleSidebar = () => setIsOpen(prev => !prev);
   const closeSidebar = () => setIsOpen(false);
@@ -29,6 +32,16 @@ const Sidebar = ({ title = "Titulo" }) => {
       </div>
     </div>
   );
+
+  const getProfileImage = (role) => {
+    if (role === "Proprietário") {
+        return fazendeiroicon;  
+    } else if (role === "Trabalhador") {
+        return trabalhadoricon;  
+    } else {
+        return "https://via.placeholder.com/150";  
+    }
+};
 
   // Componente Profile
   const Profile = ({ name, role, imgSrc }) => (
@@ -68,7 +81,7 @@ const Sidebar = ({ title = "Titulo" }) => {
             <Profile
               name={nomeUsuario}
               role={roleUsuario}
-              imgSrc="https://via.placeholder.com/150"
+              imgSrc={getProfileImage(roleUsuario)}  
             />
 
           <ul className={styles.lists}>
