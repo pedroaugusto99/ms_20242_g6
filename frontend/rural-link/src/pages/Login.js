@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom';
 import logo from './images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthService from '../autenticacao/AuthService';
-import Cookies from 'js-cookie';
 
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,11 +19,11 @@ function Login() {
 
     const submitHandler = async (event) => {
         event.preventDefault();
-        Cookies.remove('authToken');
+        localStorage.removeItem('authToken');
         try {
             const response = await AuthService.login({ email, password });
 
-            Cookies.set('authToken', response.data['token'], { expires: 7, secure: true, sameSite: 'Strict' });
+            localStorage.setItem('authToken', response.data['token']);
             
             if (response.data !== 'Credenciais inválidas!' && response.data['redirectToCriarFazenda'] === true) {
                 navigate('/registrarfazenda');
