@@ -1,0 +1,658 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #6C9BCF;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.3rem;
+    --padding-1: 1rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+.body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+}
+
+a{
+    color: var(--color-dark);
+}
+
+img{
+    display: block;
+    object-fit: cover;
+}
+
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2{
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3{
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+small{
+    font-size: 0.76rem;
+}
+
+.p {
+    color: var(--color-dark-variant);
+    font-size: 1.4rem;
+    margin: 1rem;
+    padding: 7.8px;
+}
+
+b{
+    color: var(--color-dark);
+}
+
+.textMuted{
+    color: var(--color-info-dark);
+}
+
+.primary{
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.success{
+    color: var(--color-success);
+}
+
+.warning{
+    color: var(--color-warning);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin: auto;
+    gap: 1.8rem;
+    background-color: #009f220e;
+ 
+}
+
+aside{
+    height: 100vh;
+}
+
+main{
+    margin-top: 5rem;
+    width: 60%;
+}
+
+main .analyse{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+
+main .analyse > div{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .analyse > div:hover{
+    box-shadow: none;
+}
+
+main .analyse > div .status{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .analyse h3{
+    font-size: 1rem;
+}
+
+main .analyse .progresss{
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+main .analyse svg{
+    width: 7rem;
+    height: 7rem;
+}
+
+main .analyse svg circle{
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+main .analyse .sales svg circle{
+    stroke: var(--color-success);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 100;
+}
+
+main .analyse .visits svg circle{
+    stroke: var(--color-danger);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 180;
+}
+
+main .analyse .searches svg circle{
+    stroke: var(--color-primary);
+    stroke-dashoffset: -70;
+    stroke-dasharray: 80;
+}
+
+main .analyse .progresss .percentage{
+    position: absolute;
+    top: 5px;
+    left: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+main .newUsers{
+    margin-top: 1.3rem;
+}
+
+main .newUsers .userList{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .newUsers .userList:hover{
+    box-shadow: none;
+}
+
+main .newUsers .userList .user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main .newUsers .userList .user img{
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 0.4rem;
+    border-radius: 50%;
+}
+
+main .recentOrders{
+    margin-top: 1.3rem;
+}
+
+main .recentOrders h2{
+    margin-bottom: 0.8rem;
+}
+
+main .recentOrders table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+main .recentOrders table:hover{
+    box-shadow: none;
+}
+
+main table thead th{
+    padding: 1vw;
+}
+
+main table tbody td{
+    height: 2.8rem;
+    padding: 1vw;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
+}
+
+main table tbody tr:last-child td{
+    border: none;
+}
+
+main .recentOrders a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+.rightSection{
+    margin-top: 6.3rem;
+}
+
+.rightSection .nav{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.rightSection .nav button{
+    display: none;
+}
+
+.rightSection .darkMode{
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.rightSection .darkMode span{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightSection .darkMode span.active{
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.rightSection .nav .profile{
+    display: flex;
+    gap: 2rem;
+    text-align: right;
+}
+
+.rightSection .nav .profile .profilePhoto{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-image: url('https://noticiasdatv.uol.com.br/media/_versions/artigos_2021/globo-pantanal-marcos-palmeira-reproducao-tvglobo_Kn47jHL_fixed_large.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.rightSection .userProfile{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rightSection .userProfile:hover{
+    box-shadow: none;
+}
+
+.rightSection .userProfile img{
+    width: 11rem;
+    height: auto;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+}
+
+.rightSection .userProfile h2{
+    margin-bottom: 0.2rem;
+}
+
+/* Dashboard.module.css */
+
+.reminders {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f9f9f9; /* Fundo suave */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.header h2 {
+    font-size: 1.5rem;
+    color: #333; /* Cor do título */
+}
+
+.header span {
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.addReminderForm {
+    display: flex;
+    gap: 10px; /* Espaçamento entre inputs e botão */
+    margin-bottom: 1rem;
+}
+
+.addReminderForm input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    flex: 1; /* Para que os inputs ocupem espaço igual */
+    transition: border-color 0.3s;
+}
+
+.addReminderForm input:focus {
+    border-color: #007bff; /* Cor ao focar */
+    outline: none;
+}
+
+.addReminderForm button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.addReminderForm button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+.notification {
+    background-color: #fff; /* Fundo dos lembretes */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+    padding: 1.4rem;
+    border-radius: 6px; /* Bordas arredondadas */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.notification:hover {
+    transform: translateY(-2px); /* Levanta ligeiramente ao passar o mouse */
+}
+
+.notification .icon {
+    padding: 0.6rem;
+    color: white;
+    background-color: #28a745; /* Cor de fundo para lembretes ativos */
+    border-radius: 50%; /* Ícone arredondado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notification.deactive .icon {
+    background-color: #dc3545; /* Cor para lembretes inativos */
+}
+
+.notification .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.notification .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: #333; /* Cor do título do lembrete */
+}
+
+.notification small {
+    color: #888; /* Cor do tempo */
+}
+
+
+@media screen and (max-width: 1200px) {
+    .container{
+        width: 95%;
+        grid-template-columns: 7rem auto 23rem;
+    }
+
+    aside .logo h2{
+        display: none;
+    }
+
+    aside .sidebar h3{
+        display: none;
+    }
+
+    aside .sidebar a{
+        width: 5.6rem;
+    }
+
+    aside .sidebar a:last-child{
+        position: relative;
+        margin-top: 1.8rem;
+    }
+
+    main .analyse{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    main .new-users .user-list .user{
+        flex-basis: 40%;
+    }
+
+    main .recent-orders {
+        width: 94%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 2rem 0 0 0.8rem;
+    }
+
+    main .recent-orders table{
+        width: 83vw;
+    }
+
+    main table thead tr th:last-child,
+    main table thead tr th:first-child{
+        display: none;
+    }
+
+    main table tbody tr td:last-child,
+    main table tbody tr td:first-child{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 100%;
+        grid-template-columns: 1fr;
+        padding: 0 var(--padding-1);
+    }
+
+    aside{
+        position: fixed;
+        background-color: var(--color-white);
+        width: 15rem;
+        z-index: 3;
+        box-shadow: 1rem 3rem 4rem var(--color-light);
+        height: 100vh;
+        left: -100%;
+        display: none;
+        animation: showMenu 0.4s ease forwards;
+    }
+
+    @keyframes showMenu {
+       to{
+        left: 0;
+       } 
+    }
+
+    aside .logo{
+        margin-left: 1rem;
+    }
+
+    aside .logo h2{
+        display: inline;
+    }
+
+    aside .sidebar h3{
+        display: inline;
+    }
+
+    aside .sidebar a{
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    aside .sidebar a:last-child{
+        position: absolute;
+        bottom: 5rem;
+    }
+
+    aside .toggle .close{
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    main{
+        margin-top: 8rem;
+        padding: 0 1rem;
+    }
+
+    main .new-users .user-list .user{
+        flex-basis: 35%;
+    }
+
+    main .recent-orders{
+        position: relative;
+        margin: 3rem 0 0 0;
+        width: 100%;
+    }
+
+    main .recent-orders table{
+        width: 100%;
+        margin: 0;
+    }
+
+    .right-section{
+        width: 94%;
+        margin: 0 auto 4rem;
+    }
+
+    .right-section .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        background-color: var(--color-white);
+        padding: 0 var(--padding-1);
+        height: 4.6rem;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+        margin: 0;
+    }
+
+    .right-section .nav .dark-mode{
+        width: 4.4rem;
+        position: absolute;
+        left: 66%;
+    }
+
+    .right-section .profile .info{
+        display: none;
+    }
+
+    .right-section .nav button{
+        display: inline-block;
+        background-color: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+
+    .right-section .nav button span{
+        font-size: 2rem;
+    }
+
+}

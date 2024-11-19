@@ -1,74 +1,77 @@
 @startuml
-class Fazendeiro {
-    -Nome: String
-    -Sobrenome: String
-    -Data_nascimento: int
-    -CPF: String
-    -Telefone: String
-    -Email: String
-    -NumeroFuncionarios: int
+class Pessoa {
+    -nomeCompleto: String
+    -sobrenome: String
+    -dataNascimento: Date
+    -email: String
+    -password: String
+    -telefone: String
     
-    +Visualizar_Graficos(): void
-    +Cadastrar_Animal(): void
-    +Gerar_Relatorios(): void
-    +Adicionar_Funcionario(): void
-    +Remover_Funcionario(): void
-    +Editar_Dados_Perfil(): void
-    +Editar_Dados_Animal(): void
-    
+    +editarDadosPerfil(): void
+    +editarDadosAnimal(): void
+    +adicionarAnimal(animal: Animal): void
+    +removerAnimal(animal: Animal): void
 }
-    
 
-
-class Fazenda {
-    -Nome: String
-    -Cidade: String
-    -Estado: String
-    -Latitude: float
-    -Longitude: float
-
-    +getLocalizacao(): String
-
+class Proprietario {
+    +cadastrarFazenda(): void
+    +gerarCodigoFazenda(): void
+    +visualizarGraficos(): void
+    +gerarRelatorios(): void
+    +AdicionarFuncionario(funcionario: TrabalhadorRural): void
+    +RemoverFuncionario(funcionario: TrabalhadorRural): void
 }
 
 class TrabalhadorRural {
-    -Nome: String
-    -Sobrenome: String
-    -Data_nascimento: Date
-    -Email: String
-    -ID_TrabalhadorRural: String
-
-    +Cadastrar_Animal(): void
-    +Editar_Dados_Perfil(): void
-    +Editar_Dados_Animal(): void
-
+    +utilizarCodigoFazendaNoCadasstro(): void
 }
 
-abstract class Animal {
-    +Nome : String
-    +Data_Nascimento
-    
+class Fazenda {
+    -nomeDaFazenda: String
+    -tamanhoFazenda: Float
+    -tipoDaFazenda: String
+    -endereco: String
+    -complemento: String
+    -cep: int
+    -cidade: String
+    -estado: String
+    -codigoDeAutenticacao: String
 }
 
-class Gado extends Animal {
-    +ID_gado: String
-    +Raca_gado: String
-    +Historico_vacinas_gado
-    +Peso_gado: float
-    +DataUltimoParto: Date
-    +NumerodeCrias
+class VacinacaoAnimal {
+    -nomeDaVacina: String
+    -dataDeVacinacao: Date
+    -numeroDeDoses: int
+    -dataProximaVacinacao: Date
+}
 
+class PesoAnimal {
+    -peso: Float
+    -dataDePesagem: Date
 }
 
 
+class Animal {
+    -codigo: String
+    -nome: String
+    -especie: String
+    -raça: String
+    -sexo: String
+    -dataDeNascimento: Date
+    -idade: int
+    -dataDeAquisicao: Date
+    -codigoDoPai: String
+    -codigoDaMae: String
+    -status: String
+    -lote: String
+}
 
-
-
-
-Fazenda  o--  Animal : Contém
-Fazendeiro  --> Fazenda : Possui
-Fazenda  --> TrabalhadorRural : Emprega
-TrabalhadorRural  --> Fazendeiro : Trabalha para
-
+Fazenda "1" <-- "1" Pessoa
+Fazenda "1" <-- "0..*" Pessoa
+Fazenda "1" <-- "0..*" Animal
+Animal "*" <-- "*" VacinacaoAnimal
+Animal "*" <-- "*" PesoAnimal
+Pessoa "1" <|-- "1" Proprietario
+Pessoa "1" <|-- "0.. *" TrabalhadorRural
 
 @enduml

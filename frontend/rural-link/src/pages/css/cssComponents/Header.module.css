@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2BB749;
+    height: 50px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.title {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}

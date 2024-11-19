@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 100%;
+    background-color: #009f22b3;
+    background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/33355299-campo-panorama-ilustracao-fazenda-silhueta-panorama-com-gado-casa-de-fazenda-e-moinho-de-vento-rural-cenario-silhueta-para-fundo-papel-de-parede-ou-aterrissagem-pagina-vetor.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.conteudo {
+    position: absolute;
+    border-radius: 15px;
+    background-color: #ededed;
+    width: 1080px;
+    height: 90%;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
+}

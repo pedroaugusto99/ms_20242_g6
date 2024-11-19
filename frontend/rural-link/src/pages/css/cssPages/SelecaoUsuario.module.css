@@ -1,0 +1,98 @@
+.tituloPrincipal {
+    margin-top: 1.5vw;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #017A1B;
+    text-align: center;
+}
+
+.selecaoUsuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.cardUsuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.cardUsuario:first-child {
+    margin-right: -4vw;
+}
+
+.cardUsuario .descricaoUsuario {
+    font-size: 16px;
+    color: var(--preto);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 50%;
+}
+
+.botaoUsuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #fff;
+    border: 2px solid #2BB749;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 300px;
+    height: 300px;
+    flex-direction: column;
+}
+
+.botaoUsuario:hover {
+    background-color: #20b44048;
+}
+
+.botaoUsuario:active {
+    background-color: #20b440a6;
+}
+
+.iconeUsuario {
+    width: 30%;
+}
+
+.iconeTrabalhador {
+    width: 40%;
+}
+
+.iconeProprietario {
+    width: 30%;
+}
+
+.tituloUsuario {
+    margin-top: 1.2vw;
+    font-size: 36px;
+    text-align: center;
+    color: #017A1B;
+    font-weight: bold;
+}
+
+.opcaoLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.linkLogin {
+    text-decoration: none;
+    color: var(--cor-terciaria);
+    padding-left: 5px;
+}

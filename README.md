@@ -46,35 +46,49 @@ Este projeto será desenvolvido pelos componentes do grupo 6:
 6. RF06 - O sistema deve gerar um QR Code após o cadastro de novo animal, com possibilidade de impressão do código, e subsequente leitura de QR Code em tag presente fisicamente no gado, por exemplo nos brincos de plástico ou etiquetagem.
 7. RF07 - O sistema deve gerar arquivos no formato "pdf" das fichas dos animais cadastrados.
 8. RF08 - O sistema deve gerar gráficos com informações e estatísticas personalizadas sobre o rebanho, em um Dashboard interativo.
+9. RF09 -  sistema deve calcular a idade do animal a partir da data de nascimento indicada, caso tenha sido indicada.
 
 ### Requisitos Não Funcionais
 
-1. RNF01 - Usabilidade: O usuário deve encontrar, facilmente, o que deseja realizar no sistema (facilidade de uso).
-2. RNF02 - Segurança: <Descrição do Requisito não Funcional>..
-3. RNF03 - Desempenho: <Descrição do Requisito não Funcional>..
-4. RNF04 - Confiabilidade: <Descrição do Requisito não Funcional>.
-5. RNF05 - Manutenibilidade: <Descrição do Requisito não Funcional>.
-6. RNF06 - Portabilidade: <Descrição do Requisito não Funcional>.
-7. RNF07 - Conectividade: <Descrição do Requisito não Funcional>.
+1. RNF01 - Usabilidade: O usuário deve encontrar facilmente o que deseja realizar no sistema (facilidade de uso), com uma aba lateral ("sidebar") presente em qualquer página da aplicação, possibilitando o acesso a outras páginas de forma simples ao selecionar na aba lateral.
+2. RNF02 - Usabilidade: O sistema deve fazer uso de máscaras de validação para os campos: email, CEP e telefones.
+3. RNF03 - Usabilidade: O usuário deve ter facilidade para cadastrar os dados do animal em Novo Cadastro, visualizando quais dados são obrigatórios e necessários para a realização inicial do cadastro. 
+4. RNF04 - Segurança: O sistema deve utilizar protocolos e algoritmos para garantir a segurança durante a autenticação e navegação na aplicação, em conformidade com normas da LGPD.
+5. RNF05 - Segurança: O sistema deve gerar um código da fazenda que seja válido para uso somente por 24 horas.
+6. RNF06 - Desempenho: O sistema deve funcionar de maneira eficaz, suportando grandes volumes de dados e acessos simultâneos de múltiplos usuários, suportando picos de uso.
+7. RNF07 - Compatibilidade: O sistema deve ser compatível com diferentes dispositivos, sistemas operacionais e ter telas responsivas.
+8. RNF08 - Confiabilidade: O sistema deve operar de forma consistente e sem falhas, minimizando períodos de inatividade.
+9. RNF09 - Conectividade: O sistema só poderá funcionar mediante o acesso à internet.
+10. RNF10 - Aparência: O sistema deve ser consistente com o padrão de design em termos de cores, fontes e  espaçamento.
+11. RNF11 - Validação: O sistema só deve permitir o cadastro de um usuário mediante o preenchimento de todos os campos obrigatórios (nome, email, telefone, senha e confirmar senha), e especificamente para o perfil de usuário trabalhador rural o campo de "código da fazenda associada", sendo este último um código válido.
+12. RNF12 - Validação: O sistema só deve permitir o cadastro de animal mediante o preenchimento de todos os campos obrigatórios (código do animal, nome do animal, espécie, raça e sexo).
+
 
 ### Regras de Negócio
-1. RN01 - <Descrição da Regra de Negócio>.
-2. RN02 - <Descrição da Regra de Negócio>.
-3. RN03 - <Descrição da Regra de Negócio>.
-4. RN04 - <Descrição da Regra de Negócio>.
-5. RN05 - <Descrição da Regra de Negócio>.
+1. RN01 - Só haverá dois tipos de perfis de usuário: do proprietário de fazenda e do trabalhador rural, com funções em comum (cadastro dde animal, leitura de QR Code, acesso à lista de animais)e com funções específicas para o primeiro (cadastro de fazenda e acesso ao Dashboard com gráficos interativos).
+2. RN02 - Somente o perfil de usuário proprietário de fazenda pode criar um cadastro para fazenda, podendo realizar esse cadastro de fazenda no seu primeiro acesso à aplicação a partir do login.
+3. RN03 - O código respectivo à fazenda, que será utilizado pelo perfil de usuário trabalhador rural para realização do próprio login, deverá funcionar por somente 24 horas. Assim que expirar, deve haver uma função de geração de novo código pelo proprietário rural.
+4. RN04 - Todo cadastro de animal deve gerar um QR Code associado a esse cadastro, sendo mostrado na ficha do animal e estando pronto para impressão via um arquivo do tipo PDF.
+5. RN05 - A aplicação deve possuir, no formulário de cadastro de um animal, as principais opções de Espécies e Raças para serem selecionadas sobre o animal em questão que será cadastrado.
+6. RN06 - Deve haver dentro da aplicação uma página dedicada a perguntas frequentes que respondam dúvidas pré-determinadas sobre funcionalidades do sistema.
+7. RN07 - Tanto o proprietário de fazenda, quanto o trabalhador rural, devem ter acesso à lista completa de animais cadastrados na aplicação.
+8. RN08 - Na ficha do animal, os dois tipos de perfil de usuário devem poder baixar o arquivo do tipo PDF respectivo à ficha do animal.
+9. RN09 - Na ficha do animal, não será possível editar as seguintes informações, após a primeira vez que elas são determinadas: código do animal, nome do animal, espécie, raça, sexo, data de nascimento, idade, data de aquisição, pai (código) e mãe (código).
+10. RN10 - Ao lidar com uma fila de um dado de manejo, como de pesagem ou de vacinação, a fila não poderá ser editada, mas somente ser adicionada uma nova ou uma excluída já completada.
 
 ### Modelo Arquitetural
 O modelo arquitetural mais próximo do produto final é o Cliente-Servidor. Nesse modelo, o cliente é responsável por iniciar a comunicação com o servidor, que aguarda as requisições de entrada para fornecer os serviços. Uma das abordagens mais comuns desse modelo é a arquitetura em três camadas:
-- Camada de Apresentação (Cliente):  Interface com o usuário será feita em React
-- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente através de Java
-- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados pelo PostgreSQL
+- Camada de Apresentação (Cliente):  Interface com o usuário será feita em React;
+- Camada de Lógica de Negócio (Servidor): Processa as requisições do cliente através de Java;
+- Camada de Dados (Servidor): Gerencia o armazenamento e recuperação de dados pelo PostgreSQL;
 
 ### Modelo de Interfaces Gráficas
-<Apresentar uma descrição sucinta do modelo de interfaces gráficas do Produto.>
-
-### Tecnologia de Persistência de Dados
-<Apresentar uma descrição sucinta do modelo de persistência do Produto.>
+O modelo de interface gráfica utilizado neste projeto é React, framework front-end de JavaScript, baseado em componentes reutilizáveis, que gerenciam o estado da interface e atualizam a UI de forma eficiente e reativa. Principais características desse modelo:
+- Componentização: A UI é dividida em pequenos componentes independentes, cada um com sua própria lógica e visual, que podem ser reutilizados e compostos para formar a interface completa.
+- JSX: O React utiliza JSX (JavaScript XML), uma sintaxe que permite escrever HTML dentro de código JavaScript, tornando o desenvolvimento da interface mais intuitivo e legível.
+- Estado e Props: O estado (state) armazena informações locais de cada componente, enquanto as propriedades (props) são utilizadas para passar dados de um componente pai para um componente filho.
+- Virtual DOM: O React utiliza um "DOM virtual" para otimizar a performance. Quando o estado ou as props mudam, o React calcula as diferenças entre a versão anterior e a nova do DOM, atualizando apenas as partes da interface que realmente mudaram.
+- Unidirecionalidade de dados: Os dados fluem de forma unidirecional, do componente pai para o filho, através das props, garantindo previsibilidade e maior controle sobre a UI.
 
 ### Local do _Deploy_
 O nosso planejamento inicial é hospedar nossa aplicação no [local a definir], sendo crucial para nossa escolha a facilidade de configuração e também os recursos ofertados na versão gratuita.
@@ -85,9 +99,9 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |---|---|---|---|---|---|
 |1|Concepção|10/09/2024|17/09/2024|Grupo 6|Concluída|
 |2|Preparação|18/09/2024|01/10/2024|Grupo 6|Concluída|
-|3|Itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Em andamento|
-|4|Itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|5|Itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
+|3|Itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Concluída|
+|4|Itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
+|5|Itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Concluída|
 |6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|
 
 ### Iterações x Atividades
@@ -101,17 +115,12 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |2|Distribuição dos itens do backlog entre as iterações|18/09/2024|01/10/2024|Grupo 6|Concluída|
 |3|Definição do modelo arquitetural|02/10/2024|15/10/2024|Grupo 6|Concluída|
 |3|Diagrama de classes dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Concluída|
-|3|Diagrama de interação/sequencia dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Desnecessário|
-|3|Projeto de Interfaces gráficas dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Parcialmente concluída|
-|3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Parcialemnte concluída|
-|4|Diagrama de classes dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|4|Diagrama de interação/sequencia dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|4|Projeto de persistência dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Programada|
-|5|Diagrama de classes dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
-|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
+|3|Projeto de Interfaces gráficas dos itens do backlog <1,2>|02/10/2024|15/10/2024|Grupo 6|Concluída|
+|3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Parcialmente concluída|
+|4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
+|4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
+|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
+|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
+|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
+|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
 |6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|

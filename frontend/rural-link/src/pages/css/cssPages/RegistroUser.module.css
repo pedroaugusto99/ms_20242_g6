@@ -1,0 +1,328 @@
+/*======================================= Configs Gerais =======================================*/
+
+:root {
+    --cor-padrao: #2BB749;
+    --cor-secundaria: #84dd97;
+    --cor-terciaria: #009F22;
+    --cor-background: lightgray;
+    --cor-input: #ecf0f1;
+    --branco: white;
+    --preto: black;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #009f22b3;
+    background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/33355299-campo-panorama-ilustracao-fazenda-silhueta-panorama-com-gado-casa-de-fazenda-e-moinho-de-vento-rural-cenario-silhueta-para-fundo-papel-de-parede-ou-aterrissagem-pagina-vetor.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*======================================= Configs Gerais =======================================*/
+
+.conteudo {
+    position: relative;
+    border-radius: 15px;
+    background-color: var(--branco);
+    width: 1080px;
+    height: 90%;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
+}
+
+.header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 1080px;
+    height: 50px;
+    background-color: #2bb749;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloPrimario{
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+}
+
+.tituloSecundario {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #017A1B;
+    text-align: center;
+}
+
+/* <================= Inputs  ===============> */
+
+.otherLabel {
+    font-weight: 800;
+    text-align: left;
+    text-indent: 20%;
+    margin: 13px;
+}
+
+.required {
+    color: red;
+    margin-left: 4px; 
+    cursor: pointer; 
+}
+
+.labelInputProp {
+    height: 45px;
+    width: 650px;
+    margin-left: 215px;
+    background-color: #E1E1E1;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    position: relative;
+    padding-left: 55px;
+}
+
+.labelInputTrab {
+    height: 45px;
+    width: 650px;
+    margin-left: 215px;
+    background-color: #E1E1E1;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    position: relative;
+    padding-left: 10px;
+}
+
+.input {
+    height: 45px;
+    width: 100%;
+    text-indent: 65px;
+    border: none;
+    background-color: #E1E1E1;
+    border-radius: 5px;
+}
+
+.input[type="number"]::-webkit-inner-spin-button,
+.input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* <================= Inputs  Container ===============> */
+
+.containerInput {
+    margin-left: 215px;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.inputRow {
+    display: flex; 
+    gap: 50px; 
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.labelShortInputProp {
+    margin-top: -10px;
+    display: flex;
+    align-items: center; 
+    height: 45px; 
+    width: 300px; 
+    background-color: #E1E1E1;
+    border-radius: 5px;
+    position: relative; 
+    padding-left: 55px;
+    z-index: -3;
+}
+
+.labelShortInputTrab {
+    margin-top: -10px;
+    display: flex;
+    align-items: center; 
+    height: 45px; 
+    width: 300px; 
+    background-color: #E1E1E1;
+    border-radius: 5px;
+    position: relative; 
+    padding-left: 10px;
+    z-index: -3;
+}
+
+
+.labelShifted {
+    margin-left: -65px; 
+}
+
+/* <================= FIM Inputs  Container ===============> */
+
+/* <================= FIM Inputs  ===============> */
+
+
+/* <=================== Botoes / Message =================> */
+
+.btnProp {
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 15%; 
+    margin: 9rem 0rem 0rem 50rem;
+    align-self: center;
+}
+
+.btnTrab {
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 15%; 
+    margin: 2.3rem 0rem 0rem 50rem;
+    align-self: center;
+}
+
+.btnVoltar{
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 13%; 
+    margin: 0rem 0rem 0rem 2rem;
+}
+
+.btnVoltar i {
+    margin-right: 15px;
+  }
+
+.btnPrimario {
+    border: 1px solid var(--cor-terciaria);
+    background-color: var(--cor-terciaria);
+    transition: 0.5s;
+}
+
+.btnPrimario:hover {
+    background-color: transparent;
+    color: var(--cor-padrao);
+    border: 1px solid var(--cor-padrao);
+}
+
+.infobtn {
+    z-index: 1;
+    position: relative;
+    top: 2vh;
+    left: 3vw;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s; 
+}
+
+.infobtn:hover {
+    transform: scale(1.2); 
+    background: none;
+}
+
+.message {
+    position: absolute; 
+    font-weight: 600;
+    top: 38%; 
+    left: 38%; 
+    border-radius: 10px;
+    background-color: #f9f9f9; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    color: #333; 
+    margin-top: 5px;
+    z-index: 2;
+    font-size: 14px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggleButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    position: absolute; 
+    left: 90%; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    height: 28px; 
+    width: auto; 
+}
+
+/* <=================== Fim Botoes =================> */
+
+
+/* <=================== Começo Icones =================> */
+
+.nomecompleto {
+    position: absolute; 
+    left: 20px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    height: 28px; 
+    width: auto; 
+}
+.email{
+
+    position: absolute; 
+    left: 20px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    height: 26px; 
+    width: auto; 
+
+}
+
+.telefone{
+    
+    position: absolute; 
+    left: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    height: 28px; 
+    width: auto; 
+
+}
+
+.senha {
+    position: absolute; 
+    left: 20px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    height: 38px; 
+    width: auto;
+}
+
+.key {
+
+    position: absolute; 
+    left: 18px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    height: 30px; 
+    width: auto;
+}
+
+.info { 
+    transform: translateY(-50%); 
+    height: 20px; 
+    width: auto;
+}

@@ -1,0 +1,192 @@
+.conteudo {
+    display: flex;
+    align-items: right;
+    justify-content: space-around;
+    background-color: white;
+    width: 130vh;
+    height: 85vh;
+    margin-top: 3%;
+    border-radius: 30px;
+    box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
+
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#perfilInfos {
+    margin-top: 20%;
+    margin-left: 20%;
+}
+
+#namePerfil {
+    font-weight: bold;
+    text-align: center;
+    font-size: 22px;
+    margin-left: 18%;
+    margin-top: 7%;
+    color: #425A67;
+
+}
+
+#descPerfil {
+    font-size: 17px;
+    margin-left: 38%;
+    color: #00A5FF;
+}
+
+#CodePerfil {
+    font-size: 22px;
+    margin-top: 7%;
+    text-align: center;
+}
+
+.imgPerfil {
+    height: 15vw;
+    border-radius: 50%;
+    margin-top: 6vw;
+    margin-left: 0,5vw;
+}
+
+h1 {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #425A67;
+    margin-top: 1.3vw;
+    margin-left: 5vw;
+}
+
+
+.codigoFazendaField label {
+    font-size: 1vw;
+    color: #425A67;
+    font-weight: bold;
+    margin-left: -2vh;
+    margin-bottom: 0vh; /* Espaço abaixo da label */
+}
+
+.codigoFazendaField .data {
+    
+    position: absolute;
+    border: 1px solid #8B8FA8;
+    border-radius: 1vh;
+    width: 13vw;
+    height: 2.4vw;
+    margin-bottom: -10vh;
+    margin-left: -5vh;
+    white-space: nowrap;
+}
+
+.textField {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: medium;
+    text-align: left;
+    color: #8B8FA8;
+    gap: 1vw;
+    padding: 0.1vw;
+    padding-bottom: 0vw;
+    margin-bottom: 0.8vw;
+    margin-left: 6vw;
+}
+
+.data {
+    border: 1px solid #8B8FA8;
+    border-radius: 1vh;
+    width: 23vw;
+    height: 2.4vw;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnPrimario {
+    border: 1px solid var(--cor-terciaria);
+    background-color: var(--cor-terciaria);
+    transition: 0.5s;
+}
+
+.btnPrimario:hover {
+    background-color: transparent;
+    color: var(--cor-padrao);
+    border: 1px solid var(--cor-padrao);
+}
+
+.btnVoltar {
+    position: fixed;
+    left: 16vw;
+    bottom: 0;
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 10%; 
+    margin: 0rem;
+    margin-left: 4.4vw;
+    margin-bottom: 3vw;
+}
+
+.btnVoltar i {
+    margin-right: 15px;
+}
+
+.Rowbtn {
+    margin-top: 10vh;
+    display: flex; 
+    gap: 108.75vh; 
+}
+
+
+
+.btnCopy {
+    background-color: #4CAF50; 
+    color: white;
+    border: none; 
+    padding: 6px 12px; 
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 1vw;
+    
+}
+
+
+.btnCopy:hover {
+    background-color: #ffffff; 
+    color: #4CAF50; 
+}
+
+
+.btnCopy:active {
+    background-color: #388e3c; 
+}
+
+
+.btnCopied {
+    background-color: #d3d3d3; 
+    color: #616161; 
+    cursor: not-allowed; 
+}
+
+
+.btnCopied:hover {
+    background-color: #d3d3d3; 
+}
+
+.btnCopied:active {
+    background-color: #d3d3d3; 
+}
+
+.btnGerar{
+    padding: 0.5vw;
+    margin-bottom: 0.5vw;
+    margin-top: 0.5vw;
+    margin-left: 5.2vw;
+
+}
