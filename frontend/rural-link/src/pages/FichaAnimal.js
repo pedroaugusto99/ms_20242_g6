@@ -2,13 +2,12 @@
 import Sidebar from './components/Sidebar';
 import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
-import ManejoTable from './components/ManejoTable';
+import ManejoTableVacinacao from './components/ManejoTableVacinacao';
 import ManejoTablePesagem from './components/ManejoTablePesagem';
 import ManejoTableCrias from './components/ManejoTableCrias';
 import styles from './css/cssPages/FichaAnimal.module.css';
 import AuthService from '../autenticacao/AuthService';
 import React, { useState } from 'react';
-import { setsEqual } from 'chart.js/helpers';
 import PopUpPesagem from './modals/PopUpPesagem/PopUpPesagem';
 import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
@@ -158,42 +157,80 @@ function FichaAnimal() {
                     </div>
                 </div>
 
-                {/* Manejo */}
-                <div className={styles.manejo}>
+                                {/* Manejo */}
+                                <div className={styles.manejo}>
                     <h1 className={styles.titleManejo}>Manejos</h1>
+
+                    {/* Pesagem */}
                     <ManejoTablePesagem
-                    title="Pesagem"
-                    data={dadosPesos || []}
-                    columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
-                    toggleModal={togglePesagemModal}
+                        title="Pesagem"
+                        data={Array.isArray(dadosPesos) && dadosPesos.length > 0 ? dadosPesos : []}
+                        columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
+                        toggleModal={togglePesagemModal}
                     />
-                   <ManejoTable 
-                        title="Vacinação" 
-                        data={dadosVacinas || []}
+
+                    {/* Vacinação */}
+                    <ManejoTableVacinacao
+                        title="Vacinação"
+                        data={Array.isArray(dadosVacinas) && dadosVacinas.length > 0 ? dadosVacinas : []}
                         columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
                         toggleModal={toggleVacinacaoModal}
                     />
-                    <ManejoTableCrias 
-                        title="Crias" 
-                        data={dadosCrias || []}
-                        columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']} 
+
+                    {/* Crias */}
+                    <ManejoTableCrias
+                        title="Crias"
+                        data={Array.isArray(dadosCrias) && dadosCrias.length > 0 ? dadosCrias : []}
+                        columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']}
                         toggleModal={toggleCriasModal}
                     />
                 </div>
 
                 {/* Botões */}
                 <div className={styles.Rowbtn}>
-                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
-                    <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
+                    {/* Botão Voltar */}
+                    <button 
+                        className={`${styles.btnVoltar} ${styles.btnPrimario}`} 
+                        type="button" 
+                        onClick={handleAcessVoltar}
+                    >
+                        <i className="fa-solid fa-chevron-left"></i>
+                        Voltar
                     </button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Confirmar Edição</button>
+
+                    {/* Botão Excluir Cadastro */}
+                    <button 
+                        className={`${styles.btn} ${styles.btnPrimario}`} 
+                        type="button" 
+                        onClick={toggleExclusaoModal}
+                    >
+                        <i className="fa-solid fa-trash-can"></i>
+                        Excluir Cadastro
+                    </button>
+
+                    {/* Botão Confirmar Edição */}
+                    <button 
+                        className={`${styles.btn} ${styles.btnPrimario}`} 
+                        type="submit" 
+                        onClick={toggleConfirmacaoModal}
+                    >
+                        Confirmar Edição
+                    </button>
                 </div>
+
             </div>
 
             {/* Popups */}
             {modalPesagem && <PopUpPesagem toggleModal={togglePesagemModal} dadosPesagem={dadosPesos} animalId={location.state.identificador}/>}
-            {modalVacinacao && <PopUpVacinacao toggleModal={toggleVacinacaoModal}  dadosVacinacao={dadosVacinas} animalId={location.state.identificador}/>}
+            
+            {modalVacinacao && (
+            <PopUpVacinacao
+                toggleModal={toggleVacinacaoModal}
+                dadosVacinacao={dadosVacinas}
+                animalId={location.state.identificador}
+            />
+            )}
+
             {modalCrias && <PopUpCrias toggleModal={toggleCriasModal} dadosCrias={dadosCrias}/>}
             {modalExclusao && <PopUpExclusao toggleModal={toggleExclusaoModal} animalId={location.state.identificador}/>}
             {modalConfirmacao && <PopUpConfirmacao toggleModal={toggleConfirmacaoModal} />}
