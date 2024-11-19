@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 public class PesoAnimalResponseDTO{
     private BigDecimal peso;
-    private LocalDate dataDePesagem;
+    private String dataDePesagem;
     private BigDecimal saldoDePeso;
-    private Long animalId;
+    private Long id;
 }

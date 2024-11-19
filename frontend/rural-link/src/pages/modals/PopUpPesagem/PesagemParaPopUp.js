@@ -4,19 +4,13 @@ import PropTypes from 'prop-types';
 function PesagemParaPopUp({ data, columns, onRemover, modoExclusao }) {
     const columnToKeyMap = {
         'Peso': 'peso',
-        'Data da Pesagem': 'data',
-        'Saldo de Peso': 'saldo'
-    };
-
-    const formatarData = (dataString) => {
-        if (!dataString) return '';
-        const data = new Date(dataString);
-        return data.toLocaleDateString('pt-BR');
+        'Data da Pesagem': 'dataDePesagem',
+        'Saldo de Peso': 'saldoDePeso'
     };
 
     const formatarValor = (valor, coluna) => {
         if (coluna.includes('Data')) {
-            return formatarData(valor);
+            return valor;
         }
         return valor;
     };

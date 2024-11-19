@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './PopUpExclusao.module.css';
+import AuthService from '../../../autenticacao/AuthService';
+import { useNavigate } from 'react-router-dom';
 
-export default function PopUpExclusao({ toggleModal, codigo }) {
+export default function PopUpExclusao({ toggleModal, codigo, animalId }) {
+
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try{
+      const response = AuthService.removerAnimal(animalId);
+      navigate('/fichamento');
+    } catch(error){
+        setMessage('Credenciais inválidas!');
+    }
+  }
+
   return (
     <div className={styles.modal}>
       <div onClick={toggleModal} className={styles.overlay}></div>
@@ -20,7 +36,7 @@ export default function PopUpExclusao({ toggleModal, codigo }) {
           <p className={styles.animalCodeText}>Excluir Cadastro do Animal: [Código do Animal] {codigo}</p>
           <hr /> 
 
-          <button onClick={() => console.log(`Excluindo animal ${codigo}`)} className={`${styles.btn} ${styles.btnDanger}`}>
+          <button onClick={handleSubmit} className={`${styles.btn} ${styles.btnDanger}`}>
             Excluir
           </button>
         </div>

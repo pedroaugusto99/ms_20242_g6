@@ -3,21 +3,15 @@ import PropTypes from 'prop-types';
 
 function VacinacaoParaPopUp({ data, columns, onRemover, modoExclusao }) {
   const columnToKeyMap = {
-    'Nome da Vacina': 'nome',
-    'Data da Aplicação': 'dataAplicacao',
-    'Número de Doses': 'doses',
-    'Data da Próxima Aplicação': 'proximaAplicacao'
-  };
-
-  const formatarData = (dataString) => {
-    if (!dataString) return '';
-    const data = new Date(dataString);
-    return data.toLocaleDateString('pt-BR');
+    'Nome da Vacina': 'nomeDaVacina',
+    'Data da Aplicação': 'dataDeVacinacao',
+    'Número de Doses': 'numeroDeDoses',
+    'Data da Próxima Aplicação': 'dataDaProximaVacinacao'
   };
 
   const formatarValor = (valor, coluna) => {
     if (coluna.includes('Data')) {
-      return formatarData(valor);
+      return valor;
     }
     return valor;
   };

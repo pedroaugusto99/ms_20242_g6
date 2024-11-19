@@ -33,10 +33,10 @@ function ManejoTableCrias({ title, data, columns, toggleModal }) {
                         cellValue = row.codigo || 'N/A';
                         break;
                       case 'Data de Nascimento':
-                        cellValue = row.nascimento || 'N/A';
+                        cellValue = row.dataDeNascimento || 'N/A';
                         break;
                       case 'Pai (Código)':
-                        cellValue = row.pai || 'N/A';
+                        cellValue = row.codigoDoFamiliar || 'N/A';
                         break;
                       case 'Idade':
                         cellValue = row.idade || 'N/A';

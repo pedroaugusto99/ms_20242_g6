@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import styles from './PopUpPesagem.module.css';
 import PesagemParaPopUp from './PesagemParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
+import AuthService from '../../../autenticacao/AuthService';
 
-export default function PopUpPesagem({ toggleModal }) {
+export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [modoExclusao, setModoExclusao] = useState(false);
+  const [message, setMessage] = useState('');
   const [novoRegistro, setNovoRegistro] = useState({
+    animalId: '',
     peso: '',
     data: '',
-    saldo: ''
+    id: ''
   });
 
-  const { pesagemData, addPesagem, removePesagem, setPesagemData } = DadosParaPopUpsDeManejo();
+  const { pesagemData, addPesagem, removePesagem, setPesagemData } = DadosParaPopUpsDeManejo(dadosPesagem.id);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +27,19 @@ export default function PopUpPesagem({ toggleModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (novoRegistro.peso && novoRegistro.data && novoRegistro.saldo) {
-      addPesagem(novoRegistro);
+    try{
+      const response = AuthService.registrarPesoAnimal({peso: novoRegistro.peso, dataDePesagem: novoRegistro.data, animalId: animalId});
+      setModalCadastroAberto(false)
+      window.location.reload();
+    } catch(error){
+        setMessage('Credenciais inválidas!');
+    }
+    if (novoRegistro.peso && novoRegistro.dataDePesagem) {
 
       setNovoRegistro({
+        animalId: '',
         peso: '',
-        data: '',
-        saldo: ''
+        data: ''
       });
 
       setModalCadastroAberto(false);
@@ -59,7 +68,7 @@ export default function PopUpPesagem({ toggleModal }) {
         <h1 className={styles.titlePesagem}>PESAGEM</h1>
 
         <PesagemParaPopUp
-          data={pesagemData}
+          data={dadosPesagem}
           columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
           modoExclusao={modoExclusao}
           onRemover={removePesagem}  // Passando a função de remoção para o componente PesagemParaPopUp
@@ -116,18 +125,6 @@ export default function PopUpPesagem({ toggleModal }) {
                     id="data"
                     name="data"
                     value={novoRegistro.data}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="saldo">Saldo de Peso:</label>
-                  <input
-                    type="text"
-                    id="saldo"
-                    name="saldo"
-                    value={novoRegistro.saldo}
                     onChange={handleInputChange}
                     required
                   />

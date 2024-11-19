@@ -75,7 +75,7 @@
     cursor: pointer; 
 }
 
-.labelInput {
+.labelInputProp {
     height: 45px;
     width: 650px;
     margin-left: 215px;
@@ -85,7 +85,20 @@
     transition: all 0.3s ease;
     border-radius: 5px;
     position: relative;
-    padding-left: 40px;
+    padding-left: 55px;
+}
+
+.labelInputTrab {
+    height: 45px;
+    width: 650px;
+    margin-left: 215px;
+    background-color: #E1E1E1;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    position: relative;
+    padding-left: 10px;
 }
 
 .input {
@@ -122,7 +135,7 @@
     z-index: 1;
 }
 
-.labelShortInput {
+.labelShortInputProp {
     margin-top: -10px;
     display: flex;
     align-items: center; 
@@ -131,10 +144,23 @@
     background-color: #E1E1E1;
     border-radius: 5px;
     position: relative; 
-    padding-left: 40px;
+    padding-left: 55px;
     z-index: -3;
-
 }
+
+.labelShortInputTrab {
+    margin-top: -10px;
+    display: flex;
+    align-items: center; 
+    height: 45px; 
+    width: 300px; 
+    background-color: #E1E1E1;
+    border-radius: 5px;
+    position: relative; 
+    padding-left: 10px;
+    z-index: -3;
+}
+
 
 .labelShifted {
     margin-left: -65px; 
