@@ -100,7 +100,7 @@ function RegistrarAnimal() {
                             </p>
                             <label className={styles.labelShortInput}>
                                 <input
-                                    type="number"
+                                    type="text"
                                     placeholder="Digite o Código do Animal:"
                                     required
                                     name="codigoAnimal"

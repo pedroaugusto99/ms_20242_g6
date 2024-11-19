@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import AuthService from '../autenticacao/AuthService';
 
-export const DadosParaPopUpsDeManejo = () => {
+export const DadosParaPopUpsDeManejo = (animalId) => {
   // Dados iniciais de vacinação
+  const [message, setMessage] = useState('');
   const [vacinacaoData, setVacinacaoData] = useState([
     { 
       nome: 'Vacina A', 
@@ -40,6 +42,11 @@ export const DadosParaPopUpsDeManejo = () => {
   };
 
   const removeVacinacao = (index) => {
+    try{
+      const response = AuthService.removerVacinaAnimal(animalId);
+    } catch(error){
+        setMessage('Credenciais inválidas!');
+    }
     const updatedData = vacinacaoData.filter((_, i) => i !== index);
     setVacinacaoData(updatedData);
   };
@@ -54,6 +61,12 @@ export const DadosParaPopUpsDeManejo = () => {
   };
 
   const removePesagem = (index) => {
+    console.log(animalId);
+    try{
+      const response = AuthService.removerPesoAnimal(animalId);
+    } catch(error){
+        setMessage('Credenciais inválidas!');
+    }
     const updatedData = pesagemData.filter((_, i) => i !== index);
     setPesagemData(updatedData);
   };
@@ -74,6 +87,11 @@ export const DadosParaPopUpsDeManejo = () => {
   };
 
   const removeCrias = (index) => {
+    try{
+      const response = AuthService.removerAnimal(animalId);
+    } catch(error){
+        setMessage('Credenciais inválidas!');
+    }
     const updatedData = criasData.filter((_, i) => i !== index);
     setCriasData(updatedData);
   };

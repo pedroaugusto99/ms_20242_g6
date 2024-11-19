@@ -3,20 +3,14 @@ import styles from './PopUpCrias.module.css';
 function CriasParaPopUp({ data, columns, onRemover, modoExclusao }) {
     const columnToKeyMap = {
       'Código da Cria': 'codigo',
-      'Data de Nascimento': 'nascimento',
-      'Pai (Código)': 'pai',
+      'Data de Nascimento': 'dataDeNascimento',
+      'Pai (Código)': 'codigoDoFamiliar',
       'Idade': 'idade'
-    };
-  
-    const formatarData = (dataString) => {
-      if (!dataString) return '';
-      const data = new Date(dataString);
-      return data.toLocaleDateString('pt-BR');
     };
   
     const formatarValor = (valor, coluna) => {
       if (coluna.includes('Data')) {
-        return formatarData(valor);
+        return valor;
       }
       return valor;
     };

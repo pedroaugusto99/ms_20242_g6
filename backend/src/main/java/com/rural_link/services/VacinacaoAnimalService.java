@@ -1,5 +1,6 @@
 package com.rural_link.services;
 
+import com.rural_link.dtos.animal.VacinacaoAnimalResponseDTO;
 import com.rural_link.entities.animal.Animal;
 import com.rural_link.entities.animal.VacinacaoAnimal;
 import com.rural_link.entities.fazenda.Fazenda;
@@ -7,13 +8,14 @@ import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.entities.usuarios.Proprietario;
 import com.rural_link.entities.usuarios.TrabalhadorRural;
 import com.rural_link.entities.usuarios.UserRole;
-import com.rural_link.dtos.animal.VacinacaoAnimalDTO;
+import com.rural_link.dtos.animal.VacinacaoAnimalRequestDTO;
 import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.mappers.VacinacaoAnimalMapper;
 import com.rural_link.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -25,6 +27,7 @@ public class VacinacaoAnimalService {
     private final PessoaRepository pessoaRepository;
     private final ProprietarioRepository proprietarioRepository;
     private final TrabalhadorRuralRepository trabalhadorRuralRepository;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Fazenda encontrarFazendaDoAnimal(Pessoa pessoa){
         if (pessoa.getRole() == UserRole.PROPRIETARIO){
@@ -37,11 +40,11 @@ public class VacinacaoAnimalService {
         return null;
     }
 
-    public void salvarVacinacaoDoAnimal(VacinacaoAnimalDTO vacinacaoAnimalDTO, Pessoa pessoa){
+    public void salvarVacinacaoDoAnimal(VacinacaoAnimalRequestDTO vacinacaoAnimalRequestDTO, Pessoa pessoa){
         Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
-        Animal animal = animalRepository.findByIdAndFazenda(vacinacaoAnimalDTO.animalId(), fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
-        VacinacaoAnimal vacinacaoAnimal = VacinacaoAnimalMapper.INSTANCE.toVacinacaoAnimal(vacinacaoAnimalDTO);
+        Animal animal = animalRepository.findByIdAndFazenda(vacinacaoAnimalRequestDTO.animalId(), fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
+        VacinacaoAnimal vacinacaoAnimal = VacinacaoAnimalMapper.INSTANCE.toVacinacaoAnimal(vacinacaoAnimalRequestDTO);
         vacinacaoAnimal.setAnimal(animal);
         vacinacaoAnimalRepository.save(vacinacaoAnimal);
     }
@@ -57,11 +60,16 @@ public class VacinacaoAnimalService {
         }
     }
 
-    public List<VacinacaoAnimalDTO> listarVacinacoesDoAnimal(Long animalId, Pessoa pessoa){
+    public List<VacinacaoAnimalResponseDTO> listarVacinacoesDoAnimal(Long animalId, Pessoa pessoa){
         Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(animalId, fazenda).orElseThrow(() -> new RuntimeException("Id do Animal não foi encontrado"));
         List<VacinacaoAnimal> vacinacoesDoAnimal = vacinacaoAnimalRepository.findByAnimal(animal);
-        return VacinacaoAnimalMapper.INSTANCE.toListOfVacinacaoAnimalDTO(vacinacoesDoAnimal);
+        List<VacinacaoAnimalResponseDTO> vacinacaoAnimalResponseDTO = VacinacaoAnimalMapper.INSTANCE.toListOfVacinacaoAnimalResponseDTO(vacinacoesDoAnimal);
+        for (int i = 0; i < vacinacoesDoAnimal.size(); i++) {
+            vacinacaoAnimalResponseDTO.get(i).setDataDeVacinacao(formatter.format(vacinacoesDoAnimal.get(i).getDataDeVacinacao()));
+            vacinacaoAnimalResponseDTO.get(i).setDataDaProximaVacinacao(formatter.format(vacinacoesDoAnimal.get(i).getDataDaProximaVacinacao()));
+        }
+        return vacinacaoAnimalResponseDTO;
     }
 }
