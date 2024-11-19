@@ -33,6 +33,10 @@ function FichaAnimal() {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const handleGoToPdf = () => {
+        navigate('/pdf')
+    };
+
     // Funções de controle dos modais
     const togglePesagemModal = () => {
         setModalPesagem(!modalPesagem);
@@ -185,6 +189,7 @@ function FichaAnimal() {
                 {/* Botões */}
                 <div className={styles.Rowbtn}>
                     <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
+                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleGoToPdf}><i className="fa-solid fa-file-pdf"></i> Gerar PDF</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
                     <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
                     </button>
