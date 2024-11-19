@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './PopUpExclusao.module.css';
 import AuthService from '../../../autenticacao/AuthService';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export default function PopUpExclusao({ toggleModal, codigo, animalId }) {
 
@@ -11,7 +12,7 @@ export default function PopUpExclusao({ toggleModal, codigo, animalId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     try{
-      const response = AuthService.removerAnimal(animalId);
+      const response = AuthService.removerAnimal(animalId, Cookies.get('authToken'));
       navigate('/fichamento');
       window.location.reload();
     } catch(error){
