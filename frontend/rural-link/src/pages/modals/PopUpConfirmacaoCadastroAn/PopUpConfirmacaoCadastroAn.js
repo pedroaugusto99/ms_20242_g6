@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './PopUpConfirmacao.module.css';
+import styles from './PopUpConfirmacaoCadastroAn.module.css';
 
 export default function PopUpConfirmacao({ toggleModal }) {
   const navigate = useNavigate(); // Hook para navegação
@@ -22,7 +22,7 @@ export default function PopUpConfirmacao({ toggleModal }) {
             <h2 className={styles.attentionText}>ATENÇÃO</h2>
           </div>
 
-          <p className={styles.confirmationText}>Todos os dados atualizados estão corretos?</p>
+          <p className={styles.confirmationText}>Todos os dados cadastrados estão corretos?</p>
 
           <div className={styles.rowbtn}>
             <button onClick={toggleModal} className={`${styles.btn} ${styles.btnPrimario}`} type="button">

@@ -81,7 +81,7 @@
   display: flex; 
   justify-content: space-between;
   align-items: center;
-  margin-top: -8.5vw;
+  margin-top: 44vh;
 }
 
 .btn {
@@ -91,6 +91,7 @@
   padding: 0.4vw;
   padding-right: 1.4vw;
   padding-left: 1.4vw;
+  margin: 4px;
 }
 
 .btnPrimario {
