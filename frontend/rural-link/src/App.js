@@ -15,6 +15,7 @@ import EsqueceuSenha from '../src/pages/EsqueceuSenha';
 import EsqueceuSenhaConfEmail from '../src/pages/EsqueceuSenhaConfEmail';
 import EsqueceuSenhaToken from '../src/pages/EsqueceuSenhaToken';
 import PDFgerador from './pages/PDFgerador';
+import EscanearQrCode from './pages/EscanearQrCode';
 
 export function App(){
     
@@ -42,6 +43,7 @@ export function App(){
                     <Route path="/registraranimal" element={<RegistrarAnimal />} />
                     <Route path="/fichaanimal" element={<FichaAnimal/>} />
                     <Route path="/pdf" element={<PDFgerador />} />
+                    <Route path="/escanearqrcode" element={<EscanearQrCode/>}/>
                 </Routes>
             </div>
         </Router>

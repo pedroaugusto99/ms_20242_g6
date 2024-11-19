@@ -94,7 +94,8 @@ const Sidebar = ({ title = "Titulo" }) => {
             />
             <NavItem 
               icon={`${styles.icon} fa-solid fa-qrcode`} 
-              label="Ler QR Code" 
+              label="Ler QR Code"
+              link="/escanearqrcode" 
             />
             <NavItem 
               icon={`${styles.icon} fa-solid fa-thumbtack`} 

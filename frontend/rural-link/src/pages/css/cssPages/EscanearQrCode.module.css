@@ -1,0 +1,136 @@
+/* Container principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #009f22b3;
+    background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/33355299-campo-panorama-ilustracao-fazenda-silhueta-panorama-com-gado-casa-de-fazenda-e-moinho-de-vento-rural-cenario-silhueta-para-fundo-papel-de-parede-ou-aterrissagem-pagina-vetor.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+/* Quadrado clicável */
+.quadrado {
+    margin-top: -5vw;
+    width: 500px;
+    height: 400px;
+    background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/33355299-campo-panorama-ilustracao-fazenda-silhueta-panorama-com-gado-casa-de-fazenda-e-moinho-de-vento-rural-cenario-silhueta-para-fundo-papel-de-parede-ou-aterrissagem-pagina-vetor.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #f1f1f1;
+    cursor: pointer;
+    border-radius: 8px;
+    position: relative;
+    z-index: 4;
+    filter: brightness(0.7);
+    transition: all 0.3s ease;
+}
+
+/* Cabeçalho com os botões */
+.headerEscanear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--cor-padrao);
+    width: 50%;
+    position: absolute;
+    top: 2vw;
+    font-size: 1.6vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    border-radius: 15px;
+}
+
+.headerEscanear h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    color: white;
+    font-size: 2.2vw;
+}
+
+/* Botões do cabeçalho */
+.headerEscanear button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.headerButton.clicked {
+    background-color: white;
+    z-index: 2;
+}
+
+.icon {
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.headerButton.clicked .icon {
+    color: var(--cor-padrao);
+}
+
+/* Conteúdo principal */
+.mainContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 3;
+}
+
+/* Botões principais */
+.botoes {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.botoes button {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    font-size: 16px;
+    width: auto;
+    border: 2px solid #ccc;
+    background-color: var(--cor-padrao);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    gap: 10px;
+    margin-top: -0.5vw;
+    font-size: large;
+}
+
+/* Efeito de hover nos botões principais */
+.botoes button:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Botão 'Digitar' com estilo personalizado */
+.digitarBtn {
+    background-color: #7E7E7E;
+    color: white;
+}
+
+.digitarBtn:hover {
+    background-color: #5a5a5a;
+  color: #fff;
+}
