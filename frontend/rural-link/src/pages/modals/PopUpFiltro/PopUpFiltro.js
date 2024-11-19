@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './PopUpFiltro.module.css';
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Fichamento from '../../Fichamento';
-import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 // Componente ItemNavegacao
 const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = [] }) => {
@@ -20,26 +18,26 @@ const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = 
     />
   );
 
-  // Renderiza o intervalo (mínimo e máximo)
+  // Renderiza o intervalo (mínimo e máximo) como texto
   const renderizarIntervalo = () => (
-    <div className={styles.containerRange}>
+    <div className={styles.containerNumber}>
       <span className={styles.spanDeAte}>De</span>
       <input
-        type="number"
+        type="text"
         id={`${name}Min`}
         name={`${name}Min`}
         value={value.min || ''}
         onChange={aoMudar}
-        className={styles.inputRange}
+        className={styles.inputNumber}
       />
       <span className={styles.spanDeAte}>até</span>
       <input
-        type="number"
+        type="text"
         id={`${name}Max`}
         name={`${name}Max`}
         value={value.max || ''}
         onChange={aoMudar}
-        className={styles.inputRange}
+        className={styles.inputNumber}
       />
     </div>
   );
@@ -66,14 +64,14 @@ const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = 
     <li className={styles.lista}>
       <div className={styles.opcaoFiltro}>
         <label htmlFor={name}>{label}</label>
-        {tipo === 'input' ? renderizarInput() : tipo === 'range' ? renderizarIntervalo() : renderizarSelecao()}
+        {tipo === 'input' ? renderizarInput() : tipo === 'number' ? renderizarIntervalo() : renderizarSelecao()}
       </div>
     </li>
   );
 };
 
 // Componente principal
-export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados}) {
+export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados }) {
   // Estado para os filtros
   const [filtros, setFiltros] = useState({
     especie: '',
@@ -98,7 +96,7 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados})
       { value: 'EQUINO', label: 'Equino' },
     ],
     raca: {
-      Bovino: [
+      BOVINO: [
         { value: 'NELORE', label: 'Nelore' },
         { value: 'ANGUS', label: 'Angus' },
         { value: 'BRAHMAN', label: 'Brahman' },
@@ -107,7 +105,7 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados})
         { value: 'HEREFORD', label: 'Hereford' },
         { value: 'OUTRA', label: 'Outra' },
       ],
-      Suino: [
+      SUINO: [
         { value: 'LANDRACE', label: 'Landrace' },
         { value: 'LARGEWHITE', label: 'Large White' },
         { value: 'DUROC', label: 'Duroc' },
@@ -115,7 +113,7 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados})
         { value: 'HAMPSHIRE', label: 'Hampshire' },
         { value: 'OUTRA', label: 'Outra' },
       ],
-      Caprino: [
+      CAPRINO: [
         { value: 'SAANEN', label: 'Saanen' },
         { value: 'TOGGENBURG', label: 'Toggenburg' },
         { value: 'MURCIANA', label: 'Murciana' },
@@ -126,7 +124,7 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados})
         { value: 'MOXOTO', label: 'Moxotó' },
         { value: 'OUTRA', label: 'Outra' },
       ],
-      Ovino: [
+      OVINO: [
         { value: 'SANTA_INES', label: 'Santa Inês' },
         { value: 'MORADA_NOVA', label: 'Morada Nova' },
         { value: 'SUFFOLK', label: 'Suffolk' },
@@ -193,26 +191,25 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados})
     }
   }, [visivel]);
 
-  const token = Cookies.get('authToken');
-  const navigate = useNavigate('');
-  
+  const token = localStorage.getItem('auth_token');
+
   // Aplica os filtros
   const aoAplicarFiltros = async () => {
-    axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
-    try{
+    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+    try {
       const response = await axios.get('http://localhost:8080/animal/filtro', {
         params: {
           raca: filtros.raca,
           especie: filtros.especie,
           status: filtros.status,
           sexo: filtros.sexo,
-          lote: filtros.lote
-        }
+          lote: filtros.lote,
+        },
       });
       onDadosFiltrados(response.data);
-    } catch(error){
+    } catch (error) {
       console.error('Erro ao aplicar filtro:', error);
-    } finally{
+    } finally {
       alternarModal();
     }
   };
@@ -225,24 +222,24 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados})
           <div className={styles.conteudoModal}>
             <h2>FILTROS</h2>
             <ul className={styles.listas}>
-              {[ 
+              {[
                 { label: 'Espécie:', name: 'especie', value: filtros.especie, opcoes: opcoesSelecao.especie, aoMudar: aoMudarEspecie },
                 { label: 'Raça:', name: 'raca', value: filtros.raca, opcoes: racasDisponiveis, aoMudar: aoMudarFiltro },
                 { label: 'Sexo:', name: 'sexo', value: filtros.sexo, opcoes: opcoesSelecao.sexo, aoMudar: aoMudarFiltro },
                 { label: 'Status:', name: 'status', value: filtros.status, opcoes: opcoesSelecao.status, aoMudar: aoMudarFiltro },
-                { label: 'Idade:', name: 'idade', value: filtros.idade, tipo: 'range', aoMudar: aoMudarFiltro },
-                { label: 'Peso:', name: 'peso', value: filtros.peso, tipo: 'range', aoMudar: aoMudarFiltro },
                 { label: 'Lote:', name: 'lote', value: filtros.lote, tipo: 'input', aoMudar: aoMudarFiltro },
-              ].map((props) => (
-                <ItemNavegacao key={props.name} {...props} />
+                { label: 'Idade:', name: 'idade', value: filtros.idade, tipo: 'number', aoMudar: aoMudarFiltro },
+                { label: 'Peso:', name: 'peso', value: filtros.peso, tipo: 'number', aoMudar: aoMudarFiltro },
+              ].map(({ label, ...props }) => (
+                <ItemNavegacao key={props.name} label={label} {...props} />
               ))}
             </ul>
             <div className={styles.rowbtn}>
-              <button className={`${styles.btn} ${styles.btnPrimario}`} onClick={alternarModal}>
-                <i className="fa-solid fa-angle-left"></i> Voltar
+              <button className={styles.btn} onClick={alternarModal}>
+                Cancelar
               </button>
-              <button className={`${styles.btn} ${styles.btnPrimario}`} onClick={aoAplicarFiltros}>
-                <i className="bx bx-filter-alt"></i> Filtrar
+              <button className={styles.btn} onClick={aoAplicarFiltros}>
+                Aplicar
               </button>
             </div>
           </div>
