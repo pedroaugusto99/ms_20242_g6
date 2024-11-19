@@ -2,10 +2,7 @@ package com.rural_link.entities.usuarios;
 
 import com.rural_link.entities.fazenda.Fazenda;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity

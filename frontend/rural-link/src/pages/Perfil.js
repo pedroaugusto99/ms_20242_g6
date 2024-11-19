@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import AuthService from '../autenticacao/AuthService';
 
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Perfil () {
 
@@ -19,7 +20,7 @@ function Perfil () {
     const[estadoFazenda, setEstadoFazenda] = React.useState(null);
 
     React.useEffect (() =>{
-        AuthService.pegarDadosDoUsuario().then((response) => {
+        AuthService.pegarDadosDoUsuario(Cookies.get('authToken')).then((response) => {
             setNomeUsuario(response.data['nome']); 
             setRoleUsuario(response.data['role']);
             setEmailUsuario(response.data['email'])
