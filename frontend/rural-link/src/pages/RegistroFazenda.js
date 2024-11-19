@@ -7,6 +7,7 @@ import iconcomplementofazenda from './images/Icon/iconcomplementofazenda.png';
 import iconenderecofazenda from './images/Icon/iconenderecofazenda.png';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../autenticacao/AuthService';
+import Header from './components/Header';
 
 function RegistrarFazenda() {
     const [nomeDaFazenda, setNomeDaFazenda] = useState('');
@@ -36,12 +37,7 @@ function RegistrarFazenda() {
     return (
         <div className={styles.container}>
             <div className={styles.conteudo}>
-                <div className={styles.header}>
-                    <h2 className={styles.tituloPrimario}>
-                        Área de Cadastro
-                    </h2>
-                </div>
-
+            <Header title="Área de Cadastro"/>
                 <h3 className={styles.tituloSecundario}>Fazenda</h3>
                 <form className={styles.form} onSubmit={submitHandler}>
                     <div className={styles.iconGroup}>

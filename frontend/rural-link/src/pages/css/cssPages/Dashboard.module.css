@@ -78,7 +78,9 @@ small{
 
 .p {
     color: var(--color-dark-variant);
-    margin: 0.4rem;
+    font-size: 1.4rem;
+    margin: 1rem;
+    padding: 7.8px;
 }
 
 b{

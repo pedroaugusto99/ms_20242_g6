@@ -183,7 +183,7 @@ function FichaAnimal() {
 
                 {/* Botões */}
                 <div className={styles.Rowbtn}>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}>Voltar</button>
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
                     <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
                     </button>

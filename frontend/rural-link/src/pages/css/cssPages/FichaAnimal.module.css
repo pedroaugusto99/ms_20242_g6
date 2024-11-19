@@ -177,6 +177,7 @@
 .titleManejo {
     display: flex;
     margin-top: 3vw;
+    margin-left: 0vw;
     justify-content: center;
     align-items: center;
     font-weight: bold;
@@ -267,17 +268,31 @@ tbody {
 
 .btn {
     border-radius: 15px;
-    font-size: 2.3vh; 
+    font-size: 18px; 
     cursor: pointer;
     padding: 0.8vw;
     padding-right: 1.4vw;
     padding-left: 1.4vw;
 }
 
+.btnVoltar{
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 13%; 
+    margin: 0rem 0rem 0rem 0rem;
+}
+
+.btnVoltar i {
+    margin-right: 15px;
+  }
+
 .btnPrimario {
     border: 1px solid var(--cor-terciaria);
     background-color: var(--cor-terciaria);
-    transition: background-color 0.5s;
+    transition: 0.5s;
 }
 
 .btnPrimario:hover {
@@ -285,3 +300,4 @@ tbody {
     color: var(--cor-padrao);
     border: 1px solid var(--cor-padrao);
 }
+

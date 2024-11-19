@@ -183,7 +183,6 @@ const RightSection = ({ reminderTitle, setReminderTitle, reminderTime, setRemind
             <div className={styles.profile}>
                 <div className={styles.info}>
                     <p className={styles.p}>Opa, <b>{nome}</b></p>
-                    <small className="textMuted">{role}</small>
                 </div>
             </div>
         </div>
