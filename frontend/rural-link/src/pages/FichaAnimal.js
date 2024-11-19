@@ -8,6 +8,7 @@ import ManejoTableCrias from './components/ManejoTableCrias';
 import styles from './css/cssPages/FichaAnimal.module.css';
 import AuthService from '../autenticacao/AuthService';
 import React, { useState } from 'react';
+import { setsEqual } from 'chart.js/helpers';
 import PopUpPesagem from './modals/PopUpPesagem/PopUpPesagem';
 import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
@@ -92,7 +93,6 @@ function FichaAnimal() {
     }, []);
 
     React.useEffect(() => {
-
         AuthService.listarPesos(location.state.identificador).then((response) => {
             setDadosPesos(response.data);
         })
@@ -119,10 +119,6 @@ function FichaAnimal() {
     const handleAcessVoltar =() => {
         navigate('/fichamento')
     };
-    const handlegenerate_pdf = () => {
-        navigate('/pdf');
-    };
-    
 
     return (
         <div className={styles.body}>
@@ -134,16 +130,16 @@ function FichaAnimal() {
                 <div className={styles.dadosEssenciais}>
                     <h1 className={styles.titleFicha}>Dados Essenciais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="CÃ³digo do Animal" value={codigoAnimal} />
+                        <Campo label="Código do Animal" value={codigoAnimal} />
                         <Campo label="Nome" value={nomeAnimal}/>
-                        <Campo label="EspÃ©cie" value={especieAnimal}/>
-                        <Campo label="RaÃ§a" value={racaAnimal}/>
+                        <Campo label="Espécie" value={especieAnimal}/>
+                        <Campo label="Raça" value={racaAnimal}/>
                     </div>
                     <div className={styles.camposBaixo}>
                         <Campo label="Sexo" value={sexoAnimal}/>
                         <Campo label="Data de Nascimento" value={dataDeNascimentoAnimal}/>
                         <Campo label="Idade" value={idadeAnimal}/>
-                        <Campo label="Data de AquisiÃ§Ã£o" value={dataDeAquisicaoAnimal}/>
+                        <Campo label="Data de Aquisição" value={dataDeAquisicaoAnimal}/>
                     </div>
                 </div>
 
@@ -153,89 +149,51 @@ function FichaAnimal() {
                     <div className={styles.camposCima}>
                         <Campo label="Status" value={statusAnimal}/>
                         <Campo label="Lote" value={loteAnimal}/>
-                        <Campo label="Pai (CÃ³digo)" value={codigoDoPaiDoAnimal}/>
-                        <Campo label="MÃ£e (CÃ³digo)" value={codigoDaMaeDoAnimal}/>
+                        <Campo label="Pai (Código)" value={codigoDoPaiDoAnimal}/>
+                        <Campo label="Mãe (Código)" value={codigoDaMaeDoAnimal}/>
                     </div>
                     <div className={styles.camposBaixo}>
                         <Campo label="Peso Atual" editable value={pesoAtualDoAnimal}/>
-                        <Campo label="NÃºmero de Crias" editable value={numeroDeCriasDoAnimal}/>
+                        <Campo label="Número de Crias" editable value={numeroDeCriasDoAnimal}/>
                     </div>
                 </div>
 
-                                {/* Manejo */}
-                                <div className={styles.manejo}>
+                {/* Manejo */}
+                <div className={styles.manejo}>
                     <h1 className={styles.titleManejo}>Manejos</h1>
-
-                    {/* Pesagem */}
                     <ManejoTablePesagem
-                        title="Pesagem"
-                        data={Array.isArray(dadosPesos) && dadosPesos.length > 0 ? dadosPesos : []}
-                        columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
-                        toggleModal={togglePesagemModal}
+                    title="Pesagem"
+                    data={dadosPesos || []}
+                    columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
+                    toggleModal={togglePesagemModal}
                     />
-
-                    {/* VacinaÃ§Ã£o */}
-                    <ManejoTableVacinacao
-                        title="VacinaÃ§Ã£o"
-                        data={Array.isArray(dadosVacinas) && dadosVacinas.length > 0 ? dadosVacinas : []}
-                        columns={['Nome da Vacina', 'Data da AplicaÃ§Ã£o', 'NÃºmero de Doses', 'PrÃ³xima AplicaÃ§Ã£o']}
+                   <ManejoTableVacinacao 
+                        title="Vacinação" 
+                        data={dadosVacinas || []}
+                        columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
                         toggleModal={toggleVacinacaoModal}
                     />
-
-                    {/* Crias */}
-                    <ManejoTableCrias
-                        title="Crias"
-                        data={Array.isArray(dadosCrias) && dadosCrias.length > 0 ? dadosCrias : []}
-                        columns={['CÃ³digo da Cria', 'Data de Nascimento', 'Pai (CÃ³digo)', 'Idade']}
+                    <ManejoTableCrias 
+                        title="Crias" 
+                        data={dadosCrias || []}
+                        columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']} 
                         toggleModal={toggleCriasModal}
                     />
                 </div>
 
                 {/* Botões */}
                 <div className={styles.Rowbtn}>
-                    {/* BotÃ£o Voltar */}
-                    <button 
-                        className={`${styles.btnVoltar} ${styles.btnPrimario}`} 
-                        type="button" 
-                        onClick={handleAcessVoltar}
-                    >
-                        <i className="fa-solid fa-chevron-left"></i>
-                        Voltar
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
+                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
+                    <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
                     </button>
-
-                    {/* BotÃ£o Excluir Cadastro */}
-                    <button 
-                        className={`${styles.btn} ${styles.btnPrimario}`} 
-                        type="button" 
-                        onClick={toggleExclusaoModal}
-                    >
-                        <i className="fa-solid fa-trash-can"></i>
-                        Excluir Cadastro
-                    </button>
-
-                    {/* BotÃ£o Confirmar EdiÃ§Ã£o */}
-                    <button 
-                        className={`${styles.btn} ${styles.btnPrimario}`} 
-                        type="submit" 
-                        onClick={toggleConfirmacaoModal}
-                    >
-                        Confirmar EdiÃ§Ã£o
-                    </button>
+                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Confirmar Edição</button>
                 </div>
-
             </div>
 
             {/* Popups */}
             {modalPesagem && <PopUpPesagem toggleModal={togglePesagemModal} dadosPesagem={dadosPesos} animalId={location.state.identificador}/>}
-            
-            {modalVacinacao && (
-            <PopUpVacinacao
-                toggleModal={toggleVacinacaoModal}
-                dadosVacinacao={dadosVacinas}
-                animalId={location.state.identificador}
-            />
-            )}
-
+            {modalVacinacao && <PopUpVacinacao toggleModal={toggleVacinacaoModal}  dadosVacinacao={dadosVacinas} animalId={location.state.identificador}/>}
             {modalCrias && <PopUpCrias toggleModal={toggleCriasModal} dadosCrias={dadosCrias}/>}
             {modalExclusao && <PopUpExclusao toggleModal={toggleExclusaoModal} animalId={location.state.identificador}/>}
             {modalConfirmacao && <PopUpConfirmacao toggleModal={toggleConfirmacaoModal} />}
@@ -244,4 +202,3 @@ function FichaAnimal() {
 }
 
 export default FichaAnimal;
-
