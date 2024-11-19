@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './PopUpFiltro.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie'
 
 // Componente ItemNavegacao
 const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = [] }) => {
@@ -191,12 +192,13 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados }
     }
   }, [visivel]);
 
-  const token = localStorage.getItem('auth_token');
-
+  const token = Cookies.get('authToken');
+  const navigate = useNavigate('');
+  
   // Aplica os filtros
   const aoAplicarFiltros = async () => {
-    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-    try {
+    axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+    try{
       const response = await axios.get('http://localhost:8080/animal/filtro', {
         params: {
           raca: filtros.raca,
@@ -204,12 +206,16 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados }
           status: filtros.status,
           sexo: filtros.sexo,
           lote: filtros.lote,
-        },
+          idadeLte: filtros.idade.max,
+          idadeGte: filtros.idade.min,
+          pesoLte: filtros.peso.max,
+          pesoGte: filtros.peso.min
+        }
       });
       onDadosFiltrados(response.data);
-    } catch (error) {
+    } catch(error){
       console.error('Erro ao aplicar filtro:', error);
-    } finally {
+    } finally{
       alternarModal();
     }
   };

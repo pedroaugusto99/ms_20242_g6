@@ -167,8 +167,8 @@ const OrdersTable = ({ orders, animais, handleAccess }) => (
     <table>
         <thead>
             <tr>
-                <th>#Id</th>
-                <th>Gênero</th>
+                <th>Código</th>
+                <th>Sexo</th>
                 <th>Idade</th>
                 <th>Raça</th>
                 <th></th>
