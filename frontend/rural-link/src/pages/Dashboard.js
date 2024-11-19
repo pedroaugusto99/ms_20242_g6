@@ -34,20 +34,20 @@ const Dashboard = () => {
     const femaleColor = '#e74c3c'; // Vermelho
 
     React.useEffect (() =>{
-        AuthService.pegarDadosDoUsuario(Cookies.get('authToken')).then((response) => {
+        AuthService.pegarDadosDoUsuario(localStorage.getItem('authToken')).then((response) => {
             setNomeUsuario(response.data['nome']); 
             setRoleUsuario(response.data['role']);
         })
     }, []); 
 
     React.useEffect (() => {
-        AuthService.listarTrabalhadores(Cookies.get('authToken')).then((response) => {
+        AuthService.listarTrabalhadores(localStorage.getItem('authToken')).then((response) => {
             setTrabalhadores(response.data);
         })
     }, []);
 
     React.useEffect(() => {
-        AuthService.pegarDadosParaGraficos(Cookies.get('authToken')).then(response => {
+        AuthService.pegarDadosParaGraficos(localStorage.getItem('authToken')).then(response => {
             setNumeroDeAnimais(response.data['animaisCadastrados']);
             setNumeroDeAnimaisFemeas(response.data['animaisFemea']);
             setNumeroDeAnimaisMachos(response.data['animaisMacho']);
