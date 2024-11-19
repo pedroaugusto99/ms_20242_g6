@@ -101,7 +101,7 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |2|Preparação|18/09/2024|01/10/2024|Grupo 6|Concluída|
 |3|Itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Concluída|
 |4|Itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
-|5|Itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Programada|
+|5|Itens do backlog <7,8,9>|30/10/2024|12/11/2024|Grupo 6|Concluída|
 |6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|
 
 ### Iterações x Atividades
@@ -119,8 +119,8 @@ O nosso planejamento inicial é hospedar nossa aplicação no [local a definir],
 |3|Implementação dos itens do backlog <1,2,3>|02/10/2024|15/10/2024|Grupo 6|Parcialmente concluída|
 |4|Projeto de Interfaces gráficas dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
 |4|Implementação dos itens do backlog <4,5,6>|16/10/2024|29/10/2024|Grupo 6|Concluída|
-|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
-|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
-|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
-|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Em andamento|
+|5|Diagrama de interação/sequencia dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
+|5|Projeto de Interfaces gráficas dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
+|5|Projeto de persistência dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
+|5|Implementação dos itens do backlog <7,8,9>|30/10/2024|19/11/2024|Grupo 6|Concluída|
 |6|Apresentação do Projeto|19/11/2024|26/11/2024|Grupo 6|Programada|
