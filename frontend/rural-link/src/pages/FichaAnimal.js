@@ -195,7 +195,7 @@ function FichaAnimal() {
             {modalPesagem && <PopUpPesagem toggleModal={togglePesagemModal} dadosPesagem={dadosPesos} animalId={location.state.identificador}/>}
             {modalVacinacao && <PopUpVacinacao toggleModal={toggleVacinacaoModal}  dadosVacinacao={dadosVacinas} animalId={location.state.identificador}/>}
             {modalCrias && <PopUpCrias toggleModal={toggleCriasModal} dadosCrias={dadosCrias}/>}
-            {modalExclusao && <PopUpExclusao toggleModal={toggleExclusaoModal} />}
+            {modalExclusao && <PopUpExclusao toggleModal={toggleExclusaoModal} animalId={location.state.identificador}/>}
             {modalConfirmacao && <PopUpConfirmacao toggleModal={toggleConfirmacaoModal} />}
         </div>
     );

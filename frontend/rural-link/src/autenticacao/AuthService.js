@@ -90,6 +90,10 @@ class AuthService{
         axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
         return axios.delete(`${API_BASE_URL}/animal/${animalId}`); 
     }
+    filtrarAnimais(){
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+        return axios.get(`${API_BASE_URL}/animal/filtro`); 
+    }
 }
 
 export default new AuthService();

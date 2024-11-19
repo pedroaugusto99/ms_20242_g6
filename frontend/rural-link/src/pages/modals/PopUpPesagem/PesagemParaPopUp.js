@@ -8,15 +8,9 @@ function PesagemParaPopUp({ data, columns, onRemover, modoExclusao }) {
         'Saldo de Peso': 'saldoDePeso'
     };
 
-    const formatarData = (dataString) => {
-        if (!dataString) return '';
-        const data = new Date(dataString);
-        return data.toLocaleDateString('pt-BR');
-    };
-
     const formatarValor = (valor, coluna) => {
         if (coluna.includes('Data')) {
-            return formatarData(valor);
+            return valor;
         }
         return valor;
     };

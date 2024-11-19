@@ -15,5 +15,5 @@ public class PesoAnimalResponseDTO{
     private BigDecimal peso;
     private String dataDePesagem;
     private BigDecimal saldoDePeso;
-    private Long animalId;
+    private Long id;
 }

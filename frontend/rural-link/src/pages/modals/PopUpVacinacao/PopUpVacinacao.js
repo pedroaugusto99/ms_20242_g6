@@ -15,7 +15,7 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
     proximaAplicacao: ''
   });
 
-  const { vacinacaoData, addVacinacao, setVacinacaoData } = DadosParaPopUpsDeManejo();
+  const { vacinacaoData, addVacinacao, setVacinacaoData } = DadosParaPopUpsDeManejo(animalId);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

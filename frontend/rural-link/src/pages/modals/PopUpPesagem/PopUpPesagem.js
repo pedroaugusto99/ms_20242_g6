@@ -4,17 +4,18 @@ import PesagemParaPopUp from './PesagemParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 import AuthService from '../../../autenticacao/AuthService';
 
-export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId }) {
+export default function PopUpPesagem({ toggleModal, dadosPesagem, animalId}) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [modoExclusao, setModoExclusao] = useState(false);
   const [message, setMessage] = useState('');
   const [novoRegistro, setNovoRegistro] = useState({
     animalId: '',
     peso: '',
-    data: ''
+    data: '',
+    id: ''
   });
 
-  const { pesagemData, addPesagem, removePesagem, setPesagemData } = DadosParaPopUpsDeManejo();
+  const { pesagemData, addPesagem, removePesagem, setPesagemData } = DadosParaPopUpsDeManejo(dadosPesagem.id);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -1,5 +1,7 @@
 package com.rural_link.services;
 
+import com.rural_link.dtos.animal.PesoAnimalRequestDTO;
+import com.rural_link.dtos.animal.PesoAnimalResponseDTO;
 import com.rural_link.entities.animal.Animal;
 import com.rural_link.entities.animal.PesoAnimal;
 import com.rural_link.entities.fazenda.Fazenda;
@@ -7,13 +9,10 @@ import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.entities.usuarios.Proprietario;
 import com.rural_link.entities.usuarios.TrabalhadorRural;
 import com.rural_link.entities.usuarios.UserRole;
-import com.rural_link.dtos.animal.PesoAnimalRequestDTO;
-import com.rural_link.dtos.animal.PesoAnimalResponseDTO;
 import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.mappers.PesoAnimalMapper;
 import com.rural_link.repositories.*;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,7 +21,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Log4j2
 public class PesoAnimalService {
 
     private final PesoAnimalRepository pesoAnimalRepository;
@@ -89,7 +87,6 @@ public class PesoAnimalService {
             } else{
                 pesoAnimalResponseDTO.get(i).setSaldoDePeso(pesoAnimalResponseDTO.get(i).getPeso().subtract(pesoAnimalResponseDTO.get(i-1).getPeso()));
             }
-            pesoAnimalResponseDTO.get(i).setAnimalId(animalId);
         }
         return pesoAnimalResponseDTO;
     }

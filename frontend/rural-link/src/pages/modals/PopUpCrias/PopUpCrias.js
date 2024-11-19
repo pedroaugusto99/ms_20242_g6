@@ -3,14 +3,15 @@ import styles from './PopUpCrias.module.css';
 import CriasParaPopUp from './CriasParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 
-export default function PopUpCrias({ toggleModal, dadosCrias }) {
+export default function PopUpCrias({ toggleModal, dadosCrias, animalId }) {
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [modoExclusao, setModoExclusao] = useState(false);
   const [novoRegistro, setNovoRegistro] = useState({
     codigo: '',
     nascimento: '',
     pai: '',
-    idade: ''
+    idade: '',
+    id: '',
   });
 
   const handleInputChange = (e) => {
@@ -21,7 +22,7 @@ export default function PopUpCrias({ toggleModal, dadosCrias }) {
     }));
   };
 
-  const { criasData, addCrias, removeCrias } = DadosParaPopUpsDeManejo();
+  const { criasData, addCrias, removeCrias } = DadosParaPopUpsDeManejo(novoRegistro.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +33,8 @@ export default function PopUpCrias({ toggleModal, dadosCrias }) {
         codigo: '',
         nascimento: '',
         pai: '',
-        idade: ''
+        idade: '',
+        id: ''
       });
 
       setModalCadastroAberto(false);
