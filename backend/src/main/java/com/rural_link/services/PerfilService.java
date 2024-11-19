@@ -47,6 +47,9 @@ public class PerfilService {
                 .estado(fazenda.getEstado())
                 .role(role)
                 .nomeDaFazenda(fazenda.getNomeDaFazenda())
+                .codigoDaFazenda(fazenda.getCodigoDeAutenticacao())
+                .tipoDaFazenda(fazenda.getTipoDaFazenda())
+                .tamanhoDaFazenda(fazenda.getTamanho())
                 .build();
     }
 }

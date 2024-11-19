@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import trabalhadoricon from './images/trabalhadoricon.jpeg';
 import fazendeiroicon from './images/fazendeiroicon.jpeg';
+import Cookies from 'js-cookie'
 
 function Perfil() {
     const [nomeUsuario, setNomeUsuario] = React.useState(null);
@@ -25,7 +26,7 @@ function Perfil() {
     const [buttonText, setButtonText] = React.useState('Copiar'); 
 
     React.useEffect(() => {
-        AuthService.pegarDadosDoUsuario().then((response) => {
+        AuthService.pegarDadosDoUsuario(Cookies.get('authToken')).then((response) => {
             setNomeUsuario(response.data['nome']);
             setRoleUsuario(response.data['role']);
             setEmailUsuario(response.data['email']);
@@ -37,9 +38,20 @@ function Perfil() {
             setCidadeFazenda(response.data['cidade']);
             setCepFazenda(response.data['cep']);
             setEstadoFazenda(response.data['estado']);
-            setCodigoFazenda(response.data['codigoFazenda']); 
+            setCodigoFazenda(response.data['codigoDaFazenda']); 
+            setNomeFazenda(response.data['nomeDaFazenda']);
+            setTipoFazenda(response.data['tipoDaFazenda']);
+            setTamanhoFazenda(response.data['tamanhoDaFazenda']);
         });
     }, []);
+
+    const handleGerarCodigo = (event) => {
+        event.preventDefault();
+        AuthService.gerarNovoCodigo(Cookies.get('authToken')).then((response) => {
+            setCodigoFazenda(response.data['codigo']);
+            window.location.reload();
+        });
+    }
 
     const handleCopy = () => {
         if (codigoFazenda) {
@@ -110,7 +122,7 @@ function Perfil() {
                         stylesNamePerfil={styles.namePerfil}
                         stylesDescPerfil={styles.descPerfil}
                     />
-                    <button className={styles.btnGerar}>Gerar Código da Fazenda</button>
+                    <button className={styles.btnGerar} onClick={handleGerarCodigo}>Gerar Código da Fazenda</button>
                     <DataField 
                         label="Código da Fazenda:" 
                         value={codigoFazenda} 

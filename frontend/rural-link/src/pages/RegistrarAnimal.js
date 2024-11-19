@@ -10,6 +10,7 @@ import AuthService from '../autenticacao/AuthService';
 import React, { useState } from 'react';
 import PopUpConfirmacaoCadastroAn from './modals/PopUpConfirmacaoCadastroAn/PopUpConfirmacaoCadastroAn';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function RegistrarAnimal() {
     const [nome, setNome] = useState('');
@@ -63,7 +64,7 @@ function RegistrarAnimal() {
     const submitHandler = (event) => {
         event.preventDefault();
         try{
-            const response = AuthService.registrarAnimal({nome, codigo, especie, raca, sexo, dataDeNascimento, idade, dataDeAquisicao, codigoDaMae, codigoDoPai, status, lote});
+            const response = AuthService.registrarAnimal({nome, codigo, especie, raca, sexo, dataDeNascimento, idade, dataDeAquisicao, codigoDaMae, codigoDoPai, status, lote}, Cookies.get('authToken'));
             if (response.data !== 'Credenciais inválidas!'){
                 navigate('/registraranimal');
             } else{

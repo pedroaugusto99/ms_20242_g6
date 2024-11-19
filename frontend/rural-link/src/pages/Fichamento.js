@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import PopUpFiltro from './modals/PopUpFiltro/PopUpFiltro';
 import AuthService from '../autenticacao/AuthService';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Fichamento() {
   const [animals, setAnimals] = React.useState(null);
@@ -14,7 +15,7 @@ function Fichamento() {
   const [dadosFiltrados, setDadosFiltrados] = useState([]);
 
   React.useEffect(() => {
-    AuthService.listarAnimais().then((response) => {
+    AuthService.listarAnimais(Cookies.get('authToken')).then((response) => {
       setAnimals(response.data);
     });
   }, []);
@@ -26,7 +27,7 @@ function Fichamento() {
   const onChangeHandler = (event) => {
     setNomeAnimal(event.target.value);
     setSearchParams(`?${new URLSearchParams({ nome: nomeAnimal })}`);
-    AuthService.listarAnimaisPorNome(nomeAnimal).then((response) => {
+    AuthService.listarAnimaisPorNome(nomeAnimal, Cookies.get('authToken')).then((response) => {
       setAnimals(response.data);
     });
   };
@@ -34,7 +35,7 @@ function Fichamento() {
   const submitHandler = (event) => {
     event.preventDefault();
     setSearchParams(`?${new URLSearchParams({ nome: nomeAnimal })}`);
-    AuthService.listarAnimaisPorNome(nomeAnimal).then((response) => {
+    AuthService.listarAnimaisPorNome(nomeAnimal, Cookies.get('authToken')).then((response) => {
       setAnimals(response.data);
     });
   };
@@ -103,7 +104,7 @@ function Fichamento() {
                   <td>{animal.sexo}</td>
                   <td>{animal.especie}</td>
                   <td style={{ color: '#0022FF' }}>{animal.raca}</td>
-                  <td>{animal.idade}</td>
+                  <td>{animal.idade} anos</td>
                   <td>{animal.lote}</td>
                   <td>
                     <button onClick={() => handleAccess(animal.animalId)}>Acessar</button>

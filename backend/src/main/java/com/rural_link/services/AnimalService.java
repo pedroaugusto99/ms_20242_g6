@@ -162,7 +162,9 @@ public class AnimalService {
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Id do Animal não existe"));
         AnimalResponseDTO animalResponseDTO = AnimalMapper.INSTANCE.toAnimalResponseDTO(animal);
-        animalResponseDTO.setDataDeAquisicao(formatter.format(animal.getDataDeAquisicao()));
+        if (animal.getDataDeAquisicao() != null){
+            animalResponseDTO.setDataDeAquisicao(formatter.format(animal.getDataDeAquisicao()));
+        }
         animalResponseDTO.setDataDeNascimento(formatter.format(animal.getDataDeNascimento()));
         if (animalResponseDTO.getIdade() == null && animalResponseDTO.getDataDeNascimento() != null){
             animalResponseDTO.setIdade(Period.between(animal.getDataDeNascimento(), LocalDate.now()).getYears());

@@ -3,6 +3,7 @@ import styles from './PopUpFiltro.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Fichamento from '../../Fichamento';
+import Cookies from 'js-cookie';
 
 // Componente ItemNavegacao
 const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = [] }) => {
@@ -192,7 +193,7 @@ export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados})
     }
   }, [visivel]);
 
-  const token = localStorage.getItem('auth_token');
+  const token = Cookies.get('authToken');
   const navigate = useNavigate('');
   
   // Aplica os filtros
