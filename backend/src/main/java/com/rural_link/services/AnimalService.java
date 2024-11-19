@@ -1,5 +1,6 @@
 package com.rural_link.services;
 
+import com.rural_link.dtos.animal.*;
 import com.rural_link.entities.animal.Animal;
 import com.rural_link.entities.animal.Sexo;
 import com.rural_link.entities.fazenda.Fazenda;
@@ -7,14 +8,13 @@ import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.entities.usuarios.Proprietario;
 import com.rural_link.entities.usuarios.TrabalhadorRural;
 import com.rural_link.entities.usuarios.UserRole;
-import com.rural_link.dtos.animal.*;
 import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.mappers.AnimalMapper;
 import com.rural_link.repositories.*;
 import com.rural_link.specifications.AnimalQueryFilter;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -27,6 +27,7 @@ public class AnimalService {
     private final AnimalRepository animalRepository;
     private final PessoaRepository pessoaRepository;
     private final PesoAnimalRepository pesoAnimalRepository;
+    private final VacinacaoAnimalRepository vacinacaoAnimalRepository;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final TrabalhadorRuralRepository trabalhadorRuralRepository;
     private final ProprietarioRepository proprietarioRepository;
@@ -123,10 +124,13 @@ public class AnimalService {
         return new QrCodeResponseDTO(animal.getUrlQrCode());
     }
 
+    @Transactional
     public void removerAnimal(Pessoa pessoa, Long id){
         Pessoa pessoaAutenticada = pessoaRepository.findByEmail(pessoa.getEmail()).orElseThrow(UserNotAuthenticatedException::new);
         Fazenda fazenda = encontrarFazendaDoAnimal(pessoaAutenticada);
         Animal animal = animalRepository.findByIdAndFazenda(id, fazenda).orElseThrow(() -> new RuntimeException("Animal não foi cadastrado"));
+        pesoAnimalRepository.deleteByAnimal(animal);
+        vacinacaoAnimalRepository.deleteByAnimal(animal);
         animalRepository.delete(animal);
     }
 
@@ -163,8 +167,8 @@ public class AnimalService {
         if (animalResponseDTO.getIdade() == null && animalResponseDTO.getDataDeNascimento() != null){
             animalResponseDTO.setIdade(Period.between(animal.getDataDeNascimento(), LocalDate.now()).getYears());
         }
-        if (pesoAnimalRepository.findFirstByOrderByIdDesc() != null){
-            animalResponseDTO.setPesoAtual(pesoAnimalRepository.findFirstByOrderByIdDesc().getPeso());
+        if (pesoAnimalRepository.findTopByAnimalOrderByIdDesc(animal) != null){
+            animalResponseDTO.setPesoAtual(pesoAnimalRepository.findTopByAnimalOrderByIdDesc(animal).getPeso());
         }
         animalResponseDTO.setNumeroDeCrias(buscarAnimalPorCodigoFamiliar(animal).size());
         animalResponseDTO.setId(id);
