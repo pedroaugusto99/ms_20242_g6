@@ -8,6 +8,7 @@ import Grafico from './components/Grafico';
 import Donut from './components/Donut';
 import AuthService from '../autenticacao/AuthService';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
 
@@ -21,6 +22,8 @@ const Dashboard = () => {
     const [numeroDeAnimais, setNumeroDeAnimais] = React.useState('');
     const [numeroDeAnimaisFemeas, setNumeroDeAnimaisFemeas] = React.useState(null);
     const [numeroDeAnimaisMachos, setNumeroDeAnimaisMachos] = React.useState(null);
+    const [animais, setAnimais] = useState('');
+    const navigate = useNavigate('');
 
     const referenceValue = numeroDeAnimais; 
     const currentValue = numeroDeAnimais;
@@ -54,6 +57,12 @@ const Dashboard = () => {
         })
     }, []);
 
+    React.useEffect(() => {
+        AuthService.listarAnimais(Cookies.get('authToken')).then(response => {
+            setAnimais(response.data);
+        })
+    }, []);
+
     useEffect(() => {
         const fetchedOrders = [
             { productNumber: '001', productName: 'Macho', paymentStatus: '14 Anos', status: 'Erado' },
@@ -62,6 +71,10 @@ const Dashboard = () => {
         ];
         setOrders(fetchedOrders);
     }, []);
+
+    const handleAccess = (id) => {
+        navigate('/fichaanimal', { state: { identificador: id } });
+    };
 
     const addReminder = (e) => {
         e.preventDefault();
@@ -129,8 +142,8 @@ const Dashboard = () => {
 
                     <div className={styles.recentOrders}>
                         <h1>Filtro de Animais</h1>
-                        <OrdersTable orders={orders} />
-                        <a href="#">Mostrar Todos</a>
+                        <OrdersTable orders={orders} animais={animais} handleAccess={handleAccess} />
+                        <a href="/fichamento">Mostrar Todos</a>
                     </div>
                 </main>
 
@@ -150,7 +163,7 @@ const Dashboard = () => {
     );
 };
 
-const OrdersTable = ({ orders }) => (
+const OrdersTable = ({ orders, animais, handleAccess }) => (
     <table>
         <thead>
             <tr>
@@ -162,17 +175,23 @@ const OrdersTable = ({ orders }) => (
             </tr>
         </thead>
         <tbody>
-            {orders.map((order, index) => (
-                <tr key={index}>
-                    <td>{order.productNumber}</td>
-                    <td>{order.productName}</td>
-                    <td>{order.paymentStatus}</td>
-                    <td className={order.status === 'Maduro' ? styles.danger : order.status === 'Erado' ? styles.warning : styles.primary}>
-                        {order.status}
-                    </td>
-                    <td className={styles.primary}>Detalhes</td>
+        {Array.isArray(animais) && animais.length > 0 ? (
+              animais.map((animal) => (
+                <tr key={animal.id}>
+                  <td>{animal.codigo}</td>
+                  <td>{animal.sexo}</td>
+                  <td>{animal.idade} anos</td>
+                  <td style={{ color: '#0022FF' }}>{animal.raca}</td>
+                  <td>
+                    <button onClick={() => handleAccess(animal.animalId)}>Acessar</button>
+                  </td>
                 </tr>
-            ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan="8">Nenhum animal encontrado.</td>
+              </tr>
+            )}
         </tbody>
     </table>
 );
