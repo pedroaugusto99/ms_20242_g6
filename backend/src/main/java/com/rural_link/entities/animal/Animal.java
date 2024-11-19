@@ -54,8 +54,8 @@ public class Animal {
     @NotNull(message = "Fazenda a que o animal pertence precisa ser preenchida")
     private Fazenda fazenda;
     private String urlQrCode;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VacinacaoAnimal> vacinacaoAnimal;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PesoAnimal> pesoAnimal;
 }

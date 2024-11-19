@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './PopUpFiltro.module.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Fichamento from '../../Fichamento';
 
 // Componente ItemNavegacao
 const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = [] }) => {
@@ -69,7 +72,7 @@ const ItemNavegacao = ({ label, value, aoMudar, tipo = 'select', name, opcoes = 
 };
 
 // Componente principal
-export default function PopUpFiltro({ visivel, alternarModal }) {
+export default function PopUpFiltro({ visivel, alternarModal, onDadosFiltrados}) {
   // Estado para os filtros
   const [filtros, setFiltros] = useState({
     especie: '',
@@ -87,59 +90,59 @@ export default function PopUpFiltro({ visivel, alternarModal }) {
   // Opções de seleção
   const opcoesSelecao = {
     especie: [
-      { value: 'Bovino', label: 'Bovino' },
-      { value: 'Suino', label: 'Suíno' },
-      { value: 'Ovino', label: 'Ovino' },
-      { value: 'Caprino', label: 'Caprino' },
-      { value: 'Equino', label: 'Equino' },
+      { value: 'BOVINO', label: 'Bovino' },
+      { value: 'SUINO', label: 'Suíno' },
+      { value: 'OVINO', label: 'Ovino' },
+      { value: 'CAPRINO', label: 'Caprino' },
+      { value: 'EQUINO', label: 'Equino' },
     ],
     raca: {
       Bovino: [
-        { value: 'Nelore', label: 'Nelore' },
-        { value: 'Angus', label: 'Angus' },
-        { value: 'Brahman', label: 'Brahman' },
-        { value: 'Brangus', label: 'Brangus' },
-        { value: 'Senepol', label: 'Senepol' },
-        { value: 'Hereford', label: 'Hereford' },
-        { value: 'Outra', label: 'Outra' },
+        { value: 'NELORE', label: 'Nelore' },
+        { value: 'ANGUS', label: 'Angus' },
+        { value: 'BRAHMAN', label: 'Brahman' },
+        { value: 'BRANGUS', label: 'Brangus' },
+        { value: 'SENEPOL', label: 'Senepol' },
+        { value: 'HEREFORD', label: 'Hereford' },
+        { value: 'OUTRA', label: 'Outra' },
       ],
       Suino: [
-        { value: 'landrace', label: 'Landrace' },
-        { value: 'Largewhite', label: 'Large White' },
-        { value: 'Duroc', label: 'Duroc' },
-        { value: 'Pietrain', label: 'Pietrain' },
-        { value: 'Hampshire', label: 'Hampshire' },
-        { value: 'Outra', label: 'Outra' },
+        { value: 'LANDRACE', label: 'Landrace' },
+        { value: 'LARGEWHITE', label: 'Large White' },
+        { value: 'DUROC', label: 'Duroc' },
+        { value: 'PIETRAIN', label: 'Pietrain' },
+        { value: 'HAMPSHIRE', label: 'Hampshire' },
+        { value: 'OUTRA', label: 'Outra' },
       ],
       Caprino: [
-        { value: 'Saanen', label: 'Saanen' },
-        { value: 'Toggenburg', label: 'Toggenburg' },
-        { value: 'Murciana', label: 'Murciana' },
-        { value: 'Parda_Alpina', label: 'Parda Alpina' },
-        { value: 'Boer', label: 'Boer' },
-        { value: 'Savanna', label: 'Savanna' },
-        { value: 'Caninde', label: 'Canindé' },
-        { value: 'Moxoto', label: 'Moxotó' },
-        { value: 'Outra', label: 'Outra' },
+        { value: 'SAANEN', label: 'Saanen' },
+        { value: 'TOGGENBURG', label: 'Toggenburg' },
+        { value: 'MURCIANA', label: 'Murciana' },
+        { value: 'PARDA_ALPINA', label: 'Parda Alpina' },
+        { value: 'BOER', label: 'Boer' },
+        { value: 'SAVANNA', label: 'Savanna' },
+        { value: 'CANINDE', label: 'Canindé' },
+        { value: 'MOXOTO', label: 'Moxotó' },
+        { value: 'OUTRA', label: 'Outra' },
       ],
       Ovino: [
-        { value: 'Santa_ines', label: 'Santa Inês' },
-        { value: 'Morada_nova', label: 'Morada Nova' },
-        { value: 'Suffolk', label: 'Suffolk' },
-        { value: 'Bergamacia', label: 'Bergamácia' },
-        { value: 'Hampshire_down', label: 'Hampshire Down' },
-        { value: 'Outra', label: 'Outra' },
+        { value: 'SANTA_INES', label: 'Santa Inês' },
+        { value: 'MORADA_NOVA', label: 'Morada Nova' },
+        { value: 'SUFFOLK', label: 'Suffolk' },
+        { value: 'BERGAMACIA', label: 'Bergamácia' },
+        { value: 'HAMPSHIRE_DOWN', label: 'Hampshire Down' },
+        { value: 'OUTRA', label: 'Outra' },
       ],
     },
     sexo: [
-      { value: 'Macho', label: 'Macho' },
-      { value: 'Femea', label: 'Fêmea' },
+      { value: 'MACHO', label: 'Macho' },
+      { value: 'FEMEA', label: 'Fêmea' },
     ],
     status: [
-      { value: 'Ativo', label: 'Ativo' },
-      { value: 'Vendido', label: 'Vendido' },
-      { value: 'Abatido', label: 'Abatido' },
-      { value: 'Desaparecido', label: 'Desaparecido' },
+      { value: 'ATIVO', label: 'Ativo' },
+      { value: 'VENDIDO', label: 'Vendido' },
+      { value: 'ABATIDO', label: 'Abatido' },
+      { value: 'DESAPARECIDO', label: 'Desaparecido' },
     ],
   };
 
@@ -189,10 +192,28 @@ export default function PopUpFiltro({ visivel, alternarModal }) {
     }
   }, [visivel]);
 
+  const token = localStorage.getItem('auth_token');
+  const navigate = useNavigate('');
+  
   // Aplica os filtros
-  const aoAplicarFiltros = () => {
-    console.log('Filtros aplicados:', filtros);
-    alternarModal();
+  const aoAplicarFiltros = async () => {
+    axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+    try{
+      const response = await axios.get('http://localhost:8080/animal/filtro', {
+        params: {
+          raca: filtros.raca,
+          especie: filtros.especie,
+          status: filtros.status,
+          sexo: filtros.sexo,
+          lote: filtros.lote
+        }
+      });
+      onDadosFiltrados(response.data);
+    } catch(error){
+      console.error('Erro ao aplicar filtro:', error);
+    } finally{
+      alternarModal();
+    }
   };
 
   return (

@@ -32,16 +32,16 @@ function ManejoTable({ title, data, columns, toggleModal }) {
                     // Adapte conforme as chaves reais dos dados (pode ser 'nome', 'dataAplicacao', etc.)
                     switch (col) {
                       case 'Nome da Vacina':
-                        cellValue = row.nome || 'N/A';
+                        cellValue = row.nomeDaVacina || 'N/A';
                         break;
                       case 'Data da Aplicação':
-                        cellValue = row.dataAplicacao || 'N/A';
+                        cellValue = row.dataDeVacinacao || 'N/A';
                         break;
                       case 'Número de Doses':
-                        cellValue = row.doses || 'N/A';
+                        cellValue = row.numeroDeDoses || 'N/A';
                         break;
                       case 'Próxima Aplicação':
-                        cellValue = row.proximaAplicacao || 'N/A';
+                        cellValue = row.dataDaProximaVacinacao || 'N/A';
                         break;
                       default:
                         cellValue = 'N/A';
