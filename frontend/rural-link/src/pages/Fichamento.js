@@ -103,7 +103,7 @@ function Fichamento() {
                   <td>{animal.sexo}</td>
                   <td>{animal.especie}</td>
                   <td style={{ color: '#0022FF' }}>{animal.raca}</td>
-                  <td>{animal.idade}</td>
+                  <td>{animal.idade} anos</td>
                   <td>{animal.lote}</td>
                   <td>
                     <button onClick={() => handleAccess(animal.animalId)}>Acessar</button>

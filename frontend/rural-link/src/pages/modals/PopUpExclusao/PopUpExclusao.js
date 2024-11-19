@@ -13,6 +13,7 @@ export default function PopUpExclusao({ toggleModal, codigo, animalId }) {
     try{
       const response = AuthService.removerAnimal(animalId);
       navigate('/fichamento');
+      window.location.reload();
     } catch(error){
         setMessage('Credenciais inválidas!');
     }
