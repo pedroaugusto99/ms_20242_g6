@@ -4,6 +4,8 @@ import styles from './css/cssPages/Perfil.module.css';
 import Sidebar from './components/Sidebar';
 import AuthService from '../autenticacao/AuthService';
 
+import { useNavigate } from 'react-router-dom';
+
 function Perfil () {
 
     const[nomeUsuario, setNomeUsuario] = React.useState(null);
@@ -47,6 +49,12 @@ function Perfil () {
         </p>
         );
 
+    const navigate = useNavigate();
+
+    const handleAccessVoltar = () => {
+        navigate(-1);
+    };
+
     return ( 
         <div className="container">
             <Sidebar title='Perfil' />
@@ -79,7 +87,11 @@ function Perfil () {
                         <DataField label="Estado" value={estadoFazenda} />
                     </div>
                 </div>
+                <div className={styles.Rowbtn}> 
+                            <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} onClick={handleAccessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
             </div>
+            </div>
+            
         </div>
     );
 };

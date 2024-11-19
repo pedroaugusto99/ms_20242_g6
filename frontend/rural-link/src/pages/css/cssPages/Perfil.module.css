@@ -1,13 +1,12 @@
 .conteudo {
     display: flex;
-    align-items: center;
+    align-items: right;
     justify-content: space-around;
     background-color: white;
     width: 1080px;
     height: 640px;
     margin-top: 5%;
     border-radius: 30px;
-
     box-shadow: 4px 4px 2px 3px rgba(0, 0, 0, .2);
 }
 
@@ -18,19 +17,23 @@
 }
 
 #perfilInfos {
-    margin-left: 25%;
+    margin-left: 5%;
 }
 
 #namePerfil {
     font-size: 22px;
+    margin-left: 15%;
+    margin-top: 7%;
+
 }
 
 #descPerfil {
-    font-size: 16px;
+    font-size: 17px;
+    margin-left: 25%;
 }
 
 .imgPerfil {
-    height: 20vw;
+    height: 15vw;
     border-radius: 50%;
     margin-top: 2vw;
 }
@@ -39,7 +42,8 @@ h1 {
     font-size: 1.5vw;
     font-weight: bold;
     color: #425A67;
-    margin-top: 2vw;
+    margin-top: 3vw;
+    margin-left: 5vw;
 }
 
 .textField {
@@ -53,6 +57,7 @@ h1 {
     padding: 0.5vw;
     padding-bottom: 0vw;
     margin-bottom: 0.8vw;
+    margin-left: 5vw;
 }
 
 .data {
@@ -63,4 +68,40 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.btnPrimario {
+    border: 1px solid var(--cor-terciaria);
+    background-color: var(--cor-terciaria);
+    transition: 0.5s;
+}
+
+.btnPrimario:hover {
+    background-color: transparent;
+    color: var(--cor-padrao);
+    border: 1px solid var(--cor-padrao);
+}
+
+.btnVoltar {
+    position: fixed;
+    left: 8vw;
+    bottom: 0;
+    border-radius: 15px;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 20px;
+    height: 45px;
+    width: 9%; 
+    margin: 0rem;
+    margin-left: 8.5vw;
+    margin-bottom: 2vw;
+}
+
+.btnVoltar i {
+    margin-right: 15px;
+}
+
+.Rowbtn {
+    display: flex; 
+    gap: 108.75vh; 
 }
