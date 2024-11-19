@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './PopUpVacinacao.module.css';
-import VacinacaoParaPopUp from './VacinacaoParaPopUp';
 import { DadosParaPopUpsDeManejo } from '../../../hooks/DadosParaPopUpsDeManejo';
 import AuthService from '../../../autenticacao/AuthService';
 import Cookies from 'js-cookie'
 
 export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }) {
+
+
+
+
+
+  // Estados do componente
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [modoExclusao, setModoExclusao] = useState(false);
   const [message, setMessage] = useState('');
@@ -15,9 +20,29 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
     doses: '',
     proximaAplicacao: ''
   });
+  const [dadosFiltrados, setDadosFiltrados] = useState([]);
 
-  const { vacinacaoData, addVacinacao, setVacinacaoData } = DadosParaPopUpsDeManejo(animalId);
 
+
+
+
+  // Funções de manejo de vacinação
+  const { vacinacaoData, addVacinacao, setVacinacaoData, removeVacinacao } = DadosParaPopUpsDeManejo(animalId);
+
+
+
+
+
+  // Efeito que atualiza os dados filtrados sempre que dadosVacinacao muda
+  useEffect(() => {
+    setDadosFiltrados(dadosVacinacao); // Atualiza a lista de vacinação
+  }, [dadosVacinacao]);
+
+
+
+
+
+  // Função para manipular mudanças nos inputs de cadastro de nova vacina
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNovoRegistro(prev => ({
@@ -26,62 +51,146 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
     }));
   };
 
+
+
+
+
+  // Função para submeter o cadastro de uma nova vacina
   const handleSubmit = (e) => {
     e.preventDefault();
-    try{
-      const response = AuthService.registrarVacinaAnimal({nomeDaVacina: novoRegistro.nome, dataDeVacinacao: novoRegistro.dataAplicacao, numeroDeDoses: novoRegistro.doses, dataDaProximaVacinacao: novoRegistro.proximaAplicacao, animalId: animalId}, Cookies.get('authToken'));
-      setModalCadastroAberto(false)
-    } catch(error){
-        setMessage('Credenciais inválidas!');
+    try {
+      AuthService.registrarVacinaAnimal({
+        nomeDaVacina: novoRegistro.nome,
+        dataDeVacinacao: novoRegistro.dataAplicacao,
+        numeroDeDoses: novoRegistro.doses,
+        dataDaProximaVacinacao: novoRegistro.proximaAplicacao,
+        animalId: animalId
+      }, Cookies.get('authToken'));
+      setModalCadastroAberto(false);
+    } catch (error) {
+      setMessage('Credenciais inválidas!');
     }
+
+    // Se todos os campos estiverem preenchidos, adiciona a vacina à lista
     if (novoRegistro.nome && novoRegistro.dataAplicacao && novoRegistro.doses && novoRegistro.proximaAplicacao) {
       addVacinacao(novoRegistro);
-
-      setNovoRegistro({
-        nome: '',
-        dataAplicacao: '',
-        doses: '',
-        proximaAplicacao: ''
-      });
-
-      setModalCadastroAberto(false);  // Fecha o modal de cadastro após a adição
-      window.location.replace('/fichaanimal');
-      toggleModal();  // Fecha o modal principal
+      resetNovoRegistro(); // Reseta os campos de entrada
+      setModalCadastroAberto(false);
+      toggleModal();
     }
   };
 
+
+
+
+
+  // Função para alternar entre os modos de edição e exclusão
   const toggleModoExclusao = () => {
     setModoExclusao(!modoExclusao);
   };
 
+
+
+
+
+  // Função para remover um registro de vacina
   const handleRemover = (index) => {
-    const novosDados = vacinacaoData.filter((_, i) => i !== index);  // Filtra o item a ser removido
-    setVacinacaoData(novosDados);  // Atualiza o estado com os dados restantes
+    try {
+      removeVacinacao(animalId, index); // Remove o item da lista
+      const novosDados = [...dadosFiltrados];
+      novosDados.splice(index, 1); // Remove o item do estado
+      setDadosFiltrados(novosDados); // Atualiza o estado com a lista filtrada
+      setMessage('Vacina removida com sucesso!');
+    } catch (error) {
+      setMessage('Erro ao tentar remover a vacina!');
+    }
   };
 
+
+
+
+
+  // Função para confirmar a edição e fechar o modal
   const handleConfirmarEdicao = () => {
-    // Lógica para confirmar a edição (fechar o modal após confirmar)
-    if (modoExclusao) {
-      
-    }
-    // Fechar o modal após confirmar a edição
-    toggleModal();  // Fecha o modal principal
-    setModoExclusao(false);  // Desativa o modo de exclusão
+    toggleModal();
+    setModoExclusao(false);
   };
+
+
+
+
+
+  // Função para resetar os campos de cadastro
+  const resetNovoRegistro = () => {
+    setNovoRegistro({
+      nome: '',
+      dataAplicacao: '',
+      doses: '',
+      proximaAplicacao: ''
+    });
+  };
+
+
+
+
 
   return (
     <div className={styles.modal}>
       <div onClick={toggleModal} className={styles.overlay}></div>
       <div className={styles.modalContent}>
         <h1 className={styles.titleVacinacao}>VACINAÇÃO</h1>
-        
-        <VacinacaoParaPopUp
-          data={dadosVacinacao}
-          columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Data da Próxima Aplicação']}
-          onRemover={handleRemover}  // Passe a função de remoção
-          modoExclusao={modoExclusao}
-        />
 
+
+
+
+
+        {/* Tabela de dados filtrados */}
+        <div className={styles.manejoTable}>
+          <div className={styles.manejoTableContainer}>
+            <table className={styles.tableManejo}>
+              <thead>
+                <tr>
+                  {['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Data da Próxima Aplicação'].map((col, idx) => (
+                    <th key={idx}>{col}</th>
+                  ))}
+                  {modoExclusao && <th>Ações</th>}
+                </tr>
+              </thead>
+              <tbody>
+                {dadosFiltrados && dadosFiltrados.length > 0 ? (
+                  dadosFiltrados.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {['nomeDaVacina', 'dataDeVacinacao', 'numeroDeDoses', 'dataDaProximaVacinacao'].map((col, colIndex) => (
+                        <td key={colIndex}>{row[col] || ''}</td>
+                      ))}
+                      <td>
+                        {modoExclusao && (
+                          <button
+                            onClick={() => handleRemover(rowIndex)}
+                            className={`${styles.btnExcluir} ${styles.btnIcone}`}
+                            title="Excluir registro"
+                          >
+                            <i className="fa-solid fa-trash-can"></i>
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={5}>Nenhum registro de vacinação encontrado.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+
+
+        {/* Botões de interação */}
         <div className={styles.rowbtn}>
           <button onClick={toggleModal} className={`${styles.btn} ${styles.btnPrimario}`} type="button">
             Voltar
@@ -101,7 +210,7 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
             <i className="fa-solid fa-trash-can"></i> Remover Fila
           </button>
           <button 
-            onClick={handleConfirmarEdicao}  // Chama a função para confirmar a edição
+            onClick={handleConfirmarEdicao}  
             className={`${styles.btn} ${styles.btnPrimario}`} 
             type="button"
           >
@@ -109,6 +218,11 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
           </button>
         </div>
 
+
+
+
+
+        {/* Formulário de Cadastro de Nova Vacina */}
         {modalCadastroAberto && (
           <div className={styles.modalCadastro}>
             <div className={styles.modalCadastroContent}>
@@ -163,19 +277,16 @@ export default function PopUpVacinacao({ toggleModal, dadosVacinacao, animalId }
                   />
                 </div>
 
-                <div className={styles.modalButtons}>
-                  <button
-                    type="button"
-                    onClick={() => setModalCadastroAberto(false)}
-                    className={`${styles.btn} ${styles.btnSecundario}`}
-                  >
-                    Cancelar
+                <div className={styles.formActions}>
+                  <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">
+                    Salvar
                   </button>
                   <button
-                    type="submit"
-                    className={`${styles.btn} ${styles.btnPrimario}`}
+                    onClick={() => setModalCadastroAberto(false)}
+                    className={`${styles.btn} ${styles.btnSecundario}`}
+                    type="button"
                   >
-                    Salvar
+                    Cancelar
                   </button>
                 </div>
               </form>
