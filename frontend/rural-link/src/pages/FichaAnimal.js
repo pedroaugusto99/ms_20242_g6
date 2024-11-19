@@ -74,7 +74,7 @@ function FichaAnimal() {
     const [qrCodeAnimal, setQrCodeAnimal] = React.useState('');
 
     React.useEffect(() => {
-        AuthService.pegarDadosDoAnimal(1).then((response) => {
+        AuthService.pegarDadosDoAnimal(location.state.identificador).then((response) => {
             setNomeAnimal(response.data['nome'])
             setCodigoAnimal(response.data['codigo'])
             setEspecieAnimal(response.data['especie'])
