@@ -51,7 +51,7 @@ function RegistrarProprietario() {
                 <form className={styles.form} onSubmit={submitHandler}>
                     <div className={styles.iconGroup}>
                                 <p className={styles.otherLabel}>Nome Completo <span className={styles.required} title="Campo obrigatório">*</span></p>
-                                <label className={styles.labelInput}>
+                                <label className={styles.labelInputProp}>
                                     <img src={iconperfil} className={styles.nomecompleto} alt="Ícone Perfil" />
                                     <input
                                         type="text"
@@ -68,7 +68,7 @@ function RegistrarProprietario() {
                         <div className={styles.inputRow}>
                             <div className={styles.inputGroup}>
                                 <p className={`${styles.otherLabel} ${styles.labelShifted}`}>Email <span className={styles.required} title="Campo obrigatório">*</span></p>
-                                <label className={styles.labelShortInput}>
+                                <label className={styles.labelShortInputProp}>
                                     <img src={iconemail} className={styles.email} alt="Icon Email" />
                                     <input
                                         type="email"
@@ -83,7 +83,7 @@ function RegistrarProprietario() {
 
                             <div className={styles.inputGroup}>
                                 <p className={`${styles.otherLabel} ${styles.labelShifted}`}>Telefone <span className={styles.required} title="Campo obrigatório">*</span></p>
-                                <label className={styles.labelShortInput}>
+                                <label className={styles.labelShortInputProp}>
                                     <img src={icontelefone} className={styles.telefone} alt="Icon Telefone" />
                                     <input
                                         type="tel"
@@ -100,7 +100,7 @@ function RegistrarProprietario() {
 
                     <div className={styles.iconGroup}>
                         <p className={styles.otherLabel}>Senha <span className={styles.required} title="Campo obrigatório">*</span></p>
-                        <label className={styles.labelInput}>
+                        <label className={styles.labelInputProp}>
                             <img src={iconsenha} className={styles.senha} alt="Ícone Senha" />
                             <input
                                 type={showPassword ? 'text' : 'password'} // Mude o tipo com base no estado
@@ -122,7 +122,7 @@ function RegistrarProprietario() {
 
                     <div className={styles.iconGroup}>
                         <p className={styles.otherLabel}>Confirmar Senha <span className={styles.required} title="Campo obrigatório">*</span></p>
-                        <label className={styles.labelInput}>
+                        <label className={styles.labelInputProp}>
                             <img src={iconsenha} className={styles.senha} alt="Ícone Senha" />
                             <input
                                 type={showPassword ? 'text' : 'password'} // Mude o tipo com base no estado

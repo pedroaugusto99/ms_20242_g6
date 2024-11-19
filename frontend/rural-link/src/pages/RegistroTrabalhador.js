@@ -57,9 +57,10 @@ function RegistrarTrabalhador() {
                 <form className={styles.form} onSubmit={submitHandler}>
                     <div className={styles.iconGroup}>
                         <p className={styles.otherLabel}>Nome Completo <span className={styles.required} title="Campo obrigatório">*</span></p>
-                        <label className={styles.labelInput}>
+                        <label className={styles.labelInputTrab}>
                             <img src={iconperfil} className={styles.nomecompleto} alt="Ícone Perfil" />
                             <input
+                                className={styles.input}
                                 type="text"
                                 placeholder="Digite Seu Nome Completo:"
                                 required
@@ -74,9 +75,10 @@ function RegistrarTrabalhador() {
                         <div className={styles.inputRow}>
                             <div className={styles.inputGroup}>
                                 <p className={`${styles.otherLabel} ${styles.labelShifted}`}>Email <span className={styles.required} title="Campo obrigatório">*</span></p>
-                                <label className={styles.labelShortInput}>
+                                <label className={styles.labelShortInputTrab}>
                                     <img src={iconemail} className={styles.email} alt="Icon Email" />
                                     <input
+                                        className={styles.input}
                                         type="email"
                                         placeholder="Digite seu Email:"
                                         required
@@ -88,9 +90,10 @@ function RegistrarTrabalhador() {
                             </div>
                             <div className={styles.inputGroup}>
                                 <p className={`${styles.otherLabel} ${styles.labelShifted}`}>Telefone <span className={styles.required} title="Campo obrigatório">*</span></p>
-                                <label className={styles.labelShortInput}>
+                                <label className={styles.labelShortInputTrab}>
                                     <img src={icontelefone} className={styles.telefone} alt="Icon Telefone" />
                                     <input
+                                        className={styles.input}
                                         type="tel"
                                         placeholder="Digite seu Número:"
                                         required
@@ -114,9 +117,10 @@ function RegistrarTrabalhador() {
                             </button> 
                             <span className={styles.required} title="Campo obrigatório">*</span>
                         </p>
-                        <label className={styles.labelInput}>
+                        <label className={styles.labelInputTrab}>
                             <img src={iconkey} className={styles.key} alt="Ícone de Chave" />
                             <input
+                                className={styles.input}
                                 type="text"
                                 placeholder="Código da Fazenda Associada:"
                                 required
@@ -130,9 +134,10 @@ function RegistrarTrabalhador() {
 
                     <div className={styles.iconGroup}>
                         <p className={styles.otherLabel}>Senha <span className={styles.required} title="Campo obrigatório">*</span></p>
-                        <label className={styles.labelInput}>
+                        <label className={styles.labelInputTrab}>
                             <img src={iconsenha} className={styles.senha} alt="Ícone Senha" />
                             <input
+                                className={styles.input}
                                 type={showPassword ? 'text' : 'password'} // Mude o tipo com base no estado
                                 placeholder="Senha:"
                                 required
@@ -152,9 +157,10 @@ function RegistrarTrabalhador() {
 
                     <div className={styles.iconGroup}>
                         <p className={styles.otherLabel}>Confirmar Senha <span className={styles.required} title="Campo obrigatório">*</span></p>
-                        <label className={styles.labelInput}>
+                        <label className={styles.labelInputTrab}>
                             <img src={iconsenha} className={styles.senha} alt="Ícone Senha" />
                             <input
+                                className={styles.input}
                                 type={showPassword ? 'text' : 'password'} // Mude o tipo com base no estado
                                 placeholder="Confirmar Senha:"
                                 required

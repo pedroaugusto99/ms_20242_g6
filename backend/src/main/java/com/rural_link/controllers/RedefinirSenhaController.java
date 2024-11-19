@@ -27,7 +27,7 @@ public class RedefinirSenhaController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar operação(Internal Server Error)")
     })
-    @PostMapping(value = "/email", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/email")
     public ResponseEntity<Void> enviarToken (@RequestBody EmailDTO emailDTO){
         redefinirSenhaService.verificarEmail(emailDTO);
         return ResponseEntity.ok().build();
@@ -39,7 +39,7 @@ public class RedefinirSenhaController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar operação(Internal Server Error)")
     })
-    @PostMapping(value = "/token", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/token", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ValidarTokenDTO> validarToken(@RequestBody TokenDTO token){
         return ResponseEntity.ok().body(redefinirSenhaService.validarToken(token));
     }
@@ -50,7 +50,7 @@ public class RedefinirSenhaController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar operação(Internal Server Error)")
     })
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping
     public ResponseEntity<Void> redefinirSenha(@RequestBody RedefinirSenhaDTO redefinirSenhaDTO){
         redefinirSenhaService.redefinirSenha(redefinirSenhaDTO);
         return ResponseEntity.ok().build();

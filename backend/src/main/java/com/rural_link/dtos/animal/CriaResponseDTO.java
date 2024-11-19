@@ -12,4 +12,5 @@ public class CriaResponseDTO{
     private String dataDeNascimento;
     private String codigoDoFamiliar;
     private Integer idade;
+    private Long id;
 }

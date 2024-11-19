@@ -1,4 +1,3 @@
-import { useState } from 'react'; 
 import styles from './css/cssPages/RegistroAnimal.module.css';
 import Sidebar from './components/Sidebar';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,6 +7,8 @@ import iconOvina from './images/iconOvina.png';
 import iconCaprino from './images/iconCaprino.png';
 import iconSuino from './images/iconSuino.png';
 import AuthService from '../autenticacao/AuthService';
+import React, { useState } from 'react';
+import PopUpConfirmacaoCadastroAn from './modals/PopUpConfirmacaoCadastroAn/PopUpConfirmacaoCadastroAn';
 import { useNavigate } from 'react-router-dom';
 
 function RegistrarAnimal() {
@@ -26,6 +27,7 @@ function RegistrarAnimal() {
     const [iconeAnimal, setIconeAnimal] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+    const [modalConfirmacao, setModalConfirmacao] = React.useState(false);
 
     const racasPorEspecie = {
         BOVINO: ["Angus", "Nelore", "Brahman", "Brangus", "Senepol", "Hereford", "Outra"],
@@ -52,6 +54,11 @@ function RegistrarAnimal() {
     const handleAccessVoltar = () => {
         navigate('/fichamento')
     };
+
+    const toggleConfirmacaoModal = () => {
+        setModalConfirmacao(!modalConfirmacao);
+    };
+
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -100,7 +107,7 @@ function RegistrarAnimal() {
                             </p>
                             <label className={styles.labelShortInput}>
                                 <input
-                                    type="number"
+                                    type="text"
                                     placeholder="Digite o Código do Animal:"
                                     required
                                     name="codigoAnimal"
@@ -315,10 +322,11 @@ function RegistrarAnimal() {
 
                     <div className={styles.Rowbtn}> 
                     <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleAccessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
-                        <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Cadastrar Animal</button>
+                        <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit" onClick={toggleConfirmacaoModal}>Cadastrar Animal</button>
                     </div>
                 </form>
             </div>
+            {modalConfirmacao && <PopUpConfirmacaoCadastroAn toggleModal={toggleConfirmacaoModal} />}
         </div>
     );
 }

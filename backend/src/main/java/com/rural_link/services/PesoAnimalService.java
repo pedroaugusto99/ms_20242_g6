@@ -1,5 +1,7 @@
 package com.rural_link.services;
 
+import com.rural_link.dtos.animal.PesoAnimalRequestDTO;
+import com.rural_link.dtos.animal.PesoAnimalResponseDTO;
 import com.rural_link.entities.animal.Animal;
 import com.rural_link.entities.animal.PesoAnimal;
 import com.rural_link.entities.fazenda.Fazenda;
@@ -7,21 +9,18 @@ import com.rural_link.entities.usuarios.Pessoa;
 import com.rural_link.entities.usuarios.Proprietario;
 import com.rural_link.entities.usuarios.TrabalhadorRural;
 import com.rural_link.entities.usuarios.UserRole;
-import com.rural_link.dtos.animal.PesoAnimalRequestDTO;
-import com.rural_link.dtos.animal.PesoAnimalResponseDTO;
 import com.rural_link.exceptions.UserNotAuthenticatedException;
 import com.rural_link.mappers.PesoAnimalMapper;
 import com.rural_link.repositories.*;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Log4j2
 public class PesoAnimalService {
 
     private final PesoAnimalRepository pesoAnimalRepository;
@@ -29,6 +28,7 @@ public class PesoAnimalService {
     private final AnimalRepository animalRepository;
     private final TrabalhadorRuralRepository trabalhadorRuralRepository;
     private final ProprietarioRepository proprietarioRepository;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Fazenda encontrarFazendaDoAnimal(Pessoa pessoa){
         if (pessoa.getRole() == UserRole.PROPRIETARIO){
@@ -57,7 +57,7 @@ public class PesoAnimalService {
         }
         return new PesoAnimalResponseDTO(
                 pesoAnimalSalvo.getPeso(),
-                pesoAnimalSalvo.getDataDePesagem(),
+                pesoAnimalSalvo.getDataDePesagem().format(formatter),
                 saldoPesos,
                 pesoAnimalSalvo.getAnimal().getId()
         );
@@ -81,12 +81,12 @@ public class PesoAnimalService {
         List<PesoAnimal> pesosAnimal = pesoAnimalRepository.findByAnimal(animal);
         List<PesoAnimalResponseDTO> pesoAnimalResponseDTO = PesoAnimalMapper.INSTANCE.toListOfPesoAnimalResponseDTO(pesosAnimal);
         for (int i = pesoAnimalResponseDTO.size()-1; i >= 0; i--) {
+            pesoAnimalResponseDTO.get(i).setDataDePesagem(formatter.format(pesosAnimal.get(i).getDataDePesagem()));
             if (i == 0){
                 pesoAnimalResponseDTO.get(i).setSaldoDePeso(BigDecimal.ZERO);
             } else{
                 pesoAnimalResponseDTO.get(i).setSaldoDePeso(pesoAnimalResponseDTO.get(i).getPeso().subtract(pesoAnimalResponseDTO.get(i-1).getPeso()));
             }
-            pesoAnimalResponseDTO.get(i).setAnimalId(animalId);
         }
         return pesoAnimalResponseDTO;
     }

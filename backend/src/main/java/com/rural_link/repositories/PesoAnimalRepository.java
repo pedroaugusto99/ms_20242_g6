@@ -9,5 +9,6 @@ import java.util.List;
 public interface PesoAnimalRepository extends JpaRepository<PesoAnimal, Long> {
     List<PesoAnimal> findFirst2ByOrderByIdDesc();
     List<PesoAnimal> findByAnimal(Animal animal);
-    PesoAnimal findFirstByOrderByIdDesc();
+    PesoAnimal findTopByAnimalOrderByIdDesc(Animal animal);
+    void deleteByAnimal(Animal animal);
 }

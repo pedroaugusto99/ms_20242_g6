@@ -3,28 +3,24 @@ import Sidebar from './components/Sidebar';
 import ImageProfile from './components/ImageProfile';
 import Campo from './components/Campo';
 import ManejoTable from './components/ManejoTable';
+import ManejoTablePesagem from './components/ManejoTablePesagem';
+import ManejoTableCrias from './components/ManejoTableCrias';
 import styles from './css/cssPages/FichaAnimal.module.css';
 import AuthService from '../autenticacao/AuthService';
-import React from 'react';
+import React, { useState } from 'react';
 import { setsEqual } from 'chart.js/helpers';
 import PopUpPesagem from './modals/PopUpPesagem/PopUpPesagem';
 import PopUpVacinacao from './modals/PopUpVacinacao/PopUpVacinacao';
 import PopUpCrias from './modals/PopUpCrias/PopUpCrias';
 import PopUpExclusao from './modals/PopUpExclusao/PopUpExclusao';
 import PopUpConfirmacao from './modals/PopUpConfirmacao/PopUpConfirmacao';
-import { useLocation, useNavigate } from 'react-router-dom';
+ import { useLocation, useNavigate } from 'react-router-dom';
+ import { DadosParaPopUpsDeManejo } from '../hooks/DadosParaPopUpsDeManejo';
 
 function FichaAnimal() {
-    // Dados
-    const pesagemData = [
-        { peso: '100kg', data: '2024-01-01', saldo: '5kg' },
-    ];
-    const vacinacaoData = [
-        { nome: 'Vacina A', dataAplicacao: '2024-02-01', doses: 2, proximaAplicacao: '2024-06-01' },
-    ];
-    const criasData = [
-        { codigo: '1234', nascimento: '2023-05-01', pai: '5678', idade: '1 ano' },
-    ];
+    const {
+        vacinacaoData, pesagemData, criasData,
+      } = DadosParaPopUpsDeManejo();
 
     // Estados para os modais
     const [modalPesagem, setModalPesagem] = React.useState(false);
@@ -62,7 +58,7 @@ function FichaAnimal() {
     const [codigoAnimal, setCodigoAnimal] = React.useState('');
     const [especieAnimal, setEspecieAnimal] = React.useState('');
     const [racaAnimal, setRacaAnimal] = React.useState('');
-    const [sexoAnima, setSexoAnimal] = React.useState('');
+    const [sexoAnimal, setSexoAnimal] = React.useState('');
     const [dataDeNascimentoAnimal, setDataDeNascimentoAnimal] = React.useState('');
     const [idadeAnimal, setIdadeAnimal] = React.useState('');
     const [dataDeAquisicaoAnimal, setDataDeAquisicaoAnimal] = React.useState('');
@@ -72,6 +68,9 @@ function FichaAnimal() {
     const [codigoDaMaeDoAnimal, setCodigoDaMaeDoAnimal] = React.useState('');
     const [pesoAtualDoAnimal, setPesoAtualDoAnimal] = React.useState(null);
     const [numeroDeCriasDoAnimal, setNumeroDeCriasDoAnimal] = React.useState(null);
+    const [dadosPesos, setDadosPesos] = useState('');
+    const [dadosVacinas, setDadosVacinas] = useState('');
+    const [dadosCrias, setDadosCrias] = useState('');
     const [qrCodeAnimal, setQrCodeAnimal] = React.useState('');
 
     React.useEffect(() => {
@@ -94,7 +93,26 @@ function FichaAnimal() {
     }, []);
 
     React.useEffect(() => {
-        AuthService.pegarQrCode(1).then((response) => {
+
+        AuthService.listarPesos(location.state.identificador).then((response) => {
+            setDadosPesos(response.data);
+        })
+    }, []);
+
+    React.useEffect(() => {
+        AuthService.listarVacinas(location.state.identificador).then((response) => {
+            setDadosVacinas(response.data);
+        })
+    }, []);
+
+    React.useEffect(() => {
+        AuthService.listarCrias(location.state.identificador).then((response) => {
+            setDadosCrias(response.data);
+        })
+    }, []);
+
+    React.useEffect(() => {
+        AuthService.pegarQrCode(location.state.identificador).then((response) => {
             setQrCodeAnimal(response.data['qrCode'])
         })
     }, []);
@@ -117,16 +135,16 @@ function FichaAnimal() {
                 <div className={styles.dadosEssenciais}>
                     <h1 className={styles.titleFicha}>Dados Essenciais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="Código do Animal" />
-                        <Campo label="Nome" />
-                        <Campo label="Espécie" />
-                        <Campo label="Raça" />
+                        <Campo label="CÃ³digo do Animal" value={codigoAnimal} />
+                        <Campo label="Nome" value={nomeAnimal}/>
+                        <Campo label="EspÃ©cie" value={especieAnimal}/>
+                        <Campo label="RaÃ§a" value={racaAnimal}/>
                     </div>
                     <div className={styles.camposBaixo}>
-                        <Campo label="Sexo" />
-                        <Campo label="Data de Nascimento" />
-                        <Campo label="Idade" />
-                        <Campo label="Data de Aquisição" />
+                        <Campo label="Sexo" value={sexoAnimal}/>
+                        <Campo label="Data de Nascimento" value={dataDeNascimentoAnimal}/>
+                        <Campo label="Idade" value={idadeAnimal}/>
+                        <Campo label="Data de AquisiÃ§Ã£o" value={dataDeAquisicaoAnimal}/>
                     </div>
                 </div>
 
@@ -134,43 +152,43 @@ function FichaAnimal() {
                 <div className={styles.dadosAdicionais}>
                     <h1 className={styles.titleFicha}>Dados Adicionais</h1>
                     <div className={styles.camposCima}>
-                        <Campo label="Status" />
-                        <Campo label="Lote" />
-                        <Campo label="Pai (Código)" />
-                        <Campo label="Mãe (Código)" />
+                        <Campo label="Status" value={statusAnimal}/>
+                        <Campo label="Lote" value={loteAnimal}/>
+                        <Campo label="Pai (CÃ³digo)" value={codigoDoPaiDoAnimal}/>
+                        <Campo label="MÃ£e (CÃ³digo)" value={codigoDaMaeDoAnimal}/>
                     </div>
                     <div className={styles.camposBaixo}>
-                        <Campo label="Peso Atual" editable />
-                        <Campo label="Número de Crias" editable />
+                        <Campo label="Peso Atual" editable value={pesoAtualDoAnimal}/>
+                        <Campo label="NÃºmero de Crias" editable value={numeroDeCriasDoAnimal}/>
                     </div>
                 </div>
 
                 {/* Manejo */}
                 <div className={styles.manejo}>
                     <h1 className={styles.titleManejo}>Manejos</h1>
-                    <ManejoTable
-                        title="Pesagem"
-                        data={pesagemData}
-                        columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
-                        toggleModal={togglePesagemModal}
+                    <ManejoTablePesagem
+                    title="Pesagem"
+                    data={dadosPesos || []}
+                    columns={['Peso', 'Data da Pesagem', 'Saldo de Peso']}
+                    toggleModal={togglePesagemModal}
                     />
-                    <ManejoTable 
-                        title="Vacinação" 
-                        data={vacinacaoData} 
-                        columns={['Nome da Vacina', 'Data da Aplicação', 'Número de Doses', 'Próxima Aplicação']}
+                   <ManejoTable 
+                        title="VacinaÃ§Ã£o" 
+                        data={dadosVacinas || []}
+                        columns={['Nome da Vacina', 'Data da AplicaÃ§Ã£o', 'NÃºmero de Doses', 'PrÃ³xima AplicaÃ§Ã£o']}
                         toggleModal={toggleVacinacaoModal}
                     />
-                    <ManejoTable 
+                    <ManejoTableCrias 
                         title="Crias" 
-                        data={criasData} 
-                        columns={['Código da Cria', 'Data de Nascimento', 'Pai (Código)', 'Idade']} 
+                        data={dadosCrias || []}
+                        columns={['CÃ³digo da Cria', 'Data de Nascimento', 'Pai (CÃ³digo)', 'Idade']} 
                         toggleModal={toggleCriasModal}
                     />
                 </div>
 
                 {/* Botões */}
                 <div className={styles.Rowbtn}>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}>Voltar</button>
+                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`} type="button" onClick={handleAcessVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={handlegenerate_pdf}>Gerar PDF</button>
                     <button className={`${styles.btn} ${styles.btnPrimario}`} type="button" onClick={toggleExclusaoModal}>
                     <i className="fa-solid fa-trash-can"></i> Excluir Cadastro
@@ -180,10 +198,10 @@ function FichaAnimal() {
             </div>
 
             {/* Popups */}
-            {modalPesagem && <PopUpPesagem toggleModal={togglePesagemModal} />}
-            {modalVacinacao && <PopUpVacinacao toggleModal={toggleVacinacaoModal} />}
-            {modalCrias && <PopUpCrias toggleModal={toggleCriasModal} />}
-            {modalExclusao && <PopUpExclusao toggleModal={toggleExclusaoModal} />}
+            {modalPesagem && <PopUpPesagem toggleModal={togglePesagemModal} dadosPesagem={dadosPesos} animalId={location.state.identificador}/>}
+            {modalVacinacao && <PopUpVacinacao toggleModal={toggleVacinacaoModal}  dadosVacinacao={dadosVacinas} animalId={location.state.identificador}/>}
+            {modalCrias && <PopUpCrias toggleModal={toggleCriasModal} dadosCrias={dadosCrias}/>}
+            {modalExclusao && <PopUpExclusao toggleModal={toggleExclusaoModal} animalId={location.state.identificador}/>}
             {modalConfirmacao && <PopUpConfirmacao toggleModal={toggleConfirmacaoModal} />}
         </div>
     );

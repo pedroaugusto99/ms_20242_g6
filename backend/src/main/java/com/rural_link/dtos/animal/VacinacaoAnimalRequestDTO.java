@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-public record VacinacaoAnimalDTO(
+public record VacinacaoAnimalRequestDTO(
         @Schema(description = "Nome da vacina dada ao animal", example = "IBR", requiredMode = Schema.RequiredMode.REQUIRED)
         @NotNull
         String nomeDaVacina,

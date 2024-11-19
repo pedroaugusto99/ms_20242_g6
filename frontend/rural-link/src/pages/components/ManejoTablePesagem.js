@@ -1,12 +1,12 @@
 import styles from '../css/cssPages/FichaAnimal.module.css';
 
-function ManejoTable({ title, data, columns, toggleModal }) {
+function ManejoTablePesagem({ title, data, columns, toggleModal }) {
   // Adiciona uma verificação para os dados e fornece um array vazio como valor padrão
   const safeData = data || [];
 
-  // Ordena os dados pela data de aplicação (decrescente) e seleciona os dois primeiros
+  // Ordena os dados pela data de pesagem (decrescente) e seleciona os dois primeiros
   const sortedData = safeData
-    .sort((a, b) => new Date(b.dataAplicacao) - new Date(a.dataAplicacao))
+    .sort((a, b) => new Date(b.data) - new Date(a.data))
     .slice(0, 2); // Pega os dois mais recentes
 
   return (
@@ -29,19 +29,16 @@ function ManejoTable({ title, data, columns, toggleModal }) {
                     // A forma mais direta de mapear os dados pode ser através de um mapeamento manual
                     let cellValue = 'N/A';
 
-                    // Adapte conforme as chaves reais dos dados (pode ser 'nome', 'dataAplicacao', etc.)
+                    // Mapeamento para os dados de pesagem
                     switch (col) {
-                      case 'Nome da Vacina':
-                        cellValue = row.nomeDaVacina || 'N/A';
+                      case 'Peso':
+                        cellValue = row.peso || 'N/A';
                         break;
-                      case 'Data da Aplicação':
-                        cellValue = row.dataDeVacinacao || 'N/A';
+                      case 'Data da Pesagem':
+                        cellValue = row.dataDePesagem || 'N/A';
                         break;
-                      case 'Número de Doses':
-                        cellValue = row.numeroDeDoses || 'N/A';
-                        break;
-                      case 'Próxima Aplicação':
-                        cellValue = row.dataDaProximaVacinacao || 'N/A';
+                      case 'Saldo de Peso':
+                        cellValue = row.saldoDePeso || 'N/A';
                         break;
                       default:
                         cellValue = 'N/A';
@@ -66,4 +63,4 @@ function ManejoTable({ title, data, columns, toggleModal }) {
   );
 }
 
-export default ManejoTable;
+export default ManejoTablePesagem;

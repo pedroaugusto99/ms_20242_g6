@@ -1,13 +1,13 @@
 import styles from '../css/cssPages/FichaAnimal.module.css';
 
-function ManejoTable({ title, data, columns, toggleModal }) {
+function ManejoTableCrias({ title, data, columns, toggleModal }) {
   // Adiciona uma verificação para os dados e fornece um array vazio como valor padrão
   const safeData = data || [];
 
-  // Ordena os dados pela data de aplicação (decrescente) e seleciona os dois primeiros
+  // Ordena os dados pela data de nascimento (decrescente) e seleciona os dois mais recentes
   const sortedData = safeData
-    .sort((a, b) => new Date(b.dataAplicacao) - new Date(a.dataAplicacao))
-    .slice(0, 2); // Pega os dois mais recentes
+    .sort((a, b) => new Date(b.nascimento) - new Date(a.nascimento))
+    .slice(0, 2); // Pega as duas crias mais recentes
 
   return (
     <div className={styles.manejoTable}>
@@ -26,22 +26,20 @@ function ManejoTable({ title, data, columns, toggleModal }) {
               sortedData.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {columns.map((col, colIndex) => {
-                    // A forma mais direta de mapear os dados pode ser através de um mapeamento manual
                     let cellValue = 'N/A';
 
-                    // Adapte conforme as chaves reais dos dados (pode ser 'nome', 'dataAplicacao', etc.)
                     switch (col) {
-                      case 'Nome da Vacina':
-                        cellValue = row.nomeDaVacina || 'N/A';
+                      case 'Código da Cria':
+                        cellValue = row.codigo || 'N/A';
                         break;
-                      case 'Data da Aplicação':
-                        cellValue = row.dataDeVacinacao || 'N/A';
+                      case 'Data de Nascimento':
+                        cellValue = row.dataDeNascimento || 'N/A';
                         break;
-                      case 'Número de Doses':
-                        cellValue = row.numeroDeDoses || 'N/A';
+                      case 'Pai (Código)':
+                        cellValue = row.codigoDoFamiliar || 'N/A';
                         break;
-                      case 'Próxima Aplicação':
-                        cellValue = row.dataDaProximaVacinacao || 'N/A';
+                      case 'Idade':
+                        cellValue = row.idade || 'N/A';
                         break;
                       default:
                         cellValue = 'N/A';
@@ -66,4 +64,4 @@ function ManejoTable({ title, data, columns, toggleModal }) {
   );
 }
 
-export default ManejoTable;
+export default ManejoTableCrias;

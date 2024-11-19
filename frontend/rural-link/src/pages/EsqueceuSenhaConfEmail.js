@@ -14,9 +14,9 @@ function EsqueceuSenha() {
         event.preventDefault();
         try {
             const resposta = await AuthService.validaremail({ email: email });
-            if (resposta.statusText === 'OK') {
+            if (resposta.status === 200) {
                 setMensagem('Email enviado com sucesso!');
-                navigate('/esqueceusenhatoken' , {state:{emailUsuario: email}});
+                navigate('/esqueceusenhatoken', { state: { emailUsuario: email } });
             } else {
                 setMensagem('Erro ao enviar email. Tente novamente.');
             }
@@ -25,29 +25,9 @@ function EsqueceuSenha() {
         }
     };
 
-    const EntradaEmail = ({ label, valor, aoMudar }) => (
-        <div className={styles.campoSenha}>
-            <input
-                type={setEmail ? 'text' : 'email'}
-                placeholder={label}
-                required
-                value={valor}
-                onChange={aoMudar}
-            />
-        </div>
-    );
-
-    const FormularioRedefinicaoSenha = () => (
-        <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
-            <p className={styles.rotuloSenha}>Email:</p>
-            <EntradaEmail label="Digite seu email" valor={email} aoMudar={(e) => setEmail(e.target.value)} />
-            {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
-        </form>
-    );
-
     const handleClickVoltar = () => {
         navigate('/login');
-      };
+    };
 
     return (
         <div className={styles.container}>
@@ -65,12 +45,34 @@ function EsqueceuSenha() {
                     <p className={styles.textoEmail1}>Digite o email vinculado à sua conta na plataforma</p>
                     <p className={styles.textoEmail2}>para receber o token de validação</p>
 
-                    <FormularioRedefinicaoSenha />
-
-                    <button className={`${styles.btnVoltar} ${styles.btnPrimario}`}  onClick={handleClickVoltar}><i className="fa-solid fa-chevron-left"></i>Voltar</button>
-                    <button className={`${styles.btn} ${styles.btnPrimario}`} type="submit">Confirmar</button>
-
+                    <form className={styles.formulario} onSubmit={aoEnviarFormulario}>
+                        <p className={styles.rotuloSenha}>Email:</p>
+                        <div className={styles.campoSenha}>
+                            <input
+                                type="email"
+                                placeholder="Digite seu email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+                        {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
+                    </form>
                     
+                    <button 
+                        type="button" 
+                        className={`${styles.btnVoltar} ${styles.btnPrimario}`} 
+                        onClick={handleClickVoltar}
+                    >
+                        <i className="fa-solid fa-chevron-left"></i>Voltar
+                    </button>
+                    <button 
+                        type="submit" 
+                        className={`${styles.btn} ${styles.btnPrimario}`}
+                        onClick={aoEnviarFormulario}
+                    >
+                        Confirmar
+                    </button>
                 </div>
             </div>
         </div>
