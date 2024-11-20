@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './css/cssPages/Dashboard.module.css';
 
 import profile4 from './images/dashboard/profile-4.jpg';
+import trabalhadoricon from './images/trabalhadoricon.jpeg';
 
 import Sidebar from './components/Sidebar';
 import Grafico from './components/Grafico';
@@ -129,7 +130,7 @@ const Dashboard = () => {
                         {Array.isArray(trabalhadores) && trabalhadores.length > 0 ? (
                             trabalhadores.map((trabalhador) => (
                                 <tr>
-                                    <UserCard name={trabalhador.nomeCompleto} telefone={trabalhador.telefone} image={profile4} />
+                                    <UserCard name={trabalhador.nomeCompleto} telefone={trabalhador.telefone} image={trabalhadoricon} />
                                 </tr>
                             ))
                         ) : (
